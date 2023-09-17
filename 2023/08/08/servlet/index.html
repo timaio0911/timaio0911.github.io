@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mr.Sloth">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JavaWeb—-servlet1.CS 和 BS1.CS：客户端服务器架构模式  优点 : 充分利用客户端机器的资源，减轻服务器的负荷(一部分安全要求不高的计算		任务存储任务放在客户端执行，不需要把所有的计算和存储都在服务器端行，		从而能够减轻服务器的压力，也能够减轻网络负荷) 缺点:需要安装:升级维护成本较高  2.BS：浏览器服务器架构模式  优点:客户端不需要安装;维护成本较低 缺点:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="servlet">
+<meta property="og:url" content="https://timaio0911.github.io/blog/2023/08/08/servlet/index.html">
+<meta property="og:site_name" content="Sloth">
+<meta property="og:description" content="JavaWeb—-servlet1.CS 和 BS1.CS：客户端服务器架构模式  优点 : 充分利用客户端机器的资源，减轻服务器的负荷(一部分安全要求不高的计算		任务存储任务放在客户端执行，不需要把所有的计算和存储都在服务器端行，		从而能够减轻服务器的压力，也能够减轻网络负荷) 缺点:需要安装:升级维护成本较高  2.BS：浏览器服务器架构模式  优点:客户端不需要安装;维护成本较低 缺点:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Ctomcat%E5%AE%98%E7%BD%91.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5C%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%E6%96%B0%E5%BB%BA.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%20%E5%8A%A0web.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%201.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cservlet%E6%89%A7%E8%A1%8C%E8%B7%AF%E5%BE%84%E5%AF%BC%E5%9B%BE.png">
+<meta property="og:image" content="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img002.16e080e9.png">
+<meta property="og:image" content="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img005.35d6260c.png">
+<meta property="og:image" content="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img007.a6ab27cd.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5C%E4%BF%9D%E5%AD%98%E4%BD%9C%E7%94%A8%E5%9F%9F.png">
+<meta property="og:image" content="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img036.7feb86f9.png">
+<meta property="og:image" content="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img035.133cd6b1.png">
+<meta property="article:published_time" content="2023-08-08T09:53:13.000Z">
+<meta property="article:modified_time" content="2023-08-13T10:36:02.194Z">
+<meta property="article:author" content="Mr.Sloth">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Ctomcat%E5%AE%98%E7%BD%91.png">
+  
+  
+  
+  <title>servlet - Sloth</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"timaio0911.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="servlet"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-08 17:53" pubdate>
+          2023年8月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          49 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">servlet</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="JavaWeb—-servlet"><a href="#JavaWeb—-servlet" class="headerlink" title="JavaWeb—-servlet"></a>JavaWeb—-servlet</h1><h2 id="1-CS-和-BS"><a href="#1-CS-和-BS" class="headerlink" title="1.CS 和 BS"></a>1.CS 和 BS</h2><p>1.<strong>CS</strong>：客户端服务器架构模式</p>
+<ul>
+<li>优点 : 充分利用客户端机器的资源，减轻服务器的负荷(一部分安全要求不高的计算		任务存储任务放在客户端执行，不需要把所有的计算和存储都在服务器端行，		从而能够减轻服务器的压力，也能够减轻网络负荷)</li>
+<li>缺点:需要安装:升级维护成本较高</li>
+</ul>
+<p>2.<strong>BS</strong>：浏览器服务器架构模式</p>
+<ul>
+<li>优点:客户端不需要安装;维护成本较低</li>
+<li>缺点:所有的计算和存储任务都是放在服务器端的，服务器的负荷较重，在服务端计  		算完成之后把结果再传输给客户端，因此客户端和服务器端会进行非常频繁的		数据通信，从而网络负荷较重</li>
+</ul>
+<h2 id="2-Tomcat"><a href="#2-Tomcat" class="headerlink" title="2.Tomcat"></a>2.Tomcat</h2><h3 id="2-1下载"><a href="#2-1下载" class="headerlink" title="2.1下载"></a>2.1下载</h3><p>1.下载网址：<a target="_blank" rel="noopener" href="https://tomcat.apache.org/">https://tomcat.apache.org/</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Ctomcat%E5%AE%98%E7%BD%91.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2解压安装配置"><a href="#2-2解压安装配置" class="headerlink" title="2.2解压安装配置"></a>2.2解压安装配置</h3><p>1.解压目录不能出现中文</p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5C%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.目录结构说明</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-symbol">bin:</span> 可执行文件目录<br>conf：配置文件目录<br><span class="hljs-keyword">lib</span>：存放<span class="hljs-keyword">lib</span>目录 放包呀啥的<br>logs：日志文件目录<br>webapps：项目部署文件目录<br>work：工作目录<br>temp：临时目录<br></code></pre></td></tr></table></figure>
+
+<p>3.配置环境变量</p>
+<p>需要JAVA_HOME</p>
+<p>(此处不配图了，自行配置)</p>
+<p>4.若启动能登陆tomcat主页，则表示tomcat在电脑上安装成功</p>
+<h3 id="2-3在idea中部署tomcat"><a href="#2-3在idea中部署tomcat" class="headerlink" title="2.3在idea中部署tomcat"></a>2.3在idea中部署tomcat</h3><p>1.新建一个空项目</p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%E6%96%B0%E5%BB%BA.png" srcset="/img/loading.gif" lazyload></p>
+<p>2.在<strong>Add Framework Support</strong>中添加web模块</p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%20%E5%8A%A0web.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%201.png" srcset="/img/loading.gif" lazyload></p>
+<p>结构发生变化</p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cjavaweb--demo01%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-servlet"><a href="#3-servlet" class="headerlink" title="3.servlet"></a>3.servlet</h2><h3 id="3-1servlet参数获取"><a href="#3-1servlet参数获取" class="headerlink" title="3.1servlet参数获取"></a>3.1servlet参数获取</h3><p>先提供一个form表单</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;add&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br>		名称:&lt;inputtype=&quot;text&quot;name=&quot;fname&quot;/&gt;<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span><br>		价格:&lt;inputtype=&quot;text&quot;name=&quot;price&quot;/&gt;<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span><br>		库存:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span><span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fcount&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span><br>		备注:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span><span class="hljs-attr">name</span>=<span class="hljs-string">&quot;remark&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;添加&quot;</span> /&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在web.xml注册servlet</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>Addservlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>com.atguigu.servlets.AddServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>AddServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ur1-pattern</span>&gt;</span>/add<span class="hljs-tag">&lt;/<span class="hljs-name">ur1-pattern</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>执行顺序</p>
+<p>1.用户发请求，action&#x3D;add</p>
+<p>2.项目中<strong>web.xml</strong> 中找到 <strong>url-pattern</strong>   &#x3D;   &#x3D;&#x3D;&#x2F;add&#x3D;&#x3D;</p>
+<p>3.servlet-name &#x3D; <em><strong>Addservlet</strong></em></p>
+<p>4.找和<strong>servlet-mappinq</strong>中<strong>servlet-name</strong>&#x3D;&#x3D;一致&#x3D;&#x3D;的servlet</p>
+<p>5.servlet-class -&gt; com.atquiqu.servlets.<em><strong>AddServlet</strong></em></p>
+<p>6.用户发误的是post请求 (method&#x3D;post)因此 tomcat会执行Addservlet中的doPost方法</p>
+<blockquote>
+<p>method没这个属性默认为get</p>
+</blockquote>
+<p>大致导图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5Cservlet%E6%89%A7%E8%A1%8C%E8%B7%AF%E5%BE%84%E5%AF%BC%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-servlet生命周期"><a href="#3-2-servlet生命周期" class="headerlink" title="3.2 servlet生命周期"></a>3.2 servlet生命周期</h3><p>​	1）生命周期：从出生到死亡的过程   对应三个方法 ：<code>init(),service(),destroy()</code></p>
+<p>​	2）默认情况如下：</p>
+<p>​			第一次接受请求，Server实例化（调用构造方法）——&gt;  初始化（调用init），</p>
+<p>​			然后开始服务（调用<code>service（）</code>）</p>
+<p>​			从第二次开始，直接服务</p>
+<p>​			容器关闭，销毁</p>
+<p>​	3）Servlet初始化时机：</p>
+<p>​			默认为第一次接收请求时，实例化，初始化</p>
+<p>​			通过<code>&lt; load-on-startup &gt;</code>来设置，数字越小越靠前，0开始</p>
+<h3 id="3-3-servlet——Http协议"><a href="#3-3-servlet——Http协议" class="headerlink" title="3.3 servlet——Http协议"></a>3.3 servlet——Http协议</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h4><p>HTTP：<strong>H</strong>yper <strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol超文本传输协议。HTTP最大的作用就是确定了请求和响应数据的格式。浏览器发送给服务器的数据：请求报文；服务器返回给浏览器的数据：响应报文。</p>
+<h4 id="2、请求报文"><a href="#2、请求报文" class="headerlink" title="2、请求报文"></a>2、请求报文</h4><h5 id="①在开发者工具中浏览报文源码"><a href="#①在开发者工具中浏览报文源码" class="headerlink" title="①在开发者工具中浏览报文源码"></a>①在开发者工具中浏览报文源码</h5><p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<h5 id="②请求报文的三个部分"><a href="#②请求报文的三个部分" class="headerlink" title="②请求报文的三个部分"></a>②请求报文的三个部分</h5><p><img src="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img002.16e080e9.png" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<h5 id="③请求行"><a href="#③请求行" class="headerlink" title="③请求行"></a>③请求行</h5><p>作用：展示当前请求的最基本信息</p>
+<blockquote>
+<p>POST &#x2F;dynamic&#x2F;target.jsp HTTP&#x2F;1.1</p>
+</blockquote>
+<ul>
+<li>请求方式</li>
+<li>访问地址</li>
+<li>HTTP协议的版本</li>
+</ul>
+<h5 id="④请求消息头"><a href="#④请求消息头" class="headerlink" title="④请求消息头"></a>④请求消息头</h5><p>作用：通过具体的参数对本次请求进行详细的说明</p>
+<p>格式：键值对，键和值之间使用冒号隔开</p>
+<p>相对比较重要的请求消息头：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Host</td>
+<td>服务器的主机地址</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>声明当前请求能够接受的『媒体类型』</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td>当前请求来源页面的地址</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>请求体内容的长度</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>请求体的内容类型，这一项的具体值是媒体类型中的某一种</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>浏览器访问服务器时携带的Cookie数据</td>
+</tr>
+</tbody></table>
+<h5 id="⑤请求体"><a href="#⑤请求体" class="headerlink" title="⑤请求体"></a>⑤请求体</h5><p>作用：作为请求的主体，发送数据给服务器。具体来说其实就是POST请求方式下的请求参数。</p>
+<p>格式：</p>
+<p><strong>[1]form data</strong></p>
+<p>含义：当前请求体是一个表单提交的请求参数。</p>
+<p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<p>查看源码后，发现格式如下：</p>
+<blockquote>
+<p>username&#x3D;tom&amp;password&#x3D;123456</p>
+</blockquote>
+<ul>
+<li>每一组请求参数是一个键值对</li>
+<li>键和值中间是等号</li>
+<li>键值对之间是&amp;号</li>
+</ul>
+<p><strong>[2]Request Payload</strong></p>
+<p>含义：整个请求体以某种特定格式来组织数据，例如JSON格式。</p>
+<p><img src="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img005.35d6260c.png" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<h4 id="3、请求方式"><a href="#3、请求方式" class="headerlink" title="3、请求方式"></a>3、请求方式</h4><h5 id="①HTTP协议已定义的请求方式"><a href="#①HTTP协议已定义的请求方式" class="headerlink" title="①HTTP协议已定义的请求方式"></a>①HTTP协议已定义的请求方式</h5><p>HTTP1.1中共定义了八种请求方式：</p>
+<ul>
+<li><strong>GET</strong>：从服务器端获取数据</li>
+<li><strong>POST</strong>：将数据保存到服务器端</li>
+<li><strong>PUT</strong>：命令服务器对数据执行更新</li>
+<li><strong>DELETE</strong>：命令服务器删除数据</li>
+<li>HEAD</li>
+<li>CONNECT</li>
+<li>OPTIONS</li>
+<li>TRACE</li>
+</ul>
+<h5 id="②GET请求"><a href="#②GET请求" class="headerlink" title="②GET请求"></a>②GET请求</h5><ul>
+<li>特征1：没有请求体</li>
+<li>特征2：请求参数附着在URL地址后面</li>
+<li>特征3：请求参数在浏览器地址栏能够直接被看到，存在安全隐患</li>
+<li>特征4：在URL地址后面携带请求参数，数据容量非常有限。如果数据量大，那么超出容量的数据会丢失</li>
+<li>特征5：从报文角度分析，请求参数是在请求行中携带的，因为访问地址在请求行</li>
+</ul>
+<h5 id="③POST请求"><a href="#③POST请求" class="headerlink" title="③POST请求"></a>③POST请求</h5><ul>
+<li>特征1：有请求体</li>
+<li>特征2：请求参数放在请求体中</li>
+<li>特征3：请求体发送数据的空间没有限制</li>
+<li>特征4：可以发送各种不同类型的数据</li>
+<li>特征5：从报文角度分析，请求参数是在请求体中携带的</li>
+<li>特征6：由于请求参数是放在请求体中，所以浏览器地址栏看不到</li>
+</ul>
+<h4 id="4、媒体类型"><a href="#4、媒体类型" class="headerlink" title="4、媒体类型"></a>4、媒体类型</h4><h5 id="①HTTP协议中的MIME类型"><a href="#①HTTP协议中的MIME类型" class="headerlink" title="①HTTP协议中的MIME类型"></a>①HTTP协议中的MIME类型</h5><p>Multipurpose Internet Mail Extensions</p>
+<h5 id="②用途"><a href="#②用途" class="headerlink" title="②用途"></a>②用途</h5><p>为了让用户通过浏览器和服务器端交互的过程中有更好、更丰富的体验，HTTP协议需要支持丰富的数据类型。</p>
+<h5 id="③MIME类型定义参考"><a href="#③MIME类型定义参考" class="headerlink" title="③MIME类型定义参考"></a>③MIME类型定义参考</h5><p>我们可以通过查看Tomcat解压目录下conf&#x2F;web.xml配置文件，了解HTTP协议中定义的MIME类型。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mime-mapping</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">extension</span>&gt;</span>mp4<span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">mime-type</span>&gt;</span>video/mp4<span class="hljs-tag">&lt;/<span class="hljs-name">mime-type</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mime-mapping</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mime-mapping</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">extension</span>&gt;</span>doc<span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">mime-type</span>&gt;</span>application/msword<span class="hljs-tag">&lt;/<span class="hljs-name">mime-type</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mime-mapping</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mime-mapping</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">extension</span>&gt;</span>json<span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">mime-type</span>&gt;</span>application/json<span class="hljs-tag">&lt;/<span class="hljs-name">mime-type</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mime-mapping</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mime-mapping</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">extension</span>&gt;</span>html<span class="hljs-tag">&lt;/<span class="hljs-name">extension</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">mime-type</span>&gt;</span>text/html<span class="hljs-tag">&lt;/<span class="hljs-name">mime-type</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mime-mapping</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>从上面的例子中可以看出：MIME的基本格式是</p>
+<blockquote>
+<p>大类&#x2F;具体类型</p>
+</blockquote>
+<p>MIME类型在HTTP报文中对应的是内容类型：Content-type</p>
+<h4 id="5、响应报文"><a href="#5、响应报文" class="headerlink" title="5、响应报文"></a>5、响应报文</h4><p><img src="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img007.a6ab27cd.png" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<h5 id="①响应状态行"><a href="#①响应状态行" class="headerlink" title="①响应状态行"></a>①响应状态行</h5><blockquote>
+<p>HTTP&#x2F;1.1 200 OK</p>
+</blockquote>
+<ul>
+<li>HTTP协议版本</li>
+<li><strong>响应状态码</strong></li>
+<li>响应状态的说明文字</li>
+</ul>
+<h5 id="②响应消息头"><a href="#②响应消息头" class="headerlink" title="②响应消息头"></a>②响应消息头</h5><ul>
+<li>响应体的说明书。</li>
+<li>服务器端对浏览器端设置数据，例如：服务器端返回Cookie信息。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content-Type</td>
+<td>响应体的内容类型</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>响应体的内容长度</td>
+</tr>
+<tr>
+<td>Set-Cookie</td>
+<td>服务器返回新的Cookie信息给浏览器</td>
+</tr>
+<tr>
+<td>location</td>
+<td>在<strong>重定向</strong>的情况下，告诉浏览器访问下一个资源的地址</td>
+</tr>
+</tbody></table>
+<h5 id="③响应体"><a href="#③响应体" class="headerlink" title="③响应体"></a>③响应体</h5><p>服务器返回的数据主体，有可能是各种数据类型。</p>
+<ul>
+<li>HTML页面</li>
+<li>图片</li>
+<li>视频</li>
+<li>以下载形式返回的文件</li>
+<li>CSS文件</li>
+<li>JavaScript文件</li>
+</ul>
+<h5 id="④响应状态码"><a href="#④响应状态码" class="headerlink" title="④响应状态码"></a>④响应状态码</h5><p>作用：以编码的形式告诉浏览器当前请求处理的结果</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>服务器成功处理了当前请求，成功返回响应</td>
+</tr>
+<tr>
+<td>302</td>
+<td>重定向</td>
+</tr>
+<tr>
+<td>400</td>
+<td>SpringMVC特定环境]请求参数问题</td>
+</tr>
+<tr>
+<td>403</td>
+<td>没有权限</td>
+</tr>
+<tr>
+<td>404</td>
+<td>找不到目标资源</td>
+</tr>
+<tr>
+<td>405</td>
+<td>请求方式和服务器端对应的处理方式不一致</td>
+</tr>
+<tr>
+<td>406</td>
+<td>SpringMVC特定环境]请求扩展名和实际返回的响应体类型不一致</td>
+</tr>
+<tr>
+<td>50X</td>
+<td>服务器端内部错误，通常都是服务器端抛异常了</td>
+</tr>
+</tbody></table>
+<p>404产生的具体原因：</p>
+<ul>
+<li>访问地址写错了，确实是没有这个资源</li>
+<li>访问了WEB-INF目录下的资源</li>
+<li>Web应用启动的时候，控制台已经抛出异常，导致整个Web应用不可用，访问任何资源都是404</li>
+<li>服务器端缓存</li>
+</ul>
+<h3 id="3-4-Servlet会话跟踪技术"><a href="#3-4-Servlet会话跟踪技术" class="headerlink" title="3.4 Servlet会话跟踪技术"></a>3.4 Servlet会话跟踪技术</h3><h5 id="1-介绍-1"><a href="#1-介绍-1" class="headerlink" title="1.介绍"></a>1.介绍</h5><p>客户端第一次发送请求给服务器，服务器获取session，获取不到的话，会创建新的，响应给客户端。</p>
+<p>第二次发请求时，客户端会携带这个session，服务器便可判断是否为第一次发送请求</p>
+<h3 id="3-5-Servlet——保存作用域"><a href="#3-5-Servlet——保存作用域" class="headerlink" title="3.5 Servlet——保存作用域"></a>3.5 Servlet——保存作用域</h3><p><img src="https://cdn.jsdelivr.net/gh/timaio0911/PicSloth/img_blog%5C%E4%BF%9D%E5%AD%98%E4%BD%9C%E7%94%A8%E5%9F%9F.png" srcset="/img/loading.gif" lazyload></p>
+<p>代码演示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> class 存入Servlet <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Httpservlet</span> [<br><span class="hljs-meta">@override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">service</span><span class="hljs-params">(ServletRequest req, ServletResponse res)</span> <span class="hljs-keyword">throws</span> ServletException, IOException &#123;<br>    request.getsession () .setAttribute ( s: <span class="hljs-string">&quot;uname&quot;</span>, o: <span class="hljs-string">&quot;lina&quot;</span>) ;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>setAttributr(K,V);  存入</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> class 获取Servlet <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Httpservlet</span> [   <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">service</span><span class="hljs-params">(ServletRequest req, ServletResponse res)</span> <span class="hljs-keyword">throws</span> ServletException, IOException &#123;<br>    request.getsession().getAttribute( s: <span class="hljs-string">&quot;uname&quot;</span>) ;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>getAttribute(“K”): 取出</p>
+</blockquote>
+<h3 id="3-6-Servlet——重定向与请求转发"><a href="#3-6-Servlet——重定向与请求转发" class="headerlink" title="3.6 Servlet——重定向与请求转发"></a>3.6 Servlet——重定向与请求转发</h3><h4 id="1、接力"><a href="#1、接力" class="headerlink" title="1、接力"></a>1、接力</h4><p>发一个请求给Servlet，接力棒就传递到了Servlet手中。而绝大部分情况下，Servlet不能独自完成一切，需要把接力棒继续传递下去，此时我们就需要请求的<strong>『转发』</strong>或<strong>『重定向』</strong>。</p>
+<h4 id="2、转发"><a href="#2、转发" class="headerlink" title="2、转发"></a>2、转发</h4><p>本质：<strong>转交</strong></p>
+<p>完整定义：在请求的处理过程中，Servlet完成了自己的任务，需要把请求<strong>转交给下一个资源</strong>继续处理。</p>
+<p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">request.getRequestDispatcher(<span class="hljs-string">&quot;/fruit/apple/red/sweet/big.html&quot;</span>).forward(request, response);<br></code></pre></td></tr></table></figure>
+
+<p>1</p>
+<p>类比：</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>request</td>
+<td>小货车</td>
+</tr>
+<tr>
+<td>getRequestDispatcher(“转发地址”)</td>
+<td>告诉司机要去哪</td>
+</tr>
+<tr>
+<td>forward(request, response)</td>
+<td>出发</td>
+</tr>
+</tbody></table>
+<p>关键：由于转发操作的核心部分是<strong>在服务器端完成</strong>的，所以浏览器感知不到，整个过程中浏览器<strong>只发送一次请求</strong>。</p>
+<p><img src="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img036.7feb86f9.png" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<h4 id="3、重定向"><a href="#3、重定向" class="headerlink" title="3、重定向"></a>3、重定向</h4><p>本质：<strong>一种特殊的响应</strong></p>
+<p>完整定义：在请求的处理过程中，Servlet完成了自己的任务，然后以一个<strong>响应</strong>的方式告诉浏览器：“要完成这个任务还需要你另外<strong>再访问下一个资源</strong>”。</p>
+<p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">response.sendRedirect(<span class="hljs-string">&quot;/app/fruit/apple/red/sweet/big.html&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>1</p>
+<p><img src="https://heavy_code_industry.gitee.io/code_heavy_industry/assets/img/img035.133cd6b1.png" srcset="/img/loading.gif" lazyload alt="./images"></p>
+<p>关键：由于重定向操作的核心部分是<strong>在浏览器端完成</strong>的，所以整个过程中浏览器<strong>共发送两次请求</strong>。</p>
+<h4 id="4、对比"><a href="#4、对比" class="headerlink" title="4、对比"></a>4、对比</h4><table>
+<thead>
+<tr>
+<th>转发</th>
+<th>重定向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>一次请求</strong></td>
+<td><strong>两次请求</strong></td>
+</tr>
+<tr>
+<td>浏览器地址栏显示的是第一个资源的地址</td>
+<td>浏览器地址栏显示的是第二个资源的地址</td>
+</tr>
+<tr>
+<td>全程使用的是同一个request对象</td>
+<td>全程使用的是不同的request对象</td>
+</tr>
+<tr>
+<td>在服务器端完成</td>
+<td>在浏览器端完成</td>
+</tr>
+<tr>
+<td>目标资源地址由服务器解析</td>
+<td>目标资源地址由浏览器解析</td>
+</tr>
+<tr>
+<td>目标资源可以在WEB-INF目录下</td>
+<td>目标资源不能在WEB-INF目录下</td>
+</tr>
+<tr>
+<td>目标资源仅限于本应用内部</td>
+<td>目标资源可以是外部资源</td>
+</tr>
+</tbody></table>
+<h4 id="5、转发和重定向的应用场景"><a href="#5、转发和重定向的应用场景" class="headerlink" title="5、转发和重定向的应用场景"></a>5、转发和重定向的应用场景</h4><p>可以简单的判断：能用转发的先用转发，如果转发不行，再使用重定向。</p>
+<ul>
+<li>需要通过同一个request对象把数据携带到目标资源：只能用转发</li>
+<li>如果希望前往下一个资源之后，浏览器刷新访问的是第二个资源：只能用重定向</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>servlet</div>
+      <div>https://timaio0911.github.io/blog/2023/08/08/servlet/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mr.Sloth</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89/" title="计算机网络（第一章）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络（第一章）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/07/jdbc/" title="jdbc">
+                        <span class="hidden-mobile">jdbc</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
