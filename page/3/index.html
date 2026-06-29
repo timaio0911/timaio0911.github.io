@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/blog/page/3/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/blog/img/Image.png">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/blog/img/Image.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/blog/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/blog/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/blog/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/blog/img/Image.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url(/blog/img/%E5%90%88%E5%94%B1.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/blog/"><span class="site-name">Welcome</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Welcome</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/07/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day07_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day07 课程知识汇总：大模型推理部署">Day07 课程知识汇总：大模型推理部署</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-06T16:00:00.000Z" title="Created 2025-01-07 00:00:00">2025-01-07</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:48.473Z" title="Updated 2026-06-29 19:42:48">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解大模型的推理部署，包括主流推理框架（vLLM、TensorRT-LLM、SGLang等）的介绍与使用、Docker容器化部署和量化技术。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/06/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day06_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day06 课程知识汇总：大模型评估">Day06 课程知识汇总：大模型评估</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-05T16:00:00.000Z" title="Created 2025-01-06 00:00:00">2025-01-06</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:41.955Z" title="Updated 2026-06-29 19:42:41">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解大模型的评估方法，包括综合知识评估（MMLU、C-Eval）、数学推理评估（GSM8K、MATH）、代码生成评估（HumanEval、MBPP）等核心评估维度。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/05/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day05_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day05 课程知识汇总：大模型训练介绍">Day05 课程知识汇总：大模型训练介绍</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-04T16:00:00.000Z" title="Created 2025-01-05 00:00:00">2025-01-05</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:36.249Z" title="Updated 2026-06-29 19:42:36">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解大模型训练的三大阶段：预训练、指令微调（SFT）、偏好对齐（RLHF），以及分布式训练策略和LLaMA Factory微调框架的使用。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/04/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day04_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day04 课程知识汇总：大模型应用开发（LlamaIndex）">Day04 课程知识汇总：大模型应用开发（LlamaIndex）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-03T16:00:00.000Z" title="Created 2025-01-04 00:00:00">2025-01-04</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:30.423Z" title="Updated 2026-06-29 19:42:30">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解大模型应用开发，包括LlamaIndex框架的使用、RAG系统搭建、Agent智能体开发，以及向量数据库和文档检索的实现。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/03/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day03_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day03 课程知识汇总：大模型基础与API调用">Day03 课程知识汇总：大模型基础与API调用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-02T16:00:00.000Z" title="Created 2025-01-03 00:00:00">2025-01-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:23.747Z" title="Updated 2026-06-29 19:42:23">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解大模型的基础知识，包括参数量、存储计算、核心能力，以及如何通过API调用GPT、Qwen、DeepSeek、Ollama等各种大模型。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/02/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day02_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day02 课程知识汇总：Transformer架构详解">Day02 课程知识汇总：Transformer架构详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-01T16:00:00.000Z" title="Created 2025-01-02 00:00:00">2025-01-02</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:17.031Z" title="Updated 2026-06-29 19:42:17">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解Transformer架构的原理与实现，包括自注意力机制、多头注意力机制、位置编码等核心概念，介绍BERT和GPT两种预训练模型及Hugging Face Transformers库的使用。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day01_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day01 课程知识汇总：编码器-解码器架构与注意力机制">Day01 课程知识汇总：编码器-解码器架构与注意力机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-12-31T16:00:00.000Z" title="Created 2025-01-01 00:00:00">2025-01-01</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:11.139Z" title="Updated 2026-06-29 19:42:11">2026-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="content">本课程讲解编码器-解码器架构及其在序列到序列任务中的应用，引入注意力机制提升模型性能，以中英文翻译为实战项目从零搭建翻译系统。</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/blog/img/Image.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/" title="Untitled">Untitled</a><time datetime="2026-06-22T06:48:48.575Z" title="Created 2026-06-22 14:48:48">2026-06-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Linux%E6%B1%87%E6%80%BB/" title="Linux学习">Linux学习</a><time datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/bash%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="我的 Hexo 博客">我的 Hexo 博客</a><time datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"><span class="card-category-list-name">大模型</span><span class="card-category-list-count">12</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/"><span class="card-category-list-name">课程知识汇总</span><span class="card-category-list-count">12</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">编程基础学习</span><span class="card-category-list-count">13</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Mysql/"><span class="card-category-list-name">Mysql</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/deep-learning/"><span class="card-category-list-name">deep_learning</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/blog/tags/HumanEval/" style="font-size: 1.1em; color: #999">HumanEval</a> <a href="/blog/tags/%E6%99%BA%E8%83%BD%E4%BD%93/" style="font-size: 1.3em; color: #99a1ac">智能体</a> <a href="/blog/tags/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" style="font-size: 1.1em; color: #999">推理框架</a> <a href="/blog/tags/Linux/" style="font-size: 1.5em; color: #99a9bf">Linux</a> <a href="/blog/tags/Docker/" style="font-size: 1.1em; color: #999">Docker</a> <a href="/blog/tags/RoPE/" style="font-size: 1.1em; color: #999">RoPE</a> <a href="/blog/tags/%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/" style="font-size: 1.1em; color: #999">时间函数</a> <a href="/blog/tags/RLHF/" style="font-size: 1.1em; color: #999">RLHF</a> <a href="/blog/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/" style="font-size: 1.1em; color: #999">分布式训练</a> <a href="/blog/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" style="font-size: 1.1em; color: #999">异常处理</a> <a href="/blog/tags/%E6%B7%B7%E5%90%88%E7%B2%BE%E5%BA%A6/" style="font-size: 1.1em; color: #999">混合精度</a> <a href="/blog/tags/BERT/" style="font-size: 1.1em; color: #999">BERT</a> <a href="/blog/tags/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">向量数据库</a> <a href="/blog/tags/Reranker/" style="font-size: 1.1em; color: #999">Reranker</a> <a href="/blog/tags/Transformer/" style="font-size: 1.3em; color: #99a1ac">Transformer</a> <a href="/blog/tags/GRU/" style="font-size: 1.1em; color: #999">GRU</a> <a href="/blog/tags/DeepSeek/" style="font-size: 1.1em; color: #999">DeepSeek</a> <a href="/blog/tags/GSM8K/" style="font-size: 1.1em; color: #999">GSM8K</a> <a href="/blog/tags/Attention/" style="font-size: 1.1em; color: #999">Attention</a> <a href="/blog/tags/C-Eval/" style="font-size: 1.1em; color: #999">C-Eval</a> <a href="/blog/tags/%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%9E%8B/" style="font-size: 1.1em; color: #999">翻译模型</a> <a href="/blog/tags/Mask%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">Mask机制</a> <a href="/blog/tags/Bash/" style="font-size: 1.3em; color: #99a1ac">Bash</a> <a href="/blog/tags/MoE/" style="font-size: 1.1em; color: #999">MoE</a> <a href="/blog/tags/MMLU/" style="font-size: 1.1em; color: #999">MMLU</a> <a href="/blog/tags/LLM/" style="font-size: 1.1em; color: #999">LLM</a> <a href="/blog/tags/TensorRT-LLM/" style="font-size: 1.1em; color: #999">TensorRT-LLM</a> <a href="/blog/tags/BF16/" style="font-size: 1.1em; color: #999">BF16</a> <a href="/blog/tags/%E5%AD%90%E6%9F%A5%E8%AF%A2/" style="font-size: 1.1em; color: #999">子查询</a> <a href="/blog/tags/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" style="font-size: 1.1em; color: #999">多表查询</a> <a href="/blog/tags/Embedding/" style="font-size: 1.3em; color: #99a1ac">Embedding</a> <a href="/blog/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/" style="font-size: 1.1em; color: #999">知识库</a> <a href="/blog/tags/vLLM/" style="font-size: 1.1em; color: #999">vLLM</a> <a href="/blog/tags/%E6%A2%AF%E5%BA%A6%E6%A3%80%E6%9F%A5%E7%82%B9/" style="font-size: 1.1em; color: #999">梯度检查点</a> <a href="/blog/tags/QLoRA/" style="font-size: 1.1em; color: #999">QLoRA</a> <a href="/blog/tags/SFT/" style="font-size: 1.1em; color: #999">SFT</a> <a href="/blog/tags/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 1.1em; color: #999">知识蒸馏</a> <a href="/blog/tags/TRL/" style="font-size: 1.1em; color: #999">TRL</a> <a href="/blog/tags/Multi-Head-Attention/" style="font-size: 1.1em; color: #999">Multi-Head Attention</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">数据库</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/blog/archives/2026/06/">
+            <span class="card-archive-list-date">
+              June 2026
+            </span>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/blog/archives/2025/01/">
+            <span class="card-archive-list-date">
+              January 2025
+            </span>
+            <span class="card-archive-list-count">12</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">27</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-06-29T12:45:00.823Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/blog/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js?v=5.5.5"></script><script src="/blog/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

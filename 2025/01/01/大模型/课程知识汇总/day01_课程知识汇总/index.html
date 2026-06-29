@@ -1,0 +1,975 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Day01 课程知识汇总：编码器-解码器架构与注意力机制 | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本课程讲解编码器-解码器架构及其在序列到序列任务中的应用，引入注意力机制提升模型性能，以中英文翻译为实战项目从零搭建翻译系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day01 课程知识汇总：编码器-解码器架构与注意力机制">
+<meta property="og:url" content="https://timaio0911.github.io/blog/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day01_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="本课程讲解编码器-解码器架构及其在序列到序列任务中的应用，引入注意力机制提升模型性能，以中英文翻译为实战项目从零搭建翻译系统。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/blog/img/Image.png">
+<meta property="article:published_time" content="2024-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-29T11:42:11.139Z">
+<meta property="article:author" content="Sloth">
+<meta property="article:tag" content="Seq2Seq">
+<meta property="article:tag" content="Encoder-Decoder">
+<meta property="article:tag" content="Attention">
+<meta property="article:tag" content="GRU">
+<meta property="article:tag" content="翻译模型">
+<meta property="article:tag" content="Teacher Forcing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/blog/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Day01 课程知识汇总：编码器-解码器架构与注意力机制",
+  "url": "https://timaio0911.github.io/blog/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day01_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/",
+  "image": "https://timaio0911.github.io/blog/img/Image.png",
+  "datePublished": "2024-12-31T16:00:00.000Z",
+  "dateModified": "2026-06-29T11:42:11.139Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io/blog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/blog/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/blog/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day01_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Day01 课程知识汇总：编码器-解码器架构与注意力机制',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/blog/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/blog/img/Image.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/blog/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/blog/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/blog/"><span class="site-name">Day01 课程知识汇总：编码器-解码器架构与注意力机制</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Day01 课程知识汇总：编码器-解码器架构与注意力机制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-12-31T16:00:00.000Z" title="Created 2025-01-01 00:00:00">2025-01-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-29T11:42:11.139Z" title="Updated 2026-06-29 19:42:11">2026-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">课程知识汇总</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>Day01 课程知识汇总：编码器-解码器架构与注意力机制</h1>
+<h2 id="课程概述">课程概述</h2>
+<p>本课程是&quot;第五阶段 第1天&quot;的内容，主要讲解<strong>编码器-解码器架构</strong>及其在序列到序列任务中的应用，并引入<strong>注意力机制</strong>来提升模型性能。课程以中英文翻译为实战项目，从零搭建一个完整的翻译系统。</p>
+<hr>
+<h2 id="目录">目录</h2>
+<ol>
+<li><a href="#%E4%B8%80%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5">核心概念</a></li>
+<li><a href="#%E4%BA%8C%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3">编码器-解码器架构详解</a></li>
+<li><a href="#%E4%B8%89%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3">注意力机制详解</a></li>
+<li><a href="#%E5%9B%9B%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90">代码实现解析</a></li>
+<li><a href="#%E4%BA%94%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B">数据处理流程</a></li>
+<li><a href="#%E5%85%AD%E8%AE%AD%E7%BB%83%E4%B8%8E%E9%A2%84%E6%B5%8B%E6%B5%81%E7%A8%8B">训练与预测流程</a></li>
+<li><a href="#%E4%B8%83%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93">关键知识点总结</a></li>
+</ol>
+<hr>
+<h2 id="一、核心概念">一、核心概念</h2>
+<h3 id="1-1-什么是序列到序列（Seq2Seq）任务？">1.1 什么是序列到序列（Seq2Seq）任务？</h3>
+<p>序列到序列任务是指将一个序列转换为另一个序列的任务，典型应用包括：</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>输入</th>
+<th>输出</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>机器翻译</td>
+<td>源语言句子</td>
+<td>目标语言句子</td>
+<td>“我爱北京” → “I love Beijing”</td>
+</tr>
+<tr>
+<td>语音识别</td>
+<td>音频信号</td>
+<td>文本</td>
+<td>语音 → 文字</td>
+</tr>
+<tr>
+<td>文本摘要</td>
+<td>长文本</td>
+<td>短摘要</td>
+<td>文章 → 摘要</td>
+</tr>
+<tr>
+<td>图像描述</td>
+<td>图像特征</td>
+<td>文本描述</td>
+<td>图片 → “一只猫在睡觉”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-为什么需要编码器-解码器？">1.2 为什么需要编码器-解码器？</h3>
+<p>直接翻译（如用一个RNN从输入直接映射到输出）存在以下问题：</p>
+<ul>
+<li>输入和输出长度可能不同</li>
+<li>无法捕捉输入序列的完整语义信息</li>
+<li>难以处理长距离依赖关系</li>
+</ul>
+<p><strong>编码器-解码器架构</strong>通过将任务分解为两步来解决这些问题：</p>
+<ol>
+<li><strong>编码器</strong>：理解输入序列，提取特征</li>
+<li><strong>解码器</strong>：根据编码器的输出生成目标序列</li>
+</ol>
+<hr>
+<h2 id="二、编码器-解码器架构详解">二、编码器-解码器架构详解</h2>
+<h3 id="2-1-整体架构">2.1 整体架构</h3>
+<pre class="line-numbers language-none"><code class="language-none">输入序列: x₁, x₂, x₃, ..., xₙ
+         ↓
+    [编码器 Encoder]
+         ↓
+上下文向量: C &#x3D; f(h₁, h₂, ..., hₙ)
+         ↓
+    [解码器 Decoder]
+         ↓
+输出序列: y₁ → y₂ → y₃ → ... → yₘ<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-2-编码器（Encoder）">2.2 编码器（Encoder）</h3>
+<p><strong>作用</strong>：将输入序列压缩成一个固定长度的上下文向量</p>
+<p><strong>关键组件</strong>：</p>
+<ul>
+<li><strong>Embedding层</strong>：将单词转换为向量表示</li>
+<li><strong>GRU层</strong>：处理序列信息，提取特征</li>
+</ul>
+<p><strong>工作流程</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 伪代码</span>
+输入<span class="token punctuation">:</span> <span class="token string">"欢迎 来 北京"</span>
+    ↓ Embedding
+向量<span class="token punctuation">:</span> <span class="token punctuation">[</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> v3<span class="token punctuation">]</span>
+    ↓ GRU（双向）
+隐藏状态<span class="token punctuation">:</span> <span class="token punctuation">[</span>h1<span class="token punctuation">,</span> h2<span class="token punctuation">,</span> h3<span class="token punctuation">]</span>
+    ↓ 取最后时刻的隐藏状态
+上下文向量<span class="token punctuation">:</span> C <span class="token operator">=</span> <span class="token punctuation">[</span>h3_forward<span class="token punctuation">,</span> h3_backward<span class="token punctuation">]</span>  <span class="token comment"># 拼接前向和反向</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码实现</strong>（<code>models_encoder_decoder.py</code>）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Encoder</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span> hidden_size<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span> padding_idx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>Encoder<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token punctuation">,</span> padding_idx<span class="token operator">=</span>padding_idx<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>gru <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>GRU<span class="token punctuation">(</span>
+            input_size<span class="token operator">=</span>embedding_dim<span class="token punctuation">,</span>
+            hidden_size<span class="token operator">=</span>hidden_size<span class="token punctuation">,</span>
+            num_layers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>           <span class="token comment"># 2层GRU</span>
+            bidirectional<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>     <span class="token comment"># 双向GRU</span>
+            batch_first<span class="token operator">=</span><span class="token boolean">True</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>x<span class="token punctuation">)</span>    <span class="token comment"># B L D -> [批次大小, 序列长度, 嵌入维度]</span>
+        output<span class="token punctuation">,</span> h_t <span class="token operator">=</span> self<span class="token punctuation">.</span>gru<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+        <span class="token comment"># 双向GRU的隐藏状态：</span>
+        <span class="token comment"># h_t[-2]: 前向传播最后一层的隐藏状态</span>
+        <span class="token comment"># h_t[-1]: 反向传播最后一层的隐藏状态</span>
+        last_hidden_forward <span class="token operator">=</span> h_t<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>
+        last_hidden_backward <span class="token operator">=</span> h_t<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 拼接前向和反向的隐藏状态，形成上下文向量</span>
+        context_vector <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">[</span>last_hidden_forward<span class="token punctuation">,</span> last_hidden_backward<span class="token punctuation">]</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> context_vector<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-3-解码器（Decoder）">2.3 解码器（Decoder）</h3>
+<p><strong>作用</strong>：根据编码器的上下文向量，逐步生成目标序列</p>
+<p><strong>关键组件</strong>：</p>
+<ul>
+<li><strong>Embedding层</strong>：将目标单词转换为向量</li>
+<li><strong>GRU层</strong>：基于上下文向量生成序列</li>
+<li><strong>全连接层</strong>：将GRU输出映射到词汇表大小，进行分类</li>
+</ul>
+<p><strong>工作流程</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 伪代码</span>
+输入<span class="token punctuation">:</span> 上下文向量C <span class="token operator">+</span> 上一个单词（训练时用真实标签，推理时用预测结果）
+    ↓ Embedding
+向量<span class="token punctuation">:</span> <span class="token punctuation">[</span>v<span class="token punctuation">]</span>
+    ↓ GRU（初始隐藏状态为C）
+输出<span class="token punctuation">:</span> output<span class="token punctuation">,</span> h_t
+    ↓ 全连接层
+预测<span class="token punctuation">:</span> 每个单词的概率分布
+    ↓ argmax
+下一个单词<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码实现</strong>（<code>models_encoder_decoder.py</code>）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Decoder</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span> hidden_size<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span> padding_idx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>Decoder<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token punctuation">,</span> padding_idx<span class="token operator">=</span>padding_idx<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>gru <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>GRU<span class="token punctuation">(</span>
+            input_size<span class="token operator">=</span>embedding_dim<span class="token punctuation">,</span>
+            hidden_size<span class="token operator">=</span>hidden_size<span class="token punctuation">,</span>
+            num_layers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>           <span class="token comment"># 单层GRU</span>
+            batch_first<span class="token operator">=</span><span class="token boolean">True</span>
+        <span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fc <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>hidden_size<span class="token punctuation">,</span> vocab_size<span class="token punctuation">)</span>  <span class="token comment"># 全连接层进行分类</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> h_0<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># h_0 是编码器提取的向量，作为GRU的初始隐藏状态</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        output<span class="token punctuation">,</span> h_t <span class="token operator">=</span> self<span class="token punctuation">.</span>gru<span class="token punctuation">(</span>x<span class="token punctuation">,</span> h_0<span class="token punctuation">)</span>  <span class="token comment"># 使用编码器的输出作为初始隐藏状态</span>
+        output <span class="token operator">=</span> self<span class="token punctuation">.</span>fc<span class="token punctuation">(</span>output<span class="token punctuation">)</span>         <span class="token comment"># 全连接层映射到词汇表大小</span>
+        <span class="token keyword">return</span> output<span class="token punctuation">,</span> h_t<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-4-训练与推理的区别">2.4 训练与推理的区别</h3>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>输入来源</th>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>训练时</strong></td>
+<td>真实标签</td>
+<td>Teacher Forcing</td>
+<td>使用真实目标词作为下一步输入，加速收敛</td>
+</tr>
+<tr>
+<td><strong>推理时</strong></td>
+<td>模型预测</td>
+<td>自回归生成</td>
+<td>使用模型自己的预测作为下一步输入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Teacher Forcing示例</strong>：</p>
+<pre class="line-numbers language-none"><code class="language-none">训练翻译 &quot;欢迎来北京&quot; → &quot;welcome to Beijing&quot;
+
+时间步1: 输入&lt;SOS&gt;，预测&quot;welcome&quot;，但实际输入&quot;welcome&quot;（真实标签）
+时间步2: 输入&quot;welcome&quot;，预测&quot;to&quot;，但实际输入&quot;to&quot;（真实标签）
+时间步3: 输入&quot;to&quot;，预测&quot;Beijing&quot;，但实际输入&quot;Beijing&quot;（真实标签）
+时间步4: 输入&quot;Beijing&quot;，预测&lt;EOS&gt;，结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="三、注意力机制详解">三、注意力机制详解</h2>
+<h3 id="3-1-为什么需要注意力机制？">3.1 为什么需要注意力机制？</h3>
+<p><strong>传统编码器-解码器的问题</strong>：</p>
+<ol>
+<li><strong>信息瓶颈</strong>：整个输入序列被压缩成固定长度的向量</li>
+<li><strong>长序列丢失</strong>：序列越长，早期信息丢失越严重</li>
+<li><strong>无法聚焦</strong>：解码器无法选择性地关注输入的不同部分</li>
+</ol>
+<p><strong>生活类比</strong>：</p>
+<ul>
+<li>传统方式：把一本书的内容全部压缩成一句话，然后根据这句话来回答问题</li>
+<li>注意力机制：回答问题时，可以翻阅书的不同页面，找到最相关的部分</li>
+</ul>
+<h3 id="3-2-注意力机制的核心思想">3.2 注意力机制的核心思想</h3>
+<p><strong>为输入的不同部分分配不同的&quot;注意力&quot;权重</strong></p>
+<p>在翻译每个词时，模型会关注输入序列中最相关的部分：</p>
+<pre class="line-numbers language-none"><code class="language-none">翻译 &quot;我爱北京天安门&quot; → &quot;I love Beijing Tiananmen&quot;
+
+生成&quot;I&quot;时：主要关注&quot;我&quot;（权重0.7）
+生成&quot;love&quot;时：主要关注&quot;爱&quot;（权重0.8）
+生成&quot;Beijing&quot;时：主要关注&quot;北京&quot;（权重0.7）
+生成&quot;Tiananmen&quot;时：主要关注&quot;天安门&quot;（权重0.8）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-3-QKV机制">3.3 QKV机制</h3>
+<p>注意力机制通过计算**查询（Query）、键（Key）、值（Value）**的加权平均值来工作：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>名称</th>
+<th>来源</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q</strong> (Query)</td>
+<td>查询向量</td>
+<td>解码器当前隐藏状态</td>
+<td>“我现在想要什么信息”</td>
+</tr>
+<tr>
+<td><strong>K</strong> (Key)</td>
+<td>键向量</td>
+<td>编码器每个时间步输出</td>
+<td>“每个输入词包含什么信息”</td>
+</tr>
+<tr>
+<td><strong>V</strong> (Value)</td>
+<td>值向量</td>
+<td>编码器每个时间步输出</td>
+<td>“每个输入词的内容信息”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>生活类比</strong>：</p>
+<ul>
+<li>在图书馆找关于&quot;特征矩阵&quot;的内容</li>
+<li>Q = 你的问题&quot;特征矩阵在哪里？&quot;</li>
+<li>K = 书的目录（索引）</li>
+<li>V = 书的具体内容</li>
+</ul>
+<h3 id="3-4-注意力计算公式">3.4 注意力计算公式</h3>
+<p>$$<br>
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V<br>
+$$</p>
+<p><strong>计算步骤</strong>：</p>
+<ol>
+<li>
+<p><strong>计算匹配得分</strong>：Q和K通过点积计算相似度</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">scores <span class="token operator">=</span> torch<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>Q<span class="token punctuation">,</span> K<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> torch<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>d_k<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>归一化权重</strong>：得分经过softmax得到注意力权重</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">attention_weights <span class="token operator">=</span> F<span class="token punctuation">.</span>softmax<span class="token punctuation">(</span>scores<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>加权求和</strong>：将V向量加权平均得到输出</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">output <span class="token operator">=</span> torch<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>attention_weights<span class="token punctuation">,</span> V<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="3-5-带注意力机制的解码器">3.5 带注意力机制的解码器</h3>
+<p><strong>代码实现</strong>（<code>models_encoder_decoder_with_attention.py</code>）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Decoder</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span> hidden_size<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span> padding_idx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>Decoder<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token punctuation">,</span> padding_idx<span class="token operator">=</span>padding_idx<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>gru <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>GRU<span class="token punctuation">(</span>
+            input_size<span class="token operator">=</span>embedding_dim<span class="token punctuation">,</span>
+            hidden_size<span class="token operator">=</span>hidden_size<span class="token punctuation">,</span>
+            num_layers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+            batch_first<span class="token operator">=</span><span class="token boolean">True</span>
+        <span class="token punctuation">)</span>
+        <span class="token comment"># 全连接层输入维度变为 hidden_size*2，因为要拼接GRU输出和注意力输出</span>
+        self<span class="token punctuation">.</span>fc <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>hidden_size <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> vocab_size<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> h_0<span class="token punctuation">,</span> encoder_outputs<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 新增参数：编码器的输出</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        output<span class="token punctuation">,</span> h_t <span class="token operator">=</span> self<span class="token punctuation">.</span>gru<span class="token punctuation">(</span>x<span class="token punctuation">,</span> h_0<span class="token punctuation">)</span>
+
+        <span class="token comment"># 计算注意力</span>
+        q <span class="token operator">=</span> h_t<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>       <span class="token comment"># 解码器当前隐藏状态作为Query</span>
+        k <span class="token operator">=</span> v <span class="token operator">=</span> encoder_outputs        <span class="token comment"># 编码器的输出同时作为Key和Value</span>
+
+        attention <span class="token operator">=</span> F<span class="token punctuation">.</span>scaled_dot_product_attention<span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>  <span class="token comment"># 缩放点积注意力</span>
+        output <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">[</span>output<span class="token punctuation">,</span> attention<span class="token punctuation">]</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>      <span class="token comment"># 拼接GRU输出和注意力输出</span>
+
+        output <span class="token operator">=</span> self<span class="token punctuation">.</span>fc<span class="token punctuation">(</span>output<span class="token punctuation">)</span>  <span class="token comment"># 全连接层</span>
+        <span class="token keyword">return</span> output<span class="token punctuation">,</span> h_t<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>关键变化</strong>：</p>
+<ol>
+<li><code>forward</code>方法新增参数<code>encoder_outputs</code></li>
+<li>使用<code>F.scaled_dot_product_attention</code>计算注意力</li>
+<li>将GRU输出和注意力输出拼接后送入全连接层</li>
+<li>全连接层输入维度变为<code>hidden_size*2</code></li>
+</ol>
+<hr>
+<h2 id="四、代码实现解析">四、代码实现解析</h2>
+<h3 id="4-1-项目结构">4.1 项目结构</h3>
+<pre class="line-numbers language-none"><code class="language-none">code&#x2F;
+├── 01_搭建编码器解码器结构网络.py    # 模型定义（基础版）
+├── 02_编码器解码器模型训练.py        # 训练基础版模型
+├── 03_编码器解码器模型进行预测.py    # 使用基础版模型预测
+├── 04_attention模型进行训练.py       # 训练带注意力的模型
+├── 05_attention模型进行预测.py       # 使用带注意力的模型预测
+├── models_encoder_decoder.py          # 基础版模型定义
+├── models_encoder_decoder_with_attention.py  # 带注意力的模型定义
+├── tokenizer.py                       # 分词器
+├── dataset.py                         # 数据集加载
+├── process.py                         # 数据预处理
+└── models&#x2F;                            # 保存的模型文件
+    ├── encoder_best.pth
+    ├── decoder_best.pth
+    ├── encoder_with_attention_best.pth
+    └── decoder_with_attention_best.pth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-2-分词器（tokenizer-py）">4.2 分词器（<a target="_blank" rel="noopener" href="http://tokenizer.py">tokenizer.py</a>）</h3>
+<p><strong>核心功能</strong>：</p>
+<ol>
+<li><strong>分词</strong>：将文本分割成单词列表</li>
+<li><strong>编码</strong>：将单词转换为数字下标</li>
+<li><strong>解码</strong>：将数字下标转换回单词</li>
+<li><strong>词表管理</strong>：构建和加载词表</li>
+</ol>
+<p><strong>特殊标记</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">unk_token <span class="token operator">=</span> <span class="token string">"&lt;unk>"</span>  <span class="token comment"># 未登录词（Unknown）</span>
+pad_token <span class="token operator">=</span> <span class="token string">"&lt;pad>"</span>  <span class="token comment"># 填充（Padding）</span>
+sos_token <span class="token operator">=</span> <span class="token string">"&lt;sos>"</span>  <span class="token comment"># 句子开始（Start of Sentence）</span>
+eos_token <span class="token operator">=</span> <span class="token string">"&lt;eos>"</span>  <span class="token comment"># 句子结束（End of Sentence）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>编码过程</strong>（<code>encode</code>方法）：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">encode</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">,</span> seq_len<span class="token punctuation">,</span> add_sos_eos<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    word_list <span class="token operator">=</span> self<span class="token punctuation">.</span>tokenize<span class="token punctuation">(</span>text<span class="token punctuation">)</span>  <span class="token comment"># 分词</span>
+
+    <span class="token keyword">if</span> add_sos_eos<span class="token punctuation">:</span>
+        <span class="token comment"># 添加SOS和EOS标记，并补齐或截断到指定长度</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>word_list<span class="token punctuation">)</span> <span class="token operator">==</span> seq_len <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            word_list <span class="token operator">=</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>sos_token<span class="token punctuation">]</span> <span class="token operator">+</span> word_list <span class="token operator">+</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>eos_token<span class="token punctuation">]</span>
+        <span class="token keyword">elif</span> <span class="token builtin">len</span><span class="token punctuation">(</span>word_list<span class="token punctuation">)</span> <span class="token operator">&lt;</span> seq_len <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            word_list <span class="token operator">=</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>sos_token<span class="token punctuation">]</span> <span class="token operator">+</span> word_list <span class="token operator">+</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>eos_token<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>pad_token<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>seq_len <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>word_list<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            word_list <span class="token operator">=</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>sos_token<span class="token punctuation">]</span> <span class="token operator">+</span> word_list<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">(</span>seq_len <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>eos_token<span class="token punctuation">]</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token comment"># 只补齐或截断，不添加SOS/EOS</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>word_list<span class="token punctuation">)</span> <span class="token operator">>=</span> seq_len<span class="token punctuation">:</span>
+            word_list <span class="token operator">=</span> word_list<span class="token punctuation">[</span><span class="token punctuation">:</span>seq_len<span class="token punctuation">]</span>
+        <span class="token keyword">elif</span> <span class="token builtin">len</span><span class="token punctuation">(</span>word_list<span class="token punctuation">)</span> <span class="token operator">&lt;</span> seq_len<span class="token punctuation">:</span>
+            word_list <span class="token operator">=</span> word_list <span class="token operator">+</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>pad_token<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>seq_len <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>word_list<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 将单词转换为下标</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>word2index<span class="token punctuation">.</span>get<span class="token punctuation">(</span>word<span class="token punctuation">,</span> self<span class="token punctuation">.</span>unk_token_id<span class="token punctuation">)</span> <span class="token keyword">for</span> word <span class="token keyword">in</span> word_list<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>中文分词 vs 英文分词</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ChineseTokenizer</span><span class="token punctuation">(</span>BaseTokenizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">tokenize</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> jieba<span class="token punctuation">.</span>lcut<span class="token punctuation">(</span>text<span class="token punctuation">)</span>  <span class="token comment"># 使用结巴分词</span>
+
+<span class="token keyword">class</span> <span class="token class-name">EnglishTokenizer</span><span class="token punctuation">(</span>BaseTokenizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@staticmethod</span>
+    <span class="token keyword">def</span> <span class="token function">tokenize</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> word_tokenize<span class="token punctuation">(</span>text<span class="token punctuation">)</span>  <span class="token comment"># 使用NLTK分词</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-3-数据集（dataset-py）">4.3 数据集（<a target="_blank" rel="noopener" href="http://dataset.py">dataset.py</a>）</h3>
+<p><strong>数据格式</strong>：</p>
+<ul>
+<li>训练数据存储在JSONL文件中</li>
+<li>每行是一个JSON对象，包含中文（zh）和英文（en）的下标序列</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TranslationDataset</span><span class="token punctuation">(</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span>path<span class="token punctuation">,</span> lines<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> orient<span class="token operator">=</span><span class="token string">'records'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to_dict<span class="token punctuation">(</span>orient<span class="token operator">=</span><span class="token string">'records'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        input_tensor <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'zh'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">)</span>
+        target_tensor <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'en'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> input_tensor<span class="token punctuation">,</span> target_tensor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>数据加载</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_dataloader</span><span class="token punctuation">(</span>train<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dataset <span class="token operator">=</span> TranslationDataset<span class="token punctuation">(</span>path<span class="token operator">=</span><span class="token string">'data/vocab/indexed_train.jsonl'</span> <span class="token keyword">if</span> train <span class="token keyword">else</span> <span class="token string">'data/vocab/indexed_test.jsonl'</span><span class="token punctuation">)</span>
+    dataloader <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">1600</span><span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> dataloader<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="五、数据处理流程">五、数据处理流程</h2>
+<h3 id="5-1-原始数据处理（process-py）">5.1 原始数据处理（<a target="_blank" rel="noopener" href="http://process.py">process.py</a>）</h3>
+<ol>
+<li>
+<p><strong>读取数据</strong>：使用pandas读取TSV文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'data/raw/cmn.txt'</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">'\t'</span><span class="token punctuation">,</span> header<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> usecols<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>columns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'en'</span><span class="token punctuation">,</span> <span class="token string">'zh'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>数据清洗</strong>：</p>
+<ul>
+<li>去除空白字符</li>
+<li>过滤空字符串</li>
+<li>处理特殊字符</li>
+</ul>
+</li>
+<li>
+<p><strong>划分数据集</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+train_df<span class="token punctuation">,</span> test_df <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>df<span class="token punctuation">,</span> test_size<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>构建词表</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ChineseTokenizer<span class="token punctuation">.</span>build_vocab<span class="token punctuation">(</span>train_df<span class="token punctuation">[</span><span class="token string">'zh'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>tolist<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'data/vocab/zh_vocab.txt'</span><span class="token punctuation">)</span>
+EnglishTokenizer<span class="token punctuation">.</span>build_vocab<span class="token punctuation">(</span>train_df<span class="token punctuation">[</span><span class="token string">'en'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>tolist<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'data/vocab/en_vocab.txt'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>编码并保存</strong>：</p>
+<ul>
+<li>将文本转换为下标序列</li>
+<li>添加SOS/EOS标记（英文需要，中文不需要）</li>
+<li>保存为JSONL格式</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-2-数据流示例">5.2 数据流示例</h3>
+<pre class="line-numbers language-none"><code class="language-none">原始数据: &quot;欢迎来北京&quot; → &quot;welcome to Beijing&quot;
+    ↓
+中文分词: [&quot;欢迎&quot;, &quot;来&quot;, &quot;北京&quot;]
+英文分词: [&quot;welcome&quot;, &quot;to&quot;, &quot;Beijing&quot;]
+    ↓
+添加标记（英文）: [&quot;&lt;sos&gt;&quot;, &quot;welcome&quot;, &quot;to&quot;, &quot;Beijing&quot;, &quot;&lt;eos&gt;&quot;]
+    ↓
+补齐到固定长度: [&quot;&lt;sos&gt;&quot;, &quot;welcome&quot;, &quot;to&quot;, &quot;Beijing&quot;, &quot;&lt;eos&gt;&quot;, &quot;&lt;pad&gt;&quot;, ...]
+    ↓
+转换为下标: [1, 45, 23, 67, 2, 0, 0, ...]
+    ↓
+保存到JSONL文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="六、训练与预测流程">六、训练与预测流程</h2>
+<h3 id="6-1-训练流程（02-编码器解码器模型训练-py）">6.1 训练流程（02_编码器解码器模型训练.py）</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 初始化</span>
+zh_tokenizer <span class="token operator">=</span> ChineseTokenizer<span class="token punctuation">.</span>load_vocab<span class="token punctuation">(</span><span class="token string">"data/vocab/zh_vocab.txt"</span><span class="token punctuation">)</span>
+en_tokenizer <span class="token operator">=</span> EnglishTokenizer<span class="token punctuation">.</span>load_vocab<span class="token punctuation">(</span><span class="token string">"data/vocab/en_vocab.txt"</span><span class="token punctuation">)</span>
+
+encoder <span class="token operator">=</span> Encoder<span class="token punctuation">(</span>vocab_size<span class="token operator">=</span>zh_tokenizer<span class="token punctuation">.</span>vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span> padding_idx<span class="token operator">=</span>zh_tokenizer<span class="token punctuation">.</span>pad_token_id<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+decoder <span class="token operator">=</span> Decoder<span class="token punctuation">(</span>vocab_size<span class="token operator">=</span>en_tokenizer<span class="token punctuation">.</span>vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">,</span> padding_idx<span class="token operator">=</span>en_tokenizer<span class="token punctuation">.</span>pad_token_id<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+
+<span class="token comment"># 2. 损失函数和优化器</span>
+loss_func <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span>ignore_index<span class="token operator">=</span>en_tokenizer<span class="token punctuation">.</span>pad_token_id<span class="token punctuation">)</span>  <span class="token comment"># 忽略padding的损失</span>
+optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>params<span class="token operator">=</span>chain<span class="token punctuation">(</span>encoder<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> decoder<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">1e-3</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 3. 训练循环</span>
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>EPOCH<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> batch<span class="token punctuation">,</span> <span class="token punctuation">(</span>zh_batch<span class="token punctuation">,</span> en_batch<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>dataloader<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 编码</span>
+        context_vector <span class="token operator">=</span> encoder<span class="token punctuation">(</span>zh_batch<span class="token punctuation">)</span>
+
+        <span class="token comment"># 解码（Teacher Forcing）</span>
+        decoder_input <span class="token operator">=</span> en_batch<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># 第一个输入是&lt;SOS></span>
+        decoder_hidden <span class="token operator">=</span> context_vector<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+        decoder_outputs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> t <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> en_batch<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            decoder_output<span class="token punctuation">,</span> decoder_hidden <span class="token operator">=</span> decoder<span class="token punctuation">(</span>decoder_input<span class="token punctuation">,</span> decoder_hidden<span class="token punctuation">)</span>
+            decoder_outputs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>decoder_output<span class="token punctuation">)</span>
+            decoder_input <span class="token operator">=</span> en_batch<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> t<span class="token punctuation">:</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># 使用真实标签作为下一步输入</span>
+
+        <span class="token comment"># 计算损失</span>
+        decoder_outputs <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>decoder_outputs<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        decoder_outputs <span class="token operator">=</span> decoder_outputs<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> decoder_outputs<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        decoder_targets <span class="token operator">=</span> en_batch<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        loss <span class="token operator">=</span> loss_func<span class="token punctuation">(</span>decoder_outputs<span class="token punctuation">,</span> decoder_targets<span class="token punctuation">)</span>
+
+        <span class="token comment"># 反向传播</span>
+        optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 保存最佳模型</span>
+    <span class="token keyword">if</span> ave_loss <span class="token operator">&lt;</span> best_loss<span class="token punctuation">:</span>
+        best_loss <span class="token operator">=</span> ave_loss
+        torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>encoder<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"models/encoder_best.pth"</span><span class="token punctuation">)</span>
+        torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>decoder<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"models/decoder_best.pth"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-2-预测流程（03-编码器解码器模型进行预测-py）">6.2 预测流程（03_编码器解码器模型进行预测.py）</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 加载模型和词表</span>
+encoder<span class="token punctuation">.</span>load_state_dict<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">"models/encoder_best.pth"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+decoder<span class="token punctuation">.</span>load_state_dict<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">"models/decoder_best.pth"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 2. 预测循环</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    zh_text <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入中文："</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> zh_text <span class="token operator">==</span> <span class="token string">"退出"</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+
+    <span class="token comment"># 编码</span>
+    input_indexs <span class="token operator">=</span> zh_tokenizer<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>zh_text<span class="token punctuation">,</span> seq_len<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> add_sos_eos<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    input_tensor <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>input_indexs<span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+    input_tensor <span class="token operator">=</span> input_tensor<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># 添加批次维度</span>
+
+    <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        context_vector <span class="token operator">=</span> encoder<span class="token punctuation">(</span>input_tensor<span class="token punctuation">)</span>
+
+        <span class="token comment"># 解码（自回归生成）</span>
+        decoder_hidden <span class="token operator">=</span> context_vector<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        decoder_input <span class="token operator">=</span> torch<span class="token punctuation">.</span>full<span class="token punctuation">(</span>
+            <span class="token punctuation">(</span>batch_size<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            fill_value<span class="token operator">=</span>en_tokenizer<span class="token punctuation">.</span>sos_token_id<span class="token punctuation">,</span>  <span class="token comment"># 从&lt;SOS>开始</span>
+            dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">,</span>
+            device<span class="token operator">=</span>device
+        <span class="token punctuation">)</span>
+
+        pre_dict_word_ids <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 最多预测20个单词</span>
+            decoder_output<span class="token punctuation">,</span> decoder_hidden <span class="token operator">=</span> decoder<span class="token punctuation">(</span>decoder_input<span class="token punctuation">,</span> decoder_hidden<span class="token punctuation">)</span>
+            predict_index <span class="token operator">=</span> torch<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>decoder_output<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 选择概率最大的单词</span>
+
+            <span class="token keyword">if</span> predict_index<span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> en_tokenizer<span class="token punctuation">.</span>eos_token_id<span class="token punctuation">:</span>  <span class="token comment"># 遇到&lt;EOS>结束</span>
+                <span class="token keyword">break</span>
+
+            pre_dict_word_ids<span class="token punctuation">.</span>append<span class="token punctuation">(</span>predict_index<span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            decoder_input <span class="token operator">=</span> predict_index  <span class="token comment"># 将预测结果作为下一步输入</span>
+
+        <span class="token comment"># 解码为文本</span>
+        words <span class="token operator">=</span> en_tokenizer<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>pre_dict_word_ids<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>words<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-3-带注意力机制的训练（04-attention模型进行训练-py）">6.3 带注意力机制的训练（04_attention模型进行训练.py）</h3>
+<p><strong>关键区别</strong>：</p>
+<ol>
+<li>使用<code>models_encoder_decoder_with_attention.py</code>中的模型</li>
+<li>训练时需要将编码器的输出传递给解码器</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 训练循环中的变化</span>
+<span class="token keyword">for</span> t <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> en_batch<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 注意：这里多传了一个参数 encoder_outputs</span>
+    decoder_output<span class="token punctuation">,</span> decoder_hidden <span class="token operator">=</span> decoder<span class="token punctuation">(</span>decoder_input<span class="token punctuation">,</span> decoder_hidden<span class="token punctuation">,</span> context_vector<span class="token punctuation">)</span>
+    decoder_outputs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>decoder_output<span class="token punctuation">)</span>
+    decoder_input <span class="token operator">=</span> en_batch<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> t<span class="token punctuation">:</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="七、关键知识点总结">七、关键知识点总结</h2>
+<h3 id="7-1-编码器-解码器架构">7.1 编码器-解码器架构</h3>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+<th>关键点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Embedding</strong></td>
+<td>将单词转换为向量</td>
+<td>每个单词对应一个可学习的向量</td>
+</tr>
+<tr>
+<td><strong>GRU</strong></td>
+<td>处理序列信息</td>
+<td>比RNN更好地处理长距离依赖</td>
+</tr>
+<tr>
+<td><strong>双向GRU</strong></td>
+<td>捕捉前后文信息</td>
+<td>前向和反向的隐藏状态拼接</td>
+</tr>
+<tr>
+<td><strong>上下文向量</strong></td>
+<td>连接编码器和解码器</td>
+<td>编码器的最终隐藏状态</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-2-注意力机制">7.2 注意力机制</h3>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q (Query)</strong></td>
+<td>解码器当前想要什么信息</td>
+</tr>
+<tr>
+<td><strong>K (Key)</strong></td>
+<td>编码器每个位置包含什么信息</td>
+</tr>
+<tr>
+<td><strong>V (Value)</strong></td>
+<td>编码器每个位置的具体内容</td>
+</tr>
+<tr>
+<td><strong>注意力权重</strong></td>
+<td>Q和K的相似度，经过softmax归一化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>计算公式</strong>：<br>
+$$<br>
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V<br>
+$$</p>
+<h3 id="7-3-训练技巧">7.3 训练技巧</h3>
+<ol>
+<li><strong>Teacher Forcing</strong>：训练时使用真实标签作为下一步输入，加速收敛</li>
+<li><strong>梯度裁剪</strong>：防止梯度爆炸</li>
+<li><strong>模型保存策略</strong>：只保存损失下降时的模型</li>
+<li><strong>忽略Padding</strong>：损失函数中忽略padding token的损失</li>
+</ol>
+<h3 id="7-4-常见问题与解决方案">7.4 常见问题与解决方案</h3>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长序列翻译质量差</td>
+<td>信息瓶颈</td>
+<td>引入注意力机制</td>
+</tr>
+<tr>
+<td>过拟合</td>
+<td>数据量不足</td>
+<td>增加数据、使用正则化</td>
+</tr>
+<tr>
+<td>训练速度慢</td>
+<td>批次大小不当</td>
+<td>调整batch_size</td>
+</tr>
+<tr>
+<td>内存溢出</td>
+<td>数据集太大</td>
+<td>减小batch_size</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-5-两种模型对比">7.5 两种模型对比</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>基础版</th>
+<th>带注意力版</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编码器</td>
+<td>相同</td>
+<td>相同</td>
+</tr>
+<tr>
+<td>解码器</td>
+<td>只使用上下文向量</td>
+<td>使用上下文向量 + 注意力</td>
+</tr>
+<tr>
+<td>全连接层输入维度</td>
+<td>hidden_size</td>
+<td>hidden_size * 2</td>
+</tr>
+<tr>
+<td>长序列处理能力</td>
+<td>较差</td>
+<td>较好</td>
+</tr>
+<tr>
+<td>训练速度</td>
+<td>较快</td>
+<td>较慢</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="八、运行指南">八、运行指南</h2>
+<h3 id="8-1-环境准备">8.1 环境准备</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> torch pandas jieba nltk scikit-learn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="8-2-数据预处理">8.2 数据预处理</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python process.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="8-3-训练基础版模型">8.3 训练基础版模型</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python 02_编码器解码器模型训练.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="8-4-使用基础版模型预测">8.4 使用基础版模型预测</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python 03_编码器解码器模型进行预测.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="8-5-训练带注意力的模型">8.5 训练带注意力的模型</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python 04_attention模型进行训练.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="8-6-使用带注意力的模型预测">8.6 使用带注意力的模型预测</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python 05_attention模型进行预测.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<h2 id="九、进阶学习建议">九、进阶学习建议</h2>
+<ol>
+<li><strong>理解GRU/LSTM</strong>：深入学习循环神经网络的变体</li>
+<li><strong>学习Transformer</strong>：注意力机制的终极形态</li>
+<li><strong>多头注意力</strong>：让模型同时学习多种特征</li>
+<li><strong>位置编码</strong>：让模型理解序列顺序</li>
+<li><strong>预训练模型</strong>：如BERT、GPT等</li>
+</ol>
+<hr>
+<h2 id="附录：关键代码片段">附录：关键代码片段</h2>
+<h3 id="A-1-双向GRU的隐藏状态处理">A.1 双向GRU的隐藏状态处理</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 双向GRU的隐藏状态形状：[num_layers * 2, batch_size, hidden_size]</span>
+<span class="token comment"># h_t[-2]: 前向传播最后一层的隐藏状态</span>
+<span class="token comment"># h_t[-1]: 反向传播最后一层的隐藏状态</span>
+
+last_hidden_forward <span class="token operator">=</span> h_t<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>    <span class="token comment"># 前向</span>
+last_hidden_backward <span class="token operator">=</span> h_t<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>   <span class="token comment"># 反向</span>
+
+<span class="token comment"># 拼接得到上下文向量</span>
+context_vector <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">[</span>last_hidden_forward<span class="token punctuation">,</span> last_hidden_backward<span class="token punctuation">]</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment"># 形状：[batch_size, hidden_size * 2]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="A-2-注意力计算">A.2 注意力计算</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
+
+<span class="token comment"># Q: 解码器当前隐藏状态 [batch_size, 1, hidden_size]</span>
+<span class="token comment"># K: 编码器输出 [batch_size, seq_len, hidden_size]</span>
+<span class="token comment"># V: 编码器输出 [batch_size, seq_len, hidden_size]</span>
+
+q <span class="token operator">=</span> h_t<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+k <span class="token operator">=</span> v <span class="token operator">=</span> encoder_outputs
+
+<span class="token comment"># 缩放点积注意力</span>
+attention <span class="token operator">=</span> F<span class="token punctuation">.</span>scaled_dot_product_attention<span class="token punctuation">(</span>q<span class="token punctuation">,</span> k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+
+<span class="token comment"># 拼接GRU输出和注意力输出</span>
+output <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">[</span>output<span class="token punctuation">,</span> attention<span class="token punctuation">]</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="A-3-损失函数配置">A.3 损失函数配置</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 忽略padding token的损失</span>
+loss_func <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span>ignore_index<span class="token operator">=</span>en_tokenizer<span class="token punctuation">.</span>pad_token_id<span class="token punctuation">)</span>
+
+<span class="token comment"># 优化器同时更新编码器和解码器的参数</span>
+optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>
+    params<span class="token operator">=</span>chain<span class="token punctuation">(</span>encoder<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> decoder<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    lr<span class="token operator">=</span><span class="token number">1e-3</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="总结">总结</h2>
+<p>本课程通过中英文翻译项目，系统讲解了：</p>
+<ol>
+<li><strong>编码器-解码器架构</strong>：如何将序列到序列任务分解为编码和解码两个步骤</li>
+<li><strong>GRU网络</strong>：如何处理序列数据，以及双向GRU的优势</li>
+<li><strong>Teacher Forcing</strong>：训练时使用真实标签加速收敛的技巧</li>
+<li><strong>注意力机制</strong>：如何让模型关注输入序列的不同部分，解决信息瓶颈问题</li>
+<li><strong>完整的工程实践</strong>：从数据处理、模型训练到预测的完整流程</li>
+</ol>
+<p>通过本课程的学习，你将掌握构建序列到序列模型的核心技术，为后续学习Transformer等更先进的模型打下坚实基础。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/blog">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/blog/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day01_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">https://timaio0911.github.io/blog/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day01_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Seq2Seq/">Seq2Seq</a><a class="post-meta__tags" href="/blog/tags/Encoder-Decoder/">Encoder-Decoder</a><a class="post-meta__tags" href="/blog/tags/Attention/">Attention</a><a class="post-meta__tags" href="/blog/tags/GRU/">GRU</a><a class="post-meta__tags" href="/blog/tags/%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%9E%8B/">翻译模型</a><a class="post-meta__tags" href="/blog/tags/Teacher-Forcing/">Teacher Forcing</a></div><div class="post-share"><div class="social-share" data-image="/blog/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/blog/2025/01/02/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/day02_%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="Day02 课程知识汇总：Transformer架构详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Day02 课程知识汇总：Transformer架构详解</div></div><div class="info-2"><div class="info-item-1">本课程讲解Transformer架构的原理与实现，包括自注意力机制、多头注意力机制、位置编码等核心概念，介绍BERT和GPT两种预训练模型及Hugging Face Transformers库的使用。</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/blog/img/Image.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Day01 课程知识汇总：编码器-解码器架构与注意力机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">课程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text">一、核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BA%8F%E5%88%97%E5%88%B0%E5%BA%8F%E5%88%97%EF%BC%88Seq2Seq%EF%BC%89%E4%BB%BB%E5%8A%A1%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.1 什么是序列到序列（Seq2Seq）任务？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%EF%BC%9F"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.2 为什么需要编码器-解码器？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text">二、编码器-解码器架构详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">1.4.1.</span> <span class="toc-text">2.1 整体架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%BC%96%E7%A0%81%E5%99%A8%EF%BC%88Encoder%EF%BC%89"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.2 编码器（Encoder）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%A7%A3%E7%A0%81%E5%99%A8%EF%BC%88Decoder%EF%BC%89"><span class="toc-number">1.4.3.</span> <span class="toc-text">2.3 解码器（Decoder）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%8E%A8%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.4.</span> <span class="toc-text">2.4 训练与推理的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">三、注意力机制详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="toc-number">1.5.1.</span> <span class="toc-text">3.1 为什么需要注意力机制？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-number">1.5.2.</span> <span class="toc-text">3.2 注意力机制的核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-QKV%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.3.</span> <span class="toc-text">3.3 QKV机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%B3%A8%E6%84%8F%E5%8A%9B%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F"><span class="toc-number">1.5.4.</span> <span class="toc-text">3.4 注意力计算公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%B8%A6%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E8%A7%A3%E7%A0%81%E5%99%A8"><span class="toc-number">1.5.5.</span> <span class="toc-text">3.5 带注意力机制的解码器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text">四、代码实现解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.6.1.</span> <span class="toc-text">4.1 项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%88%86%E8%AF%8D%E5%99%A8%EF%BC%88tokenizer-py%EF%BC%89"><span class="toc-number">1.6.2.</span> <span class="toc-text">4.2 分词器（tokenizer.py）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%88dataset-py%EF%BC%89"><span class="toc-number">1.6.3.</span> <span class="toc-text">4.3 数据集（dataset.py）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text">五、数据处理流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%EF%BC%88process-py%EF%BC%89"><span class="toc-number">1.7.1.</span> <span class="toc-text">5.1 原始数据处理（process.py）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.7.2.</span> <span class="toc-text">5.2 数据流示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%AE%AD%E7%BB%83%E4%B8%8E%E9%A2%84%E6%B5%8B%E6%B5%81%E7%A8%8B"><span class="toc-number">1.8.</span> <span class="toc-text">六、训练与预测流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B%EF%BC%8802-%E7%BC%96%E7%A0%81%E5%99%A8%E8%A7%A3%E7%A0%81%E5%99%A8%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-py%EF%BC%89"><span class="toc-number">1.8.1.</span> <span class="toc-text">6.1 训练流程（02_编码器解码器模型训练.py）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E9%A2%84%E6%B5%8B%E6%B5%81%E7%A8%8B%EF%BC%8803-%E7%BC%96%E7%A0%81%E5%99%A8%E8%A7%A3%E7%A0%81%E5%99%A8%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E9%A2%84%E6%B5%8B-py%EF%BC%89"><span class="toc-number">1.8.2.</span> <span class="toc-text">6.2 预测流程（03_编码器解码器模型进行预测.py）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%B8%A6%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E8%AE%AD%E7%BB%83%EF%BC%8804-attention%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E8%AE%AD%E7%BB%83-py%EF%BC%89"><span class="toc-number">1.8.3.</span> <span class="toc-text">6.3 带注意力机制的训练（04_attention模型进行训练.py）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text">七、关键知识点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">1.9.1.</span> <span class="toc-text">7.1 编码器-解码器架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="toc-number">1.9.2.</span> <span class="toc-text">7.2 注意力机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E8%AE%AD%E7%BB%83%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.3.</span> <span class="toc-text">7.3 训练技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.9.4.</span> <span class="toc-text">7.4 常见问题与解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="toc-number">1.9.5.</span> <span class="toc-text">7.5 两种模型对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%BF%90%E8%A1%8C%E6%8C%87%E5%8D%97"><span class="toc-number">1.10.</span> <span class="toc-text">八、运行指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.10.1.</span> <span class="toc-text">8.1 环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.10.2.</span> <span class="toc-text">8.2 数据预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E8%AE%AD%E7%BB%83%E5%9F%BA%E7%A1%80%E7%89%88%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.10.3.</span> <span class="toc-text">8.3 训练基础版模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E7%89%88%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B"><span class="toc-number">1.10.4.</span> <span class="toc-text">8.4 使用基础版模型预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-%E8%AE%AD%E7%BB%83%E5%B8%A6%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.10.5.</span> <span class="toc-text">8.5 训练带注意力的模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-%E4%BD%BF%E7%94%A8%E5%B8%A6%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B"><span class="toc-number">1.10.6.</span> <span class="toc-text">8.6 使用带注意力的模型预测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.11.</span> <span class="toc-text">九、进阶学习建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5"><span class="toc-number">1.12.</span> <span class="toc-text">附录：关键代码片段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-1-%E5%8F%8C%E5%90%91GRU%E7%9A%84%E9%9A%90%E8%97%8F%E7%8A%B6%E6%80%81%E5%A4%84%E7%90%86"><span class="toc-number">1.12.1.</span> <span class="toc-text">A.1 双向GRU的隐藏状态处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-2-%E6%B3%A8%E6%84%8F%E5%8A%9B%E8%AE%A1%E7%AE%97"><span class="toc-number">1.12.2.</span> <span class="toc-text">A.2 注意力计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-3-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="toc-number">1.12.3.</span> <span class="toc-text">A.3 损失函数配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.13.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/" title="Untitled">Untitled</a><time datetime="2026-06-22T06:48:48.575Z" title="Created 2026-06-22 14:48:48">2026-06-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Linux%E6%B1%87%E6%80%BB/" title="Linux学习">Linux学习</a><time datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/bash%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="我的 Hexo 博客">我的 Hexo 博客</a><time datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/blog/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js?v=5.5.5"></script><script src="/blog/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

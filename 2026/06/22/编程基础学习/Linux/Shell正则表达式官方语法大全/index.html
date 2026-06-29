@@ -1,0 +1,1245 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Shell了解 | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Shell正则表达式官方语法大全 一、正则表达式基础概念 1.1 正则表达式类型 在Linux&#x2F;Unix系统中，主要有三种正则表达式标准：    类型 全称 支持工具 特点     BRE Basic Regular Expression grep, sed, vi 基础正则，某些元字符需要转义   ERE Extended Regular Expression egrep, grep -E, a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell了解">
+<meta property="og:url" content="https://timaio0911.github.io/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%98%E6%96%B9%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="Shell正则表达式官方语法大全 一、正则表达式基础概念 1.1 正则表达式类型 在Linux&#x2F;Unix系统中，主要有三种正则表达式标准：    类型 全称 支持工具 特点     BRE Basic Regular Expression grep, sed, vi 基础正则，某些元字符需要转义   ERE Extended Regular Expression egrep, grep -E, a">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/blog/img/Image.png">
+<meta property="article:published_time" content="2026-06-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-22T06:54:16.304Z">
+<meta property="article:author" content="Sloth">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/blog/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Shell了解",
+  "url": "https://timaio0911.github.io/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%98%E6%96%B9%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/",
+  "image": "https://timaio0911.github.io/blog/img/Image.png",
+  "datePublished": "2026-06-21T16:00:00.000Z",
+  "dateModified": "2026-06-22T06:54:16.304Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io/blog"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/blog/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%98%E6%96%B9%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Shell了解',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/blog/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/blog/img/Image.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/blog/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/blog/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/blog/"><span class="site-name">Shell了解</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Shell了解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-22T06:54:16.304Z" title="Updated 2026-06-22 14:54:16">2026-06-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">编程基础学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>Shell正则表达式官方语法大全</h1>
+<h2 id="一、正则表达式基础概念">一、正则表达式基础概念</h2>
+<h3 id="1-1-正则表达式类型">1.1 正则表达式类型</h3>
+<p>在Linux/Unix系统中，主要有三种正则表达式标准：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>全称</th>
+<th>支持工具</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BRE</strong></td>
+<td>Basic Regular Expression</td>
+<td>grep, sed, vi</td>
+<td>基础正则，某些元字符需要转义</td>
+</tr>
+<tr>
+<td><strong>ERE</strong></td>
+<td>Extended Regular Expression</td>
+<td>egrep, grep -E, awk</td>
+<td>扩展正则，元字符直接使用</td>
+</tr>
+<tr>
+<td><strong>PCRE</strong></td>
+<td>Perl Compatible Regular Expression</td>
+<td>grep -P, perl</td>
+<td>Perl兼容，功能最强大</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-2-工具对比">1.2 工具对比</h3>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>默认模式</th>
+<th>切换选项</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep</td>
+<td>BRE</td>
+<td>-E (ERE), -P (PCRE)</td>
+<td>文本搜索</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>BRE</td>
+<td>-r 或 -E (ERE)</td>
+<td>流编辑器</td>
+</tr>
+<tr>
+<td>awk</td>
+<td>ERE</td>
+<td>-</td>
+<td>文本处理语言</td>
+</tr>
+<tr>
+<td>egrep</td>
+<td>ERE</td>
+<td>-</td>
+<td>grep -E的别名</td>
+</tr>
+<tr>
+<td>find</td>
+<td>BRE</td>
+<td>-regextype</td>
+<td>文件查找</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二、元字符完整列表">二、元字符完整列表</h2>
+<h3 id="2-1-基础元字符">2.1 基础元字符</h3>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>BRE</th>
+<th>ERE</th>
+<th>含义</th>
+<th>示例</th>
+<th>匹配结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>匹配任意单个字符（除换行符）</td>
+<td><code>a.c</code></td>
+<td>abc, a1c, a@c</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>匹配行首</td>
+<td><code>^hello</code></td>
+<td>行首的hello</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>匹配行尾</td>
+<td><code>world$</code></td>
+<td>行尾的world</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>匹配前面字符0次或多次</td>
+<td><code>ab*c</code></td>
+<td>ac, abc, abbc</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>转义字符</td>
+<td><code>\.</code></td>
+<td>匹配点号本身</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>字符类</td>
+<td><code>[abc]</code></td>
+<td>a, b, 或 c</td>
+</tr>
+<tr>
+<td><code>[^]</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>否定字符类</td>
+<td><code>[^abc]</code></td>
+<td>除a,b,c外的字符</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>字符范围（在[]内）</td>
+<td><code>[a-z]</code></td>
+<td>小写字母</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2-扩展元字符（ERE）">2.2 扩展元字符（ERE）</h3>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>BRE写法</th>
+<th>ERE写法</th>
+<th>含义</th>
+<th>示例</th>
+<th>匹配结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td><code>\+</code></td>
+<td><code>+</code></td>
+<td>匹配前面字符1次或多次</td>
+<td><code>ab+c</code></td>
+<td>abc, abbc, abbbc</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td><code>\?</code></td>
+<td><code>?</code></td>
+<td>匹配前面字符0次或1次</td>
+<td><code>colou?r</code></td>
+<td>color, colour</td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>`</td>
+<td>`</td>
+<td>`</td>
+<td>`</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td><code>\(\)</code></td>
+<td><code>()</code></td>
+<td>分组</td>
+<td><code>(ab)+</code></td>
+<td>ab, abab, ababab</td>
+</tr>
+<tr>
+<td><code>&#123;&#125;</code></td>
+<td><code>\&#123;\&#125;</code></td>
+<td><code>&#123;&#125;</code></td>
+<td>指定重复次数</td>
+<td><code>a&#123;2,4&#125;</code></td>
+<td>aa, aaa, aaaa</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3-量词详解">2.3 量词详解</h3>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th>BRE</th>
+<th>ERE</th>
+<th>含义</th>
+<th>示例</th>
+<th>匹配</th>
+<th>不匹配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>0次或多次</td>
+<td><code>a*</code></td>
+<td>“”, a, aa, aaa</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td><code>\+</code></td>
+<td><code>+</code></td>
+<td>1次或多次</td>
+<td><code>a+</code></td>
+<td>a, aa, aaa</td>
+<td>“”</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td><code>\?</code></td>
+<td><code>?</code></td>
+<td>0次或1次</td>
+<td><code>a?</code></td>
+<td>“”, a</td>
+<td>aa</td>
+</tr>
+<tr>
+<td><code>&#123;n&#125;</code></td>
+<td><code>\&#123;n\&#125;</code></td>
+<td><code>&#123;n&#125;</code></td>
+<td>恰好n次</td>
+<td><code>a&#123;3&#125;</code></td>
+<td>aaa</td>
+<td>a, aa, aaaa</td>
+</tr>
+<tr>
+<td><code>&#123;n,&#125;</code></td>
+<td><code>\&#123;n,\&#125;</code></td>
+<td><code>&#123;n,&#125;</code></td>
+<td>至少n次</td>
+<td><code>a&#123;2,&#125;</code></td>
+<td>aa, aaa, aaaa</td>
+<td>a</td>
+</tr>
+<tr>
+<td><code>&#123;n,m&#125;</code></td>
+<td><code>\&#123;n,m\&#125;</code></td>
+<td><code>&#123;n,m&#125;</code></td>
+<td>n到m次</td>
+<td><code>a&#123;2,4&#125;</code></td>
+<td>aa, aaa, aaaa</td>
+<td>a, aaaaa</td>
+</tr>
+<tr>
+<td><code>&#123;,m&#125;</code></td>
+<td><code>\&#123;,m\&#125;</code></td>
+<td><code>&#123;,m&#125;</code></td>
+<td>最多m次</td>
+<td><code>a&#123;,3&#125;</code></td>
+<td>“”, a, aa, aaa</td>
+<td>aaaa</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三、字符类">三、字符类</h2>
+<h3 id="3-1-预定义字符类">3.1 预定义字符类</h3>
+<table>
+<thead>
+<tr>
+<th>字符类</th>
+<th>POSIX写法</th>
+<th>简写</th>
+<th>含义</th>
+<th>等价表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数字</td>
+<td><code>[[:digit:]]</code></td>
+<td><code>\d</code></td>
+<td>数字字符</td>
+<td><code>[0-9]</code></td>
+</tr>
+<tr>
+<td>非数字</td>
+<td><code>[[:^digit:]]</code></td>
+<td><code>\D</code></td>
+<td>非数字字符</td>
+<td><code>[^0-9]</code></td>
+</tr>
+<tr>
+<td>单词字符</td>
+<td><code>[[:alnum:]_]</code></td>
+<td><code>\w</code></td>
+<td>字母数字下划线</td>
+<td><code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td>非单词字符</td>
+<td><code>[[:^alnum:]_]</code></td>
+<td><code>\W</code></td>
+<td>非单词字符</td>
+<td><code>[^a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td>空白字符</td>
+<td><code>[[:space:]]</code></td>
+<td><code>\s</code></td>
+<td>空白字符</td>
+<td><code>[ \t\n\r\f\v]</code></td>
+</tr>
+<tr>
+<td>非空白字符</td>
+<td><code>[[:^space:]]</code></td>
+<td><code>\S</code></td>
+<td>非空白字符</td>
+<td><code>[^ \t\n\r\f\v]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-POSIX字符类完整列表">3.2 POSIX字符类完整列表</h3>
+<table>
+<thead>
+<tr>
+<th>POSIX类</th>
+<th>含义</th>
+<th>匹配字符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[:alnum:]</code></td>
+<td>字母数字</td>
+<td>a-z, A-Z, 0-9</td>
+<td><code>[[:alnum:]]+</code></td>
+</tr>
+<tr>
+<td><code>[:alpha:]</code></td>
+<td>字母</td>
+<td>a-z, A-Z</td>
+<td><code>[[:alpha:]]+</code></td>
+</tr>
+<tr>
+<td><code>[:ascii:]</code></td>
+<td>ASCII字符</td>
+<td>ASCII 0-127</td>
+<td><code>[[:ascii:]]</code></td>
+</tr>
+<tr>
+<td><code>[:blank:]</code></td>
+<td>空格和制表符</td>
+<td>空格, \t</td>
+<td><code>[[:blank:]]</code></td>
+</tr>
+<tr>
+<td><code>[:cntrl:]</code></td>
+<td>控制字符</td>
+<td>ASCII 0-31, 127</td>
+<td><code>[[:cntrl:]]</code></td>
+</tr>
+<tr>
+<td><code>[:digit:]</code></td>
+<td>数字</td>
+<td>0-9</td>
+<td><code>[[:digit:]]&#123;3&#125;</code></td>
+</tr>
+<tr>
+<td><code>[:graph:]</code></td>
+<td>可见字符</td>
+<td>除空格外的可打印字符</td>
+<td><code>[[:graph:]]</code></td>
+</tr>
+<tr>
+<td><code>[:lower:]</code></td>
+<td>小写字母</td>
+<td>a-z</td>
+<td><code>[[:lower:]]+</code></td>
+</tr>
+<tr>
+<td><code>[:print:]</code></td>
+<td>可打印字符</td>
+<td>包括空格的可打印字符</td>
+<td><code>[[:print:]]</code></td>
+</tr>
+<tr>
+<td><code>[:punct:]</code></td>
+<td>标点符号</td>
+<td>! &quot; # $ % &amp; ’ ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` {</td>
+<td>} ~</td>
+</tr>
+<tr>
+<td><code>[:space:]</code></td>
+<td>空白字符</td>
+<td>空格, \t, \n, \r, \f, \v</td>
+<td><code>[[:space:]]+</code></td>
+</tr>
+<tr>
+<td><code>[:upper:]</code></td>
+<td>大写字母</td>
+<td>A-Z</td>
+<td><code>[[:upper:]]+</code></td>
+</tr>
+<tr>
+<td><code>[:word:]</code></td>
+<td>单词字符</td>
+<td>a-z, A-Z, 0-9, _</td>
+<td><code>[[:word:]]+</code></td>
+</tr>
+<tr>
+<td><code>[:xdigit:]</code></td>
+<td>十六进制数字</td>
+<td>0-9, a-f, A-F</td>
+<td><code>[[:xdigit:]]&#123;6&#125;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="四、特殊序列和锚点">四、特殊序列和锚点</h2>
+<h3 id="4-1-位置锚点">4.1 位置锚点</h3>
+<table>
+<thead>
+<tr>
+<th>锚点</th>
+<th>含义</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>行首</td>
+<td><code>^Start</code></td>
+<td>匹配以Start开头的行</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>行尾</td>
+<td><code>End$</code></td>
+<td>匹配以End结尾的行</td>
+</tr>
+<tr>
+<td><code>\&lt;</code></td>
+<td>单词开始</td>
+<td><code>\&lt;word</code></td>
+<td>匹配以word开始的单词</td>
+</tr>
+<tr>
+<td><code>\&gt;</code></td>
+<td>单词结束</td>
+<td><code>word\&gt;</code></td>
+<td>匹配以word结束的单词</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>单词边界</td>
+<td><code>\bword\b</code></td>
+<td>完整匹配word单词</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>非单词边界</td>
+<td><code>\Bword\B</code></td>
+<td>匹配单词内部的word</td>
+</tr>
+<tr>
+<td><code>\A</code></td>
+<td>字符串开始</td>
+<td><code>\AStart</code></td>
+<td>匹配字符串开始（多行模式）</td>
+</tr>
+<tr>
+<td><code>\Z</code></td>
+<td>字符串结束</td>
+<td><code>End\Z</code></td>
+<td>匹配字符串结束（多行模式）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-2-转义序列">4.2 转义序列</h3>
+<table>
+<thead>
+<tr>
+<th>序列</th>
+<th>含义</th>
+<th>ASCII码</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td>换行符</td>
+<td>10</td>
+<td>匹配换行</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车符</td>
+<td>13</td>
+<td>Windows换行</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>制表符</td>
+<td>9</td>
+<td>匹配Tab</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>换页符</td>
+<td>12</td>
+<td>打印控制</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>垂直制表符</td>
+<td>11</td>
+<td>垂直对齐</td>
+</tr>
+<tr>
+<td><code>\0</code></td>
+<td>空字符</td>
+<td>0</td>
+<td>字符串结束</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>反斜杠</td>
+<td>92</td>
+<td>匹配\本身</td>
+</tr>
+<tr>
+<td><code>\xHH</code></td>
+<td>十六进制字符</td>
+<td>-</td>
+<td><code>\x41</code> = ‘A’</td>
+</tr>
+<tr>
+<td><code>\ooo</code></td>
+<td>八进制字符</td>
+<td>-</td>
+<td><code>\101</code> = ‘A’</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五、分组和引用">五、分组和引用</h2>
+<h3 id="5-1-分组类型">5.1 分组类型</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>BRE语法</th>
+<th>ERE语法</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>捕获组</td>
+<td><code>\(...\)</code></td>
+<td><code>(...)</code></td>
+<td>捕获匹配内容</td>
+<td><code>(ab)+</code></td>
+</tr>
+<tr>
+<td>非捕获组</td>
+<td>不支持</td>
+<td><code>(?:...)</code></td>
+<td>分组但不捕获</td>
+<td><code>(?:ab)+</code></td>
+</tr>
+<tr>
+<td>命名组</td>
+<td>不支持</td>
+<td><code>(?P&lt;name&gt;...)</code></td>
+<td>命名捕获组</td>
+<td><code>(?P&lt;year&gt;\d&#123;4&#125;)</code></td>
+</tr>
+<tr>
+<td>后向引用</td>
+<td><code>\1</code> 到 <code>\9</code></td>
+<td><code>\1</code> 到 <code>\9</code></td>
+<td>引用捕获组</td>
+<td><code>(a)\1</code> 匹配 aa</td>
+</tr>
+</tbody>
+</table>
+<h2 id="六、常用命令语法">六、常用命令语法</h2>
+<h3 id="6-1-grep命令">6.1 grep命令</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 基础语法</span>
+<span class="token function">grep</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> 模式 <span class="token punctuation">[</span>文件<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+<span class="token comment"># 常用选项</span>
+<span class="token parameter variable">-E</span>    <span class="token comment"># 使用ERE（扩展正则）</span>
+<span class="token parameter variable">-P</span>    <span class="token comment"># 使用PCRE（Perl正则）</span>
+<span class="token parameter variable">-i</span>    <span class="token comment"># 忽略大小写</span>
+<span class="token parameter variable">-v</span>    <span class="token comment"># 反向匹配（不匹配的行）</span>
+<span class="token parameter variable">-n</span>    <span class="token comment"># 显示行号</span>
+<span class="token parameter variable">-c</span>    <span class="token comment"># 统计匹配行数</span>
+<span class="token parameter variable">-o</span>    <span class="token comment"># 只显示匹配部分</span>
+<span class="token parameter variable">-w</span>    <span class="token comment"># 匹配完整单词</span>
+<span class="token parameter variable">-x</span>    <span class="token comment"># 匹配整行</span>
+<span class="token parameter variable">-r</span>    <span class="token comment"># 递归搜索</span>
+<span class="token parameter variable">-l</span>    <span class="token comment"># 只显示文件名</span>
+<span class="token parameter variable">-L</span>    <span class="token comment"># 显示不匹配的文件名</span>
+<span class="token parameter variable">-A</span> n  <span class="token comment"># 显示匹配行后n行</span>
+<span class="token parameter variable">-B</span> n  <span class="token comment"># 显示匹配行前n行</span>
+<span class="token parameter variable">-C</span> n  <span class="token comment"># 显示匹配行前后n行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-2-sed命令">6.2 sed命令</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 基础语法</span>
+<span class="token function">sed</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> <span class="token string">'命令'</span> <span class="token punctuation">[</span>文件<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+<span class="token comment"># 常用选项</span>
+-E, <span class="token parameter variable">-r</span>  <span class="token comment"># 使用ERE</span>
+<span class="token parameter variable">-n</span>      <span class="token comment"># 静默模式</span>
+<span class="token parameter variable">-i</span>      <span class="token comment"># 直接修改文件</span>
+<span class="token parameter variable">-e</span>      <span class="token comment"># 多个编辑命令</span>
+
+<span class="token comment"># 常用命令</span>
+s/pattern/replacement/flags  <span class="token comment"># 替换</span>
+/pattern/d                    <span class="token comment"># 删除匹配行</span>
+/pattern/p                    <span class="token comment"># 打印匹配行</span>
+/pattern/a<span class="token punctuation">\</span>text              <span class="token comment"># 在匹配行后添加</span>
+/pattern/i<span class="token punctuation">\</span>text              <span class="token comment"># 在匹配行前插入</span>
+/pattern/c<span class="token punctuation">\</span>text              <span class="token comment"># 替换匹配行</span>
+
+<span class="token comment"># 替换标志</span>
+g    <span class="token comment"># 全局替换</span>
+p    <span class="token comment"># 打印替换行</span>
+w    <span class="token comment"># 写入文件</span>
+n    <span class="token comment"># 替换第n个匹配</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-3-awk命令">6.3 awk命令</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 基础语法</span>
+<span class="token function">awk</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> <span class="token string">'模式 &#123;动作&#125;'</span> <span class="token punctuation">[</span>文件<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+<span class="token comment"># 正则匹配</span>
+<span class="token function">awk</span> <span class="token string">'/pattern/ &#123;print&#125;'</span> <span class="token function">file</span>           <span class="token comment"># 打印匹配行</span>
+<span class="token function">awk</span> <span class="token string">'$1 ~ /pattern/ &#123;print&#125;'</span> <span class="token function">file</span>      <span class="token comment"># 第一列匹配</span>
+<span class="token function">awk</span> <span class="token string">'$1 !~ /pattern/ &#123;print&#125;'</span> <span class="token function">file</span>     <span class="token comment"># 第一列不匹配</span>
+
+<span class="token comment"># 内置变量</span>
+NR    <span class="token comment"># 记录号（行号）</span>
+NF    <span class="token comment"># 字段数</span>
+<span class="token variable">$0</span>    <span class="token comment"># 整行</span>
+<span class="token variable">$1</span>-<span class="token variable">$n</span> <span class="token comment"># 第n个字段</span>
+FS    <span class="token comment"># 字段分隔符</span>
+RS    <span class="token comment"># 记录分隔符</span>
+OFS   <span class="token comment"># 输出字段分隔符</span>
+ORS   <span class="token comment"># 输出记录分隔符</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="七、常见模式库">七、常见模式库</h2>
+<h3 id="7-1-验证模式">7.1 验证模式</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>正则表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td><code>^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,&#125;$</code></td>
+<td>电子邮件</td>
+</tr>
+<tr>
+<td>IPv4</td>
+<td>`^((25[0-5]</td>
+<td>2[0-4][0-9]</td>
+</tr>
+<tr>
+<td>IPv6</td>
+<td>`^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}</td>
+<td>::)$`</td>
+</tr>
+<tr>
+<td>URL</td>
+<td><code>^https?://[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,&#125;(/.*)?$</code></td>
+<td>URL地址</td>
+</tr>
+<tr>
+<td>电话（中国）</td>
+<td><code>^1[3-9]\d&#123;9&#125;$</code></td>
+<td>中国手机号</td>
+</tr>
+<tr>
+<td>电话（国际）</td>
+<td><code>^\+[1-9]\d&#123;1,14&#125;$</code></td>
+<td>国际电话</td>
+</tr>
+<tr>
+<td>邮编（中国）</td>
+<td><code>^[1-9]\d&#123;5&#125;$</code></td>
+<td>中国邮政编码</td>
+</tr>
+<tr>
+<td>身份证（中国）</td>
+<td>`^[1-9]\d{5}(19</td>
+<td>20)\d{2}(0[1-9]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-2-提取模式">7.2 提取模式</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>正则表达式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提取数字</td>
+<td><code>[0-9]+</code> 或 <code>\d+</code></td>
+<td>提取数字</td>
+</tr>
+<tr>
+<td>提取字母</td>
+<td><code>[a-zA-Z]+</code></td>
+<td>提取字母</td>
+</tr>
+<tr>
+<td>提取中文</td>
+<td><code>[\u4e00-\u9fa5]+</code></td>
+<td>提取中文字符</td>
+</tr>
+<tr>
+<td>提取单词</td>
+<td><code>\b[a-zA-Z]+\b</code></td>
+<td>提取英文单词</td>
+</tr>
+<tr>
+<td>提取引号内容</td>
+<td><code>&quot;([^&quot;]*)&quot;</code></td>
+<td>提取双引号内容</td>
+</tr>
+<tr>
+<td>提取括号内容</td>
+<td><code>\(([^)]*)\)</code></td>
+<td>提取圆括号内容</td>
+</tr>
+<tr>
+<td>提取HTML标签</td>
+<td><code>&lt;([^&gt;]+)&gt;</code></td>
+<td>提取HTML标签</td>
+</tr>
+<tr>
+<td>提取日期</td>
+<td><code>\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;</code></td>
+<td>YYYY-MM-DD格式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-3-替换模式">7.3 替换模式</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>查找模式</th>
+<th>替换模式</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>删除空行</td>
+<td><code>^$</code></td>
+<td>-</td>
+<td><code>sed '/^$/d'</code></td>
+</tr>
+<tr>
+<td>删除空白行</td>
+<td><code>^\s*$</code></td>
+<td>-</td>
+<td><code>sed '/^\s*$/d'</code></td>
+</tr>
+<tr>
+<td>删除注释</td>
+<td><code>#.*$</code></td>
+<td>-</td>
+<td><code>sed 's/#.*$//'</code></td>
+</tr>
+<tr>
+<td>首尾空格</td>
+<td>`^\s+</td>
+<td>\s+$`</td>
+<td>-</td>
+</tr>
+<tr>
+<td>多空格转单个</td>
+<td><code>\s+</code></td>
+<td><code> </code></td>
+<td><code>sed 's/\s\+/ /g'</code></td>
+</tr>
+<tr>
+<td>驼峰转下划线</td>
+<td><code>([a-z])([A-Z])</code></td>
+<td><code>\1_\2</code></td>
+<td><code>sed -E 's/([a-z])([A-Z])/\1_\2/g'</code></td>
+</tr>
+<tr>
+<td>路径分隔符</td>
+<td><code>\\</code></td>
+<td><code>/</code></td>
+<td><code>sed 's/\\/\//g'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="八、调试技巧">八、调试技巧</h2>
+<h3 id="8-1-调试方法">8.1 调试方法</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1. 测试正则表达式</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"test string"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">"pattern"</span>
+
+<span class="token comment"># 2. 显示匹配部分</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"test string"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-o</span> <span class="token string">"pattern"</span>
+
+<span class="token comment"># 3. 使用颜色高亮</span>
+<span class="token function">grep</span> <span class="token parameter variable">--color</span><span class="token operator">=</span>always <span class="token string">"pattern"</span> <span class="token function">file</span>
+
+<span class="token comment"># 4. 调试sed命令</span>
+<span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'s/pattern/replacement/p'</span> <span class="token function">file</span>  <span class="token comment"># 只显示替换的行</span>
+
+<span class="token comment"># 5. 使用扩展调试</span>
+<span class="token builtin class-name">set</span> <span class="token parameter variable">-x</span>  <span class="token comment"># 在脚本中启用调试</span>
+<span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">"pattern"</span> <span class="token function">file</span>
+<span class="token builtin class-name">set</span> +x  <span class="token comment"># 关闭调试</span>
+
+<span class="token comment"># 6. 分步测试复杂正则</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"test"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"t"</span>      <span class="token comment"># 测试基础部分</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"test"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"te"</span>     <span class="token comment"># 逐步增加</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"test"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"tes"</span>    <span class="token comment"># 继续增加</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"test"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"test"</span>   <span class="token comment"># 完整模式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="8-2-常见错误">8.2 常见错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误类型</th>
+<th>错误示例</th>
+<th>正确示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>转义错误</td>
+<td><code>grep &quot;a+&quot; file</code></td>
+<td><code>grep &quot;a\+&quot; file</code> 或 <code>grep -E &quot;a+&quot; file</code></td>
+<td>BRE需要转义</td>
+</tr>
+<tr>
+<td>量词位置</td>
+<td><code>grep &quot;^*test&quot; file</code></td>
+<td><code>grep &quot;^.*test&quot; file</code></td>
+<td>量词需要作用对象</td>
+</tr>
+<tr>
+<td>字符类错误</td>
+<td><code>grep &quot;[a-Z]&quot; file</code></td>
+<td><code>grep &quot;[a-zA-Z]&quot; file</code></td>
+<td>范围必须有序</td>
+</tr>
+<tr>
+<td>锚点误用</td>
+<td><code>grep &quot;^test$word&quot; file</code></td>
+<td><code>grep &quot;^test.*word$&quot; file</code></td>
+<td>$是行尾锚点</td>
+</tr>
+<tr>
+<td>分组错误</td>
+<td><code>grep &quot;(test)&quot; file</code></td>
+<td><code>grep &quot;\(test\)&quot; file</code> 或 <code>grep -E &quot;(test)&quot; file</code></td>
+<td>BRE分组需转义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="九、实用速查表">九、实用速查表</h2>
+<h3 id="9-1-BRE-vs-ERE-快速对照">9.1 BRE vs ERE 快速对照</h3>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>BRE</th>
+<th>ERE</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础匹配</td>
+<td><code>abc</code></td>
+<td><code>abc</code></td>
+<td>相同</td>
+</tr>
+<tr>
+<td>任意字符</td>
+<td><code>.</code></td>
+<td><code>.</code></td>
+<td>相同</td>
+</tr>
+<tr>
+<td>字符类</td>
+<td><code>[abc]</code></td>
+<td><code>[abc]</code></td>
+<td>相同</td>
+</tr>
+<tr>
+<td>零或多个</td>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td>相同</td>
+</tr>
+<tr>
+<td>一或多个</td>
+<td><code>\+</code></td>
+<td><code>+</code></td>
+<td>不同</td>
+</tr>
+<tr>
+<td>零或一个</td>
+<td><code>\?</code></td>
+<td><code>?</code></td>
+<td>不同</td>
+</tr>
+<tr>
+<td>分组</td>
+<td><code>\(\)</code></td>
+<td><code>()</code></td>
+<td>不同</td>
+</tr>
+<tr>
+<td>或</td>
+<td>`</td>
+<td>`</td>
+<td>`</td>
+</tr>
+<tr>
+<td>重复n次</td>
+<td><code>\&#123;n\&#125;</code></td>
+<td><code>&#123;n&#125;</code></td>
+<td>不同</td>
+</tr>
+<tr>
+<td>重复n-m次</td>
+<td><code>\&#123;n,m\&#125;</code></td>
+<td><code>&#123;n,m&#125;</code></td>
+<td>不同</td>
+</tr>
+<tr>
+<td>单词边界</td>
+<td><code>\&lt;\&gt;</code></td>
+<td><code>\b</code></td>
+<td>不同</td>
+</tr>
+<tr>
+<td>后向引用</td>
+<td><code>\1</code></td>
+<td><code>\1</code></td>
+<td>相同</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-2-常用组合模式">9.2 常用组合模式</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 匹配空白行</span>
+<span class="token string">'^[[:space:]]*$'</span>
+
+<span class="token comment"># 匹配注释行（#开头）</span>
+<span class="token string">'^[[:space:]]*#'</span>
+
+<span class="token comment"># 匹配有效的变量名</span>
+<span class="token string">'^[a-zA-Z_][a-zA-Z0-9_]*$'</span>
+
+<span class="token comment"># 匹配括号内的内容（非贪婪）</span>
+<span class="token string">'\([^)]*\)'</span>          <span class="token comment"># BRE</span>
+<span class="token string">'([^)]*)'</span>            <span class="token comment"># ERE</span>
+
+<span class="token comment"># 匹配引号内的内容（处理转义）</span>
+<span class="token string">'"(\\.|[^\\"])*"'</span>    <span class="token comment"># 双引号</span>
+<span class="token string">''</span><span class="token punctuation">\</span>'<span class="token string">'(\\.|[^'</span><span class="token punctuation">\</span>'<span class="token string">'])*'</span><span class="token punctuation">\</span>'<span class="token string">''</span>  <span class="token comment"># 单引号</span>
+
+<span class="token comment"># 匹配IP地址段</span>
+<span class="token string">'^192\.168\.'</span>        <span class="token comment"># 192.168.x.x</span>
+<span class="token string">'^10\.'</span>              <span class="token comment"># 10.x.x.x</span>
+<span class="token string">'^172\.(1[6-9]|2[0-9]|3[01])\.'</span>  <span class="token comment"># 172.16-31.x.x</span>
+
+<span class="token comment"># 匹配日志级别</span>
+<span class="token string">'\b(DEBUG|INFO|WARN|ERROR|FATAL)\b'</span>
+
+<span class="token comment"># 匹配十六进制颜色</span>
+<span class="token string">'#[0-9a-fA-F]&#123;6&#125;'</span>    <span class="token comment"># #RRGGBB</span>
+<span class="token string">'#[0-9a-fA-F]&#123;3&#125;'</span>    <span class="token comment"># #RGB</span>
+
+<span class="token comment"># 匹配文件扩展名</span>
+<span class="token string">'\.(jpg|jpeg|png|gif|bmp)$'</span>  <span class="token comment"># 图片</span>
+<span class="token string">'\.(mp4|avi|mkv|mov)$'</span>        <span class="token comment"># 视频</span>
+<span class="token string">'\.(zip|rar|tar|gz|7z)$'</span>      <span class="token comment"># 压缩包</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/blog">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%98%E6%96%B9%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/">https://timaio0911.github.io/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%98%E6%96%B9%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Linux/">Linux</a><a class="post-meta__tags" href="/blog/tags/Shell/">Shell</a></div><div class="post-share"><div class="social-share" data-image="/blog/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="Shell的实战使用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Shell的实战使用</div></div><div class="info-2"><div class="info-item-1">CentOS 7.9 Shell正则表达式完全指南 - 100个实战案例 一、测试数据集准备 数据集1：用户信息文件 (users.txt) john.smith@company.com:John Smith:1985-03-15:+1-555-0123:USA mary_jones@email.co.uk:Mary Jones:1990-07-22:+44-20-7890:UK zhang.wei@example.cn:张伟:1988-11-30:+86-138-0000:China carlos.garcia@correo.es:Carlos García:1992-05-18:+34-91-1234:Spain admin@localhost:Admin User:1980-01-01:+1-000-0000:Local test.user123@gmail.com:Test User:1995-12-25:+1-555-9999:USA sophie-martin@france.fr:Sophie Martin:1987-09-10:+33-1-4567:France 数...</div></div></div></a><a class="pagination-related" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/bash%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="我的 Hexo 博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">我的 Hexo 博客</div></div><div class="info-2"><div class="info-item-1">Bash 命令汇总 查看 tail tail -n+&lt;N>     # 从第 N 行开始显示到末尾 tail -n &lt;N>     # 显示末尾 N 行 查找 grep grep 关键词 文件          # 文件中寻找关键词 grep -c 关键词 文件       # 只统计匹配到多少行 grep -n 关键词 文件       # 显示行号 grep -i 关键词 文件       # 忽略大小写 grep -v 关键词 文件       # 反向匹配 grep -rn 关键词 目录      # 递归搜索整个目录 查找分割 cut cut -d分隔符 -f第几列 文件名  # 示例 cut -d: -f1 /etc/passwd      # 第一列 cut -d, -f1,3 data.csv       # 第 1、3 列 cut -d' ' -f1-5 log.txt      # 第 1 到 5 列 排序 sort sort -n       # 按数值大小排序（小到大） sort -nr      # 降序反转 sort -u       # ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="Shell的实战使用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">Shell的实战使用</div></div><div class="info-2"><div class="info-item-1">CentOS 7.9 Shell正则表达式完全指南 - 100个实战案例 一、测试数据集准备 数据集1：用户信息文件 (users.txt) john.smith@company.com:John Smith:1985-03-15:+1-555-0123:USA mary_jones@email.co.uk:Mary Jones:1990-07-22:+44-20-7890:UK zhang.wei@example.cn:张伟:1988-11-30:+86-138-0000:China carlos.garcia@correo.es:Carlos García:1992-05-18:+34-91-1234:Spain admin@localhost:Admin User:1980-01-01:+1-000-0000:Local test.user123@gmail.com:Test User:1995-12-25:+1-555-9999:USA sophie-martin@france.fr:Sophie Martin:1987-09-10:+33-1-4567:France 数...</div></div></div></a><a class="pagination-related" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Linux%E6%B1%87%E6%80%BB/" title="Linux学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">Linux学习</div></div><div class="info-2"><div class="info-item-1">Linux 基础与命令 Part1 – Linux 搭建与 Xshell 连接 获取虚拟机网址   Xshell连接网址_测试   [!info] 获取虚拟机网址后，使用 Xshell 连接测试  Part2 – Linux 基础介绍  [!warning] 所有文件测试都在 tmp 文件夹里进行   [!note] 内存：为解决磁盘写入速度慢和 CPU 不匹配的问题，但内存掉电易失需要留意  2.1 Vim 编辑器 模式切换    按键 功能     esc 回到普通模式   i 进入插入模式   a 光标向后移动一位   o 向下新建一行输入   : 底行命令模式    普通模式    按键 功能     h j k l 左、下、上、右   0 行首   $ 行尾   gg 跳到文件第一行   G 跳到文件最后一行   数字G 跳到第几行   x 删除光标当前一个字符   dd 删除一整行   dG 删除从当行到末尾所有内容    保存/退出    命令 功能     :w 保存   :q 退出   :wq 保存并退出   :q! 强制退出不保存    2.2虚拟网关  教学...</div></div></div></a><a class="pagination-related" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/bash%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="我的 Hexo 博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-22</div><div class="info-item-2">我的 Hexo 博客</div></div><div class="info-2"><div class="info-item-1">Bash 命令汇总 查看 tail tail -n+&lt;N>     # 从第 N 行开始显示到末尾 tail -n &lt;N>     # 显示末尾 N 行 查找 grep grep 关键词 文件          # 文件中寻找关键词 grep -c 关键词 文件       # 只统计匹配到多少行 grep -n 关键词 文件       # 显示行号 grep -i 关键词 文件       # 忽略大小写 grep -v 关键词 文件       # 反向匹配 grep -rn 关键词 目录      # 递归搜索整个目录 查找分割 cut cut -d分隔符 -f第几列 文件名  # 示例 cut -d: -f1 /etc/passwd      # 第一列 cut -d, -f1,3 data.csv       # 第 1、3 列 cut -d' ' -f1-5 log.txt      # 第 1 到 5 列 排序 sort sort -n       # 按数值大小排序（小到大） sort -nr      # 降序反转 sort -u       # ...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/blog/img/Image.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/blog/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/blog/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/blog/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Shell正则表达式官方语法大全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">一、正则表达式基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 正则表达式类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%B7%A5%E5%85%B7%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 工具对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%83%E5%AD%97%E7%AC%A6%E5%AE%8C%E6%95%B4%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">二、元字符完整列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%9F%BA%E7%A1%80%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 基础元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%89%A9%E5%B1%95%E5%85%83%E5%AD%97%E7%AC%A6%EF%BC%88ERE%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 扩展元字符（ERE）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%87%8F%E8%AF%8D%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 量词详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">三、字符类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E9%A2%84%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 预定义字符类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-POSIX%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%AE%8C%E6%95%B4%E5%88%97%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 POSIX字符类完整列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%89%B9%E6%AE%8A%E5%BA%8F%E5%88%97%E5%92%8C%E9%94%9A%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">四、特殊序列和锚点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BD%8D%E7%BD%AE%E9%94%9A%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 位置锚点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 转义序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E7%BB%84%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">五、分组和引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 分组类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%AD%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">六、常用命令语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-grep%E5%91%BD%E4%BB%A4"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 grep命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-sed%E5%91%BD%E4%BB%A4"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 sed命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-awk%E5%91%BD%E4%BB%A4"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 awk命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%BC%8F%E5%BA%93"><span class="toc-number">1.7.</span> <span class="toc-text">七、常见模式库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E9%AA%8C%E8%AF%81%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 验证模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%8F%90%E5%8F%96%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 提取模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E6%9B%BF%E6%8D%A2%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3 替换模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.8.</span> <span class="toc-text">八、调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">1.8.1.</span> <span class="toc-text">8.1 调试方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="toc-number">1.8.2.</span> <span class="toc-text">8.2 常见错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%AE%9E%E7%94%A8%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.9.</span> <span class="toc-text">九、实用速查表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-BRE-vs-ERE-%E5%BF%AB%E9%80%9F%E5%AF%B9%E7%85%A7"><span class="toc-number">1.9.1.</span> <span class="toc-text">9.1 BRE vs ERE 快速对照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.9.2.</span> <span class="toc-text">9.2 常用组合模式</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/" title="Untitled">Untitled</a><time datetime="2026-06-22T06:48:48.575Z" title="Created 2026-06-22 14:48:48">2026-06-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Linux%E6%B1%87%E6%80%BB/" title="Linux学习">Linux学习</a><time datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/bash%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="我的 Hexo 博客">我的 Hexo 博客</a><time datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/blog/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js?v=5.5.5"></script><script src="/blog/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
