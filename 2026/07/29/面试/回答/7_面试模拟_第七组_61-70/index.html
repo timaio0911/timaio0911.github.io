@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第七组（61-70题）  基于简历项目经历，模拟面试回答   61. 词向量化用的什么模型? 回答： 在我的项目中，词向量化主要用的是阿里的 text-embedding-v3 模型。 选择原因： 第一，text-embedding-v3是专门为中文场景优化的模型，在中文语义理解上效果非常好，这对于法律助手和政策补贴系统这类中文为主的场景非常关键。 第二，它支持变长输入，最大支持81">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/7_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%83%E7%BB%84_61-70/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第七组（61-70题）  基于简历项目经历，模拟面试回答   61. 词向量化用的什么模型? 回答： 在我的项目中，词向量化主要用的是阿里的 text-embedding-v3 模型。 选择原因： 第一，text-embedding-v3是专门为中文场景优化的模型，在中文语义理解上效果非常好，这对于法律助手和政策补贴系统这类中文为主的场景非常关键。 第二，它支持变长输入，最大支持81">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/img/Image.png">
+<meta property="article:published_time" content="2026-07-29T02:05:40.457Z">
+<meta property="article:modified_time" content="2026-07-29T02:05:40.468Z">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/7_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%83%E7%BB%84_61-70/",
+  "image": "https://timaio0911.github.io/img/Image.png",
+  "datePublished": "2026-07-29T02:05:40.457Z",
+  "dateModified": "2026-07-29T02:05:40.468Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/7_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%83%E7%BB%84_61-70/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">Welcome</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.457Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.468Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第七组（61-70题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="61-词向量化用的什么模型">61. 词向量化用的什么模型?</h2>
+<p><strong>回答：</strong></p>
+<p>在我的项目中，词向量化主要用的是阿里的 <strong>text-embedding-v3</strong> 模型。</p>
+<p><strong>选择原因：</strong></p>
+<p>第一，text-embedding-v3是专门为中文场景优化的模型，在中文语义理解上效果非常好，这对于法律助手和政策补贴系统这类中文为主的场景非常关键。</p>
+<p>第二，它支持变长输入，最大支持8192个token，能够处理较长的法律条文和政策文档，不需要做过多的截断处理。</p>
+<p>第三，和Qwen系列模型同属阿里生态，兼容性好，调用方便，延迟低。</p>
+<p><strong>在项目中的应用：</strong></p>
+<p>在法律助手项目中，我用text-embedding-v3对法律条文进行向量化，存储到Milvus向量数据库中。用户查询时，先将查询文本向量化，再做相似度检索。整个流程是：用户提问 -&gt; text-embedding-v3向量化 -&gt; Milvus检索 -&gt; 返回Top-K结果。</p>
+<p><strong>补充说明：</strong></p>
+<p>除了text-embedding-v3，我也了解其他主流的embedding模型，比如OpenAI的text-embedding-ada-002、BGE系列、M3E等。选择text-embedding-v3主要是因为它在中文法律领域的表现和我的项目需求最匹配。</p>
+<hr>
+<h2 id="62-状态的一致性如何处理？">62. 状态的一致性如何处理？</h2>
+<p><strong>回答：</strong></p>
+<p>状态一致性是多Agent系统中的核心问题，在我的政策补贴系统中，我主要通过以下几个方式来保证：</p>
+<p><strong>第一，使用LangGraph的状态管理机制：</strong></p>
+<p>LangGraph提供了内置的State对象，所有Agent共享同一个状态树。每个节点执行完后，通过返回值更新状态，LangGraph会自动保证状态的原子性更新。</p>
+<p><strong>第二，设计清晰的状态Schema：</strong></p>
+<p>我用Pydantic定义了严格的状态数据结构，包括企业信息、匹配结果、置信度等字段。这样可以确保每个Agent写入的数据格式一致，避免状态混乱。</p>
+<p><strong>第三，引入检查点机制：</strong></p>
+<p>LangGraph支持checkpoint，我在关键节点设置检查点，比如信息收集完成后、匹配完成后各保存一次状态。这样即使某个节点出错，也可以从检查点恢复，而不是从头开始。</p>
+<p><strong>第四，异步操作的处理：</strong></p>
+<p>由于FastAPI是异步框架，多个Agent可能并发执行。我使用asyncio的锁机制来保护共享状态，确保同一时间只有一个Agent在修改关键状态。</p>
+<p><strong>实际效果：</strong></p>
+<p>通过这些措施，我的系统能够处理复杂的多轮交互，企业匹配准确率达到92%以上，没有出现过状态不一致导致的错误匹配。</p>
+<hr>
+<h2 id="63-意图识别怎么处理的？">63. 意图识别怎么处理的？</h2>
+<p><strong>回答：</strong></p>
+<p>意图识别是对话系统的第一步，在我的项目中主要用大模型来做，具体方案如下：</p>
+<p><strong>在政策补贴系统中的实现：</strong></p>
+<p>我设计了一个专门的意图识别Agent，使用Qwen-plus作为底层模型。通过精心设计的Prompt，让模型从用户输入中提取关键意图，比如&quot;查询补贴政策&quot;、“匹配企业资质”、&quot;申请流程咨询&quot;等。</p>
+<p><strong>Prompt设计要点：</strong></p>
+<p>我采用了Few-shot的方式，在Prompt中给出几个意图分类的示例，让模型学习分类标准。同时定义了输出格式为JSON，包含intent（意图）、confidence（置信度）、entities（实体）三个字段。</p>
+<p><strong>置信度阈值机制：</strong></p>
+<p>当模型返回的置信度低于0.7时，我会让Agent主动追问用户，确认真实意图。比如用户说&quot;我想了解一下&quot;，系统会追问&quot;您是想了解补贴政策内容，还是想了解申请流程呢？&quot;</p>
+<p><strong>在法律助手中的实现：</strong></p>
+<p>法律助手的意图识别相对简单，主要是区分&quot;法条查询&quot;、“案例分析”、&quot;合规咨询&quot;三类。我用关键词匹配做初筛，再用大模型做精筛，这样既快又准。</p>
+<p><strong>效果：</strong></p>
+<p>意图识别准确率达到95%以上，有效避免了后续流程的误判。</p>
+<hr>
+<h2 id="64-假设你做一个金融分析助手项目中的节点怎么设计的？">64. 假设你做一个金融分析助手项目中的节点怎么设计的？</h2>
+<p><strong>回答：</strong></p>
+<p>如果做金融分析助手，我会参考我在政策补贴系统中的多Agent架构，设计以下核心节点：</p>
+<p><strong>第一，用户交互节点：</strong></p>
+<p>负责接收用户问题，进行意图识别和实体提取。比如识别出用户想&quot;分析某公司财报&quot;、&quot;对比行业数据&quot;等意图。</p>
+<p><strong>第二，数据采集节点：</strong></p>
+<p>根据用户需求，从不同数据源获取信息。金融数据可能来自Wind、东方财富、公司公告等。这个节点需要设计多个子Agent，分别对接不同数据源。</p>
+<p><strong>第三，数据清洗节点：</strong></p>
+<p>金融数据格式多样，有表格、PDF、网页等。这个节点负责统一格式、处理缺失值、异常值检测等。</p>
+<p><strong>第四，分析计算节点：</strong></p>
+<p>核心分析逻辑，包括财务指标计算（ROE、PE、现金流等）、趋势分析、同行业对比等。可以用预定义的分析模板，也可以让大模型生成分析代码。</p>
+<p><strong>第五，风险评估节点：</strong></p>
+<p>基于分析结果，给出风险提示和投资建议。需要结合监管政策、市场情绪等多维度信息。</p>
+<p><strong>第六，报告生成节点：</strong></p>
+<p>将分析结果整理成结构化报告，可以用图表、表格等形式呈现。</p>
+<p><strong>状态设计：</strong></p>
+<p>我会用一个中心化的State对象存储所有中间结果，包括原始数据、清洗后数据、分析结论、风险评级等，确保各节点之间的数据流转清晰。</p>
+<hr>
+<h2 id="65-怎么避免路由死循环，陷入死循环该怎么办？">65. 怎么避免路由死循环，陷入死循环该怎么办？</h2>
+<p><strong>回答：</strong></p>
+<p>路由死循环是Agent系统中的常见问题，我在政策补贴系统中遇到过并解决了这个问题。</p>
+<p><strong>预防措施：</strong></p>
+<p><strong>第一，设置最大跳转次数：</strong></p>
+<p>我在LangGraph中设置了全局的max_steps参数，比如最多允许10次节点跳转。超过这个次数强制进入终止节点，返回当前最优结果。</p>
+<p><strong>第二，状态标记机制：</strong></p>
+<p>每次Agent执行后，会在状态中标记已访问的节点。路由逻辑会检查目标节点是否已访问过，避免重复进入同一节点。</p>
+<p><strong>第三，设计清晰的退出条件：</strong></p>
+<p>每个节点都有明确的完成条件，比如信息收集Agent必须拿到完整的企业信息才能进入下一阶段，否则只能追问或退出。</p>
+<p><strong>陷入死循环后的处理：</strong></p>
+<p><strong>第一，超时检测：</strong></p>
+<p>设置单个节点的最大执行时间，比如30秒。超时后强制中断，进入降级流程。</p>
+<p><strong>第二，兜底返回：</strong></p>
+<p>如果检测到死循环，系统会返回当前已收集到的最佳结果，并提示用户&quot;信息不足，建议补充以下内容&quot;。</p>
+<p><strong>第三，日志告警：</strong></p>
+<p>记录死循环的详细日志，包括触发条件、节点路径等，方便后续优化路由逻辑。</p>
+<p><strong>实际案例：</strong></p>
+<p>在政策补贴系统中，企业信息收集Agent曾因为用户回答模糊而反复追问。我加入了&quot;最多追问3次&quot;的限制，并在第3次追问后给出默认选项让用户选择，有效避免了死循环。</p>
+<hr>
+<h2 id="66-react怎么跳出闭环？">66. react怎么跳出闭环？</h2>
+<p><strong>回答：</strong></p>
+<p>ReAct（Reasoning + Acting）模式是Agent的核心工作方式，跳出闭环需要从机制设计上解决。</p>
+<p><strong>ReAct的基本循环：</strong></p>
+<p>思考（Thought）-&gt; 行动（Action）-&gt; 观察（Observation）-&gt; 再思考… 这个循环如果没有终止条件，确实会陷入死循环。</p>
+<p><strong>跳出闭环的策略：</strong></p>
+<p><strong>第一，设置最大推理轮次：</strong></p>
+<p>我在实现中设置了max_iterations参数，比如最多允许5轮思考-行动循环。达到上限后，Agent必须基于当前信息给出最终回答。</p>
+<p><strong>第二，设计明确的终止信号：</strong></p>
+<p>当Agent的Thought中包含&quot;我已经获得足够信息&quot;、&quot;可以回答用户问题&quot;等关键词时，强制结束循环。也可以用大模型判断当前信息是否充足。</p>
+<p><strong>第三，引入置信度评估：</strong></p>
+<p>每轮循环后评估当前答案的置信度，如果置信度超过阈值（比如0.85），提前结束循环。</p>
+<p><strong>第四，超时机制：</strong></p>
+<p>设置整体执行的超时时间，比如60秒。超时后强制返回当前最佳答案。</p>
+<p><strong>在项目中的应用：</strong></p>
+<p>在法律助手项目中，ReAct模式用于法条检索。Agent会思考用户问题涉及哪些法律领域，然后调用检索工具，观察检索结果，再决定是否需要调整检索策略。我设置了最多3轮检索，3轮后必须给出答案，避免无限循环。</p>
+<hr>
+<h2 id="67-FastAPI异步具体是如何实现的">67. FastAPI异步具体是如何实现的</h2>
+<p><strong>回答：</strong></p>
+<p>FastAPI的异步实现基于Python的asyncio框架和ASGI协议，我在项目中大量使用了异步特性。</p>
+<p><strong>核心实现原理：</strong></p>
+<p><strong>第一，事件循环机制：</strong></p>
+<p>FastAPI底层使用uvicorn作为ASGI服务器，uvicorn会启动一个事件循环（Event Loop）。当遇到await关键字时，事件循环会挂起当前协程，去执行其他任务，等IO操作完成后恢复执行。</p>
+<p><strong>第二，协程（Coroutine）：</strong></p>
+<p>用async def定义的函数是协程函数，调用时不会立即执行，而是返回一个协程对象。只有await时才会真正执行。这样可以让IO密集型任务（如数据库查询、网络请求）不阻塞主线程。</p>
+<p><strong>第三，依赖注入的异步支持：</strong></p>
+<p>FastAPI的Depends支持异步依赖，比如数据库连接池、Redis客户端等都可以用异步方式注入。</p>
+<p><strong>在项目中的应用：</strong></p>
+<p>在政策补贴系统中，我用异步处理并发请求。比如同时调用Milvus查询和Neo4j查询时，用asyncio.gather并行执行，响应时间从串行的200ms降到并行的120ms左右。</p>
+<p><strong>代码示例：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">get_policy_info</span><span class="token punctuation">(</span>query<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">async</span> <span class="token keyword">with</span> aiohttp<span class="token punctuation">.</span>ClientSession<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+        milvus_task <span class="token operator">=</span> search_milvus<span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+        neo4j_task <span class="token operator">=</span> search_neo4j<span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+        results <span class="token operator">=</span> <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>gather<span class="token punctuation">(</span>milvus_task<span class="token punctuation">,</span> neo4j_task<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> merge_results<span class="token punctuation">(</span>results<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>性能提升：</strong></p>
+<p>通过异步优化，系统QPS从50提升到200+，能够支持更多并发用户。</p>
+<hr>
+<h2 id="68-介绍一下MySQL的开窗函数？">68. 介绍一下MySQL的开窗函数？</h2>
+<p><strong>回答：</strong></p>
+<p>开窗函数（Window Function）是MySQL 8.0引入的重要特性，用于在不改变行数的情况下进行聚合计算。</p>
+<p><strong>核心概念：</strong></p>
+<p>开窗函数和GROUP BY的区别在于，GROUP BY会将多行合并为一行，而开窗函数保留所有原始行，在每行上计算聚合值。</p>
+<p><strong>常见开窗函数：</strong></p>
+<p><strong>ROW_NUMBER()：</strong> 行号函数，给每行分配唯一的序号。比如按成绩排名：<br>
+<code>ROW_NUMBER() OVER (ORDER BY score DESC) as rank</code></p>
+<p><strong>RANK()：</strong> 排名函数，相同值排名相同，但会跳过后续名次。比如两个第1名，下一个是第3名。</p>
+<p><strong>DENSE_RANK()：</strong> 密集排名，相同值排名相同，不跳过名次。两个第1名，下一个是第2名。</p>
+<p><strong>SUM/AVG/COUNT + OVER：</strong> 累计或滑动聚合。比如计算累计销售额：<br>
+<code>SUM(amount) OVER (ORDER BY date) as cumulative_sales</code></p>
+<p><strong>PARTITION BY：</strong> 分区子句，按某个字段分组后计算。比如每个部门内部排名：<br>
+<code>ROW_NUMBER() OVER (PARTITION BY dept_id ORDER BY salary DESC)</code></p>
+<p><strong>在项目中的应用：</strong></p>
+<p>虽然我的项目主要用Redis做缓存，但在数据统计分析时会用到开窗函数。比如分析政策匹配成功率时，用ROW_NUMBER找出每个企业匹配度最高的政策；用SUM OVER计算累计匹配数量等。</p>
+<hr>
+<h2 id="69-MySQL和PostgreSQL的区别是什么？">69. MySQL和PostgreSQL的区别是什么？</h2>
+<p><strong>回答：</strong></p>
+<p>MySQL和PostgreSQL是两个主流的关系型数据库，各有特点：</p>
+<p><strong>语法差异：</strong></p>
+<p>MySQL用反引号`包裹字段名，PostgreSQL用双引号&quot;；MySQL的自增用AUTO_INCREMENT，PostgreSQL用SERIAL或IDENTITY；MySQL的LIMIT语法直接用LIMIT，PostgreSQL也支持但还可以用FETCH FIRST。</p>
+<p><strong>数据类型：</strong></p>
+<p>PostgreSQL支持更丰富的数据类型，比如数组、JSONB（二进制JSON，查询更快）、范围类型、几何类型等。MySQL的JSON支持相对较弱。</p>
+<p><strong>事务和锁：</strong></p>
+<p>PostgreSQL对事务支持更严格，默认隔离级别更高。MySQL的InnoDB引擎也支持事务，但某些场景下锁粒度不如PostgreSQL细。</p>
+<p><strong>扩展性：</strong></p>
+<p>PostgreSQL支持自定义函数、存储过程、触发器等更强大，适合复杂业务逻辑。MySQL在这方面相对简单。</p>
+<p><strong>性能：</strong></p>
+<p>MySQL在简单查询、高并发读场景下性能更好；PostgreSQL在复杂查询、大数据量分析场景下更有优势。</p>
+<p><strong>在我的项目中的选择：</strong></p>
+<p>我选择MySQL主要是因为政策补贴系统的查询相对简单，主要是单表查询和简单关联，MySQL的性能足够。而且MySQL的生态更成熟，运维工具更多。但如果后续要做复杂的统计分析，可能会考虑PostgreSQL。</p>
+<hr>
+<h2 id="70-Redis数据类型？">70. Redis数据类型？</h2>
+<p><strong>回答：</strong></p>
+<p>Redis支持五种基本数据类型，我在项目中都有使用：</p>
+<p><strong>String（字符串）：</strong></p>
+<p>最简单的类型，可以存储字符串、整数、浮点数。我在项目中用于缓存热点数据，比如用户会话信息、验证码、API限流计数等。支持原子性的incr操作，非常适合计数场景。</p>
+<p><strong>List（列表）：</strong></p>
+<p>双向链表结构，支持左右插入弹出。我用于实现消息队列，比如政策更新通知队列。LPUSH生产消息，RPOP消费消息，简单高效。</p>
+<p><strong>Hash（哈希）：</strong></p>
+<p>键值对集合，适合存储对象。我在项目中存储企业信息，比如hash key是&quot;company:123&quot;，field有&quot;name&quot;、“industry”、&quot;scale&quot;等。比String存储JSON更节省内存，也支持单个field的更新。</p>
+<p><strong>Set（集合）：</strong></p>
+<p>无序不重复集合，支持交集、并集、差集操作。我用于存储标签、去重场景。比如存储某个政策适用的行业标签，用SINTER可以快速找出两个政策的共同适用行业。</p>
+<p><strong>Sorted Set（有序集合）：</strong></p>
+<p>每个元素关联一个分数，按分数排序。我在项目中用于实现排行榜、优先级队列。比如政策匹配结果按相似度排序，用ZADD添加，ZREVRANGE获取Top-N。</p>
+<p><strong>补充：</strong></p>
+<p>Redis 5.0还引入了Stream类型，适合更专业的消息队列场景，但我目前项目中用List就够了。</p>
+<hr>
+<p><em>文件生成时间：2026-07-27</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/7_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%83%E7%BB%84_61-70/">https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/7_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%83%E7%BB%84_61-70/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/8_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%85%AB%E7%BB%84_71-80/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第八组（71-80题）  基于简历项目经历，模拟面试回答   71. Agent里上下文窗口怎么设计，上下文太长怎么处理？ 回答： 上下文窗口设计是Agent系统的核心问题，我在政策补贴系统中遇到过上下文超长的情况，主要通过以下策略处理： 第一，滑动窗口机制： 我设计了一个滑动窗口，只保留最近N轮对话。比如保留最近5轮对话，早期对话会被压缩或丢弃。这样既能保证上下文连贯性，又能控制token数量。 第二，摘要压缩： 对于历史对话，用大模型生成摘要，替代原始对话内容。比如前10轮对话可能有2000token，压缩成摘要后只有200token，但保留了关键信息。 第三，关键信息提取： 用正则或NLP提取关键实体和意图，存储在结构化字段中。比如企业名称、行业类型、申请条件等，这些信息单独存储，不受上下文窗口限制。 第四，分层存储： 短期记忆用上下文窗口，中期记忆用Redis缓存，长期记忆用数据库持久化。根据信息的重要性和时效性选择存储层级。 在项目中的实现： 政策补贴系统的多轮对话中，我会把企业基本信息提取出来存入State，后续Agent直接读取State，不需要每次都...</div></div></div></a><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/6_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%85%AD%E7%BB%84_51-60/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第六组（51-60题）  基于简历项目经历，模拟面试回答   51. Transformer中Attention计算公式？ 回答： Transformer的注意力机制核心是Scaled Dot-Product Attention，计算公式是： Attention(Q, K, V) = softmax(QK^T / √d_k) V 我来拆解一下这个公式的含义： Q、K、V的来源： 输入序列的每个token会通过三个不同的线性变换得到Query（查询）、Key（键）、Value（值）三个向量。Q代表&quot;我想找什么&quot;，K代表&quot;我能提供什么&quot;，V代表&quot;我的实际内容&quot;。 QK^T的含义： Q和K的转置做矩阵乘法，得到的是每个token对其他所有token的&quot;关注度&quot;分数。比如处理&quot;法律条文&quot;这个词时，Q会和所有其他词的K计算点积，得到每个词的相关性分数。 √d_k缩放： 为什么要除以√d_k？因为当d_k维度很大时，点积的值会很大，softmax会趋向于one-hot分布（梯度消...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第七组（61-70题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#61-%E8%AF%8D%E5%90%91%E9%87%8F%E5%8C%96%E7%94%A8%E7%9A%84%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">61. 词向量化用的什么模型?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#62-%E7%8A%B6%E6%80%81%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">62. 状态的一致性如何处理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#63-%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%E7%9A%84%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">63. 意图识别怎么处理的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#64-%E5%81%87%E8%AE%BE%E4%BD%A0%E5%81%9A%E4%B8%80%E4%B8%AA%E9%87%91%E8%9E%8D%E5%88%86%E6%9E%90%E5%8A%A9%E6%89%8B%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E7%9A%84%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">64. 假设你做一个金融分析助手项目中的节点怎么设计的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#65-%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%E8%B7%AF%E7%94%B1%E6%AD%BB%E5%BE%AA%E7%8E%AF%EF%BC%8C%E9%99%B7%E5%85%A5%E6%AD%BB%E5%BE%AA%E7%8E%AF%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">65. 怎么避免路由死循环，陷入死循环该怎么办？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#66-react%E6%80%8E%E4%B9%88%E8%B7%B3%E5%87%BA%E9%97%AD%E7%8E%AF%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">66. react怎么跳出闭环？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#67-FastAPI%E5%BC%82%E6%AD%A5%E5%85%B7%E4%BD%93%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-number">1.7.</span> <span class="toc-text">67. FastAPI异步具体是如何实现的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#68-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BMySQL%E7%9A%84%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">1.8.</span> <span class="toc-text">68. 介绍一下MySQL的开窗函数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#69-MySQL%E5%92%8CPostgreSQL%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">69. MySQL和PostgreSQL的区别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#70-Redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">70. Redis数据类型？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.787Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.775Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

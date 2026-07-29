@@ -1,0 +1,735 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第三十四组（331-340题）  基于简历项目经历，模拟面试回答   331. 亿级裁判文书如果只用MySQL条件筛选和LIKE查询，怎么升级为结构化筛选、全文检索、分面统计和语义检索结合的系统？ 回答： 这个问题其实很有现实意义，因为很多项目起步时就是MySQL一把梭，量大了才发现扛不住。我会分几个阶段来升级： 第一阶段：从LIKE到全文检索 MySQL的LIKE %keyword">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第三十四组（331-340题）  基于简历项目经历，模拟面试回答   331. 亿级裁判文书如果只用MySQL条件筛选和LIKE查询，怎么升级为结构化筛选、全文检索、分面统计和语义检索结合的系统？ 回答： 这个问题其实很有现实意义，因为很多项目起步时就是MySQL一把梭，量大了才发现扛不住。我会分几个阶段来升级： 第一阶段：从LIKE到全文检索 MySQL的LIKE %keyword">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/img/Image.png">
+<meta property="article:published_time" content="2026-07-29T02:05:40.798Z">
+<meta property="article:modified_time" content="2026-07-29T02:05:40.806Z">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/",
+  "image": "https://timaio0911.github.io/img/Image.png",
+  "datePublished": "2026-07-29T02:05:40.798Z",
+  "dateModified": "2026-07-29T02:05:40.806Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">Welcome</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.806Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第三十四组（331-340题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="331-亿级裁判文书如果只用MySQL条件筛选和LIKE查询，怎么升级为结构化筛选、全文检索、分面统计和语义检索结合的系统？">331. 亿级裁判文书如果只用MySQL条件筛选和LIKE查询，怎么升级为结构化筛选、全文检索、分面统计和语义检索结合的系统？</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题其实很有现实意义，因为很多项目起步时就是MySQL一把梭，量大了才发现扛不住。我会分几个阶段来升级：</p>
+<p><strong>第一阶段：从LIKE到全文检索</strong></p>
+<p>MySQL的LIKE <code>%keyword%</code>不走索引，亿级数据下就是全表扫描。第一步是换成MySQL自带的全文索引（FULLTEXT），用<code>MATCH AGAINST</code>做布尔模式搜索，性能提升至少一个数量级。但MySQL全文索引对中文支持有限，所以这只是过渡方案。</p>
+<p><strong>第二阶段：引入Elasticsearch做全文检索+分面统计</strong></p>
+<p>把裁判文书同步到ES，利用它的倒排索引和分词器（比如IK分词器）处理中文。ES的优势在于：</p>
+<ul>
+<li><strong>结构化筛选：</strong> 案由、法院级别、审判年份、法官等字段可以建为结构化字段，用filter精确过滤</li>
+<li><strong>全文检索：</strong> 支持布尔查询、短语查询、模糊匹配，比LIKE强太多</li>
+<li><strong>分面统计：</strong> 按年份、案由、法院层级做聚合统计，一个<code>aggs</code>查询搞定，MySQL得写一堆子查询</li>
+</ul>
+<p><strong>第三阶段：引入Milvus做语义检索</strong></p>
+<p>这是最关键的升级。关键词搜索有一个硬伤——用户输入的是&quot;夫妻离婚财产怎么分&quot;，但裁判文书里写的是&quot;婚姻关系存续期间共同财产分割&quot;，关键词不匹配就搜不到。所以需要做语义检索：</p>
+<ul>
+<li>把裁判文书按段落切分，用embedding模型（比如<code>text-embedding-v3</code>）向量化，存入Milvus</li>
+<li>用户输入案情描述，同样转成向量，在Milvus里做近似检索</li>
+<li>召回结果后和ES的全文检索结果做<strong>融合排序</strong></li>
+</ul>
+<p><strong>具体架构：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">用户输入 → Query Rewrite（改写案情描述）
+           ↓
+     ES全文检索（精确匹配案由、法条等）
+     Milvus语义检索（匹配案情相似性）
+           ↓
+     结果合并 → Reranker重排序 → 返回Top-K<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>第四阶段：分面+语义联合查询</strong></p>
+<p>用户可以在界面选择&quot;案由：离婚纠纷、年份：2024、法院：北京市一中院&quot;，这些作为结构化filter先筛掉一大片，再在剩下的结果里做语义检索。这样既保证精确性，又保证召回率。</p>
+<p>这套方案我在法律助手项目中做过类似的设计，只是规模没到亿级，但架构思路是通用的。</p>
+<hr>
+<h2 id="332-1亿条1024维float32向量大约需要多少存储，如何通过向量精度、量化和索引方案降低存储成本？">332. 1亿条1024维float32向量大约需要多少存储，如何通过向量精度、量化和索引方案降低存储成本？</h2>
+<p><strong>回答：</strong></p>
+<p>先算一下账：</p>
+<p><strong>原始存储：</strong></p>
+<ul>
+<li>1亿条 × 1024维 × 4字节（float32）= 4096亿字节 ≈ 381GB</li>
+<li>加上ID字段（int64，8字节）和元数据字段，总存储大约在400GB左右</li>
+<li>如果建索引，IVF类的索引需要额外约10-20%的存储，HNSW索引需要额外约30-50%</li>
+</ul>
+<p>所以裸存就是400GB左右，加上索引奔着500-600GB去了。在生产环境中，这个成本确实不低。</p>
+<p><strong>降成本方案：</strong></p>
+<p><strong>1. 降低向量精度（float32 → float16 / int8）</strong></p>
+<p>float32降到float16，精度减半，存储直接砍半，从381GB降到190GB。在召回率测试中，float16的精度损失不到1%，几乎无感。如果再降到int8，存储降到95GB，但召回率会下降3-5%，需要根据业务场景权衡。</p>
+<p><strong>2. 量化——PQ（Product Quantization）</strong></p>
+<p>PQ把向量切成若干子段，每个子段用聚类中心索引代替原始向量。比如切分成M段，每段用k个聚类中心b比特表示，存储从1024维×4字节降到M×b比特。</p>
+<ul>
+<li>M=64, k=256（8比特）时，存储降到64字节/条，1亿条仅需6GB</li>
+<li>这属于有损压缩，召回率会下降，但通过调整参数（M和k）可以在存储和召回率之间找平衡</li>
+</ul>
+<p><strong>3. 索引方案选择</strong></p>
+<p>不同索引方案对存储和召回率的影响：</p>
+<ul>
+<li><strong>IVF_FLAT：</strong> 标准索引，存储和原始向量差不多，但聚类后搜索效率高</li>
+<li><strong>IVF_PQ：</strong> 结合PQ量化，存储大幅降低，适合亿级数据</li>
+<li><strong>IVF_SQ8：</strong> Scalar Quantization，每个维度用1字节（int8）存储，存储降到原始1/4，召回率损失小</li>
+<li><strong>HNSW：</strong> 图索引，召回率最高，但存储额外增加30-50%，亿级数据用HNSW成本很高</li>
+</ul>
+<p><strong>4. 分片和分层检索</strong></p>
+<p>不一定要把所有向量存到一张表。可以按年份、案由等维度分片，用户查询时先定位到相关分片，只在分片内检索，这样每个分片的向量量级就小多了。</p>
+<p><strong>综合推荐方案：</strong></p>
+<p>对于亿级裁判文书场景，我会用 <code>IVF_SQ8 + 分片</code> 的组合：</p>
+<ul>
+<li>IVF_SQ8把存储降到约100GB</li>
+<li>按年份分片（比如10个分片），每个分片10GB</li>
+<li>配合GPU推理，延迟控制在可接受范围内</li>
+<li>召回率可以做到95%以上</li>
+</ul>
+<hr>
+<h2 id="333-长裁判文书应该怎么切分和向量化，才能根据用户输入的案情召回真正相似的案例，而不只是事实表面相似？">333. 长裁判文书应该怎么切分和向量化，才能根据用户输入的案情召回真正相似的案例，而不只是事实表面相似？</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题问得很细，核心挑战在于：裁判文书很长（可能上万字），但用户关心的只是其中一段案情描述，如果整篇文书作为一个向量，语义会极度稀释，召回效果很差。</p>
+<p><strong>我的切分策略：</strong></p>
+<p>裁判文书有固定的结构——首部、当事人信息、诉讼请求、事实与理由、法院查明、本院认为、判决结果。结构就是天然的切分边界。</p>
+<p>我会按<strong>语义段落</strong>切分，而不是按固定字符数：</p>
+<ul>
+<li><strong>法院查明部分：</strong> 这是案情事实的核心，单独切出来，每段500-800字</li>
+<li><strong>本院认为部分：</strong> 这是法院的法律推理过程，单独切出来</li>
+<li><strong>诉讼请求+事实与理由：</strong> 这是原告视角的案情描述，单独切</li>
+<li><strong>判决结果部分：</strong> 单独存，但向量化时权重可以降低，因为这部分是结论不是案情</li>
+</ul>
+<p><strong>向量化策略：</strong></p>
+<ol>
+<li><strong>案情向量（主向量）：</strong> 用&quot;法院查明&quot;部分的段落做向量，因为这是最客观的案情描述</li>
+<li><strong>法条向量（辅助向量）：</strong> 文书引用的法条，单独提取并向量化，用于匹配法律问题类型</li>
+<li><strong>案由标签：</strong> 作为结构化字段，不参与向量化，但用于筛选</li>
+</ol>
+<p><strong>如何避免&quot;表面相似&quot;？</strong></p>
+<p>很多案件表面相似——都是&quot;离婚&quot;或&quot;借贷&quot;，但事实细节天差地别。我的做法是：</p>
+<p><strong>方案一：Query改写+细节抽取</strong></p>
+<p>用户输入&quot;我借了20万给朋友，他没打借条，现在不还钱&quot;，不要直接搜全文。用大模型改写，提取关键要素：</p>
+<ul>
+<li>法律关系：民间借贷</li>
+<li>证据类型：无书面借条</li>
+<li>争议焦点：还款义务认定</li>
+</ul>
+<p>改写后，用这些要素组合成搜索query，同时做结构化筛选和语义检索。</p>
+<p><strong>方案二：多路召回+重排序</strong></p>
+<ul>
+<li>一路按案由结构化筛选（精确匹配法律类型）</li>
+<li>一路按案情语义检索（匹配事实细节）</li>
+<li>一路按争议焦点关键词检索（匹配法律问题）</li>
+</ul>
+<p>三路结果合并，用Reranker重新打分。Reranker能看到完整的query和chunk，能判断&quot;这个案子的案情细节是否和用户描述一致&quot;。</p>
+<p><strong>方案三：事实要素提取</strong></p>
+<p>在向量化之前，用大模型提取文书的&quot;事实要素&quot;——借贷金额、担保方式、利息约定、还款期限等，然后把要素结构化成字段存储。用户查询时，同样提取要素进行结构化匹配，精度更高。</p>
+<hr>
+<h2 id="334-如果把判例检索封装成Agent-Tool，应该如何定义工具描述、输入参数、返回字段、结果数量以及失败返回格式？">334. 如果把判例检索封装成Agent Tool，应该如何定义工具描述、输入参数、返回字段、结果数量以及失败返回格式？</h2>
+<p><strong>回答：</strong></p>
+<p>这个我很有经验，因为政策补贴系统里我们就把政策检索封装成了Agent Tool。核心原则是：<strong>让大模型能正确理解并调用，返回结构要清晰，错误处理要完备。</strong></p>
+<p><strong>工具定义（以LangChain Tool格式为例）：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">工具名称：search_case_precedent
+工具描述：
+  用于检索中国裁判文书网中的历史判例。
+  当用户询问某个案件类型、案由、法律问题或相似案情时，
+  调用此工具检索相关判例。
+  适用于：合同纠纷、侵权、离婚、劳动争议、借贷纠纷等常见案由。
+  不适用于：查询法律法规条文本身（请用search_legal_provision工具）。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>输入参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>case_type</td>
+<td>string</td>
+<td>否</td>
+<td>案由，如&quot;离婚纠纷&quot;、“民间借贷纠纷”</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>string</td>
+<td>否</td>
+<td>关键词，案情描述或法律问题</td>
+</tr>
+<tr>
+<td>court_level</td>
+<td>string</td>
+<td>否</td>
+<td>法院层级：基层法院/中级法院/高级法院/最高院</td>
+</tr>
+<tr>
+<td>year</td>
+<td>int</td>
+<td>否</td>
+<td>裁判年份，如2024</td>
+</tr>
+<tr>
+<td>province</td>
+<td>string</td>
+<td>否</td>
+<td>省份/地区</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>int</td>
+<td>否</td>
+<td>返回数量，默认5，最大10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键设计点：</strong> 参数尽量用可选，不要让大模型凑齐所有参数才能调用。跟用户说&quot;帮我找一下北京地区的离婚纠纷判例&quot;，只传province和case_type也能查到结果。</p>
+<p><strong>返回字段：</strong></p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"total_count"</span><span class="token operator">:</span> <span class="token number">128</span><span class="token punctuation">,</span>
+  <span class="token property">"cases"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"case_id"</span><span class="token operator">:</span> <span class="token string">"（2024）京01民终1234号"</span><span class="token punctuation">,</span>
+      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"张某与李某离婚纠纷二审民事判决书"</span><span class="token punctuation">,</span>
+      <span class="token property">"court"</span><span class="token operator">:</span> <span class="token string">"北京市第一中级人民法院"</span><span class="token punctuation">,</span>
+      <span class="token property">"judgment_date"</span><span class="token operator">:</span> <span class="token string">"2024-03-15"</span><span class="token punctuation">,</span>
+      <span class="token property">"case_type"</span><span class="token operator">:</span> <span class="token string">"离婚纠纷"</span><span class="token punctuation">,</span>
+      <span class="token property">"summary"</span><span class="token operator">:</span> <span class="token string">"双方因感情不和分居满两年，法院认定感情确已破裂，准予离婚。共同财产分割方案为..."</span><span class="token punctuation">,</span>
+      <span class="token property">"key_facts"</span><span class="token operator">:</span> <span class="token string">"婚后购置房产两套，无子女，无共同债务"</span><span class="token punctuation">,</span>
+      <span class="token property">"legal_basis"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"民法典第1079条"</span><span class="token punctuation">,</span> <span class="token string">"民法典第1087条"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"judgment"</span><span class="token operator">:</span> <span class="token string">"准予离婚，房产各得一套"</span><span class="token punctuation">,</span>
+      <span class="token property">"relevance_score"</span><span class="token operator">:</span> <span class="token number">0.92</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>结果数量控制：</strong></p>
+<p>默认返回5条，因为大模型上下文有限，给太多也看不完。如果用户说&quot;多找一些&quot;，可以允许page_size调到10。超过10条建议返回摘要列表，让用户选感兴趣的再展开。</p>
+<p><strong>失败返回格式：</strong></p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"error"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"error_type"</span><span class="token operator">:</span> <span class="token string">"NO_RESULTS"</span><span class="token punctuation">,</span>
+  <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"未找到匹配的判例，请尝试：1. 扩大案由范围 2. 减少筛选条件 3. 使用更通用的关键词"</span><span class="token punctuation">,</span>
+  <span class="token property">"suggestions"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"expanded_query"</span><span class="token operator">:</span> <span class="token string">"离婚纠纷"</span><span class="token punctuation">,</span>
+    <span class="token property">"similar_case_types"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"婚姻家庭纠纷"</span><span class="token punctuation">,</span> <span class="token string">"同居关系析产纠纷"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>为什么要这样设计失败返回？</strong> 大模型看到<code>NO_RESULTS</code>不会直接死心，它会根据<code>suggestions</code>调整参数重新调用，或者告诉用户&quot;目前没有完全匹配的判例，但类似的案由有这些，要不要看看？&quot;体验比干巴巴的&quot;没查到&quot;好很多。</p>
+<hr>
+<h2 id="335-Word文书生成中，-结构化字段-固定模板-和-Agent生成代码-沙箱执行-两种方案各有什么优缺点，应该如何选型？">335. Word文书生成中，&quot;结构化字段+固定模板&quot;和&quot;Agent生成代码+沙箱执行&quot;两种方案各有什么优缺点，应该如何选型？</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题我实际遇到过，法律助手项目里就需要生成法律意见书和合同审查报告。两种方案我都调研过，各有适用场景。</p>
+<p><strong>方案一：结构化字段+固定模板</strong></p>
+<p>思路是预定义好Word模板，用占位符标记需要填充的位置，后端把结构化数据填入，生成最终文档。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>稳定可靠，生成的文档格式完全可控</li>
+<li>运行速度快，毫秒级生成</li>
+<li>不需要沙箱环境，安全风险低</li>
+<li>法律文书这种格式严格、结构固定的场景非常合适</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>灵活性差，模板之外的格式需求改起来成本高</li>
+<li>如果字段不是预定义的，就得频繁改模板</li>
+<li>表格的行数、列数不固定时处理起来麻烦</li>
+</ul>
+<p><strong>方案二：Agent生成代码+沙箱执行</strong></p>
+<p>思路是让大模型根据用户需求写一段Python代码（比如用python-docx库），在沙箱环境里执行，生成Word文档。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>灵活度极高，用户想要什么格式都能生成</li>
+<li>支持动态表格、图表、复杂排版</li>
+<li>适合需要高度定制化的场景</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>不稳定，大模型生成的代码可能跑不通</li>
+<li>安全风险，沙箱逃逸、资源滥用等问题需要防范</li>
+<li>生成速度慢，代码生成+执行+纠错可能耗时十几秒</li>
+<li>调试成本高，代码跑飞了得重新生成</li>
+</ul>
+<p><strong>我的选型建议：</strong></p>
+<p><strong>用方案一的情况：</strong></p>
+<ul>
+<li>文书格式固定，比如判决书、法律意见书、通知函</li>
+<li>内容结构化程度高，字段可预定义</li>
+<li>对格式稳定性要求高，不能出错</li>
+</ul>
+<p><strong>用方案二的情况：</strong></p>
+<ul>
+<li>用户需要高度定制化格式，比如投标书、项目方案</li>
+<li>模板数量太多维护不过来</li>
+<li>内容结构不固定，比如用户想生成一个包含各种图表的数据报告</li>
+</ul>
+<p><strong>我们在法律助手项目中的实际做法：</strong></p>
+<p><strong>混合方案。</strong> 对于标准法律文书（合同审查报告、法律意见书），用方案一，模板预定义好，LLM填充结构化字段。对于用户自定义的文书（比如&quot;帮我把这个案子写一份分析报告，要包含案情摘要、法律分析、胜诉概率预测&quot;），用方案二，但加了限制：只允许调用固定的python-docx API，不开放文件读写和网络请求，沙箱用Docker容器隔离。</p>
+<hr>
+<h2 id="336-你参与过的本地模型部署具体使用什么模型、GPU和量化方案？支持多少并发，显存、KV-Cache和吞吐量如何配置？">336. 你参与过的本地模型部署具体使用什么模型、GPU和量化方案？支持多少并发，显存、KV Cache和吞吐量如何配置？</h2>
+<p><strong>回答：</strong></p>
+<p>我在法律助手项目中做过本地模型部署，主要部署的是Qwen3-32B，用于法律问答生成。</p>
+<p><strong>硬件配置：</strong></p>
+<ul>
+<li>GPU：单张A100（80GB显存）</li>
+<li>模型：Qwen3-32B（参数量321亿）</li>
+</ul>
+<p><strong>量化方案：</strong></p>
+<p>我们用了<strong>QLoRA微调+4bit量化推理</strong>的组合。Qwen3-32B如果全精度加载，需要64GB显存（32B×2字节，bf16格式），加上KV Cache和中间激活，单卡A100勉强但很紧张。所以我们用GPTQ做4bit量化，模型权重从64GB降到16GB，配合LoRA权重（约2GB），总显存占用约20GB。</p>
+<p><strong>量化方案对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>显存占用</th>
+<th>推理速度</th>
+<th>质量损失</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bf16（全精度）</td>
+<td>~64GB</td>
+<td>基线</td>
+<td>无</td>
+</tr>
+<tr>
+<td>8bit（GPTQ）</td>
+<td>~32GB</td>
+<td>快10%</td>
+<td>几乎无感</td>
+</tr>
+<tr>
+<td>4bit（GPTQ）</td>
+<td>~16GB</td>
+<td>快20%</td>
+<td>可接受，困惑度增加约1-2</td>
+</tr>
+<tr>
+<td>4bit（AWQ）</td>
+<td>~16GB</td>
+<td>快25%</td>
+<td>比GPTQ略好一点</td>
+</tr>
+</tbody>
+</table>
+<p>我们选4bit GPTQ，因为显存省得最多，而且质量损失在可控范围内。</p>
+<p><strong>并发和吞吐量配置：</strong></p>
+<ul>
+<li><strong>最大并发数：</strong> 8个并发请求（考虑了显存上限）</li>
+<li><strong>KV Cache配置：</strong> 每个请求最大上下文2048 tokens，KV Cache使用page attention（vLLM的机制），8个并发下约占用8GB显存</li>
+<li><strong>单次推理延迟：</strong> 首token延迟约300ms，生成速度约40 tokens/s（输入512 tokens，输出512 tokens的情况下）</li>
+<li><strong>吞吐量：</strong> 8个并发下，约320 tokens/s</li>
+</ul>
+<p><strong>部署框架：</strong></p>
+<p>我们用的是<strong>vLLM</strong>做推理框架，搭配FastAPI对外提供服务。vLLM的PagedAttention机制让KV Cache管理高效很多，支持Continuous Batching，GPU利用率高。</p>
+<p><strong>优化技巧：</strong></p>
+<ol>
+<li><strong>显存预留：</strong> 给KV Cache预留了20GB，剩下的给模型权重和中间激活</li>
+<li><strong>请求排队：</strong> 超过8个并发时，请求进入队列，不直接拒绝</li>
+<li><strong>动态batch：</strong> vLLM的continuous batching让不同长度的请求可以一起推理，提高GPU利用率</li>
+<li><strong>预热：</strong> 服务启动后先发几个预热请求，让GPU进入稳定状态，避免首请求特别慢</li>
+</ol>
+<hr>
+<h2 id="337-你这两个项目系统架构是怎么设计的">337. 你这两个项目系统架构是怎么设计的</h2>
+<p><strong>回答：</strong></p>
+<p>我参与的两个项目是<strong>法律助手</strong>和<strong>政策补贴智能匹配系统</strong>，架构设计思路不同，因为面向的业务场景不一样。</p>
+<p><strong>法律助手——RAG系统架构：</strong></p>
+<p>这是一个典型的RAG问答系统，核心是&quot;知识库检索+LLM生成&quot;。</p>
+<pre class="line-numbers language-none"><code class="language-none">用户端（Vue3 + Element Plus）
+      ↓ HTTP&#x2F;WebSocket
+后端（FastAPI + asyncio）
+      ↓
+  ┌──────────────────────────────┐
+  │         LangGraph工作流        │
+  │  Query Rewrite → 精确检索 →    │
+  │  语义检索 → 结果合并 → Reranker│
+  │  → 生成回答 → 答案校验          │
+  └──────────────┬───────────────┘
+                 ↓
+  ┌──────────────┴───────────────┐
+  │       数据层                   │
+  │  MySQL（结构化数据&#x2F;法条原文）    │
+  │  Milvus（向量索引）             │
+  │  Redis（缓存&#x2F;会话管理）         │
+  └──────────────────────────────┘
+                 ↓
+  ┌──────────────┴───────────────┐
+  │       模型层                   │
+  │  Qwen3-32B（本地部署，生成）    │
+  │  text-embedding-v3（向量化）    │
+  │  bge-reranker-v2-m3（重排序）   │
+  │  Qwen-plus（复杂推理兜底）      │
+  └──────────────────────────────┘<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>关键设计决策：</strong></p>
+<ul>
+<li>用LangGraph编排工作流，而不是简单的Chain，因为需要条件路由和错误重试</li>
+<li>两路检索（精确+语义）互补，精确检索处理法条编号等确定性查询，语义检索处理开放性问题</li>
+<li>Reranker做最后一道过滤，确保给LLM的上下文质量高</li>
+</ul>
+<p><strong>政策补贴系统——多Agent系统架构：</strong></p>
+<p>这是一个多Agent协作系统，核心是&quot;Agent分工+工作流编排&quot;。</p>
+<pre class="line-numbers language-none"><code class="language-none">用户端（Vue3 + TypeScript）
+      ↓ HTTP
+网关层（API Gateway，路由分发）
+      ↓
+  ┌──────────────────────────────┐
+  │     Supervisor Agent（主控）   │
+  │     理解用户意图，分派任务       │
+  └──────┬──────┬──────┬─────────┘
+         ↓      ↓      ↓
+  ┌────────┐┌────────┐┌──────────┐
+  │企业画像 ││政策匹配 ││材料审核   │
+  │Agent   ││Agent   ││Agent     │
+  │(采集企业││(匹配政策││(审核申请  │
+  │ 信息)   ││ 条件)   ││ 材料)    │
+  └────────┘└────────┘└──────────┘
+         ↓      ↓      ↓
+  ┌──────────────────────────────┐
+  │       数据层                   │
+  │  Neo4j（政策知识图谱）          │
+  │  MySQL（企业信息&#x2F;业务数据）      │
+  │  Redis（缓存&#x2F;会话&#x2F;状态）        │
+  └──────────────────────────────┘<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>关键设计决策：</strong></p>
+<ul>
+<li>用LangGraph管理Agent之间的状态流转，每个Agent是一个节点</li>
+<li>内置知识图谱（Neo4j）存储政策实体关系，8类实体、12种关系、500+政策、3000+条件节点</li>
+<li>企业画像Agent负责采集企业信息，匹配准确率92%以上，响应时间&lt;1.5秒</li>
+</ul>
+<hr>
+<h2 id="338-你认为你的项目的亮点是什么">338. 你认为你的项目的亮点是什么</h2>
+<p><strong>回答：</strong></p>
+<p>两个项目各有亮点，我说几个印象最深的：</p>
+<p><strong>法律助手项目的亮点：</strong></p>
+<p><strong>1. 检索召回率从68%提升到94%</strong></p>
+<p>这不是靠单一技术实现的，而是组合拳：Query Rewrite解决口语化问题→精确检索解决法条编号匹配→语义检索解决同义表达→Reranker做最后一轮筛选。每一步都贡献了效果，叠加起来效果就很明显。</p>
+<p><strong>2. 离线可用率100%</strong></p>
+<p>法律场景对可用性要求很高，不能因为网络问题律师就查不到法条。我们把核心模型（Qwen3-32B 4bit量化）和向量数据库都部署在本地，断网也能用。这在企业级RAG项目里其实不多见，大部分方案还是依赖云端API。</p>
+<p><strong>3. LLM幻觉控制</strong></p>
+<p>法律场景不能容忍编造法条。我们设计了&quot;双校验&quot;机制：先让LLM基于知识库生成回答，再用一个独立的校验模型判断答案是否和知识库一致，不一致就拒绝输出。这个机制把幻觉率降到了很低。</p>
+<p><strong>政策补贴系统项目的亮点：</strong></p>
+<p><strong>1. 多Agent协作的完整落地</strong></p>
+<p>不是概念演示，是真正上线跑的业务系统。Supervisor Agent + 3个子Agent（企业画像、政策匹配、材料审核）分工明确，Supervisor Agent负责理解用户意图并分派任务，子Agent各司其职。这个架构在企业级应用中很有参考价值。</p>
+<p><strong>2. 政策知识图谱</strong></p>
+<p>构建了8类实体、12种关系、500+政策和3000+条件节点的知识图谱。政策匹配不靠关键词硬匹配，而是通过在知识图谱中游走、逐层筛选条件来实现，匹配准确率92%以上。</p>
+<p><strong>3. 企业画像采集完整率95%以上</strong></p>
+<p>企业信息采集不仅仅是OCR扫描营业执照，而是多源数据融合——工商信息、税务信息、社保信息、知识产权信息，通过Agent自动采集和校验，采集完整率95%以上。</p>
+<p><strong>两个项目共通的亮点：</strong></p>
+<p><strong>工程化落地能力强。</strong> 两个项目都是Docker Compose部署，有完整的CI/CD流程，有监控告警，有日志收集。不是实验室demo，是真正能跑在生产环境的产品。</p>
+<hr>
+<h2 id="339-你这个项目设计了哪些技术点">339. 你这个项目设计了哪些技术点</h2>
+<p><strong>回答：</strong></p>
+<p>从两个项目里提炼一下，我梳理了几个核心的技术点：</p>
+<p><strong>1. RAG多路检索与融合排序</strong></p>
+<p>法律助手项目中，不依赖单一检索方式。而是做精确检索（法条编号、条款号精确匹配）+ 语义检索（Milvus向量相似度）+ 关键词检索（ES全文检索）三路并行，结果用Reranker重排序。这个方案的好处是各种类型的查询都有对应的检索方式覆盖。</p>
+<p><strong>2. 查询改写（Query Rewrite）</strong></p>
+<p>用户说&quot;离婚财产怎么分&quot;，不能直接拿去搜，因为法律文书写的是&quot;婚姻关系存续期间共同财产分割&quot;。我们设计了一个Prompt让LLM把口语化问题改写为法律检索表达，同时保留原始事实。这个改写对召回率影响很大。</p>
+<p><strong>3. 多Agent协作与状态管理</strong></p>
+<p>政策补贴系统里，用LangGraph实现了多Agent的工作流编排。每个Agent工作在一个共享状态图上，Supervisor Agent根据当前状态决定下一步派发到哪个子Agent。状态管理是核心难点——子Agent执行过程中出错了怎么办、超时了怎么办、返回的数据格式不对怎么办，这些都需要在LangGraph的状态机里定义好fallback逻辑。</p>
+<p><strong>4. 知识图谱驱动的政策匹配</strong></p>
+<p>政策匹配不是简单的&quot;关键词命中&quot;，而是在知识图谱中做条件游走。比如&quot;科技型中小企业&quot;这个政策，它有多个条件：企业注册时间、营收规模、研发投入占比、知识产权数量等。每个条件在知识图谱中是一个节点，Agent从根节点出发，逐层游走判断企业是否满足条件。这个比纯RAG的匹配方式准确很多。</p>
+<p><strong>5. 本地化大模型部署与量化</strong></p>
+<p>Qwen3-32B用4bit量化部署在单卡A100上，支持8个并发请求。这个过程中踩了不少坑——KV Cache怎么配置、batch size怎么调、量化后的精度损失如何评估，这些都是工程化的实践经验。</p>
+<p><strong>6. 知识图谱+向量数据库的混合存储</strong></p>
+<p>法律助手用Milvus存向量，政策补贴系统用Neo4j存知识图谱。两个系统有不同的数据特点：法律数据适合向量检索（语义相似度高），政策数据适合图结构（条件分支多、关系复杂）。选型的时候是根据数据特点决定的。</p>
+<hr>
+<h2 id="340-如果想优化还可以使用什么Agent架构">340. 如果想优化还可以使用什么Agent架构</h2>
+<p><strong>回答：</strong></p>
+<p>如果让我重新设计政策补贴系统的Agent架构，或者做下一代版本，我会考虑几个方向：</p>
+<p><strong>1. Orca架构——分层规划+执行分离</strong></p>
+<p>当前架构是Supervisor+子Agent的扁平结构，任务稍微复杂一点，Supervisor的Prompt就变得很重。Orca架构的思路是：<strong>规划层和执行层分离</strong>。规划层只负责拆解任务、制定计划，执行层只负责执行具体工具调用。这样规划层的Prompt可以很专注，执行层的工具调用也更清晰。</p>
+<p><strong>2. Plan-and-Execute（计划-执行模式）</strong></p>
+<p>当前的Agent是&quot;边想边做&quot;（ReAct），遇到复杂任务时可能会反复横跳。Plan-and-Execute是先让Agent生成一个完整计划（Plan），然后按计划执行。如果执行过程中发现计划有问题，可以回退到Plan阶段修改计划。这种模式特别适合政策性补贴这种步骤多、条件分支复杂的场景。</p>
+<p><strong>3. 引入记忆管理模块</strong></p>
+<p>当前Agent只有短期记忆（对话上下文），没有长期记忆。如果引入记忆管理模块，比如Mem0或MemGPT的方案，Agent可以记住：</p>
+<ul>
+<li>企业的历史申请记录和偏好</li>
+<li>用户常问的政策类型</li>
+<li>之前匹配过的条件组合</li>
+</ul>
+<p>下次同企业再来咨询时，Agent不需要重新采集所有信息，直接从记忆里调取，体验会好很多。</p>
+<p><strong>4. 多Agent的通信优化</strong></p>
+<p>当前Agent之间通过共享状态通信，其实有点笨重。可以考虑用<strong>消息队列</strong>做异步通信：Agent A完成工作后，把结果发到消息队列，Agent B订阅了相关主题就能收到。这样Agent之间解耦，可以独立扩缩容，高并发场景下更灵活。</p>
+<p><strong>5. Mirror Agent——自我反思机制</strong></p>
+<p>增加一个&quot;反思Agent&quot;，它不是直接回答用户问题，而是观察其他Agent的回答质量，给出改进建议。比如政策匹配Agent推荐了某个政策，反思Agent会检查：这个政策是否真的匹配、是否有更优的政策被遗漏了、匹配理由是否充分。相当于给系统加了一层质量保障。</p>
+<p><strong>6. 评估驱动的Agent迭代</strong></p>
+<p>这是偏工程化的方向。建立一个Agent行为评估数据集，包含各种用户查询和期望的Agent行为路径。每次Agent架构改动后，用这个数据集自动评估，看Agent的决策是否正确、工具调用是否合理。这样迭代有数据支撑，而不是凭感觉改。</p>
+<hr>
+<p><em>文档创建日期：2026-07-28</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/">https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第三十三组（321-330题）  基于简历项目经历，模拟面试回答   321. Reranker的输入和输出是什么？一次重排多少候选、最终保留多少条、增加多少延迟、效果提升多少？ 回答： Reranker的输入和输出：  输入： 一个query和一组候选chunks的pair对。每个pair是 (query, chunk_text) 的拼接。 输出： 每个pair的相关性分数，通常是一个0-1之间的浮点数，分数越高表示越相关。  我们用的是bge-reranker-v2-m3这个交叉编码器模型。它内部把query和chunk拼接成一个句子，中间用[SEP]分隔，然后过一个Transformer编码器，最后用分类头输出一个相关性得分。 具体参数：  重排候选数： 30个（从Milvus语义检索和MySQL精确检索两路召回合并后取Top-30） 最终保留数： Top-5（得分最高的5条） 增加延迟： 大约200-300ms（30个pair对过一遍交叉编码器的时间） 效果提升： Top-5准确率提升了约15个百分点  为什么选30个候选？ 我们测试过不同的候选数量：  1...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第三十四组（331-340题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#331-%E4%BA%BF%E7%BA%A7%E8%A3%81%E5%88%A4%E6%96%87%E4%B9%A6%E5%A6%82%E6%9E%9C%E5%8F%AA%E7%94%A8MySQL%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89%E5%92%8CLIKE%E6%9F%A5%E8%AF%A2%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8D%87%E7%BA%A7%E4%B8%BA%E7%BB%93%E6%9E%84%E5%8C%96%E7%AD%9B%E9%80%89%E3%80%81%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E3%80%81%E5%88%86%E9%9D%A2%E7%BB%9F%E8%AE%A1%E5%92%8C%E8%AF%AD%E4%B9%89%E6%A3%80%E7%B4%A2%E7%BB%93%E5%90%88%E7%9A%84%E7%B3%BB%E7%BB%9F%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">331. 亿级裁判文书如果只用MySQL条件筛选和LIKE查询，怎么升级为结构化筛选、全文检索、分面统计和语义检索结合的系统？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#332-1%E4%BA%BF%E6%9D%A11024%E7%BB%B4float32%E5%90%91%E9%87%8F%E5%A4%A7%E7%BA%A6%E9%9C%80%E8%A6%81%E5%A4%9A%E5%B0%91%E5%AD%98%E5%82%A8%EF%BC%8C%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%90%91%E9%87%8F%E7%B2%BE%E5%BA%A6%E3%80%81%E9%87%8F%E5%8C%96%E5%92%8C%E7%B4%A2%E5%BC%95%E6%96%B9%E6%A1%88%E9%99%8D%E4%BD%8E%E5%AD%98%E5%82%A8%E6%88%90%E6%9C%AC%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">332. 1亿条1024维float32向量大约需要多少存储，如何通过向量精度、量化和索引方案降低存储成本？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#333-%E9%95%BF%E8%A3%81%E5%88%A4%E6%96%87%E4%B9%A6%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%88%87%E5%88%86%E5%92%8C%E5%90%91%E9%87%8F%E5%8C%96%EF%BC%8C%E6%89%8D%E8%83%BD%E6%A0%B9%E6%8D%AE%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%9A%84%E6%A1%88%E6%83%85%E5%8F%AC%E5%9B%9E%E7%9C%9F%E6%AD%A3%E7%9B%B8%E4%BC%BC%E7%9A%84%E6%A1%88%E4%BE%8B%EF%BC%8C%E8%80%8C%E4%B8%8D%E5%8F%AA%E6%98%AF%E4%BA%8B%E5%AE%9E%E8%A1%A8%E9%9D%A2%E7%9B%B8%E4%BC%BC%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">333. 长裁判文书应该怎么切分和向量化，才能根据用户输入的案情召回真正相似的案例，而不只是事实表面相似？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#334-%E5%A6%82%E6%9E%9C%E6%8A%8A%E5%88%A4%E4%BE%8B%E6%A3%80%E7%B4%A2%E5%B0%81%E8%A3%85%E6%88%90Agent-Tool%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7%E6%8F%8F%E8%BF%B0%E3%80%81%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0%E3%80%81%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5%E3%80%81%E7%BB%93%E6%9E%9C%E6%95%B0%E9%87%8F%E4%BB%A5%E5%8F%8A%E5%A4%B1%E8%B4%A5%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">334. 如果把判例检索封装成Agent Tool，应该如何定义工具描述、输入参数、返回字段、结果数量以及失败返回格式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#335-Word%E6%96%87%E4%B9%A6%E7%94%9F%E6%88%90%E4%B8%AD%EF%BC%8C-%E7%BB%93%E6%9E%84%E5%8C%96%E5%AD%97%E6%AE%B5-%E5%9B%BA%E5%AE%9A%E6%A8%A1%E6%9D%BF-%E5%92%8C-Agent%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81-%E6%B2%99%E7%AE%B1%E6%89%A7%E8%A1%8C-%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%A1%88%E5%90%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">335. Word文书生成中，&quot;结构化字段+固定模板&quot;和&quot;Agent生成代码+沙箱执行&quot;两种方案各有什么优缺点，应该如何选型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#336-%E4%BD%A0%E5%8F%82%E4%B8%8E%E8%BF%87%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E3%80%81GPU%E5%92%8C%E9%87%8F%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%9F%E6%94%AF%E6%8C%81%E5%A4%9A%E5%B0%91%E5%B9%B6%E5%8F%91%EF%BC%8C%E6%98%BE%E5%AD%98%E3%80%81KV-Cache%E5%92%8C%E5%90%9E%E5%90%90%E9%87%8F%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">336. 你参与过的本地模型部署具体使用什么模型、GPU和量化方案？支持多少并发，显存、KV Cache和吞吐量如何配置？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#337-%E4%BD%A0%E8%BF%99%E4%B8%A4%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E7%9A%84"><span class="toc-number">1.7.</span> <span class="toc-text">337. 你这两个项目系统架构是怎么设计的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#338-%E4%BD%A0%E8%AE%A4%E4%B8%BA%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BA%AE%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.8.</span> <span class="toc-text">338. 你认为你的项目的亮点是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#339-%E4%BD%A0%E8%BF%99%E4%B8%AA%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E4%BA%86%E5%93%AA%E4%BA%9B%E6%8A%80%E6%9C%AF%E7%82%B9"><span class="toc-number">1.9.</span> <span class="toc-text">339. 你这个项目设计了哪些技术点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#340-%E5%A6%82%E6%9E%9C%E6%83%B3%E4%BC%98%E5%8C%96%E8%BF%98%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88Agent%E6%9E%B6%E6%9E%84"><span class="toc-number">1.10.</span> <span class="toc-text">340. 如果想优化还可以使用什么Agent架构</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.787Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.775Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

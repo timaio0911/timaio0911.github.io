@@ -1,0 +1,450 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第二十七组（261-270题）  基于简历项目经历，模拟面试回答   261. 选择子智能体的流程是什么 回答： 在我做的政策补贴智能匹配系统中，子智能体的选择流程是一个基于意图识别和任务拆分的路由决策过程，大概分三步走： 第一步：意图识别与任务解析。 当用户提问进来，先由入口的Supervisor Agent对问题进行理解，判断用户想做什么——是要查企业能申报什么补贴、还是想了解某">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/27_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%BB%84_261-270/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第二十七组（261-270题）  基于简历项目经历，模拟面试回答   261. 选择子智能体的流程是什么 回答： 在我做的政策补贴智能匹配系统中，子智能体的选择流程是一个基于意图识别和任务拆分的路由决策过程，大概分三步走： 第一步：意图识别与任务解析。 当用户提问进来，先由入口的Supervisor Agent对问题进行理解，判断用户想做什么——是要查企业能申报什么补贴、还是想了解某">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/img/Image.png">
+<meta property="article:published_time" content="2026-07-29T02:05:40.733Z">
+<meta property="article:modified_time" content="2026-07-29T02:05:40.742Z">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/27_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%BB%84_261-270/",
+  "image": "https://timaio0911.github.io/img/Image.png",
+  "datePublished": "2026-07-29T02:05:40.733Z",
+  "dateModified": "2026-07-29T02:05:40.742Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/27_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%BB%84_261-270/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">Welcome</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.733Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.742Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第二十七组（261-270题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="261-选择子智能体的流程是什么">261. 选择子智能体的流程是什么</h2>
+<p><strong>回答：</strong></p>
+<p>在我做的政策补贴智能匹配系统中，子智能体的选择流程是一个<strong>基于意图识别和任务拆分的路由决策过程</strong>，大概分三步走：</p>
+<p><strong>第一步：意图识别与任务解析。</strong> 当用户提问进来，先由入口的Supervisor Agent对问题进行理解，判断用户想做什么——是要查企业能申报什么补贴、还是想了解某个政策的申报条件、还是需要补全企业资料。这一步决定了后续需要调度哪些子智能体。</p>
+<p><strong>第二步：路由分发。</strong> 根据意图，Supervisor从注册的子智能体列表中选出合适的候选集。我们系统里注册了企业画像采集Agent、政策匹配Agent、条件审核Agent、材料生成Agent等几个子智能体。Supervisor会看当前任务的依赖关系——比如政策匹配必须先等企业画像采集完成，才能进行。</p>
+<p><strong>第三步：动态编排执行。</strong> 选好子智能体后，Supervisor通过LangGraph的StateGraph编排执行顺序。有些子智能体是串行的（因为依赖前一个的输出），有些是可以并行跑的（比如同时采集企业数据和政策数据）。执行过程中如果某个子智能体返回的状态异常，Supervisor会判断是重试、跳过还是终止整个流程。</p>
+<p><strong>举个例子：</strong> 用户说&quot;我们公司是深圳的科技型中小企业，能申报什么补贴&quot;，Supervisor先识别这是政策匹配需求，然后同时调度企业画像Agent（去采集这家企业的行业、规模、资质等信息）和政策检索Agent（去知识库搜深圳科技型中小企业相关的政策），等两个结果都回来后，再交给条件审核Agent做匹配计算。</p>
+<hr>
+<h2 id="262-某个用户的画像是怎么存储的">262. 某个用户的画像是怎么存储的</h2>
+<p><strong>回答：</strong></p>
+<p>这里说的&quot;用户画像&quot;在我政策补贴项目中，其实指的是<strong>企业画像</strong>，因为我们的用户是企业而不是个人。企业画像的存储我用了<strong>分层存储</strong>的策略：</p>
+<p><strong>第一层：结构化数据存在Neo4j图数据库。</strong> 企业的基本信息（名称、行业、成立时间、注册资金、经营状态等）作为节点属性，企业与政策、企业与资质之间的关系作为边。比如&quot;深圳XX科技公司&quot;是一个节点，通过&quot;所属行业&quot;边关联到&quot;软件和信息技术服务业&quot;节点，通过&quot;可申报&quot;边关联到&quot;深圳市科技型中小企业认定&quot;政策节点。用图存的好处是查询企业的关联信息非常快，做关系推理也方便。</p>
+<p><strong>第二层：非结构化/半结构化数据存在向量数据库（Milvus）。</strong> 企业的历史申报记录、审计报告、补充说明材料等文本类数据，切片后做embedding存入Milvus。当需要查&quot;这家企业过去有没有申报过类似项目&quot;时，通过向量相似度检索。</p>
+<p><strong>第三层：缓存层用Redis。</strong> 对于高频访问的企业画像数据（比如企业的基本信息、行业标签这些不常变化的字段），会缓存到Redis里，设置TTL自动过期，避免每次都要查图数据库。</p>
+<p><strong>更新机制：</strong> 企业画像不是一次性写死的。我们有一个企业画像采集Agent，会定期从企业填写的表单、上传的资质文件、以及第三方公开数据中更新画像信息，增量写入Neo4j和Milvus，同时失效Redis中对应的缓存。</p>
+<hr>
+<h2 id="263-rank模型得分是怎么算的">263. rank模型得分是怎么算的</h2>
+<p><strong>回答：</strong></p>
+<p>你说的是重排序（Rerank）环节的得分吧？在我法律助手项目中，检索完知识库后有一个重排序步骤，它的得分计算逻辑是这样的：</p>
+<p><strong>背景：</strong> 第一次检索（用BM25+向量混合检索）会召回Top-K个候选切片，比如Top-30。但这里面可能有些切片和问题相关性不高，需要用重排序模型重新打分，挑出最相关的Top-5或Top-3给大模型生成答案。</p>
+<p><strong>得分计算方式：</strong> 我们用的是基于交叉编码器（Cross-Encoder）的重排序模型，它的核心思路是<strong>把问题和候选切片拼接成一个序列</strong>[CLS]问题[SEP]切片[SEP]，然后通过Transformer编码，输出一个0到1之间的相关性分数。分数越高，说明和问题的相关性越强。</p>
+<p><strong>具体来说：</strong></p>
+<ul>
+<li>输入是（问题，候选切片）的pair对</li>
+<li>模型会综合语义匹配、关键词匹配、上下文一致性等因素给出得分</li>
+<li>这个得分是<strong>有判别力的</strong>，不像向量检索的余弦相似度那样只是一个距离度量，Cross-Encoder直接建模了问题和切片之间的交互关系</li>
+</ul>
+<p><strong>我们为什么需要它？</strong> 在项目初期，只用向量检索时，发现有些切片虽然语义上&quot;接近&quot;但实际不相关。比如用户问&quot;劳动合同纠纷的诉讼时效&quot;，向量检索可能召回&quot;劳动合同法第几条&quot;的切片，但真正需要的是&quot;诉讼时效&quot;相关的法条。加了重排序后，法条召回率从68%提升到了94%，合规正确率从72%提升到了91%。</p>
+<hr>
+<h2 id="264-LangGraph中a节点到b节点回溯机制怎么实现">264. LangGraph中a节点到b节点回溯机制怎么实现</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题问得挺细的。在LangGraph中，节点的回溯机制本质上是通过<strong>图的状态（State）管理和条件边（Conditional Edge）</strong> 来实现的，而不是像传统编程那样有&quot;goto&quot;或&quot;throw&quot;之类的跳转指令。</p>
+<p><strong>具体实现方式：</strong></p>
+<p>在LangGraph中，节点之间的跳转是通过<strong>边的定义</strong>来控制的。节点A处理完当前状态后，会返回一个状态更新，然后由边的路由函数决定下一个节点是B还是C或者回溯到A自己。</p>
+<p><strong>回溯场景的两种实现：</strong></p>
+<p><strong>场景一：简单的条件回溯。</strong> 比如节点A做数据校验，如果校验失败，需要回到上一个节点重新处理。这时候在定义边的时候，给A和B之间加一个conditional edge，路由函数根据A输出的状态（比如一个&quot;success&quot;字段）来决定是走到B还是回到A自身（或A之前的节点）。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 伪代码思路</span>
+graph<span class="token punctuation">.</span>add_conditional_edges<span class="token punctuation">(</span><span class="token string">"节点A"</span><span class="token punctuation">,</span> router<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">"success"</span><span class="token punctuation">:</span> <span class="token string">"节点B"</span><span class="token punctuation">,</span>   <span class="token comment"># 成功就往前走</span>
+    <span class="token string">"retry"</span><span class="token punctuation">:</span> <span class="token string">"节点A"</span><span class="token punctuation">,</span>     <span class="token comment"># 失败就回溯到A重试</span>
+    <span class="token string">"fallback"</span><span class="token punctuation">:</span> <span class="token string">"节点C"</span>   <span class="token comment"># 或者走兜底节点</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>场景二：多层回溯（带状态恢复）。</strong> 更复杂的情况是，A→B→C，在C发现数据有问题，需要回退到A重新处理某些上下文。这时候我们的做法是：<strong>在State中维护一个历史栈</strong>，记录每个节点处理后的状态快照。当C触发回溯时，把State中的done标志位重置，并通过conditional edge指定回退目标节点。LangGraph的StateGraph天然支持这种通过状态驱动的流程控制。</p>
+<p><strong>我在项目中的实际应用：</strong> 政策补贴系统中，企业画像采集Agent可能采集到不完整的数据（比如企业的纳税信息缺失），这时候条件审核Agent会触发回溯，让企业画像采集Agent重新去获取缺失的数据，而不是直接报错终止流程。</p>
+<hr>
+<h2 id="265-用户需要查询的实际场景是怎样的，收益率如何用智能体体现出来">265. 用户需要查询的实际场景是怎样的，收益率如何用智能体体现出来</h2>
+<p><strong>回答：</strong></p>
+<p><strong>用户查询的实际场景：</strong> 以我的政策补贴项目为例，用户查询的场景非常典型。比如一个中小企业老板，他登录系统后问：“我们公司是做软件开发的，在深圳两年了，有10来个员工，去年营收500万左右，能申请什么补贴？”</p>
+<p>这个查询看似简单，背后涉及多个步骤：要先理解企业画像（行业、规模、地域、营收等），然后匹配政策库中符合条件的政策，还要审核每个政策的申报条件是否满足，最后生成一个可申报的清单。</p>
+<p><strong>收益率如何用智能体体现：</strong></p>
+<p>这个问题我觉得可以理解为：<strong>如何让智能体理解并处理&quot;收益率&quot;这类数值化的指标场景</strong>。在政策补贴场景中，虽然没有直接的&quot;收益率&quot;概念，但类似的数值判断逻辑我们在条件审核Agent中做过：</p>
+<p><strong>第一，数值提取与标准化。</strong> 用户说&quot;年营收500万左右&quot;，Agent需要从自然语言中提取出&quot;营收 ≈ 500万&quot;这个数值，并标准化为统一的单位（万元），方便和数据库中的政策条件做比较。</p>
+<p><strong>第二，条件匹配中的数值计算。</strong> 比如某政策要求&quot;上年度营收增长率不低于15%&quot;，Agent需要先拿到企业上一年和今年的营收数据，计算出增长率，再判断是否满足条件。这个计算过程是由Agent调用一个数值计算工具完成的，而不是让大模型自己算（大模型算数值容易出错）。</p>
+<p><strong>第三，结果的可视化呈现。</strong> 匹配结果不是简单罗列，而是让Agent根据企业的收益率情况和政策申报成功率，给出一个优先级排序，告诉用户&quot;这个政策你符合条件，申报成功率很高，建议优先申报&quot;。</p>
+<hr>
+<h2 id="266-查询到了数据之后，通过工作流编排还是用AI-RAG搜出来">266. 查询到了数据之后，通过工作流编排还是用AI/RAG搜出来</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题问的是两种技术路线的选择，我的回答是：<strong>两者结合，各自负责擅长的部分</strong>。</p>
+<p><strong>工作流编排（LangGraph）负责流程控制：</strong> 当查询比较复杂，需要多个步骤、多个Agent协作时，用工作流编排来管理整体的执行流程。比如政策补贴项目中的&quot;查询匹配政策&quot;这个需求，流程是：企业画像采集→政策检索→条件审核→材料生成→结果汇总。这个流程的编排、状态管理、异常处理、节点间的数据传递，都是通过LangGraph的工作流来控制的。</p>
+<p><strong>AI/RAG负责知识检索和生成：</strong> 在具体某个节点内部的&quot;查询知识&quot;这一步，用的是RAG。比如政策检索Agent需要去政策知识库中查某个行业有什么政策，这时候就用BM25+向量检索+重排序的RAG流程来找到最相关的政策切片。</p>
+<p><strong>一个更具体的例子：</strong> 用户问&quot;我们公司是高新企业，在深圳，能申报什么补贴？&quot;</p>
+<ol>
+<li>工作流编排启动 → 进入&quot;政策匹配&quot;流程</li>
+<li>企业画像Agent（工作流中的节点）→ 去数据库查企业信息</li>
+<li>政策检索Agent（工作流中的节点）→ 内部用RAG搜政策知识库，找到&quot;深圳高新企业补贴&quot;相关条目</li>
+<li>条件审核Agent（工作流中的节点）→ 把企业画像和检索到的政策条件做对比</li>
+<li>结果汇总Agent（工作流中的节点）→ 生成最终的回答</li>
+</ol>
+<p><strong>所以我的结论是：</strong> 工作流编排决定了&quot;谁来做、按什么顺序做、做错了怎么办&quot;，RAG解决了&quot;知识从哪里来、怎么找到最相关的信息&quot;。两者缺一不可，不是二选一的关系。</p>
+<hr>
+<h2 id="267-跨页表格没有合并如何识别">267. 跨页表格没有合并如何识别</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题在法律助手项目中遇到过。很多法律文档（比如判决书、法规条文）中的表格会跨页，PDF解析时如果没有做特殊处理，跨页的表格会被拆成两个独立的表格，导致数据丢失或错乱。</p>
+<p><strong>我们的处理方式：</strong></p>
+<p><strong>第一，用MinerU做底层解析。</strong> MinerU本身对PDF的布局分析做得比较好，能识别出哪些区域是表格、哪些是正文。但它对跨页表格的合并能力有限，需要上层做额外处理。</p>
+<p><strong>第二，跨页表格合并的算法逻辑：</strong></p>
+<ol>
+<li>
+<p><strong>检测表格连续性：</strong> 在解析完所有页面后，遍历所有识别出的表格对象。如果上一页末尾有一个表格，下一页开头也有一个表格，且它们的<strong>列结构一致</strong>（列数相同、列标题语义匹配），就认为可能是同一个表格被跨页拆分了。</p>
+</li>
+<li>
+<p><strong>上下文判断：</strong> 光看列结构还不够，还需要看表格的序号和标题。如果上一页的表格末尾有&quot;续上表&quot;或&quot;续表&quot;等标识，或者下一页的表格标题和上一页相同，就确认是跨页表格。</p>
+</li>
+<li>
+<p><strong>合并策略：</strong> 确认后，将下一页的表格行追加到上一页表格的末尾，合并成一个完整的表格对象，同时删除下一页的表格头（只有第一页保留表头）。</p>
+</li>
+</ol>
+<p><strong>第三，兜底方案：</strong> 如果自动合并失败（比如PDF格式过于复杂），我们会在表格对象中打一个&quot;跨页&quot;标签，在后端处理时，把相邻页面的表格作为候选合并对，让审核人员手动确认。</p>
+<p><strong>最终效果：</strong> 通过这套处理，我们项目中的表格解析完整率达到了95%以上，对法律文档中的结构化数据提取起到了关键作用。</p>
+<hr>
+<h2 id="268-不同节点写一个key是否冲突">268. 不同节点写一个key是否冲突</h2>
+<p><strong>回答：</strong></p>
+<p>在LangGraph中，<strong>不同节点写入同一个key不会直接冲突，但需要理解LangGraph的状态管理机制才能正确使用。</strong></p>
+<p><strong>LangGraph的状态更新机制：</strong></p>
+<p>LangGraph的State是一个TypedDict或Pydantic模型，每个节点执行完后会返回一个字典，这个字典的内容会被<strong>合并（merge）<strong>到全局State中。默认的合并策略是</strong>覆盖（overwrite）</strong>——如果节点A和节点B都写入了State中的同一个key，那么后执行的节点会覆盖先执行的节点在该key上的值。</p>
+<p><strong>但这不是简单地&quot;覆盖&quot;就完事了，有几种情况：</strong></p>
+<p><strong>情况一：有意覆盖，合理。</strong> 比如节点A初始化了一个&quot;临时结果&quot;字段，节点B基于节点A的输出做了进一步处理，然后把更新后的结果写回同一个key。这是常见的设计模式，没问题。</p>
+<p><strong>情况二：无意的覆盖，容易出bug。</strong> 如果两个节点各写各的，但恰好用了同一个key名，后执行的节点会把前一个的处理结果冲掉。比如节点A写了一个&quot;result&quot;表示政策检索结果，节点B也写了一个&quot;result&quot;表示条件审核结果，节点B就会把节点A的结果覆盖掉。</p>
+<p><strong>避免冲突的做法：</strong></p>
+<ol>
+<li>
+<p><strong>命名规范：</strong> 每个节点在State中拥有自己的命名空间，比如 <code>policy_search_result</code>、<code>condition_check_result</code>、<code>material_generation_result</code>，而不是共用 <code>result</code> 这种模糊的key。</p>
+</li>
+<li>
+<p><strong>使用Reducer：</strong> LangGraph允许自定义Reducer来控制合并行为。如果确实需要多个节点往同一个key追加数据（比如所有节点都把各自的日志写入一个<code>log_list</code>），可以用<code>add</code>作为Reducer，这样每次写入都是追加而不是覆盖。</p>
+</li>
+<li>
+<p><strong>显式依赖：</strong> 在定义边的时候，明确指定节点之间的依赖关系，确保不会出现两个节点同时对同一个key做写操作但预期不一致的情况。</p>
+</li>
+</ol>
+<p><strong>我项目中的实践：</strong> 在政策补贴系统中，State定义就很清晰，每个Agent的输出都用独立的字段名，比如 <code>enterprise_profile</code>、<code>matched_policies</code>、<code>eligibility_results</code>，从设计上避免了冲突。</p>
+<hr>
+<h2 id="269-YOLO怎么部署的">269. YOLO怎么部署的</h2>
+<p><strong>回答：</strong></p>
+<p>YOLO（You Only Look Once）在项目中的部署，我是用来做<strong>文档图像中的目标检测</strong>的，比如识别法律文档中的印章、签名、二维码等元素。部署方式分几个层面：</p>
+<p><strong>第一，模型选择与导出。</strong> 我们用的是YOLOv8的官方预训练模型，在自建的文档元素数据集上做了微调。训练完成后，把PyTorch模型导出为ONNX格式，这样在推理时不需要依赖PyTorch环境，部署更轻量。</p>
+<p><strong>第二，容器化部署。</strong> 模型以ONNX格式打包进Docker镜像中，配合FastAPI提供服务。推理服务暴露一个HTTP接口，接收图片URL或Base64编码的图片，返回检测到的目标类别和坐标框。整个镜像控制在300MB左右，比带PyTorch的镜像小很多。</p>
+<p><strong>第三，与主系统的集成。</strong> YOLO推理服务是作为法律助手项目中的一个<strong>独立微服务</strong>运行的，不是嵌在主服务中。主服务（FastAPI）在处理PDF解析流程时，如果检测到文档中包含图片或印章区域，就调用YOLO服务的接口去做检测，再把检测结果返回给主流程做后续处理。</p>
+<p><strong>第四，部署配置：</strong></p>
+<ul>
+<li>推理设备：CPU（因为我们的场景对实时性要求不高，OCR和检测走离线批量处理）</li>
+<li>并发策略：用Gunicorn + Uvicorn管理多进程，每个进程加载一次模型，支持并行推理</li>
+<li>如果后续需要GPU加速，架构上已经预留了切换GPU的支持</li>
+</ul>
+<p><strong>总结：</strong> 就是&quot;微调→导出ONNX→Docker打包→FastAPI服务化→主系统调用&quot;这条链路，相对标准但很实用。</p>
+<hr>
+<h2 id="270-性能优化你做过什么？">270. 性能优化你做过什么？</h2>
+<p><strong>回答：</strong></p>
+<p>在两个项目中，我做了不少性能优化的工作，主要集中在几个方面：</p>
+<p><strong>一、RAG检索性能优化（法律助手项目）</strong></p>
+<ul>
+<li><strong>混合检索+重排序管道：</strong> 先用BM25做关键词检索（毫秒级），同时用向量检索做语义召回，两者取并集后再用重排序模型精排。相比只用向量检索，响应速度提升了60%以上。</li>
+<li><strong>缓存策略：</strong> 对高频法条查询结果做Redis缓存，设置TTL，命中率大概在30%左右，直接跳过了检索流程。</li>
+<li><strong>索引优化：</strong> Milvus中用的IVF_FLAT索引，配合合适的nlist参数，在召回率和检索速度之间取了平衡。</li>
+</ul>
+<p><strong>二、API响应优化（两个项目都有）</strong></p>
+<ul>
+<li><strong>异步化：</strong> 整个后端基于FastAPI + asyncio，IO密集型操作（数据库查询、向量检索、大模型调用）都用异步，不会阻塞工作线程。</li>
+<li><strong>连接池：</strong> Milvus、Redis、Neo4j都配置了连接池，避免频繁创建和销毁连接的开销。</li>
+<li><strong>响应压缩：</strong> 对返回给前端的JSON数据启用Gzip压缩，减少了约70%的传输体积。</li>
+</ul>
+<p><strong>三、数据处理流水线优化</strong></p>
+<ul>
+<li><strong>批量处理：</strong> PDF解析和知识库构建过程中，不是来一个文档处理一个，而是攒一批文档后批量处理，减少模型加载和卸载的开销。</li>
+<li><strong>并行处理：</strong> 用asyncio.gather让多个不依赖的步骤并行执行，比如同时解析PDF的不同页面，同时调用多个embedding模型做向量化。</li>
+</ul>
+<p><strong>四、大模型调用优化</strong></p>
+<ul>
+<li><strong>流式输出：</strong> 前端使用SSE流式接收大模型输出，用户不需要等到完整结果生成就能看到内容，体验上&quot;感觉&quot;快了很多。</li>
+<li><strong>Prompt压缩：</strong> 对长上下文做摘要压缩后再传给大模型，减少了token消耗和延迟。</li>
+</ul>
+<p><strong>量化成果：</strong> 检索响应速度提升了60%以上，企业匹配响应时间控制在1.5秒以内，离线可用率达到了100%。</p>
+<hr>
+<p><em>文档创建日期：2026-07-28</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/27_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%BB%84_261-270/">https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/27_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%83%E7%BB%84_261-270/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/28_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AB%E7%BB%84_271-280/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十八组（271-280题）  基于简历项目经历，模拟面试回答   271. 所选模型原生上下文长度为多少，是否做过拓展以支持更大的输入 回答： 我们项目中主要用的是 Qwen3-32B 和 Qwen-plus 两个模型。 Qwen3-32B 的原生上下文长度是 128K tokens，对于法律文档这种知识库场景来说，128K已经非常充裕了，单篇法律文档很少有超过这个长度的。所以我们在微调时没有做额外的上下文扩展，直接使用原生的128K上下文窗口。 Qwen-plus（通过API调用）的上下文长度是 128K，也没有做扩展。 需要上下文扩展的场景我们怎么处理？ 虽然模型本身不需要扩展，但在实际使用中，如果把整个知识库的检索结果都塞进上下文，还是可能超长。我们的做法是上游控制而不是扩展模型上下文：  检索阶段只取Top-5到Top-8个最相关的切片，每个切片控制在500-800 tokens 如果历史对话很长，会做摘要压缩（把旧轮次压缩成200字摘要），而不是把所有历史都塞进去 加上系统prompt和格式化指令，总输入控制在8K-10K tokens以内，远低于12...</div></div></div></a><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/26_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AD%E7%BB%84_251-260/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十六组（251-260题）  基于简历项目经历，模拟面试回答   251. 软标签和硬标签有什么不同 回答： 这是模型蒸馏和训练中的核心概念，我在法律助手项目中做QLoRA微调时也用到过。 硬标签就是常规训练用的标注——给每个样本一个确定的类别或答案，比如&quot;这条法条和问题相关=1，不相关=0&quot;。模型学习的目标是让预测结果尽可能匹配这个确定的标签。 软标签则包含更丰富的信息，它不是一个确定的0或1，而是一个概率分布。比如在蒸馏场景中，大模型（教师模型）对某个问题的输出概率分布是：劳动合同法第39条（0.7）、劳动合同法第40条（0.2）、劳动法第26条（0.05）、其他（0.05）。这个分布告诉学生模型的不只是&quot;哪个答案正确&quot;，还包括&quot;哪些答案在语义上也很接近&quot;。 核心区别：    维度 硬标签 软标签     信息量 只有&quot;对不对&quot; 包含&quot;有多对&quot;和&quot;接近程度&quot;   表达能力 无法区分相近错误 能表达语义相似度   生成方式 人工标注或确定答案...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第二十七组（261-270题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#261-%E9%80%89%E6%8B%A9%E5%AD%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%9A%84%E6%B5%81%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">261. 选择子智能体的流程是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#262-%E6%9F%90%E4%B8%AA%E7%94%A8%E6%88%B7%E7%9A%84%E7%94%BB%E5%83%8F%E6%98%AF%E6%80%8E%E4%B9%88%E5%AD%98%E5%82%A8%E7%9A%84"><span class="toc-number">1.2.</span> <span class="toc-text">262. 某个用户的画像是怎么存储的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#263-rank%E6%A8%A1%E5%9E%8B%E5%BE%97%E5%88%86%E6%98%AF%E6%80%8E%E4%B9%88%E7%AE%97%E7%9A%84"><span class="toc-number">1.3.</span> <span class="toc-text">263. rank模型得分是怎么算的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#264-LangGraph%E4%B8%ADa%E8%8A%82%E7%82%B9%E5%88%B0b%E8%8A%82%E7%82%B9%E5%9B%9E%E6%BA%AF%E6%9C%BA%E5%88%B6%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.</span> <span class="toc-text">264. LangGraph中a节点到b节点回溯机制怎么实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#265-%E7%94%A8%E6%88%B7%E9%9C%80%E8%A6%81%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AE%9E%E9%99%85%E5%9C%BA%E6%99%AF%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%8C%E6%94%B6%E7%9B%8A%E7%8E%87%E5%A6%82%E4%BD%95%E7%94%A8%E6%99%BA%E8%83%BD%E4%BD%93%E4%BD%93%E7%8E%B0%E5%87%BA%E6%9D%A5"><span class="toc-number">1.5.</span> <span class="toc-text">265. 用户需要查询的实际场景是怎样的，收益率如何用智能体体现出来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#266-%E6%9F%A5%E8%AF%A2%E5%88%B0%E4%BA%86%E6%95%B0%E6%8D%AE%E4%B9%8B%E5%90%8E%EF%BC%8C%E9%80%9A%E8%BF%87%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%BC%96%E6%8E%92%E8%BF%98%E6%98%AF%E7%94%A8AI-RAG%E6%90%9C%E5%87%BA%E6%9D%A5"><span class="toc-number">1.6.</span> <span class="toc-text">266. 查询到了数据之后，通过工作流编排还是用AI&#x2F;RAG搜出来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#267-%E8%B7%A8%E9%A1%B5%E8%A1%A8%E6%A0%BC%E6%B2%A1%E6%9C%89%E5%90%88%E5%B9%B6%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%AB"><span class="toc-number">1.7.</span> <span class="toc-text">267. 跨页表格没有合并如何识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#268-%E4%B8%8D%E5%90%8C%E8%8A%82%E7%82%B9%E5%86%99%E4%B8%80%E4%B8%AAkey%E6%98%AF%E5%90%A6%E5%86%B2%E7%AA%81"><span class="toc-number">1.8.</span> <span class="toc-text">268. 不同节点写一个key是否冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#269-YOLO%E6%80%8E%E4%B9%88%E9%83%A8%E7%BD%B2%E7%9A%84"><span class="toc-number">1.9.</span> <span class="toc-text">269. YOLO怎么部署的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#270-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%BD%A0%E5%81%9A%E8%BF%87%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">270. 性能优化你做过什么？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.787Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.775Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

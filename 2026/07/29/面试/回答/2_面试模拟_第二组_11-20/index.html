@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第二组（11-20题）  基于简历项目经历，模拟面试回答   11. 你这个项目的RAG准确率是多少？ 回答： 在法律助手项目中，我们的RAG系统准确率达到了91%。 具体来说，准确率的衡量是分两个层面的： 检索准确率： 法条召回率从初始的68%优化到了94%，这意味着用户问一个问题，系统能找到的相关法律条款有94%是真正相关的。 生成准确率： 法律咨询回答的合规正确率达到91%，即">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/2_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E7%BB%84_11-20/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第二组（11-20题）  基于简历项目经历，模拟面试回答   11. 你这个项目的RAG准确率是多少？ 回答： 在法律助手项目中，我们的RAG系统准确率达到了91%。 具体来说，准确率的衡量是分两个层面的： 检索准确率： 法条召回率从初始的68%优化到了94%，这意味着用户问一个问题，系统能找到的相关法律条款有94%是真正相关的。 生成准确率： 法律咨询回答的合规正确率达到91%，即">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/img/Image.png">
+<meta property="article:published_time" content="2026-07-29T02:05:40.380Z">
+<meta property="article:modified_time" content="2026-07-29T02:05:40.393Z">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/2_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E7%BB%84_11-20/",
+  "image": "https://timaio0911.github.io/img/Image.png",
+  "datePublished": "2026-07-29T02:05:40.380Z",
+  "dateModified": "2026-07-29T02:05:40.393Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/2_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E7%BB%84_11-20/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">Welcome</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.380Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.393Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第二组（11-20题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="11-你这个项目的RAG准确率是多少？">11. 你这个项目的RAG准确率是多少？</h2>
+<p><strong>回答：</strong></p>
+<p>在法律助手项目中，我们的RAG系统准确率达到了<strong>91%</strong>。</p>
+<p>具体来说，准确率的衡量是分两个层面的：</p>
+<p><strong>检索准确率：</strong> 法条召回率从初始的68%优化到了94%，这意味着用户问一个问题，系统能找到的相关法律条款有94%是真正相关的。</p>
+<p><strong>生成准确率：</strong> 法律咨询回答的合规正确率达到91%，即大模型基于检索到的法条生成的回答，经法务团队审核，91%是准确合规的。</p>
+<p><strong>为什么不是100%：</strong> 法律领域有一些特殊情况很难处理，比如新旧法条衔接、地方性法规与上位法的冲突、以及一些法律术语的歧义性。这些case需要结合具体案情才能准确判断，纯靠RAG很难做到完美。</p>
+<p><strong>持续优化：</strong> 我们建立了一套评测流水线，每周用测试集跑评测，监控准确率波动。如果某次知识库更新后准确率下降超过3%，会触发告警。</p>
+<hr>
+<h2 id="12-当用户提问的问题和RAG知识库没关系时，怎么办？">12. 当用户提问的问题和RAG知识库没关系时，怎么办？</h2>
+<p><strong>回答：</strong></p>
+<p>这是RAG系统必须处理的常见场景，我们在法律助手中设计了几层处理机制：</p>
+<p><strong>第一层，相似度阈值过滤：</strong></p>
+<p>向量检索返回的结果有一个相似度得分，我们会设置一个阈值（比如0.6）。如果Top-1结果的得分低于这个阈值，说明检索结果和问题不太相关，系统会进入兜底逻辑。</p>
+<p><strong>第二层，意图识别判断：</strong></p>
+<p>在检索之前，先用大模型做一个轻量级的意图识别，判断问题是否属于法律领域。如果问的是&quot;今天天气怎么样&quot;这类完全无关问题，直接返回&quot;抱歉，我只能回答法律相关的问题&quot;。</p>
+<p><strong>第三层，兜底回复策略：</strong></p>
+<p>对于边界模糊的问题，我们设计了分级兜底：</p>
+<ul>
+<li>完全无关：明确告知用户问题超出系统能力范围</li>
+<li>部分相关：基于检索到的最相关内容给出参考性回答，但会标注&quot;此回答仅供参考，建议咨询专业律师&quot;</li>
+<li>无法确定：返回系统预设的引导话术，建议用户换个方式提问</li>
+</ul>
+<p><strong>第四层，数据沉淀：</strong></p>
+<p>对于被拦截的无关问题，我们会记录下来，定期分析用户的真实需求，看是否需要扩展知识库覆盖范围。</p>
+<hr>
+<h2 id="13-你这个RAG项目可以怎么优化？">13. 你这个RAG项目可以怎么优化？</h2>
+<p><strong>回答：</strong></p>
+<p>基于我们在法律助手项目中的经验，RAG系统可以从以下几个方向持续优化：</p>
+<p><strong>检索层面优化：</strong></p>
+<p>第一，引入<strong>混合检索</strong>策略。我们目前是向量检索为主，可以加入BM25关键词检索做多路召回，再用Rerank模型精排，这样能同时捕获语义相关和关键词相关的文档。</p>
+<p>第二，优化<strong>切片策略</strong>。法律条文有很强的层级结构，可以按标题层级做父子切片，大块用于检索定位，小块用于精确匹配，提升召回的同时保证精确性。</p>
+<p>第三，引入<strong>知识图谱</strong>辅助检索。像我在政策补贴项目中做的那样，用Neo4j构建法律领域知识图谱，通过图谱游走补充向量检索可能遗漏的关联法条。</p>
+<p><strong>生成层面优化：</strong></p>
+<p>第一，<strong>Prompt工程</strong>迭代。针对法律场景设计更精确的prompt模板，明确要求模型引用具体法条编号，限制输出格式。</p>
+<p>第二，<strong>模型微调</strong>。我们已经做了Qwen3-32B的QLoRA微调，效果不错，后续可以用更多高质量数据继续迭代。</p>
+<p><strong>工程层面优化：</strong></p>
+<p>第一，<strong>缓存策略</strong>。对高频问题做语义缓存，相似问题直接返回缓存结果，提升响应速度。</p>
+<p>第二，<strong>异步处理</strong>。检索和生成可以部分并行化，减少整体延迟。</p>
+<hr>
+<h2 id="14-你了解TF-IDF和BM25么，为什么用BM25，他俩有啥区别？">14. 你了解TF-IDF和BM25么，为什么用BM25，他俩有啥区别？</h2>
+<p><strong>回答：</strong></p>
+<p>这两个都是经典的关键词检索算法，我在项目中都有了解。</p>
+<p><strong>TF-IDF：</strong></p>
+<p>TF（词频）衡量一个词在文档中出现的频率，IDF（逆文档频率）衡量这个词的稀有程度——越稀有的词越有区分度。TF-IDF = TF × IDF，简单直观。</p>
+<p>但它有个问题：如果一个词在一篇长文档中出现了很多次，TF会很高，但可能只是因为文档长，不代表这个词真的重要。</p>
+<p><strong>BM25：</strong></p>
+<p>BM25是TF-IDF的改进版，主要改进了两点：</p>
+<p>第一，引入了<strong>文档长度归一化</strong>。长文档的词频会被惩罚，避免长文档因为词频高而获得不公平的高分。</p>
+<p>第二，TF部分加了一个<strong>饱和函数</strong>。词频增加到一定程度后，得分增长会变缓，防止某个词出现太多次导致得分无限增长。</p>
+<p><strong>为什么用BM25：</strong></p>
+<p>法律文档的特点是篇幅长短不一，有的法条就一两句话，有的是一个很长的章节。BM25的文档长度归一化在这种场景下更合理。</p>
+<p>另外，法律术语很精确，用户问&quot;劳动仲裁&quot;，我们希望&quot;劳动仲裁&quot;这个词出现的文档得分更高，BM25的饱和特性可以避免长文档中这个词出现多次但不相关的干扰。</p>
+<p><strong>实际应用：</strong> 我们在向量检索之外，会用BM25做一路关键词检索，两路结果合并后再用Rerank精排，这就是混合检索策略。</p>
+<hr>
+<h2 id="15-如何build一个MVP-client和MVP-server">15. 如何build一个MVP client和MVP server</h2>
+<p><strong>回答：</strong></p>
+<p>MVP（Model-View-Presenter）或者更常见的MVC（Model-View-Controller）是一种架构模式。在我的项目中，FastAPI后端和Vue前端的搭建思路类似：</p>
+<p><strong>MVP Server（后端）搭建：</strong></p>
+<p>第一步，选择框架。我们用FastAPI，因为它原生支持异步、自动生成API文档、类型检查完善。</p>
+<p>第二步，定义Model层。用SQLAlchemy定义数据模型，比如用户表、法规表、问答记录表；用Pydantic定义请求/响应的Schema。</p>
+<p>第三步，实现Presenter/Service层。把业务逻辑封装在Service中，比如问答服务负责调用RAG链路、用户服务负责认证授权。</p>
+<p>第四步，定义View/API层。用FastAPI的Router定义接口，接收请求、调用Service、返回响应。</p>
+<p><strong>MVP Client（前端）搭建：</strong></p>
+<p>第一步，选择框架。我们用Vue3 + TypeScript + Element Plus。</p>
+<p>第二步，定义API层。用axios封装后端接口调用，统一处理请求拦截、响应拦截、错误处理。</p>
+<p>第三步，实现View层。用Vue组件构建页面，比如问答页面、法规浏览页面。</p>
+<p>第四步，实现Presenter/Store层。用Pinia管理状态，比如用户状态、问答历史状态。</p>
+<p><strong>快速搭建的关键：</strong> 先跑通最小闭环——一个简单的问答接口能调通，然后再逐步完善。我们当时第一周就跑通了RAG问答的基本链路，后面再迭代优化。</p>
+<hr>
+<h2 id="16-RAG的评估方法有哪些，你是怎么评估的">16. RAG的评估方法有哪些，你是怎么评估的</h2>
+<p><strong>回答：</strong></p>
+<p>RAG系统评估主要从检索和生成两个维度来评估，我在法律助手项目中的评估方法如下：</p>
+<p><strong>检索质量评估指标：</strong></p>
+<p>第一，<strong>召回率（Recall）</strong>：Top-K结果中包含了多少比例的相关文档。我们用标注数据集计算，法律助手最终达到94%。</p>
+<p>第二，<strong>精确率（Precision）</strong>：Top-K结果中有多少比例是真正相关的。</p>
+<p>第三，<strong>MRR（平均倒排名次）</strong>：第一个相关结果排在第几名，越靠前越好。</p>
+<p><strong>生成质量评估指标：</strong></p>
+<p>第一，<strong>相关性（Relevance）</strong>：回答是否和问题相关。</p>
+<p>第二，<strong>忠实度（Faithfulness）</strong>：回答是否忠实于检索到的上下文，有没有幻觉。</p>
+<p>第三，<strong>合规性</strong>：法律场景特有，回答是否符合现行法律法规。</p>
+<p><strong>我们的评估流程：</strong></p>
+<p>第一，<strong>离线评测</strong>：维护一个200条标注问题的测试集，每周跑一次自动评测，输出各项指标和趋势图。</p>
+<p>第二，<strong>人工评测</strong>：每周抽样50条，由法务人员从准确性、完整性、可读性三个维度打分（1-5分）。</p>
+<p>第三，在线指标：用户反馈点击率、平均会话轮次、跳出率等。</p>
+<p><strong>工具选择：</strong> 我们参考了RAGAS框架的评估思路，但主要是自建评测脚本，因为法律领域有特殊的合规性评估需求。</p>
+<hr>
+<h2 id="17-如何把一个文本和句子转成embedding？">17. 如何把一个文本和句子转成embedding？</h2>
+<p><strong>回答：</strong></p>
+<p>文本转embedding是RAG的基础步骤，我在项目中使用的是阿里云的text-embedding-v3模型。</p>
+<p><strong>基本流程：</strong></p>
+<p>第一步，<strong>文本预处理</strong>。清洗文本，去除无关字符，必要时做切片，控制输入长度在模型限制内（通常512或1024个token）。</p>
+<p>第二步，<strong>调用Embedding模型</strong>。将文本发送给embedding模型API，模型会返回一个固定维度的向量（比如1536维或768维）。</p>
+<p>第三步，<strong>存储向量</strong>。将向量和对应的文本chunk一起存入向量数据库（我们用Milvus），建立索引供后续检索。</p>
+<p><strong>技术细节：</strong></p>
+<p>Embedding模型本质上是一个Transformer编码器，它把输入文本通过多层注意力机制编码成一个固定长度的向量表示，这个向量捕捉了文本的语义信息。</p>
+<p>相似语义的文本会被映射到向量空间中相近的位置，所以后续可以用余弦相似度或内积来衡量两个文本的语义相似度。</p>
+<p><strong>我们在项目中的选择：</strong></p>
+<p>用阿里云的text-embedding-v3，维度1536，支持中英文，对法律术语的理解效果不错。对比过开源的BGE模型，云端API的准确率略高且无需自己维护模型服务。</p>
+<p><strong>批量处理：</strong> 对于大量文档入库，我们会批量调用embedding接口，一次传入多个文本，减少网络往返次数。</p>
+<hr>
+<h2 id="18-请简述一个简单的RAG流程">18. 请简述一个简单的RAG流程</h2>
+<p><strong>回答：</strong></p>
+<p>RAG（检索增强生成）的核心思路是&quot;先检索、再生成&quot;，让大模型基于检索到的真实数据来回答问题，而不是靠自己的&quot;记忆&quot;。</p>
+<p><strong>简单流程分三步：</strong></p>
+<p><strong>第一步，离线阶段-知识库构建：</strong></p>
+<p>把原始文档（PDF、Word、网页等）做清洗、切片，每个切片调用embedding模型转成向量，然后存入向量数据库（如Milvus）。这一步是提前做好的。</p>
+<p><strong>第二步，在线阶段-检索：</strong></p>
+<p>用户提问后，系统把用户的问题也转成向量，然后在向量数据库中做相似度搜索，找到Top-K个最相关的文档切片。</p>
+<p><strong>第三步，在线阶段-生成：</strong></p>
+<p>把检索到的相关文档切片作为&quot;上下文&quot;，和用户的问题一起拼接成prompt，送给大语言模型（如Qwen、GPT-4），模型基于这些上下文生成最终回答。</p>
+<p><strong>一个典型prompt的结构：</strong></p>
+<p>“根据以下参考资料回答用户问题：{检索到的文档} 用户问题：{用户的问题} 请用中文回答。”</p>
+<p><strong>为什么RAG有效：</strong></p>
+<p>第一，解决了大模型知识过时的问题——知识库可以随时更新。</p>
+<p>第二，减少了幻觉——回答有据可查，可以标注引用来源。</p>
+<p>第三，数据私有化——企业敏感数据不需要发给大模型训练，只要检索时用就行。</p>
+<p>我在法律助手项目中就是这个架构，检索用Milvus，生成用Qwen-plus，效果是召回率94%、合规正确率91%。</p>
+<hr>
+<h2 id="19-当资料很乱时，如何保证RAG知识库构建质量？">19. 当资料很乱时，如何保证RAG知识库构建质量？</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题我在法律助手项目中遇到过，法律资料确实非常杂乱——PDF扫描件、Word文档、带复杂表格的政策文件、甚至还有图片格式的法条。</p>
+<p><strong>多模态数据处理策略：</strong></p>
+<p>第一，<strong>分格式处理</strong>。不同类型文件用不同工具：PDF用MinerU做版式还原和OCR，Word用python-docx提取，表格用专门的表格解析器。统一输出为结构化的文本格式。</p>
+<p>第二，<strong>版式还原</strong>。对于复杂排版的PDF（比如有页眉页脚、分栏、表格），用MinerU这类工具做版式分析，还原出正确的阅读顺序，避免内容错乱。</p>
+<p>第三，<strong>图文分离</strong>。把图片单独提取出来，用OCR或视觉模型转成文字，再和正文合并。对于表格，提取表格结构后转成结构化文本。</p>
+<p><strong>切片策略优化：</strong></p>
+<p>第一，<strong>按文档结构切片</strong>。法律文档有明显的章节层级，按标题层级切片比固定长度切片效果好得多。</p>
+<p>第二，<strong>父子切片</strong>。大块（比如一整章）用于检索定位，小块（比如具体条款）用于精确匹配，兼顾召回率和精确性。</p>
+<p>第三，<strong>元数据标注</strong>。每个切片附带来源文件、章节标题、发布日期等元数据，方便后续过滤和引用。</p>
+<p><strong>质量验证：</strong></p>
+<p>入库后做抽样验证，随机抽取一批切片检查：内容是否完整、切片边界是否合理、关键信息是否丢失。发现问题就调整切片策略重新处理。</p>
+<p><strong>最终效果：</strong> 通过这些手段，法律助手的召回率从68%提升到94%，解决了图片、扫描件法律素材无法有效检索的痛点。</p>
+<hr>
+<h2 id="20-复杂的PDF如何进行解析？">20. 复杂的PDF如何进行解析？</h2>
+<p><strong>回答：</strong></p>
+<p>复杂PDF解析是我在法律助手项目中重点攻克的难点，法律领域的PDF特别复杂——扫描件、图文混排、表格嵌套、页眉页脚干扰。</p>
+<p><strong>解析工具选择：</strong></p>
+<p>我用的是MinerU，它是目前开源PDF解析工具中效果比较好的。它能处理版式分析、OCR识别、表格提取等多个环节。</p>
+<p><strong>解析流程：</strong></p>
+<p>第一，<strong>版式分析</strong>。MinerU会先分析PDF的版面布局，识别标题、正文、表格、图片、页眉页脚等区域，建立文档的结构树。</p>
+<p>第二，<strong>阅读顺序还原</strong>。对于分栏排版的文档，工具会自动判断正确的阅读顺序，避免内容错乱。</p>
+<p>第三，<strong>文字提取</strong>。普通PDF直接提取文字层；扫描件PDF会调用OCR模型识别文字。</p>
+<p>第四，<strong>表格处理</strong>。检测到表格区域后，提取表格的行列结构，转成结构化文本（比如Markdown表格或JSON格式）。</p>
+<p>第五，<strong>图片处理</strong>。图片区域单独提取，可以用视觉模型（如GPT-4V）生成图片描述。</p>
+<p><strong>特殊处理：</strong></p>
+<p>第一，<strong>页眉页脚过滤</strong>。识别出页眉页脚区域后直接剔除，避免干扰正文内容。</p>
+<p>第二，<strong>水印去除</strong>。有些PDF有大面积水印，需要做图像预处理去除。</p>
+<p>第三，<strong>编码修复</strong>。有些PDF的字体编码有问题，提取出来是乱码，需要做编码修复。</p>
+<p><strong>效果验证：</strong> 解析完成后，我会抽样检查一批文档，对比原文确认解析质量。在法律助手中，通过MinerU精准解析图文法律资料，法条召回率从68%提升到了94%。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/2_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E7%BB%84_11-20/">https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/2_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E7%BB%84_11-20/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/3_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E7%BB%84_21-30/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第三组（21-30题）  基于简历项目经历，模拟面试回答   21. 你的切块策略是什么，为什么？ 回答： 在法律助手项目中，我采用了按文档结构切片为主的策略，辅以父子切片机制。 切块策略选择： 第一，按标题层级切片。法律文档有非常清晰的层级结构——编、章、节、条、款、项。我按照这个自然结构来切片，每个切片对应一个具体的法律条款或条款组合。这样做的好处是每个切片都有明确的语义边界，检索时能精准定位到具体条款。 第二，父子切片机制。大块（比如一整章或一节）用于检索定位，小块（比如具体条款）用于精确匹配。当用户问一个宏观问题时，大块能提供完整上下文；问具体问题时，小块能给出精确答案。 第三，固定长度兜底。对于没有明显结构的文档（比如一些说明性文本），用固定长度切片（512 token），带50 token的重叠窗口，避免信息断裂。 为什么这样选择： 法律文档的特点是层级分明、条款独立性强。如果用固定长度切片，可能会把一个完整的法律条款切成两半，破坏语义完整性。按结构切片能保证每个切片都是一个完整的法律概念单元。 效果验证： 采用结构化切片后，召回率从固定长度切片的68%...</div></div></div></a><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/1_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%80%E7%BB%84_1-10/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第一组（1-10题）  基于简历项目经历，模拟面试回答   1. Python中list和元组的区别 回答： list和元组都是Python中常用的序列类型，但有本质区别： 可变性方面： list是可变的，创建后可以增删改元素；元组是不可变的，一旦创建就不能修改内容。这是最核心的区别。 语法层面： list用方括号[]表示，元组用圆括号()表示。 性能方面： 由于元组不可变，Python在内存分配上会做优化，元组的创建和访问速度比list略快，内存占用也更小。 使用场景： 我在实际项目中，对于需要动态变化的数据用list，比如知识库检索结果的聚合列表；对于不需要改变的配置项或函数返回多个值时用元组，比如Milvus的连接参数(host, port)就用元组存储。 其他差异： 元组可以作为字典的key（因为是不可变的），list不行；元组支持解包赋值，在函数返回多个值时很方便。  2. Python list.append()和list.extend()方法的区别 回答： 两个方法都是往list末尾添加元素，但行为完全不同： append() 是将传入的参数作为一个整...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第二组（11-20题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E4%BD%A0%E8%BF%99%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%9A%84RAG%E5%87%86%E7%A1%AE%E7%8E%87%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">11. 你这个项目的RAG准确率是多少？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%BD%93%E7%94%A8%E6%88%B7%E6%8F%90%E9%97%AE%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8CRAG%E7%9F%A5%E8%AF%86%E5%BA%93%E6%B2%A1%E5%85%B3%E7%B3%BB%E6%97%B6%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">12. 当用户提问的问题和RAG知识库没关系时，怎么办？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E4%BD%A0%E8%BF%99%E4%B8%AARAG%E9%A1%B9%E7%9B%AE%E5%8F%AF%E4%BB%A5%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">13. 你这个RAG项目可以怎么优化？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E4%BD%A0%E4%BA%86%E8%A7%A3TF-IDF%E5%92%8CBM25%E4%B9%88%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8BM25%EF%BC%8C%E4%BB%96%E4%BF%A9%E6%9C%89%E5%95%A5%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">14. 你了解TF-IDF和BM25么，为什么用BM25，他俩有啥区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%A6%82%E4%BD%95build%E4%B8%80%E4%B8%AAMVP-client%E5%92%8CMVP-server"><span class="toc-number">1.5.</span> <span class="toc-text">15. 如何build一个MVP client和MVP server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-RAG%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E4%BD%A0%E6%98%AF%E6%80%8E%E4%B9%88%E8%AF%84%E4%BC%B0%E7%9A%84"><span class="toc-number">1.6.</span> <span class="toc-text">16. RAG的评估方法有哪些，你是怎么评估的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E5%A6%82%E4%BD%95%E6%8A%8A%E4%B8%80%E4%B8%AA%E6%96%87%E6%9C%AC%E5%92%8C%E5%8F%A5%E5%AD%90%E8%BD%AC%E6%88%90embedding%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">17. 如何把一个文本和句子转成embedding？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E8%AF%B7%E7%AE%80%E8%BF%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84RAG%E6%B5%81%E7%A8%8B"><span class="toc-number">1.8.</span> <span class="toc-text">18. 请简述一个简单的RAG流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-%E5%BD%93%E8%B5%84%E6%96%99%E5%BE%88%E4%B9%B1%E6%97%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81RAG%E7%9F%A5%E8%AF%86%E5%BA%93%E6%9E%84%E5%BB%BA%E8%B4%A8%E9%87%8F%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">19. 当资料很乱时，如何保证RAG知识库构建质量？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-%E5%A4%8D%E6%9D%82%E7%9A%84PDF%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%A7%A3%E6%9E%90%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">20. 复杂的PDF如何进行解析？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.787Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.775Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

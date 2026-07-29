@@ -1,0 +1,772 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第二十三组（221-230题）  基于简历项目经历，模拟面试回答   221. 强化学习的偏好对齐 回答： 强化学习的偏好对齐，简单说就是让模型的输出跟人类的偏好保持一致，而不是只追求&quot;看起来合理的答案&quot;。最经典的方法是RLHF。 核心思路分为三步： 第一步——收集偏好数据： 让大模型对同一个问题生成多个回答，然后人工标注哪个更好。比如问&quot;劳动法规定试用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第二十三组（221-230题）  基于简历项目经历，模拟面试回答   221. 强化学习的偏好对齐 回答： 强化学习的偏好对齐，简单说就是让模型的输出跟人类的偏好保持一致，而不是只追求&quot;看起来合理的答案&quot;。最经典的方法是RLHF。 核心思路分为三步： 第一步——收集偏好数据： 让大模型对同一个问题生成多个回答，然后人工标注哪个更好。比如问&quot;劳动法规定试用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/img/Image.png">
+<meta property="article:published_time" content="2026-07-29T02:05:40.691Z">
+<meta property="article:modified_time" content="2026-07-29T02:05:40.700Z">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/img/Image.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/",
+  "image": "https://timaio0911.github.io/img/Image.png",
+  "datePublished": "2026-07-29T02:05:40.691Z",
+  "dateModified": "2026-07-29T02:05:40.700Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/97c7ab88a8fcb4deb51ad26ec7ad9549.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">Welcome</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.691Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.700Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第二十三组（221-230题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="221-强化学习的偏好对齐">221. 强化学习的偏好对齐</h2>
+<p><strong>回答：</strong></p>
+<p>强化学习的偏好对齐，简单说就是<strong>让模型的输出跟人类的偏好保持一致</strong>，而不是只追求&quot;看起来合理的答案&quot;。最经典的方法是RLHF。</p>
+<p><strong>核心思路分为三步：</strong></p>
+<p><strong>第一步——收集偏好数据：</strong> 让大模型对同一个问题生成多个回答，然后人工标注哪个更好。比如问&quot;劳动法规定试用期多久&quot;，模型生成了三个回答，我标注出最准确、最清晰的那个。</p>
+<p><strong>第二步——训练奖励模型（Reward Model）：</strong> 用标注好的偏好数据训练一个奖励模型，它能自动判断一个回答的质量好坏。这个模型本质上就是一个打分器，输入是&quot;问题+回答&quot;，输出是一个分数。</p>
+<p><strong>第三步——用强化学习微调大模型：</strong> 把奖励模型作为&quot;老师&quot;，用PPO算法去微调大模型，让大模型生成更受奖励模型偏好的回答。</p>
+<p><strong>在项目中的思考：</strong> 法律助手项目中，我虽然没有做完整的RLHF，但做了一个类似的机制——<strong>基于规则的反馈优化</strong>。对于法律咨询这种场景，准确性比流畅性重要得多，我设置了规则校验层，如果模型引用了错误的法律条款，会被打低分，引导模型在后续回答中更谨慎引用法条。</p>
+<p><strong>RLHF和普通微调的区别：</strong> 普通微调是&quot;教模型记住正确答案&quot;，RLHF是&quot;教模型理解什么回答更好&quot;——这是更高级的学习方式。</p>
+<hr>
+<h2 id="222-用query1和query2生成两个向量，怎么计算他们的相似度">222. 用query1和query2生成两个向量，怎么计算他们的相似度</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题的核心是<strong>向量相似度度量</strong>。生成了两个向量之后，有几种常见的方法来计算它们之间的相似度。</p>
+<p><strong>最常用的方法：</strong></p>
+<p><strong>1. 余弦相似度（Cosine Similarity）</strong></p>
+<p>这是最广泛使用的相似度计算方法。计算两个向量夹角的余弦值，值域在[-1, 1]之间，越接近1表示越相似。</p>
+<p>核心思想是：只看方向，不看长度。比如&quot;法律&quot;和&quot;法规&quot;在语义空间中的向量方向很接近，即使它们的向量长度不同，余弦相似度也会很高。</p>
+<p><strong>2. 点积（Dot Product）</strong></p>
+<p>直接把两个向量的对应元素相乘再求和。点积同时考虑了方向和长度，值越大表示越相似。</p>
+<p><strong>3. 欧氏距离（Euclidean Distance）</strong></p>
+<p>计算两个向量在空间中的直线距离，距离越小越相似。但通常在Embedding场景中，余弦相似度更常用，因为Embedding向量更关注语义方向而非绝对位置。</p>
+<p><strong>在项目中的实际应用：</strong></p>
+<p>在法律助手项目中，我用的text-embedding-v3模型默认推荐使用余弦相似度：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 实际项目中的相似度计算</span>
+query_vec <span class="token operator">=</span> embedding_model<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">"被公司辞退了怎么办"</span><span class="token punctuation">)</span>
+doc_vec <span class="token operator">=</span> embedding_model<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">"劳动合同解除的情形"</span><span class="token punctuation">)</span>
+similarity <span class="token operator">=</span> cosine_similarity<span class="token punctuation">(</span>query_vec<span class="token punctuation">,</span> doc_vec<span class="token punctuation">)</span>  <span class="token comment"># 约0.85</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>选型建议：</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐方法</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语义检索</td>
+<td>余弦相似度</td>
+<td>关注语义方向，不受向量长度影响</td>
+</tr>
+<tr>
+<td>稠密向量检索</td>
+<td>点积（归一化后等价于余弦）</td>
+<td>Milvus中默认支持</td>
+</tr>
+<tr>
+<td>聚类分析</td>
+<td>欧氏距离</td>
+<td>直观反映空间距离</td>
+</tr>
+</tbody>
+</table>
+<p><strong>简单说：</strong> 最常用的是余弦相似度，它只关心语义方向是否一致，这在RAG检索中是最合理的。</p>
+<hr>
+<h2 id="223-余弦相似度和点积有什么区别">223. 余弦相似度和点积有什么区别</h2>
+<p><strong>回答：</strong></p>
+<p>两者的核心区别在于：<strong>余弦相似度只看方向，点积同时看方向和长度。</strong></p>
+<p><strong>具体来说：</strong></p>
+<p><strong>余弦相似度：</strong></p>
+<ul>
+<li>计算的是两个向量夹角的余弦值</li>
+<li>先对向量做归一化（除以模长），再计算点积</li>
+<li>结果范围固定在[-1, 1]，直观易理解</li>
+<li>不受向量长度影响，即使一个向量很长、一个很短，只要方向一致，余弦相似度就高</li>
+</ul>
+<p><strong>点积：</strong></p>
+<ul>
+<li>直接将对应元素相乘再求和</li>
+<li>结果范围不固定，取决于向量长度</li>
+<li>同时受方向和长度影响</li>
+<li>如果向量长度很大，即使方向只有轻微差异，点积也可能很大</li>
+</ul>
+<p><strong>一个直观的例子：</strong></p>
+<p>假设三个向量代表不同&quot;法律文档&quot;的语义：</p>
+<ul>
+<li>向量A：[0.5, 0.5]（短向量，方向45度）</li>
+<li>向量B：[1.0, 1.0]（长向量，方向45度）</li>
+<li>向量C：[0.5, -0.5]（短向量，方向-45度）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>余弦相似度</th>
+<th>点积</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A和B</td>
+<td>1.0（完全相同方向）</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>A和C</td>
+<td>0（方向垂直）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B和C</td>
+<td>0（方向垂直）</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>A和B语义完全相同，余弦相似度是1.0，但点积不同（A是0.5，B是1.0）。</p>
+<p><strong>在项目中的选择：</strong></p>
+<p>在法律助手项目中，我用的text-embedding-v3生成的向量已经做了归一化（L2归一化），所以在归一化后的向量上，<strong>余弦相似度和点积是等价的</strong>。但为了代码可读性，我仍然使用余弦相似度，因为它的值域[-1,1]更容易理解——0.9以上表示非常相关，0.5以下基本不相关。</p>
+<p><strong>Milvus中的实现：</strong> Milvus默认使用点积作为距离度量，但如果向量是归一化的，点积等价于余弦相似度。所以关键是要确保入库时做归一化。</p>
+<hr>
+<h2 id="224-python的闭包是什么，有什么应用场景？">224. python的闭包是什么，有什么应用场景？</h2>
+<p><strong>回答：</strong></p>
+<p>闭包（Closure）简单说就是<strong>一个函数&quot;记住&quot;了它外部作用域的变量，即使外部函数已经执行完毕</strong>。通俗理解：函数带着&quot;记忆&quot;出门了。</p>
+<p><strong>核心机制：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">create_counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    count <span class="token operator">=</span> <span class="token number">0</span>          <span class="token comment"># 外部函数的局部变量</span>
+    <span class="token keyword">def</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">nonlocal</span> count
+        count <span class="token operator">+=</span> <span class="token number">1</span>     <span class="token comment"># 内部函数引用了外部变量</span>
+        <span class="token keyword">return</span> count
+    <span class="token keyword">return</span> counter     <span class="token comment"># 返回内部函数，形成闭包</span>
+
+my_counter <span class="token operator">=</span> create_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>my_counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>my_counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>my_counter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个<code>counter</code>函数记住了<code>count</code>变量，即使<code>create_counter</code>已经执行完毕，<code>count</code>仍然存在。</p>
+<p><strong>在项目中的应用场景：</strong></p>
+<p><strong>1. 缓存计算结果（法律助手项目）</strong></p>
+<p>在法律助手项目中，有些法律条款的查询结果比较稳定，用闭包实现简单缓存：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">create_cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cache <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">def</span> <span class="token function">get_with_cache</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> fetch_func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> key <span class="token keyword">not</span> <span class="token keyword">in</span> cache<span class="token punctuation">:</span>
+            cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> fetch_func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> get_with_cache
+
+cached_query <span class="token operator">=</span> create_cache<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 同一个查询，第二次直接走缓存</span>
+result <span class="token operator">=</span> cached_query<span class="token punctuation">(</span><span class="token string">"劳动合同法第39条"</span><span class="token punctuation">,</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> db<span class="token punctuation">.</span>query<span class="token punctuation">(</span><span class="token string">"劳动合同法第39条"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 配置化API调用（政策补贴项目）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">create_api_client</span><span class="token punctuation">(</span>base_url<span class="token punctuation">,</span> api_key<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"Authorization"</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"Bearer </span><span class="token interpolation"><span class="token punctuation">&#123;</span>api_key<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">def</span> <span class="token function">call_api</span><span class="token punctuation">(</span>endpoint<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 闭包记住了base_url和headers</span>
+        <span class="token keyword">return</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>base_url<span class="token punctuation">&#125;</span></span><span class="token interpolation"><span class="token punctuation">&#123;</span>endpoint<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> json<span class="token operator">=</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> call_api
+
+<span class="token comment"># 创建不同配置的客户端</span>
+internal_api <span class="token operator">=</span> create_api_client<span class="token punctuation">(</span><span class="token string">"http://internal:8000"</span><span class="token punctuation">,</span> <span class="token string">"key_1"</span><span class="token punctuation">)</span>
+external_api <span class="token operator">=</span> create_api_client<span class="token punctuation">(</span><span class="token string">"https://api.example.com"</span><span class="token punctuation">,</span> <span class="token string">"key_2"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3. 装饰器实现</strong></p>
+<p>Python的装饰器本质就是闭包，比如我在FastAPI中用的权限校验装饰器，就是闭包的典型应用。</p>
+<p><strong>闭包的好处：</strong> 避免全局变量、实现数据隐藏、创建工厂函数。但要注意闭包会持有外部变量的引用，如果处理不当可能导致内存泄漏。</p>
+<hr>
+<h2 id="225-早停策略是什么，可以继续训练么？">225. 早停策略是什么，可以继续训练么？</h2>
+<p><strong>回答：</strong></p>
+<p>早停策略（Early Stopping）是训练神经网络时防止过拟合的经典方法。<strong>核心思想是：当验证集的性能不再提升时，就停止训练，而不是一直训练到固定轮数。</strong></p>
+<p><strong>早停的工作原理：</strong></p>
+<p>训练过程中，同时监控训练集和验证集的损失（loss）或准确率。通常：</p>
+<ul>
+<li><strong>训练集损失</strong>：持续下降（或趋于平稳）</li>
+<li><strong>验证集损失</strong>：先下降，然后开始上升——这就是过拟合的信号</li>
+</ul>
+<p>早停就在验证集损失不再下降（或开始上升）时触发，停止训练。</p>
+<p><strong>能否继续训练？</strong></p>
+<p><strong>可以，但有条件限制：</strong></p>
+<p><strong>1. 保存最佳模型后再继续训练</strong></p>
+<p>正确做法是：早停触及时，保存当前验证集上表现最好的模型权重，然后如果还想继续，可以从这个最佳点重新加载后继续训练：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 伪代码</span>
+<span class="token keyword">if</span> val_loss <span class="token operator">&lt;</span> best_val_loss<span class="token punctuation">:</span>
+    best_val_loss <span class="token operator">=</span> val_loss
+    save_model<span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">"best_model.pth"</span><span class="token punctuation">)</span>  <span class="token comment"># 保存最佳模型</span>
+    patience_counter <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    patience_counter <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> patience_counter <span class="token operator">>=</span> patience<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"早停触发！"</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>  <span class="token comment"># 停止训练</span>
+
+<span class="token comment"># 可以继续训练的方式：</span>
+<span class="token comment"># 加载最佳模型，调整学习率，再继续训练几轮</span>
+model<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">"best_model.pth"</span><span class="token punctuation">)</span>
+<span class="token comment"># 重置优化器学习率更小</span>
+<span class="token comment"># 继续训练</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 两种继续训练的场景</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>是否推荐</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>早停后想继续训练抗过拟合</td>
+<td>不太推荐，已经过拟合了</td>
+<td>换更小的学习率，加正则化</td>
+</tr>
+<tr>
+<td>早停后想继续训练更多数据</td>
+<td>推荐</td>
+<td>加载最佳模型，在新数据上继续</td>
+</tr>
+<tr>
+<td>早停后想调整超参数再跑</td>
+<td>推荐</td>
+<td>调整后重新训练</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 为什么早停后还要继续训练</strong></p>
+<p>有时候早停触发不是因为模型已经最优，而是因为：</p>
+<ul>
+<li>学习率太大，导致验证集损失震荡</li>
+<li>验证集不够有代表性</li>
+<li>需要更多数据而不是更多轮次</li>
+</ul>
+<p><strong>在微调项目中的经验：</strong> 我微调Qwen3-32B的时候，也用了早停策略。设置patience=3，连续3轮验证集loss不下降就停止。这样既防止过拟合，又节省了训练时间。</p>
+<hr>
+<h2 id="226-怎么评估早停时机？">226. 怎么评估早停时机？</h2>
+<p><strong>回答：</strong></p>
+<p>评估早停时机的核心是<strong>判断验证集性能是否真的不再提升</strong>，而不是被噪声干扰。</p>
+<p><strong>常用的评估方法：</strong></p>
+<p><strong>1. 最标准的方法——Patience策略</strong></p>
+<p>设置一个耐心值（patience），连续N轮验证集指标没有改善才触发早停：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">patience <span class="token operator">=</span> <span class="token number">3</span>           <span class="token comment"># 连续3轮不提升就停</span>
+best_val_loss <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">'inf'</span><span class="token punctuation">)</span>
+counter <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>max_epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    train_loss <span class="token operator">=</span> train<span class="token punctuation">(</span>model<span class="token punctuation">,</span> train_loader<span class="token punctuation">)</span>
+    val_loss <span class="token operator">=</span> evaluate<span class="token punctuation">(</span>model<span class="token punctuation">,</span> val_loader<span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> val_loss <span class="token operator">&lt;</span> best_val_loss<span class="token punctuation">:</span>
+        best_val_loss <span class="token operator">=</span> val_loss
+        counter <span class="token operator">=</span> <span class="token number">0</span>
+        save_best_model<span class="token punctuation">(</span>model<span class="token punctuation">)</span>  <span class="token comment"># 记录最佳模型</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        counter <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> counter <span class="token operator">>=</span> patience<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"早停触发！第</span><span class="token interpolation"><span class="token punctuation">&#123;</span>epoch<span class="token punctuation">&#125;</span></span><span class="token string">轮"</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 更精细的方法——带Delta的早停</strong></p>
+<p>有时候验证集loss只是微小波动，设置一个最小改善量（min_delta），只有改善超过这个阈值才算&quot;真正提升&quot;：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">min_delta <span class="token operator">=</span> <span class="token number">0.001</span>  <span class="token comment"># 至少改善0.001才算</span>
+<span class="token keyword">if</span> val_loss <span class="token operator">&lt;</span> best_val_loss <span class="token operator">-</span> min_delta<span class="token punctuation">:</span>
+    best_val_loss <span class="token operator">=</span> val_loss
+    counter <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    counter <span class="token operator">+=</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3. 评估指标的选择</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>适用场景</th>
+<th>早停时机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>验证集Loss</td>
+<td>通用场景</td>
+<td>不再下降</td>
+</tr>
+<tr>
+<td>验证集准确率</td>
+<td>分类任务</td>
+<td>不再上升</td>
+</tr>
+<tr>
+<td>验证集F1</td>
+<td>不平衡数据</td>
+<td>不再上升</td>
+</tr>
+<tr>
+<td>验证集召回率</td>
+<td>法律助手项目</td>
+<td>优先保证召回率</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. 可视化辅助</strong></p>
+<p>在微调过程中，我习惯把训练和验证的loss曲线画出来。如果看到：</p>
+<ul>
+<li>训练loss持续下降，验证loss开始上升 → 过拟合，早停</li>
+<li>两个loss都趋于平稳 → 已经收敛，可以早停</li>
+<li>验证loss震荡剧烈 → 学习率太大，需要调整而不是早停</li>
+</ul>
+<p><strong>5. 经验总结</strong></p>
+<p>在微调Qwen3-32B时，我设置的是：</p>
+<ul>
+<li>patience=3</li>
+<li>min_delta=0.005</li>
+<li>监控指标：验证集Loss</li>
+<li>同时保存每一轮的checkpoint，防止误判</li>
+</ul>
+<p>这样既不会因为单轮波动就提前停止，也不会在模型已经过拟合时还继续跑。</p>
+<hr>
+<h2 id="227-agent如果卡住了一直无法响应，会做什么处理来保障用户用体验？">227. agent如果卡住了一直无法响应，会做什么处理来保障用户用体验？</h2>
+<p><strong>回答：</strong></p>
+<p>这是一个非常实际的问题。在政策补贴系统中，多Agent协作场景下确实会遇到Agent卡住的情况，我的处理策略是<strong>分层级兜底</strong>。</p>
+<p><strong>第一层——超时熔断（最基础）</strong></p>
+<p>给每个Agent节点设置超时时间，超时后自动执行兜底逻辑：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># LangGraph中设置超时</span>
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">agent_node</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># 设置超时，比如30秒</span>
+        result <span class="token operator">=</span> <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>wait_for<span class="token punctuation">(</span>
+            llm_with_tools<span class="token punctuation">.</span>ainvoke<span class="token punctuation">(</span>state<span class="token punctuation">[</span><span class="token string">"messages"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            timeout<span class="token operator">=</span><span class="token number">30.0</span>
+        <span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token string">"messages"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>result<span class="token punctuation">]</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">except</span> asyncio<span class="token punctuation">.</span>TimeoutError<span class="token punctuation">:</span>
+        <span class="token comment"># 超时后的兜底</span>
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token string">"messages"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"抱歉，处理超时，请重试或简化您的问题"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>第二层——重试机制</strong></p>
+<p>卡住不一定是一次性的，有时候是临时性问题：</p>
+<ul>
+<li>自动重试2次，每次间隔指数退避（1秒、3秒）</li>
+<li>连续失败3次则进入降级模式</li>
+</ul>
+<p><strong>第三层——降级模式</strong></p>
+<p>如果Agent确实无法响应，就降级到更简单的处理流程：</p>
+<ul>
+<li>从&quot;多Agent协作&quot;降级为&quot;单Agent直答&quot;</li>
+<li>从&quot;调用工具+知识库&quot;降级为&quot;仅用大模型自身知识回答&quot;</li>
+<li>保证用户至少能得到一个回答，而不是空等</li>
+</ul>
+<p><strong>第四层——状态监控与恢复</strong></p>
+<p>在LangGraph中，我会给每个Agent节点记录状态：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 状态监控</span>
+state <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">"current_node"</span><span class="token punctuation">:</span> <span class="token string">"匹配分析Agent"</span><span class="token punctuation">,</span>
+    <span class="token string">"retry_count"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"last_heartbeat"</span><span class="token punctuation">:</span> timestamp<span class="token punctuation">,</span>
+    <span class="token string">"error_log"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果某个Agent长时间没有心跳，管理Agent会：</p>
+<ol>
+<li>标记该节点为异常</li>
+<li>跳过该节点继续执行</li>
+<li>最终返回结果时告知用户&quot;部分服务暂时不可用&quot;</li>
+</ol>
+<p><strong>第五层——用户主动反馈</strong></p>
+<p>如果以上都失败了，用户端会展示&quot;正在处理中，请稍候&quot;的提示，并提供一个&quot;强制结束&quot;按钮，让用户主动结束当前流程，重新开始。</p>
+<p><strong>实际效果：</strong> 在政策补贴系统中引入这些机制后，Agent卡死率从约5%降到了0.3%以下，用户基本不会再遇到&quot;一直转圈没结果&quot;的情况。</p>
+<hr>
+<h2 id="228-意图识别错误该怎么处理">228. 意图识别错误该怎么处理</h2>
+<p><strong>回答：</strong></p>
+<p>意图识别错误是对话系统中最常见的问题之一。在政策补贴系统中，我用了<strong>多层级纠错机制</strong>来处理。</p>
+<p><strong>第一层——置信度阈值</strong></p>
+<p>识别意图时，每个意图都有一个置信度分数。如果最高分低于阈值（比如0.6），说明模型不确定，这个时候不直接判定，而是走&quot;澄清流程&quot;：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">intents <span class="token operator">=</span> intent_classifier<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>user_input<span class="token punctuation">)</span>
+<span class="token comment"># 最高分的意图</span>
+top_intent <span class="token operator">=</span> intents<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> top_intent<span class="token punctuation">[</span><span class="token string">"score"</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0.6</span><span class="token punctuation">:</span>
+    <span class="token comment"># 置信度低，主动反问</span>
+    <span class="token keyword">return</span> <span class="token string">"您是想了解企业补贴政策，还是想查询个人社保问题？"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>第二层——反问澄清</strong></p>
+<p>如果模型不确定用户的意图，就直接问用户。比如用户说&quot;我想了解一下补贴&quot;，模型可能不确定是&quot;企业补贴&quot;还是&quot;个人补贴&quot;，就反问：</p>
+<p>“您是想了解企业端的政策补贴，还是个人端的就业补贴？”</p>
+<p><strong>第三层——意图修正</strong></p>
+<p>如果用户已经进入了一个错误的流程，系统需要能&quot;中途修正&quot;：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 用户说"我不查企业补贴，我是想问个人社保"</span>
+<span class="token comment"># → 清空当前状态，重新识别意图</span>
+state<span class="token punctuation">[</span><span class="token string">"current_intent"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"个人社保"</span>
+state<span class="token punctuation">[</span><span class="token string">"current_step"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"collect_info"</span>  <span class="token comment"># 重新开始收集信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>第四层——上下文辅助</strong></p>
+<p>意图识别不能只看当前一句话，还要结合历史对话。比如用户之前说&quot;我是小微企业&quot;，然后说&quot;有哪些补贴可以申请&quot;，结合上下文更准确判断是&quot;企业补贴&quot;相关意图。</p>
+<p><strong>第五层——兜底策略</strong></p>
+<p>如果以上都失败了，直接用大模型做一次自由判断：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 当规则引擎无法判断时，交给大模型</span>
+prompt <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"""
+用户说："</span><span class="token interpolation"><span class="token punctuation">&#123;</span>user_input<span class="token punctuation">&#125;</span></span><span class="token string">"
+历史对话：</span><span class="token interpolation"><span class="token punctuation">&#123;</span>history<span class="token punctuation">&#125;</span></span><span class="token string">
+请判断用户的意图，只输出意图ID和置信度分数。
+"""</span></span>
+result <span class="token operator">=</span> llm<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span>prompt<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>实际效果：</strong> 加入这些策略后，政策补贴系统的意图识别准确率从85%提升到了95%以上，用户主动要求&quot;转人工&quot;的比例减少了60%。</p>
+<hr>
+<h2 id="229-Transform架构及其原理，输入输出流程">229. Transform架构及其原理，输入输出流程</h2>
+<p><strong>回答：</strong></p>
+<p>Transformer是目前几乎所有大模型的基础架构，包括我项目中用的Qwen3-32B和DeepSeek。它的核心创新是<strong>完全基于注意力机制，放弃了RNN和CNN的循环结构</strong>。</p>
+<p><strong>核心原理——三个关键组件：</strong></p>
+<p><strong>1. 自注意力机制（Self-Attention）</strong></p>
+<p>这是Transformer的心脏。简单说就是：模型在处理一个词时，会&quot;看&quot;句子中所有其他词，判断哪些词和当前词最相关，然后综合这些信息来理解当前词。</p>
+<p>比如处理&quot;他因为拖欠工资被公司解雇了&quot;这句话，模型在处理&quot;解雇&quot;时，会注意到&quot;拖欠工资&quot;这个词，理解到解雇的原因是欠薪。</p>
+<p><strong>2. 多头注意力（Multi-Head Attention）</strong></p>
+<p>不是只做一次注意力，而是做多次（8头、12头等），每次关注不同的语义关系。有的头关注语法关系，有的头关注语义相似性，有的头关注位置关系。</p>
+<p><strong>3. 前馈神经网络（FFN）</strong></p>
+<p>每个注意力层后面跟一个全连接网络，对每个位置的表示做非线性变换，增加模型的表达能力。</p>
+<p><strong>输入输出流程：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：&quot;试用期最长多久&quot;
+    ↓
+1. Token嵌入：每个词转成向量
+    [&quot;试用期&quot; → v1, &quot;最长&quot; → v2, &quot;多久&quot; → v3]
+    ↓
+2. 位置编码：加上位置信息
+    [v1+p1, v2+p2, v3+p3]
+    ↓
+3. 多头自注意力：每个词看其他词
+    [a1, a2, a3]  ← 融合了上下文信息
+    ↓
+4. 残差连接 + 层归一化
+    ↓
+5. 前馈神经网络
+    [f1, f2, f3]
+    ↓
+6. 残差连接 + 层归一化
+    ↓
+7. 重复3-6步N次（N层Transformer）
+    ↓
+8. 输出层 → 预测下一个词的概率分布
+    [&quot;最&quot; → 0.01, &quot;长&quot; → 0.02, &quot;三&quot; → 0.85, ...]
+    ↓
+输出：&quot;三个月&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>Decoder-only架构（我项目中用的模型）：</strong></p>
+<p>现在的LLM（包括Qwen、DeepSeek）都采用Decoder-only架构，只有Transformer的解码器部分。它的特点是：</p>
+<ul>
+<li><strong>因果注意力（Causal Attention）</strong>：每个词只能看到它前面的词，不能看到后面的</li>
+<li><strong>自回归生成</strong>：一个一个词地生成，每次生成依赖于前面已经生成的全部内容</li>
+</ul>
+<p><strong>在项目中的应用：</strong> 法律助手中，用户输入问题后，就是经过上述流程，模型理解问题语义，结合检索到的法律知识，一步步生成回答。</p>
+<hr>
+<h2 id="230-QKV矩阵是干嘛的">230. QKV矩阵是干嘛的</h2>
+<p><strong>回答：</strong></p>
+<p>QKV是注意力机制中的三个核心矩阵，<strong>它们是注意力计算的基础组件</strong>。简单说就是：Q（Query）提出&quot;我要找什么&quot;，K（Key）表示&quot;我有什么&quot;，V（Value）表示&quot;我提供什么信息&quot;。</p>
+<p><strong>一个通俗类比：</strong></p>
+<p>想象你在图书馆找书：</p>
+<ul>
+<li><strong>Q（Query）</strong> = 你的搜索词，比如&quot;劳动法试用期规定&quot;</li>
+<li><strong>K（Key）</strong> = 每本书的标签，比如&quot;劳动法&quot;、“劳动合同”、“试用期”</li>
+<li><strong>V（Value）</strong> = 书的内容本身</li>
+</ul>
+<p>注意力机制做的就是：用Q去匹配每个K，匹配度高的就取对应的V。</p>
+<p><strong>数学表达：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">Attention(Q, K, V) &#x3D; softmax(Q × K^T &#x2F; √d_k) × V<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>每个矩阵的具体作用：</strong></p>
+<p><strong>Q（Query）矩阵：</strong></p>
+<ul>
+<li>代表当前词在&quot;想找什么&quot;</li>
+<li>比如处理&quot;试用期&quot;这个词时，Q会编码&quot;我需要关注哪些其他词来理解试用期&quot;</li>
+<li>每个词都有自己的Q向量</li>
+</ul>
+<p><strong>K（Key）矩阵：</strong></p>
+<ul>
+<li>代表每个词在&quot;被查找时&quot;的标识</li>
+<li>每个词都把自己的语义信息编码到K向量中，供其他词的Q来匹配</li>
+<li>匹配度越高，说明这个词越相关</li>
+</ul>
+<p><strong>V（Value）矩阵：</strong></p>
+<ul>
+<li>代表每个词在&quot;被匹配上后&quot;贡献的信息</li>
+<li>如果Q和K匹配上了，对应的V就会被加权提取</li>
+<li>最终输出的就是所有V的加权和</li>
+</ul>
+<p><strong>一个具体例子：</strong></p>
+<p>处理&quot;员工被公司违法解雇可以要求赔偿&quot;这句话，当模型处理&quot;赔偿&quot;这个词时：</p>
+<pre class="line-numbers language-none"><code class="language-none">Q(&quot;赔偿&quot;) → 想知道&quot;什么原因、什么条件下可以赔偿&quot;
+    ↓
+K(&quot;违法解雇&quot;) → 匹配度很高（0.95）
+K(&quot;员工&quot;) → 匹配度中等（0.5）
+K(&quot;公司&quot;) → 匹配度较低（0.2）
+    ↓
+V(&quot;违法解雇&quot;) → 被重点提取（权重0.95）
+    ↓
+最终模型理解：&quot;赔偿&quot;的原因和条件是&quot;违法解雇&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>在项目中的意义：</strong> 理解QKV是理解注意力机制的基础，而注意力机制是理解Transformer的基础。在法律助手项目中，我虽然不直接修改QKV矩阵，但理解这个机制帮助我更好地调试模型输出——比如当模型答非所问时，说明Q和K的匹配出了问题。</p>
+<hr>
+<p><em>文档创建日期：2026-07-28</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/">https://timaio0911.github.io/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Image.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/24_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%9B%9B%E7%BB%84_231-240/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十四组（231-240题）  基于简历项目经历，模拟面试回答   231. 灾难性遗忘如何解决 回答： 灾难性遗忘是微调大模型时最头疼的问题之一——模型学了新知识，把旧知识忘了。在法律助手项目中，我主要用了几种策略来解决这个问题。 策略一：用LoRA/QLoRA而不是全量微调 这是最有效的办法。LoRA只更新低秩矩阵，原始权重冻结不动，相当于在模型原有知识基础上&quot;轻量叠加&quot;新能力。我在法律助手中用QLoRA微调Qwen3-32B，原始权重完全保留，只新增了约0.1%的参数用于法律知识适配，这样模型既能回答法律问题，通用能力也不会退化。 策略二：混合训练数据 微调时不能只塞法律数据，要把通用数据按比例混合进来。我大概用了7:3的比例——70%的法律领域数据、30%的通用对话数据，让模型在学法律知识的同时不忘基本的语言表达能力。 策略三：EWC（弹性权重巩固） 这个方法的思路是：找出模型中对旧任务重要的参数，在微调时对这些参数施加更大的惩罚，不让它们变化太大。虽然我在项目中没实现完整的EWC，但LoRA本质上做了类似的事——它把知识更新限制在低秩...</div></div></div></a><a class="pagination-related" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/22_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%BB%84_211-220/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十二组（211-220题）  基于简历项目经历，模拟面试回答   211. 如果BERT输出5类，想将输出提到10类该怎么做 回答： 这个问题本质上是分类任务的类别数扩展。核心思路是调整模型的输出层，必要时进行微调。 最简单的做法——修改分类头： BERT的架构可以拆成两部分：主干网络（Transformer Encoder） + 分类头（Classification Head）。分类头通常就是一个全连接层，输入是BERT的[CLS]向量，输出是类别数。 # 原始：5分类 classifier = nn.Linear(768, 5)  # 改为10分类 classifier = nn.Linear(768, 10) 但要注意几个问题： 1. 权重初始化 原来5类的权重不能直接复用，因为新增的5类没有对应权重。可以：  随机初始化新类别的权重：最简单，但新类需要从零学起 从同类初始化：如果新类别和旧类别语义相近，可以用旧类别的权重做初始化  2. 是否需要微调    场景 建议     新类别和旧类别相似 只训练分类头，不微调BERT   新类别差异较大 需要全模...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第二十三组（221-230题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#221-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%81%8F%E5%A5%BD%E5%AF%B9%E9%BD%90"><span class="toc-number">1.1.</span> <span class="toc-text">221. 强化学习的偏好对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#222-%E7%94%A8query1%E5%92%8Cquery2%E7%94%9F%E6%88%90%E4%B8%A4%E4%B8%AA%E5%90%91%E9%87%8F%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E4%BB%96%E4%BB%AC%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%BA%A6"><span class="toc-number">1.2.</span> <span class="toc-text">222. 用query1和query2生成两个向量，怎么计算他们的相似度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#223-%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%92%8C%E7%82%B9%E7%A7%AF%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">223. 余弦相似度和点积有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#224-python%E7%9A%84%E9%97%AD%E5%8C%85%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">224. python的闭包是什么，有什么应用场景？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#225-%E6%97%A9%E5%81%9C%E7%AD%96%E7%95%A5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%BB%A7%E7%BB%AD%E8%AE%AD%E7%BB%83%E4%B9%88%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">225. 早停策略是什么，可以继续训练么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#226-%E6%80%8E%E4%B9%88%E8%AF%84%E4%BC%B0%E6%97%A9%E5%81%9C%E6%97%B6%E6%9C%BA%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">226. 怎么评估早停时机？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#227-agent%E5%A6%82%E6%9E%9C%E5%8D%A1%E4%BD%8F%E4%BA%86%E4%B8%80%E7%9B%B4%E6%97%A0%E6%B3%95%E5%93%8D%E5%BA%94%EF%BC%8C%E4%BC%9A%E5%81%9A%E4%BB%80%E4%B9%88%E5%A4%84%E7%90%86%E6%9D%A5%E4%BF%9D%E9%9A%9C%E7%94%A8%E6%88%B7%E7%94%A8%E4%BD%93%E9%AA%8C%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">227. agent如果卡住了一直无法响应，会做什么处理来保障用户用体验？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#228-%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E9%94%99%E8%AF%AF%E8%AF%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-number">1.8.</span> <span class="toc-text">228. 意图识别错误该怎么处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#229-Transform%E6%9E%B6%E6%9E%84%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86%EF%BC%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81%E7%A8%8B"><span class="toc-number">1.9.</span> <span class="toc-text">229. Transform架构及其原理，输入输出流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#230-QKV%E7%9F%A9%E9%98%B5%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84"><span class="toc-number">1.10.</span> <span class="toc-text">230. QKV矩阵是干嘛的</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.787Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.775Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Welcome">
+<meta property="og:url" content="https://timaio0911.github.io/page/4/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timaio0911.github.io/img/Image.png">
+<meta property="article:author" content="Sloth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timaio0911.github.io/img/Image.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/a5b54dff2b7b5f007a952f3043a8fe77_1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url(/img/%E5%90%88%E5%94%B1.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Welcome</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/4_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%9B%9B%E7%BB%84_31-40/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.410Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.425Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="content">面试模拟 - 第四组（31-40题）  基于简历项目经历，模拟面试回答   31. top-k和top-p是什么，可以分别说一下么？ 回答： top-k和top-p都是大模型生成时的采样策略，用于控制输出的随机性和多样性。 top-k采样： 在每一步生成时，模型会输出所有词的概率分布。top-k策略是只保留概率最高的k个词，其余词的概率设为0，然后在这k个词中随机采样。 比如k=10，就是只考虑概率排名前10的词。k越小，输出越确定；k越大，输出越多样。 top-p采样（核采样）： top-p是按概率从高到低累加，当累加概率达到p时停止，只在这个范围内采样。 比如p=0.9，就是把词按概率从高到低排序，累加到概率和为90%为止，只在这个范围内采样。这样能自适应地选择候选词数量——当模型很确定时，可能只需要2-3个词就达到90%；不确定时可能需要20个词。 区别： top-k是固定候选词数量，top-p是固定概率阈值。top-p更灵活，能根据模型的置信度动态调整候选范围。 我在项目中的应用： 法律场景对准确性要求高，我在生成法律问答时通常设top_k=10、top_p=0.85，这...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/3_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E7%BB%84_21-30/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.394Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.409Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="content">面试模拟 - 第三组（21-30题）  基于简历项目经历，模拟面试回答   21. 你的切块策略是什么，为什么？ 回答： 在法律助手项目中，我采用了按文档结构切片为主的策略，辅以父子切片机制。 切块策略选择： 第一，按标题层级切片。法律文档有非常清晰的层级结构——编、章、节、条、款、项。我按照这个自然结构来切片，每个切片对应一个具体的法律条款或条款组合。这样做的好处是每个切片都有明确的语义边界，检索时能精准定位到具体条款。 第二，父子切片机制。大块（比如一整章或一节）用于检索定位，小块（比如具体条款）用于精确匹配。当用户问一个宏观问题时，大块能提供完整上下文；问具体问题时，小块能给出精确答案。 第三，固定长度兜底。对于没有明显结构的文档（比如一些说明性文本），用固定长度切片（512 token），带50 token的重叠窗口，避免信息断裂。 为什么这样选择： 法律文档的特点是层级分明、条款独立性强。如果用固定长度切片，可能会把一个完整的法律条款切成两半，破坏语义完整性。按结构切片能保证每个切片都是一个完整的法律概念单元。 效果验证： 采用结构化切片后，召回率从固定长度切片的68%...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/2_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E7%BB%84_11-20/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.380Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.393Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="content">面试模拟 - 第二组（11-20题）  基于简历项目经历，模拟面试回答   11. 你这个项目的RAG准确率是多少？ 回答： 在法律助手项目中，我们的RAG系统准确率达到了91%。 具体来说，准确率的衡量是分两个层面的： 检索准确率： 法条召回率从初始的68%优化到了94%，这意味着用户问一个问题，系统能找到的相关法律条款有94%是真正相关的。 生成准确率： 法律咨询回答的合规正确率达到91%，即大模型基于检索到的法条生成的回答，经法务团队审核，91%是准确合规的。 为什么不是100%： 法律领域有一些特殊情况很难处理，比如新旧法条衔接、地方性法规与上位法的冲突、以及一些法律术语的歧义性。这些case需要结合具体案情才能准确判断，纯靠RAG很难做到完美。 持续优化： 我们建立了一套评测流水线，每周用测试集跑评测，监控准确率波动。如果某次知识库更新后准确率下降超过3%，会触发告警。  12. 当用户提问的问题和RAG知识库没关系时，怎么办？ 回答： 这是RAG系统必须处理的常见场景，我们在法律助手中设计了几层处理机制： 第一层，相似度阈值过滤： 向量检索返回的结果有一个相似度得分，...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/1_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%80%E7%BB%84_1-10/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T02:05:40.329Z" title="Created 2026-07-29 10:05:40">2026-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T02:05:40.345Z" title="Updated 2026-07-29 10:05:40">2026-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="content">面试模拟 - 第一组（1-10题）  基于简历项目经历，模拟面试回答   1. Python中list和元组的区别 回答： list和元组都是Python中常用的序列类型，但有本质区别： 可变性方面： list是可变的，创建后可以增删改元素；元组是不可变的，一旦创建就不能修改内容。这是最核心的区别。 语法层面： list用方括号[]表示，元组用圆括号()表示。 性能方面： 由于元组不可变，Python在内存分配上会做优化，元组的创建和访问速度比list略快，内存占用也更小。 使用场景： 我在实际项目中，对于需要动态变化的数据用list，比如知识库检索结果的聚合列表；对于不需要改变的配置项或函数返回多个值时用元组，比如Milvus的连接参数(host, port)就用元组存储。 其他差异： 元组可以作为字典的key（因为是不可变的），list不行；元组支持解包赋值，在函数返回多个值时很方便。  2. Python list.append()和list.extend()方法的区别 回答： 两个方法都是往list末尾添加元素，但行为完全不同： append() 是将传入的参数作为一个整...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/07/29/%E5%A4%A7%E6%A8%A1%E5%9E%8B/test/" title="test">test</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-29T00:00:00.000Z" title="Created 2026-07-29 08:00:00">2026-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-29T01:37:30.259Z" title="Updated 2026-07-29 09:37:30">2026-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></span></div><div class="content">test </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-22T06:48:48.575Z" title="Created 2026-06-22 14:48:48">2026-06-22</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-05-21T02:56:26.274Z" title="Updated 2026-05-21 10:56:26">2026-05-21</time></span></div><div class="content">最小堆 堆本质 完全二叉树，底层用列表 / 数组存储，Python 只有最小堆，无原生最大堆 最小堆（小顶堆） 根节点值最小，任意父节点 ≤ 子节点，堆顶 = 全局最小值 最大堆（大顶堆） 根节点值最大，任意父节点 ≥ 子节点，堆顶 = 全局最大值 Python heapq 核心用法 import heapq heap = [] heapq.heappush(heap, x)  # 元素入堆，自动维护堆结构 						# heap -> heap[]提供一个堆容器     					# x -> 要录入的元素（元组，整形，字符串...） heapq.heappop(heap)     # 弹出堆顶最小元素，自动重构堆 heapq.heapify(list)     # 列表原地转为小堆，O(n) heapq.heappushpop()     # 先压入再弹出堆顶 堆存取规则   堆内元素必须支持大小比较   自定义对象（链表节点）不能直接比较 固定封装格式： (排序键, 唯一下标, 对象) 例： (node.val, idx, node) 避免同值报错   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Linux%E6%B1%87%E6%80%BB/" title="Linux学习">Linux学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-23T13:01:42.834Z" title="Updated 2026-06-23 21:01:42">2026-06-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">编程基础学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/">Linux</a></span></div><div class="content">Linux 基础与命令 Part1 – Linux 搭建与 Xshell 连接 获取虚拟机网址   Xshell连接网址_测试   [!info] 获取虚拟机网址后，使用 Xshell 连接测试  Part2 – Linux 基础介绍  [!warning] 所有文件测试都在 tmp 文件夹里进行   [!note] 内存：为解决磁盘写入速度慢和 CPU 不匹配的问题，但内存掉电易失需要留意  2.1 Vim 编辑器 模式切换    按键 功能     esc 回到普通模式   i 进入插入模式   a 光标向后移动一位   o 向下新建一行输入   : 底行命令模式    普通模式    按键 功能     h j k l 左、下、上、右   0 行首   $ 行尾   gg 跳到文件第一行   G 跳到文件最后一行   数字G 跳到第几行   x 删除光标当前一个字符   dd 删除一整行   dG 删除从当行到末尾所有内容    保存/退出    命令 功能     :w 保存   :q 退出   :wq 保存并退出   :q! 强制退出不保存    2.2虚拟网关  教学...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Mysql/MySQL%E5%A4%9A%E8%A1%A8join/" title="Mysql多表示例">Mysql多表示例</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-23T13:03:17.075Z" title="Updated 2026-06-23 21:03:17">2026-06-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">编程基础学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Mysql/">Mysql</a></span></div><div class="content">MySQL 多表查询示例 学生管理系统双表查询示例集合 示例1：查询学生及其选课信息 SELECT      s.student_id,     s.name,     s.major,     e.course_id,     e.status FROM students s JOIN enrollments e ON s.student_id = e.student_id ORDER BY s.name, e.course_id LIMIT 20; 示例2：查询学生选课的课程名称 SELECT      s.student_id,     s.name,     c.course_name,     e.status FROM students s JOIN enrollments e ON s.student_id = e.student_id JOIN courses c ON e.course_id = c.course_id ORDER BY s.name LIMIT 20; 示例3：查询选择了具体课程的学生信息 SELECT      c.course_name, ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="Shell的实战使用">Shell的实战使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-22T06:54:48.561Z" title="Updated 2026-06-22 14:54:48">2026-06-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">编程基础学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/">Linux</a></span></div><div class="content">CentOS 7.9 Shell正则表达式完全指南 - 100个实战案例 一、测试数据集准备 数据集1：用户信息文件 (users.txt) john.smith@company.com:John Smith:1985-03-15:+1-555-0123:USA mary_jones@email.co.uk:Mary Jones:1990-07-22:+44-20-7890:UK zhang.wei@example.cn:张伟:1988-11-30:+86-138-0000:China carlos.garcia@correo.es:Carlos García:1992-05-18:+34-91-1234:Spain admin@localhost:Admin User:1980-01-01:+1-000-0000:Local test.user123@gmail.com:Test User:1995-12-25:+1-555-9999:USA sophie-martin@france.fr:Sophie Martin:1987-09-10:+33-1-4567:France 数...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/06/22/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/Shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%98%E6%96%B9%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/" title="Shell了解">Shell了解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-06-21T16:00:00.000Z" title="Created 2026-06-22 00:00:00">2026-06-22</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-06-22T06:54:16.304Z" title="Updated 2026-06-22 14:54:16">2026-06-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">编程基础学习</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/">Linux</a></span></div><div class="content">Shell正则表达式官方语法大全 一、正则表达式基础概念 1.1 正则表达式类型 在Linux/Unix系统中，主要有三种正则表达式标准：    类型 全称 支持工具 特点     BRE Basic Regular Expression grep, sed, vi 基础正则，某些元字符需要转义   ERE Extended Regular Expression egrep, grep -E, awk 扩展正则，元字符直接使用   PCRE Perl Compatible Regular Expression grep -P, perl Perl兼容，功能最强大    1.2 工具对比    工具 默认模式 切换选项 主要用途     grep BRE -E (ERE), -P (PCRE) 文本搜索   sed BRE -r 或 -E (ERE) 流编辑器   awk ERE - 文本处理语言   egrep ERE - grep -E的别名   find BRE -regextype 文件查找    二、元字符完整列表 2.1 基础元字符    元字符 BRE ERE 含义 ...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Image.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.798Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.787Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/29/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="Untitled">Untitled</a><time datetime="2026-07-29T02:05:40.775Z" title="Created 2026-07-29 10:05:40">2026-07-29</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="View More">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"><span class="card-category-list-name">大模型</span><span class="card-category-list-count">13</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/"><span class="card-category-list-name">课程知识汇总</span><span class="card-category-list-count">12</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">编程基础学习</span><span class="card-category-list-count">13</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Mysql/"><span class="card-category-list-name">Mysql</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/deep-learning/"><span class="card-category-list-name">deep_learning</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/"><span class="card-category-list-name">面试</span><span class="card-category-list-count">34</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Shell/" style="font-size: 1.3em; color: #99a1ac">Shell</a> <a href="/tags/GSM8K/" style="font-size: 1.1em; color: #999">GSM8K</a> <a href="/tags/Ollama/" style="font-size: 1.1em; color: #999">Ollama</a> <a href="/tags/%E9%87%8F%E5%8C%96/" style="font-size: 1.3em; color: #99a1ac">量化</a> <a href="/tags/%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%9E%8B/" style="font-size: 1.1em; color: #999">翻译模型</a> <a href="/tags/LangChain/" style="font-size: 1.1em; color: #999">LangChain</a> <a href="/tags/HumanEval/" style="font-size: 1.1em; color: #999">HumanEval</a> <a href="/tags/%E6%A2%AF%E5%BA%A6%E6%A3%80%E6%9F%A5%E7%82%B9/" style="font-size: 1.1em; color: #999">梯度检查点</a> <a href="/tags/BERT/" style="font-size: 1.1em; color: #999">BERT</a> <a href="/tags/Python/" style="font-size: 1.5em; color: #99a9bf">Python</a> <a href="/tags/TensorRT-LLM/" style="font-size: 1.1em; color: #999">TensorRT-LLM</a> <a href="/tags/DPO/" style="font-size: 1.1em; color: #999">DPO</a> <a href="/tags/RoPE/" style="font-size: 1.1em; color: #999">RoPE</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/" style="font-size: 1.1em; color: #999">工作流</a> <a href="/tags/TRL/" style="font-size: 1.1em; color: #999">TRL</a> <a href="/tags/Embedding/" style="font-size: 1.3em; color: #99a1ac">Embedding</a> <a href="/tags/GPTQ/" style="font-size: 1.1em; color: #999">GPTQ</a> <a href="/tags/%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/" style="font-size: 1.1em; color: #999">时间函数</a> <a href="/tags/%E6%96%87%E6%A1%A3%E5%88%87%E5%88%86/" style="font-size: 1.1em; color: #999">文档切分</a> <a href="/tags/RLHF/" style="font-size: 1.1em; color: #999">RLHF</a> <a href="/tags/Self-Attention/" style="font-size: 1.1em; color: #999">Self-Attention</a> <a href="/tags/Bash/" style="font-size: 1.3em; color: #99a1ac">Bash</a> <a href="/tags/Dify/" style="font-size: 1.1em; color: #999">Dify</a> <a href="/tags/Transformer/" style="font-size: 1.3em; color: #99a1ac">Transformer</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/" style="font-size: 1.1em; color: #999">模型评估</a> <a href="/tags/Reranker/" style="font-size: 1.1em; color: #999">Reranker</a> <a href="/tags/Teacher-Forcing/" style="font-size: 1.1em; color: #999">Teacher Forcing</a> <a href="/tags/GGUF/" style="font-size: 1.1em; color: #999">GGUF</a> <a href="/tags/C-Eval/" style="font-size: 1.1em; color: #999">C-Eval</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/" style="font-size: 1.1em; color: #999">分布式训练</a> <a href="/tags/MoE/" style="font-size: 1.1em; color: #999">MoE</a> <a href="/tags/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" style="font-size: 1.1em; color: #999">多表查询</a> <a href="/tags/LoRA/" style="font-size: 1.3em; color: #99a1ac">LoRA</a> <a href="/tags/QLoRA/" style="font-size: 1.1em; color: #999">QLoRA</a> <a href="/tags/%E6%B7%B7%E5%90%88%E7%B2%BE%E5%BA%A6/" style="font-size: 1.1em; color: #999">混合精度</a> <a href="/tags/API%E8%B0%83%E7%94%A8/" style="font-size: 1.1em; color: #999">API调用</a> <a href="/tags/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">向量数据库</a> <a href="/tags/%E4%BD%8E%E4%BB%A3%E7%A0%81/" style="font-size: 1.1em; color: #999">低代码</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" style="font-size: 1.1em; color: #999">异常处理</a> <a href="/tags/Encoder-Decoder/" style="font-size: 1.1em; color: #999">Encoder-Decoder</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/07/">
+            <span class="card-archive-list-date">
+              July 2026
+            </span>
+            <span class="card-archive-list-count">35</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/06/">
+            <span class="card-archive-list-date">
+              June 2026
+            </span>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              January 2025
+            </span>
+            <span class="card-archive-list-count">12</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">62</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-07-29T02:09:39.325Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
