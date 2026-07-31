@@ -1,0 +1,563 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>面试模拟 - 第十八组（171-180题） | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第十八组（171-180题）  基于简历项目经历，模拟面试回答   171. 多语言处理的过程中，语言是怎么处理的 回答： 多语言处理的核心问题在于：不同语言的语法结构、分词方式、语义表达差异很大，不能简单地用同一套规则去套。 分几个层面来说： 第一层：分词（Tokenization） 不同语言的分词策略不同。英文天然以空格分隔，中文需要分词器（比如jieba、HanLP），日韩语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试模拟 - 第十八组（171-180题）">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/18/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/18_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E5%85%AB%E7%BB%84_171-180/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第十八组（171-180题）  基于简历项目经历，模拟面试回答   171. 多语言处理的过程中，语言是怎么处理的 回答： 多语言处理的核心问题在于：不同语言的语法结构、分词方式、语义表达差异很大，不能简单地用同一套规则去套。 分几个层面来说： 第一层：分词（Tokenization） 不同语言的分词策略不同。英文天然以空格分隔，中文需要分词器（比如jieba、HanLP），日韩语言">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/020_%E5%B0%81%E9%9D%A2_2026_07_29.jpg">
+<meta property="article:published_time" content="2026-07-18T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-31T01:18:09.304Z">
+<meta property="article:author" content="Sloth">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/020_%E5%B0%81%E9%9D%A2_2026_07_29.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "面试模拟 - 第十八组（171-180题）",
+  "url": "https://timaio0911.github.io/2026/07/18/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/18_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E5%85%AB%E7%BB%84_171-180/",
+  "image": "https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/020_%E5%B0%81%E9%9D%A2_2026_07_29.jpg",
+  "datePublished": "2026-07-18T00:00:00.000Z",
+  "dateModified": "2026-07-31T01:18:09.304Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/18/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/18_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E5%85%AB%E7%BB%84_171-180/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试模拟 - 第十八组（171-180题）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/059_%E5%B0%81%E9%9D%A2_2026_07_29_1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/020_%E5%B0%81%E9%9D%A2_2026_07_29.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">面试模拟 - 第十八组（171-180题）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">面试模拟 - 第十八组（171-180题）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-18T00:00:00.000Z" title="Created 2026-07-18 08:00:00">2026-07-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-31T01:18:09.304Z" title="Updated 2026-07-31 09:18:09">2026-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第十八组（171-180题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="171-多语言处理的过程中，语言是怎么处理的">171. 多语言处理的过程中，语言是怎么处理的</h2>
+<p><strong>回答：</strong></p>
+<p>多语言处理的核心问题在于：不同语言的语法结构、分词方式、语义表达差异很大，不能简单地用同一套规则去套。</p>
+<p><strong>分几个层面来说：</strong></p>
+<p><strong>第一层：分词（Tokenization）</strong></p>
+<p>不同语言的分词策略不同。英文天然以空格分隔，中文需要分词器（比如jieba、HanLP），日韩语言也有自己的分词方式。现在大模型用的BPE（Byte Pair Encoding）或SentencePiece，把文本切分成子词单元，不依赖语言边界，所以天然支持多语言。比如&quot;Transformer&quot;在英文里可能被切成&quot;Trans&quot;+“former”，在中文里&quot;注意力机制&quot;可能被切成&quot;注意&quot;+“力”+“机制”。模型不知道什么是语言边界，它只知道统计上哪些子词序列更常见。</p>
+<p><strong>第二层：Embedding空间的对齐</strong></p>
+<p>多语言模型（比如mBERT、XLM-R）在训练时，会把不同语言的句子映射到同一个语义空间。技术上通过<strong>跨语言对比学习</strong>来实现——让意思相同的句子（比如&quot;苹果很好吃&quot;和&quot;Apples are delicious&quot;）在向量空间中的距离尽可能近。这样模型&quot;理解&quot;了中文和英文说的是一回事，即使句法结构完全不同。</p>
+<p><strong>第三层：实际落地中的处理</strong></p>
+<p>在项目实践中，我遇到过用户混合使用中英文提问的情况，比如&quot;帮我查一下民法典中关于intellectual property的条款&quot;。我的做法是：</p>
+<ol>
+<li><strong>不事先做语言检测</strong>，让模型直接处理混输</li>
+<li>知识库里的法律文本是中文为主，但Query Rewrite阶段，如果检测到英文关键词，会保留原文不翻译，因为法律术语翻译可能不准确</li>
+<li>检索时，向量化模型（text-embedding-v3）本身支持多语言，中文query能匹配到英文法条释义，反之亦然</li>
+</ol>
+<p><strong>经验总结：</strong> 多语言处理现在主要靠大模型自身的多语言能力，工程上不需要做太多额外工作。但要注意的是，<strong>知识库的质量</strong>比语言处理更重要——如果知识库本身只有中文，那模型再强也回答不了英文问题。</p>
+<hr>
+<h2 id="172-workflow和agent的区别">172. workflow和agent的区别</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题很关键，我在选型的时候也反复纠结过。</p>
+<p><strong>核心区别：确定性 vs 自主性</strong></p>
+<p><strong>Workflow（工作流）：</strong> 预定义的、确定性的执行路径。你画好流程图，每个节点的输入输出、条件分支、执行顺序都是提前定义好的。比如在法律助手项目中，我用的LangGraph工作流：Query Rewrite → 精确检索 → 语义检索 → 结果合并 → Reranker → 生成回答。每个步骤做什么、做完后去哪个节点，都是固定的。</p>
+<p><strong>Agent（智能体）：</strong> 自主决策的执行单元。它有一个目标，自己决定用什么工具、走什么路径去达成目标。比如政策补贴系统中的企业画像Agent，它知道目标是&quot;采集企业信息&quot;，至于先查工商信息还是先查社保信息，它自己判断。如果某个工具失败了，它会尝试另一个工具，而不是死板地走预定义路径。</p>
+<p><strong>打个比方：</strong></p>
+<ul>
+<li>Workflow就像<strong>流水线</strong>——每个工位的人做固定的事，零件按顺序经过每个工位</li>
+<li>Agent就像<strong>自由职业者</strong>——你告诉他&quot;帮我搞定这件事&quot;，他自己决定先做什么、用什么工具、遇到问题怎么解决</li>
+</ul>
+<p><strong>什么时候用Workflow：</strong></p>
+<ul>
+<li>流程固定、不常变化（比如法律检索的标准流程）</li>
+<li>对可靠性要求高，不能有偏差</li>
+<li>容易被审计和调试</li>
+</ul>
+<p><strong>什么时候用Agent：</strong></p>
+<ul>
+<li>任务开放、路径不固定（比如企业信息采集，不同企业的数据源不同）</li>
+<li>需要灵活应对异常情况</li>
+<li>用户需求多样化，难以穷举所有路径</li>
+</ul>
+<p><strong>实际项目中的组合使用：</strong></p>
+<p>在政策补贴系统中，我实际上是<strong>把Agent放在Workflow里面</strong>。Workflow是宏观的&quot;匹配—审核—推荐&quot;流程，其中每个节点内部是一个Agent，自主决策如何完成自己的任务。这样既保证了整体的可控性，又保留了局部的灵活性。</p>
+<hr>
+<h2 id="173-文档超过模型上下文窗口时怎么做摘要">173. 文档超过模型上下文窗口时怎么做摘要</h2>
+<p><strong>回答：</strong></p>
+<p>这是一个很实际的问题，法律助手里经常遇到——一份合同可能几万字，但模型的上下文窗口最多32K tokens。</p>
+<p><strong>我的做法分场景：</strong></p>
+<p><strong>场景一：Map-Reduce（最常用）</strong></p>
+<p>把长文档切成多个片段，每个片段分别做摘要，再把所有摘要合并做最终摘要。这就像&quot;先读每章，再综合作者要表达什么&quot;。</p>
+<p>具体做法：</p>
+<ol>
+<li>按段落或章节切分文档，每个片段不超过模型上下文的一半</li>
+<li>对每个片段独立生成摘要（map阶段）</li>
+<li>把所有片段的摘要拼接起来，再做一次摘要（reduce阶段）</li>
+</ol>
+<p>优点是实现简单，没有丢失信息。缺点是成本高（每个片段都调用一次LLM），而且片段之间的上下文关系可能丢失。</p>
+<p><strong>场景二：滑动窗口（Streaming）</strong></p>
+<p>用一个滑动窗口逐段处理，每次窗口包含前一段的摘要+当前段落。比如：</p>
+<ul>
+<li>处理第1段，生成摘要A</li>
+<li>处理第2段，输入是&quot;摘要A + 第2段原文&quot;，生成摘要B</li>
+<li>处理第3段，输入是&quot;摘要B + 第3段原文&quot;，生成摘要C</li>
+</ul>
+<p>这样每段只处理一次，且保留了上下文连续性。我的合同审查功能就用这个方案，因为合同条款之间逻辑关联性强，不能丢失前文信息。</p>
+<p><strong>场景三：分层摘要（Hierarchical）</strong></p>
+<p>适用于超长文档（比如几万字的裁判文书）。先做小片段摘要，再把小片段摘要合并成中片段摘要，再合并成最终摘要。类似于金字塔结构。</p>
+<p><strong>场景四：提取关键信息（结构化摘要）</strong></p>
+<p>不是所有文档都需要完整摘要。在政策补贴系统中，企业上传的资质文件可能几百页，但我不需要全文摘要，只需要提取关键字段——企业名称、注册时间、经营范围、资质证书编号等。用LLM做结构化提取，比做摘要效率高得多。</p>
+<p><strong>我的选型建议：</strong></p>
+<p>如果是法律合同这种逻辑连贯、有关键条款的文档，用<strong>滑动窗口</strong>。如果是政策文件这种分章节、每章相对独立的文档，用<strong>Map-Reduce</strong>。如果只是想提取关键信息，用<strong>结构化提取</strong>。</p>
+<hr>
+<h2 id="174-如何检测链表是否存在环？">174. 如何检测链表是否存在环？</h2>
+<p><strong>回答：</strong></p>
+<p>这是经典的算法题，最常用的方法是<strong>快慢指针</strong>（Floyd判圈算法）。</p>
+<p><strong>思路很简单：</strong> 两个指针同时从链表头部出发，慢指针每次走一步，快指针每次走两步。如果链表有环，快指针终会追上慢指针（两者相遇）；如果没有环，快指针会先到达末尾。</p>
+<p><strong>为什么要用两步？</strong> 其实走三步、四步也可以，但两步是最优的——保证快指针相对慢指针以1步/次的速度逼近，在任何环上都能相遇，不会跳过。</p>
+<p><strong>在实际项目中用过吗？</strong></p>
+<p>说实话，在AI应用开发中，直接手写链表判环的场景很少。但它的<strong>底层思想</strong>在Agent开发中很有用——<strong>防止路由死循环</strong>。在LangGraph工作流中，Agent在多个节点之间跳转，如果路由逻辑设计不当，可能会陷入A→B→C→A的死循环。我处理这个问题的方法就是借鉴了快慢指针的思路：<strong>在Agent状态中维护一个&quot;访问历史&quot;，如果某个节点被访问超过一定次数，就强制中断或走默认路径</strong>。</p>
+<hr>
+<h2 id="175-有用过docker和k8s么，分别介绍一下？">175. 有用过docker和k8s么，分别介绍一下？</h2>
+<p><strong>回答：</strong></p>
+<p>两个项目都用Docker部署，k8s在政策补贴系统中用过。</p>
+<p><strong>Docker——应用的打包和运行环境标准化</strong></p>
+<p>Docker解决的问题是&quot;在我电脑上能跑&quot;的尴尬。项目中，我把法律助手拆成几个容器：</p>
+<ul>
+<li><code>legal-app</code>：FastAPI后端</li>
+<li><code>legal-frontend</code>：Vue3前端（Nginx容器）</li>
+<li><code>milvus</code>：向量数据库</li>
+<li><code>redis</code>：缓存</li>
+<li><code>mysql</code>：关系数据库</li>
+</ul>
+<p>用Docker Compose一键启动，所有服务在同一个网络里，互相通过服务名访问。开发环境、测试环境、生产环境用同一套Dockerfile，彻底消除了环境不一致的问题。</p>
+<p><strong>K8s——容器的编排和集群管理</strong></p>
+<p>政策补贴系统上线后，单机Docker不够用了，需要多机部署、自动扩缩容、滚动更新，所以引入了K8s。</p>
+<p>K8s的核心概念：</p>
+<ul>
+<li><strong>Pod</strong>：最小的部署单元，一个Pod里可以跑一个或多个容器</li>
+<li><strong>Deployment</strong>：管理Pod的副本数和滚动更新</li>
+<li><strong>Service</strong>：服务发现和负载均衡</li>
+<li><strong>ConfigMap/Secret</strong>：配置管理</li>
+</ul>
+<p><strong>用了K8s的哪些功能？</strong></p>
+<ol>
+<li><strong>自动扩缩容（HPA）：</strong> 根据CPU和内存使用率自动调整Pod数量。政策补贴系统在申报季流量会暴涨，HPA自动从3个Pod扩展到10个，流量回落后再缩回去</li>
+<li><strong>滚动更新：</strong> 更新代码时不中断服务，先启动新Pod，等它Ready后再关掉旧Pod</li>
+<li><strong>健康检查：</strong> Liveness Probe检测容器是否存活，Readiness Probe检测服务是否就绪，不健康时自动重启</li>
+</ol>
+<p><strong>Docker vs K8s的选型建议：</strong></p>
+<p>如果只是单机部署、服务不多，Docker Compose就够了，没必要上K8s（运维成本很高）。如果有多台机器、需要弹性伸缩、服务比较多，才值得上K8s。</p>
+<hr>
+<h2 id="176-python异步协程和线程的区别？">176. python异步协程和线程的区别？</h2>
+<p><strong>回答：</strong></p>
+<p><strong>核心区别一句话：线程是操作系统级别的并发，协程是用户级别的并发。</strong></p>
+<p><strong>线程：</strong></p>
+<ul>
+<li>由操作系统调度，多个线程可以同时运行在多个CPU核心上（真正的并行）</li>
+<li>切换线程需要操作系统介入，有上下文切换开销（保存寄存器、栈等）</li>
+<li>线程间共享内存，需要锁来避免数据竞争</li>
+<li>适合CPU密集型任务或真正的并行计算</li>
+</ul>
+<p><strong>协程（async/await）：</strong></p>
+<ul>
+<li>由事件循环调度，单线程内运行，同一时间只有一个协程在运行（并发而非并行）</li>
+<li>协程切换是用户态操作，开销极小（保存几个变量就行了）</li>
+<li>不需要锁，因为单线程内不会同时执行两个协程</li>
+<li>适合I/O密集型任务——网络请求、文件读写、数据库查询</li>
+</ul>
+<p><strong>在项目中的实际使用：</strong></p>
+<p>法律助手后端用FastAPI，天然支持异步。我遇到最多的场景是：用户提问后，需要同时查询Milvus（向量检索）和MySQL（精确检索），两路检索是独立的，用协程并行执行：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">milvus_task <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>create_task<span class="token punctuation">(</span>search_milvus<span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">)</span>
+mysql_task <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>create_task<span class="token punctuation">(</span>search_mysql<span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">)</span>
+results <span class="token operator">=</span> <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>gather<span class="token punctuation">(</span>milvus_task<span class="token punctuation">,</span> mysql_task<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这里两路检索是<strong>并发执行</strong>的，总耗时等于较慢的那一路，而不是两路串行的和。如果用线程也能实现，但协程的创建和切换开销更小，适合这种大量I/O等待的场景。</p>
+<p><strong>选型总结：</strong></p>
+<ul>
+<li>I/O密集型（网络请求、数据库查询、文件读写）→ <strong>协程</strong>，开销小，代码更简洁</li>
+<li>CPU密集型（计算、数据处理）→ <strong>多进程</strong>，利用多核</li>
+<li>两者混合 → <strong>多进程+协程</strong>，每个进程内用协程处理I/O</li>
+</ul>
+<hr>
+<h2 id="177-什么是IO密集型场景">177. 什么是IO密集型场景</h2>
+<p><strong>回答：</strong></p>
+<p><strong>I/O密集型</strong>指的是程序的性能瓶颈在<strong>输入输出操作</strong>，而不是在CPU计算上。</p>
+<p><strong>典型的I/O操作：</strong></p>
+<ul>
+<li>网络请求（HTTP调用、API请求）</li>
+<li>数据库查询（MySQL、Redis、Milvus）</li>
+<li>文件读写（读取PDF、写入日志）</li>
+<li>磁盘操作（读写数据库文件）</li>
+</ul>
+<p><strong>怎么判断是不是I/O密集型？</strong> 看CPU的利用率。如果程序大部分时间在等待I/O完成（CPU空闲），只有小部分时间在做计算（CPU忙），那就是I/O密集型。</p>
+<p><strong>在项目中的例子：</strong></p>
+<p>法律助手系统里，用户提一个问题，后端要做的事情：</p>
+<ol>
+<li>Query Rewrite → 调用LLM API（网络I/O，等LLM返回）</li>
+<li>精确检索 → 查MySQL（数据库I/O，等MySQL返回）</li>
+<li>语义检索 → 查Milvus（网络I/O，等Milvus返回）</li>
+<li>结果合并 + Reranker → 调用Reranker模型（计算+少量I/O）</li>
+<li>生成回答 → 调用LLM API（网络I/O，等LLM返回）</li>
+</ol>
+<p><strong>这整个流程中，大部分时间花在等待网络和数据库返回上，CPU基本是空闲的</strong>。这就是典型的I/O密集型场景。</p>
+<p><strong>I/O密集型场景的优化策略：</strong></p>
+<ol>
+<li><strong>异步编程：</strong> 用asyncio让程序在等待I/O时去做其他事，而不是干等</li>
+<li><strong>并发请求：</strong> 不相关的I/O操作并行执行（比如同时查MySQL和Milvus）</li>
+<li><strong>缓存：</strong> 高频查询的结果缓存到Redis，减少I/O次数</li>
+<li><strong>连接池：</strong> 复用数据库连接，减少建立连接的开销</li>
+<li><strong>批量操作：</strong> 把多个小I/O合并成一个大I/O（比如批量插入替代逐条插入）</li>
+</ol>
+<hr>
+<h2 id="178-python怎么实现生成器">178. python怎么实现生成器</h2>
+<p><strong>回答：</strong></p>
+<p><strong>生成器（Generator）</strong> 是一种特殊的迭代器，它的特点是<strong>惰性求值</strong>——需要的时候才生成下一个值，而不是一次性生成所有值。</p>
+<p><strong>最简单的方式：yield关键字</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">read_chunks</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> chunk_size<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        chunk <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">:</span>
+            chunk<span class="token punctuation">.</span>append<span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>chunk<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">>=</span> chunk_size<span class="token punctuation">:</span>
+                <span class="token keyword">yield</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>chunk<span class="token punctuation">)</span>
+                chunk <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> chunk<span class="token punctuation">:</span>
+            <span class="token keyword">yield</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>chunk<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个生成器每次yield返回一个切片，不一次性把整个文件读入内存。这在处理大文件时非常有用。</p>
+<p><strong>生成器表达式：</strong> 类似列表推导式，但用圆括号</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">squares <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">**</span><span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 生成器，不会立即计算</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>生成器在项目中的应用：</strong></p>
+<p>在法律助手项目中，我们处理几百份PDF文档时，不可能一次性把所有的文本都加载到内存里。用生成器逐页读取、逐页处理：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">extract_pdf_pages</span><span class="token punctuation">(</span>pdf_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 用MinerU逐页解析PDF</span>
+    <span class="token keyword">for</span> page_num <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>get_page_count<span class="token punctuation">(</span>pdf_path<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        page_text <span class="token operator">=</span> extract_page<span class="token punctuation">(</span>pdf_path<span class="token punctuation">,</span> page_num<span class="token punctuation">)</span>
+        <span class="token keyword">yield</span> clean_page_text<span class="token punctuation">(</span>page_text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后对每一页文本做切片、向量化、入库，处理完一页就释放内存，再处理下一页。这样即使文档有几百页，内存占用也始终很小。</p>
+<p><strong>生成器的好处：</strong></p>
+<ol>
+<li><strong>节省内存：</strong> 不需要一次性把所有数据加载到内存</li>
+<li><strong>惰性计算：</strong> 可能不需要全部数据，用多少算多少</li>
+<li><strong>表示无限序列：</strong> 可以生成理论上的无限数据流</li>
+</ol>
+<hr>
+<h2 id="179-pytorch相似的框架有哪些？">179. pytorch相似的框架有哪些？</h2>
+<p><strong>回答：</strong></p>
+<p>PyTorch是目前最主流的深度学习框架，但也有很多同类型或定位不同的框架：</p>
+<p><strong>1. TensorFlow / Keras</strong></p>
+<p>谷歌出品的框架，曾经是行业老大。PyTorch和TensorFlow的定位差异：</p>
+<ul>
+<li>PyTorch是<strong>动态图</strong>（Define-by-Run），写起来像写Python代码，调试方便</li>
+<li>TensorFlow 1.x是<strong>静态图</strong>（Define-and-Run），先建图再执行，调试困难</li>
+<li>TensorFlow 2.x也支持动态图（Eager Execution），但生态已经被PyTorch超越了</li>
+</ul>
+<p><strong>2. JAX</strong></p>
+<p>Google的另一个框架，定位更底层。特点是：</p>
+<ul>
+<li>函数式编程风格，没有可变状态</li>
+<li>自动微分（grad）和JIT编译（jit）非常优雅</li>
+<li>支持向量化（vmap）和并行化（pmap）</li>
+<li>适合研究新算法，但生态不如PyTorch成熟</li>
+</ul>
+<p><strong>3. PaddlePaddle（飞桨）</strong></p>
+<p>百度的框架，在国内有一定用户基础。特点是：</p>
+<ul>
+<li>动态图和静态图都支持</li>
+<li>中文文档完善</li>
+<li>有预训练模型库PaddleNLP、PaddleCV</li>
+<li>在某些工业场景（如百度内部）有深度应用</li>
+</ul>
+<p><strong>4. MXNet / Gluon</strong></p>
+<p>Apache基金会的框架，曾经是AWS的首选，但现在用户越来越少。</p>
+<p><strong>5. Lightning（PyTorch Lightning）</strong></p>
+<p>不是替代PyTorch，而是<strong>PyTorch的上层封装</strong>。它把训练循环、验证循环、日志记录、分布式训练等样板代码封装起来，让开发者只需要关注模型和数据。我在微调Qwen3-32B时用过，确实省了很多代码。</p>
+<p><strong>实际选型建议：</strong></p>
+<p>做研究、快速原型、中小型项目 → <strong>PyTorch</strong>（生态最丰富，社区最活跃）<br>
+做工业级部署、多平台支持 → <strong>TensorFlow</strong>（TFLite、TF Serving等部署工具成熟）<br>
+做高性能计算、研究新算法 → <strong>JAX</strong>（在学术界越来越流行）<br>
+做中文NLP、国内部署 → <strong>PaddlePaddle</strong>（中文生态好，有中文预训练模型）</p>
+<p>我个人的选择是<strong>PyTorch</strong>，因为它的生态系统最完善，HuggingFace就是基于PyTorch的，微调模型、部署推理都方便。</p>
+<hr>
+<h2 id="180-Tensorflow和pytorch的区别">180. Tensorflow和pytorch的区别</h2>
+<p><strong>回答：</strong></p>
+<p><strong>核心区别一句话：PyTorch是动态图，TensorFlow是静态图出身（但2.x也支持动态图了）。</strong></p>
+<p><strong>1. 计算图构建方式</strong></p>
+<p>这是最根本的区别：</p>
+<ul>
+<li><strong>PyTorch（动态图）：</strong> 边运行边建图，每次执行都重新构建计算图。写起来就像写普通Python代码，<code>print()</code>能看到中间变量，<code>pdb</code>可以断点调试。对开发者友好，特别适合研究探索。</li>
+<li><strong>TensorFlow（静态图，1.x时代）：</strong> 先建一个完整的计算图，再送数据进去执行。建图和执行是分离的，调试困难（不能直接print中间变量）。但静态图有优化空间，部署时性能更好。</li>
+</ul>
+<p><strong>2. 调试体验</strong></p>
+<p>PyTorch的调试体验好太多。在PyTorch里，你可以直接打断点看张量的值，可以<code>print</code>中间结果。TensorFlow 1.x时代，你需要在Session里跑完才能看到结果，debug非常痛苦。</p>
+<p><strong>3. 生态系统</strong></p>
+<p>PyTorch的生态更活跃。HuggingFace Transformers、Diffusers、torchvision、torchaudio等主流库都是基于PyTorch的。TensorFlow的生态也不错（TFLite、TF Serving、TFX），但在学术研究和AI应用开发领域，PyTorch已经占主导地位。</p>
+<p><strong>4. 部署</strong></p>
+<p>TensorFlow的部署工具链更成熟——TFLite（移动端）、TF Serving（服务端）、TensorFlow.js（浏览器端），一套工具覆盖所有平台。PyTorch的部署相对弱一些，需要用TorchScript或ONNX做转换，或者用PyTorch Serve。</p>
+<p><strong>5. 在项目中的实际感受</strong></p>
+<p>我在法律助手项目中，微调Qwen3-32B用的是PyTorch + HuggingFace Transformers，因为：</p>
+<ul>
+<li>微调框架（如QLoRA）都是基于PyTorch的</li>
+<li>调试方便，train loss不对劲可以随时打断点看</li>
+<li>HuggingFace生态太强了，模型、数据集、评测一站式</li>
+</ul>
+<p>推理部署用的是vLLM，它底层也是PyTorch，但做了大量优化（PagedAttention、Continuous Batching等），性能比原生PyTorch推理好很多。</p>
+<p><strong>总结：</strong> 做研究和AI应用开发，选PyTorch。做工业级多平台部署，TensorFlow可能更合适。但现在的趋势是PyTorch也在补部署能力的短板，两者的差距在缩小。</p>
+<p><em>文档创建日期：2026-07-28</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/18/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/18_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E5%85%AB%E7%BB%84_171-180/">https://timaio0911.github.io/2026/07/18/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/18_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E5%85%AB%E7%BB%84_171-180/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/020_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/19/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/19_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%BB%84_181-190/" title="面试模拟 - 第十九组（181-190题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/022_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">面试模拟 - 第十九组（181-190题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十九组（181-190题）  基于简历项目经历，模拟面试回答   181. dify和coze两者区别是什么？ 回答： Dify和Coze都是目前比较流行的AI应用开发平台，但它们定位和侧重点差异很大，我在选型时做过对比。 核心区别：    维度 Dify Coze     定位 开源AI应用开发平台 字节跳动的AI Bot构建平台   开放性 开源，可自部署 闭源，云端SaaS服务   数据隐私 可本地部署，数据自主可控 数据在字节云端   模型接入 支持多种模型配置，可自定义 主要使用豆包模型   插件生态 社区插件，可自定义开发 官方插件商店，相对封闭   自定义程度 高，可修改源码 中等，受平台限制   适用场景 企业级应用开发 快速搭建个人Bot    选择Dify的原因： 在我做法律助手项目时，曾考虑过用Coze快速搭建，但最终选择了Dify：  数据隐私问题：法律数据涉及用户隐私和合规要求，必须本地部署。Dify开源可自部署，数据完全在自己的服务器上 自定义需求：法律助手需要深度定制RAG流程、切片策略、重排序逻辑，Dify的开源架构允许我们修改源码...</div></div></div></a><a class="pagination-related" href="/2026/07/17/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/17_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E4%B8%83%E7%BB%84_161-170/" title="面试模拟 - 第十七组（161-170题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/019_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">面试模拟 - 第十七组（161-170题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十七组（161-170题）  基于简历项目经历，模拟面试回答   161. 你怎么用llamaindex做混合检索？ 回答： 在法律助手项目中，我使用LlamaIndex来构建混合检索系统，它提供了非常便捷的抽象层。 混合检索的核心思路： 混合检索是将关键词检索和向量检索结合，取两者之长。LlamaIndex提供了内置的混合检索器，使用起来非常方便。 具体实现方式： 首先，我创建了两个索引：  向量索引：使用MilvusVectorStore，将法律文档进行Embedding后存储 关键词索引：使用BM25Retriever，建立倒排索引  然后，使用LlamaIndex的QueryFusionRetriever将两者融合。它支持多种融合策略，我选择的是相对分数融合（Relative Score Fusion），这种方式会将两种检索器的分数归一化后合并。 实际配置： 在法律助手中，我的配置是：  向量检索返回Top-10 关键词检索返回Top-10 融合后保留Top-10 最后交给Reranker重排序，输出Top-5  效果对比： 相比单一的向量检索，混合检索的...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/13/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/13_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E4%B8%89%E7%BB%84_121-130/" title="面试模拟 - 第十三组（121-130题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/015_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-13</div><div class="info-item-2">面试模拟 - 第十三组（121-130题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十三组（121-130题）  基于简历项目经历，模拟面试回答   1. 介绍一下python装饰器，什么场合会使用？ 回答： 装饰器是Python的高级特性，本质是一个函数，用来修改其他函数的行为，我在项目中经常使用。 什么是装饰器： 装饰器就是一个接受函数作为参数的函数，返回一个新的函数。用@语法糖放在函数定义前面，就能在不修改原函数代码的情况下增加功能。 核心原理： 装饰器利用了Python中函数是一等公民的特性，函数可以作为参数传递，也可以作为返回值。装饰器本质上就是一个高阶函数。 使用场合：  日志记录：记录函数的调用时间、参数、返回值 性能测试：计算函数执行时间 权限校验：检查用户是否有权限执行某个操作 缓存：缓存函数的计算结果，避免重复计算 重试机制：函数执行失败时自动重试  我在项目中的应用： 政策补贴系统中，我用装饰器做了几个通用功能：  日志装饰器：记录每个Agent的调用日志，方便调试 计时装饰器：监控工具调用的响应时间，性能优化 异常处理装饰器：统一捕获异常，返回友好的错误信息 缓存装饰器：用functools.lru_cache缓存重复查询...</div></div></div></a><a class="pagination-related" href="/2026/07/09/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/9_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B9%9D%E7%BB%84_81-90/" title="面试模拟 - 第九组（81-90题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/046_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-09</div><div class="info-item-2">面试模拟 - 第九组（81-90题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第九组（81-90题）  基于简历项目经历，模拟面试回答   81. 知识图谱怎么和rag配合 回答： 知识图谱和RAG的配合本质上是&quot;结构化知识&quot;和&quot;非结构化检索&quot;的互补。 配合方式主要有三种： 1. 知识图谱增强检索（GraphRAG） 在政策补贴系统中，我们用Neo4j构建了包含8类实体、12种关系、500+政策、3000+条件节点的政策图谱。当用户提问&quot;哪些企业可以申请研发补贴&quot;时，传统RAG可能只检索到零散的政策条款，而知识图谱可以从&quot;研发补贴&quot;这个节点出发，沿着&quot;申请条件&quot;关系找到&quot;高新技术企业认定&quot;、&quot;研发费用占比&quot;等关联节点，再把这些结构化信息作为上下文补充给RAG。 2. 图谱提供实体关系用于查询改写 用户问&quot;我们公司能拿什么补贴&quot;，系统先从图谱中查询该企业的画像信息（行业、规模、资质），然后把查询改写成更精确的检索query，召回率从68%提升到94%。 3. 图谱做答案验证 RAG生成答...</div></div></div></a><a class="pagination-related" href="/2026/07/22/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/22_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%BB%84_211-220/" title="面试模拟 - 第二十二组（211-220题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/026_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-22</div><div class="info-item-2">面试模拟 - 第二十二组（211-220题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十二组（211-220题）  基于简历项目经历，模拟面试回答   211. 如果BERT输出5类，想将输出提到10类该怎么做 回答： 这个问题本质上是分类任务的类别数扩展。核心思路是调整模型的输出层，必要时进行微调。 最简单的做法——修改分类头： BERT的架构可以拆成两部分：主干网络（Transformer Encoder） + 分类头（Classification Head）。分类头通常就是一个全连接层，输入是BERT的[CLS]向量，输出是类别数。 # 原始：5分类 classifier = nn.Linear(768, 5)  # 改为10分类 classifier = nn.Linear(768, 10) 但要注意几个问题： 1. 权重初始化 原来5类的权重不能直接复用，因为新增的5类没有对应权重。可以：  随机初始化新类别的权重：最简单，但新类需要从零学起 从同类初始化：如果新类别和旧类别语义相近，可以用旧类别的权重做初始化  2. 是否需要微调    场景 建议     新类别和旧类别相似 只训练分类头，不微调BERT   新类别差异较大 需要全模...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第十八组（171-180题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#171-%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E8%AF%AD%E8%A8%80%E6%98%AF%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">171. 多语言处理的过程中，语言是怎么处理的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#172-workflow%E5%92%8Cagent%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.</span> <span class="toc-text">172. workflow和agent的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#173-%E6%96%87%E6%A1%A3%E8%B6%85%E8%BF%87%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3%E6%97%B6%E6%80%8E%E4%B9%88%E5%81%9A%E6%91%98%E8%A6%81"><span class="toc-number">1.3.</span> <span class="toc-text">173. 文档超过模型上下文窗口时怎么做摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#174-%E5%A6%82%E4%BD%95%E6%A3%80%E6%B5%8B%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%8E%AF%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">174. 如何检测链表是否存在环？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#175-%E6%9C%89%E7%94%A8%E8%BF%87docker%E5%92%8Ck8s%E4%B9%88%EF%BC%8C%E5%88%86%E5%88%AB%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">175. 有用过docker和k8s么，分别介绍一下？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#176-python%E5%BC%82%E6%AD%A5%E5%8D%8F%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">176. python异步协程和线程的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#177-%E4%BB%80%E4%B9%88%E6%98%AFIO%E5%AF%86%E9%9B%86%E5%9E%8B%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.</span> <span class="toc-text">177. 什么是IO密集型场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#178-python%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-number">1.8.</span> <span class="toc-text">178. python怎么实现生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#179-pytorch%E7%9B%B8%E4%BC%BC%E7%9A%84%E6%A1%86%E6%9E%B6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">179. pytorch相似的框架有哪些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#180-Tensorflow%E5%92%8Cpytorch%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.10.</span> <span class="toc-text">180. Tensorflow和pytorch的区别</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/038_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十四组（331-340题）"/></a><div class="content"><a class="title" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）">面试模拟 - 第三十四组（331-340题）</a><time datetime="2026-08-03T00:00:00.000Z" title="Created 2026-08-03 08:00:00">2026-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/037_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十三组（321-330题）"/></a><div class="content"><a class="title" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）">面试模拟 - 第三十三组（321-330题）</a><time datetime="2026-08-02T00:00:00.000Z" title="Created 2026-08-02 08:00:00">2026-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/036_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十二组（311-320题）"/></a><div class="content"><a class="title" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）">面试模拟 - 第三十二组（311-320题）</a><time datetime="2026-08-01T00:00:00.000Z" title="Created 2026-08-01 08:00:00">2026-08-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

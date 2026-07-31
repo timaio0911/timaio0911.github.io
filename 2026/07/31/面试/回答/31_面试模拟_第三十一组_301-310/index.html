@@ -1,0 +1,592 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>面试模拟 - 第三十一组（301-310题） | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第三十一组（301-310题）  基于简历项目经历，模拟面试回答   301. 上下文怎么传递的 回答： 这个问题我分两个场景来回答：一个是RAG场景中的上下文传递，另一个是Agent场景中的上下文传递。 RAG场景： 在法律助手项目中，上下文的传递主要分三个阶段：   用户输入阶段： 用户的问题本身携带了最直接的上下文。但用户的问题往往是口语化的，比如&quot;我要离婚怎么分财产">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试模拟 - 第三十一组（301-310题）">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/31/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/31_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%80%E7%BB%84_301-310/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第三十一组（301-310题）  基于简历项目经历，模拟面试回答   301. 上下文怎么传递的 回答： 这个问题我分两个场景来回答：一个是RAG场景中的上下文传递，另一个是Agent场景中的上下文传递。 RAG场景： 在法律助手项目中，上下文的传递主要分三个阶段：   用户输入阶段： 用户的问题本身携带了最直接的上下文。但用户的问题往往是口语化的，比如&quot;我要离婚怎么分财产">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/035_%E5%B0%81%E9%9D%A2_2026_07_29.jpg">
+<meta property="article:published_time" content="2026-07-31T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-31T01:18:12.460Z">
+<meta property="article:author" content="Sloth">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/035_%E5%B0%81%E9%9D%A2_2026_07_29.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "面试模拟 - 第三十一组（301-310题）",
+  "url": "https://timaio0911.github.io/2026/07/31/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/31_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%80%E7%BB%84_301-310/",
+  "image": "https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/035_%E5%B0%81%E9%9D%A2_2026_07_29.jpg",
+  "datePublished": "2026-07-31T00:00:00.000Z",
+  "dateModified": "2026-07-31T01:18:12.460Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/31/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/31_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%80%E7%BB%84_301-310/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试模拟 - 第三十一组（301-310题）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/059_%E5%B0%81%E9%9D%A2_2026_07_29_1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/035_%E5%B0%81%E9%9D%A2_2026_07_29.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">面试模拟 - 第三十一组（301-310题）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">面试模拟 - 第三十一组（301-310题）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-31T00:00:00.000Z" title="Created 2026-07-31 08:00:00">2026-07-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-31T01:18:12.460Z" title="Updated 2026-07-31 09:18:12">2026-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第三十一组（301-310题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="301-上下文怎么传递的">301. 上下文怎么传递的</h2>
+<p><strong>回答：</strong></p>
+<p>这个问题我分两个场景来回答：一个是RAG场景中的上下文传递，另一个是Agent场景中的上下文传递。</p>
+<p><strong>RAG场景：</strong></p>
+<p>在法律助手项目中，上下文的传递主要分三个阶段：</p>
+<ol>
+<li>
+<p><strong>用户输入阶段：</strong> 用户的问题本身携带了最直接的上下文。但用户的问题往往是口语化的，比如&quot;我要离婚怎么分财产&quot;，所以我们需要先做Query Rewrite，把口语化问题转成法律检索表达，同时保留原始事实。这个改写后的query就是第一个上下文载体。</p>
+</li>
+<li>
+<p><strong>检索阶段：</strong> 检索出来的chunks本身携带了语义上下文。我们做了多路召回——Milvus语义检索召回相似度高的chunks，MySQL精确检索召回匹配法条编号的chunks，两者合并后传给Reranker。这里上下文就是&quot;带权重的候选chunks集合&quot;。</p>
+</li>
+<li>
+<p><strong>生成阶段：</strong> 把Top-K的chunks拼接到Prompt中，加上原始问题，形成完整的上下文输入给大模型。这里有个关键点——我们做了<strong>上下文压缩</strong>，不是把所有chunks一股脑塞进去，而是通过Reranker筛选出最相关的3-5条，避免上下文窗口被噪声淹没。</p>
+</li>
+</ol>
+<p><strong>Agent场景（政策补贴项目）：</strong></p>
+<p>在LangGraph工作流中，上下文是通过<strong>全局State</strong>传递的。我们定义了一个TypedDict作为State：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">PolicyMatchState</span><span class="token punctuation">(</span>TypedDict<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    user_query<span class="token punctuation">:</span> <span class="token builtin">str</span>
+    enterprise_profile<span class="token punctuation">:</span> <span class="token builtin">dict</span>
+    matched_policies<span class="token punctuation">:</span> <span class="token builtin">list</span>
+    eligibility_results<span class="token punctuation">:</span> <span class="token builtin">list</span>
+    flow_status<span class="token punctuation">:</span> <span class="token builtin">str</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>每个Agent节点读取State中自己需要的字段，处理后更新State中的对应字段。比如企业画像Agent写<code>enterprise_profile</code>，政策检索Agent读它并写<code>matched_policies</code>。这样上下文就在各个节点间自然流转，而且每个节点只关心自己需要的部分，互不干扰。</p>
+<hr>
+<h2 id="302-有很多工具，如何设计精准找到">302. 有很多工具，如何设计精准找到</h2>
+<p><strong>回答：</strong></p>
+<p>在我们政策补贴系统中，涉及的工具确实不少——企业画像查询、政策检索、条件匹配、材料生成、短信通知、文件上传等等。如果工具多了，让Agent精准找到正确的工具，核心在于<strong>工具注册机制和路由策略</strong>。</p>
+<p><strong>一、工具注册时的描述质量是关键</strong></p>
+<p>每个工具注册时，除了名称和参数schema，最关键的是<strong>描述（description）</strong>。这个描述直接影响大模型能不能正确选择工具。我们的做法是：</p>
+<ul>
+<li><strong>描述要具体：</strong> 不是写&quot;查询政策&quot;，而是&quot;根据企业所属行业、地区、规模等条件，查询匹配的国家/地方补贴政策，返回政策列表&quot;</li>
+<li><strong>包含使用场景：</strong> 在描述中写明&quot;当用户询问有什么补贴可以申请时，调用此工具&quot;</li>
+<li><strong>参数示例：</strong> 在参数描述中给出示例值，比如&quot;industry: ‘制造业’, region: ‘广东省’&quot;</li>
+</ul>
+<p><strong>二、工具分类和命名规范</strong></p>
+<p>我们把工具按功能域分组，命名带前缀，方便Agent理解：</p>
+<ul>
+<li><code>policy_*</code>：政策相关工具</li>
+<li><code>enterprise_*</code>：企业画像相关工具</li>
+<li><code>notification_*</code>：通知相关工具</li>
+<li><code>document_*</code>：文档生成相关工具</li>
+</ul>
+<p><strong>三、路由Agent做初筛</strong></p>
+<p>在LangGraph中，我们设计了一个<strong>路由Agent</strong>，它的职责是：先理解用户意图，然后判断应该进入哪个子流程。比如用户问&quot;我们公司能申请什么补贴&quot;，路由Agent判断这是一个政策匹配请求，就导向政策匹配子流程，而不是去调用企业画像入库工具。</p>
+<p><strong>四、工具数量控制</strong></p>
+<p>如果工具超过一定数量（比如20+），我们会做<strong>分层工具设计</strong>：</p>
+<ul>
+<li>顶层：路由Agent只暴露少数几个&quot;大工具&quot;（子流程）</li>
+<li>底层：每个子流程内部再管理自己的细粒度工具</li>
+</ul>
+<p>这样每个Agent面对的候选工具列表控制在10个以内，大模型选择的准确率明显更高。</p>
+<hr>
+<h2 id="303-怎么控制召回的多少">303. 怎么控制召回的多少</h2>
+<p><strong>回答：</strong></p>
+<p>在法律助手项目中，控制召回数量是一个需要精细调节的问题——召回太少可能漏掉关键法条，召回太多又会引入噪声、增加延迟和成本。我主要从几个维度来控制：</p>
+<p><strong>一、Top-K参数控制</strong></p>
+<p>最直接的方式是设置Top-K值。我们根据测试结果，把语义检索的Top-K设为20，精确检索的Top-K设为10，合并后交给Reranker。Reranker重排后再取Top-5作为最终输入给大模型。</p>
+<p><strong>二、相似度阈值过滤</strong></p>
+<p>单纯靠Top-K不够，因为如果所有候选的相似度都很低，说明检索本身就没找到好东西。我们设了一个<strong>相似度阈值</strong>（0.65左右），低于这个阈值的chunks直接丢弃，不参与后续重排。这样能避免&quot;矮子里拔将军&quot;的问题。</p>
+<p><strong>三、多路召回的合并策略</strong></p>
+<p>我们做了多路召回——语义检索（Milvus）和关键词检索（MySQL）。两路召回的结果合并时，用**RRF（Reciprocal Rank Fusion）**算法做加权融合。具体是给每个chunk算一个融合分：<code>score = 1/(k + rank_semantic) + 1/(k + rank_keyword)</code>。这样在两个排名中都靠前的chunk优先级更高，同时控制最终进入重排阶段的总数不超过30个。</p>
+<p><strong>四、动态调整</strong></p>
+<p>不同类型的查询，最优的召回数量也不同。比如查&quot;离婚财产分割&quot;这种宽泛问题，需要多召一些（Top-30）；查&quot;民法典第1046条&quot;这种精确问题，Top-5就够了。我们在Query Rewrite阶段会加一个<strong>问题类型标签</strong>，根据标签动态调整召回参数。</p>
+<hr>
+<h2 id="304-重排序的算法">304. 重排序的算法</h2>
+<p><strong>回答：</strong></p>
+<p>在法律助手项目中，我们用的重排序（Reranker）不是自己做算法研发，而是基于<strong>开源的交叉编码器（Cross-Encoder）模型</strong>。具体来说：</p>
+<p><strong>一、Reranker的原理</strong></p>
+<p>Reranker和Bi-Encoder（向量检索用的那种）的核心区别在于交互方式：</p>
+<ul>
+<li><strong>Bi-Encoder：</strong> 把query和chunk分别编码成向量，计算余弦相似度。优点是快，适合大规模检索，但缺点是query和chunk之间没有交互，丢失了细粒度的匹配信息。</li>
+<li><strong>Cross-Encoder：</strong> 把query和chunk拼接成一个句子，输入到一个Transformer模型中进行联合编码，输出一个相关性分数。优点是精度高，缺点是慢，因为每对(query, chunk)都要过一次模型，所以只能用在粗排之后的精排阶段。</li>
+</ul>
+<p><strong>二、我们用的具体方案</strong></p>
+<p>粗排阶段（Milvus检索）：用<code>text-embedding-v3</code>做向量化，召回Top-20。<br>
+精排阶段（Reranker）：用开源的<code>bge-reranker-v2-m3</code>交叉编码器，对Top-20的候选chunks逐一打分，重新排序后取Top-5。</p>
+<p><strong>三、效果数据</strong></p>
+<p>加入Reranker后，Top-5的准确率提升了约15个百分点。具体来说，原来单纯靠向量检索，Top-5中可能还有1-2条不相关的结果；加上Reranker后，基本能做到Top-5中4-5条都和问题高度相关。</p>
+<p><strong>四、延迟优化</strong></p>
+<p>Reranker的瓶颈是计算速度。20个chunk过一遍交叉编码器大约需要200-300ms。我们做了两个优化：</p>
+<ol>
+<li><strong>并行推理：</strong> 允许多个(query, chunk)对同时推理，利用GPU的并行能力</li>
+<li><strong>缓存机制：</strong> 对高频query的rerank结果做Redis缓存，命中时直接返回</li>
+</ol>
+<p>最终检索响应速度提升了60%以上，从原来的1.5秒降到了0.6秒左右。</p>
+<hr>
+<h2 id="305-从你的工程实践你落实的Hermes落实在哪些方面">305. 从你的工程实践你落实的Hermes落实在哪些方面</h2>
+<p><strong>回答：</strong></p>
+<p>（注：这里我认为面试官问的是&quot;Hermes&quot;框架/工具链在实际工程中的落地，结合我的项目经验来回答。）</p>
+<p>在政策补贴和企业法律助手两个项目中，我虽然不是Hermes框架的直接开发者，但在工程实践中确实落实了很多与Hermes理念一致的设计思路：</p>
+<p><strong>一、工具调用标准化（MCP/工具注册）</strong></p>
+<p>在政策补贴系统中，我们实现了类似Hermes的工具注册机制——每个工具都有清晰的名称、描述、参数schema和返回值定义。这其实就是在践行&quot;工具即接口&quot;的理念，让大模型能够通过结构化的描述精准调用工具。</p>
+<p><strong>二、多Agent协作与工作流编排</strong></p>
+<p>政策补贴系统用了LangGraph做多Agent编排，每个Agent有明确的职责边界，通过全局State进行数据传递。这和Hermes的Agent设计理念是相通的——Agent不是黑盒，而是可观测、可调试、可编排的工作流节点。</p>
+<p><strong>三、可观测性与日志</strong></p>
+<p>法律助手项目上线后，我们建立了完整的日志体系：记录每次用户查询→检索→重排→生成的完整链路，包括每个环节的耗时、召回结果、重排分数、最终答案。这些日志既用于监控，也用于后续的优化迭代，相当于Hermes强调的&quot;可观测性&quot;落地。</p>
+<p><strong>四、系统设计的模块化</strong></p>
+<p>两个项目都采用了模块化设计——RAG模块、Agent模块、知识图谱模块、缓存模块各司其职，通过API接口进行通信。这种松耦合的架构和Hermes的插件化设计理念是一致的。</p>
+<hr>
+<h2 id="306-Claude-Code泄露代码你看了么，有没有印象深刻的点">306. Claude Code泄露代码你看了么，有没有印象深刻的点</h2>
+<p><strong>回答：</strong></p>
+<p>我看过关于Claude Code使用过程中泄露代码的讨论，主要是说在Cline、Claude Code这些AI编程工具中，如果不注意配置，代码可能会被上传到第三方服务进行推理，导致敏感代码泄露。</p>
+<p><strong>我印象深刻的几点：</strong></p>
+<p><strong>一、问题的本质</strong></p>
+<p>这不是Claude Code本身的安全漏洞，而是<strong>使用方式</strong>的问题。当你用AI编程工具时，你的代码会被发送到LLM服务商的服务器进行推理。如果代码涉及商业机密、核心算法、客户数据，确实存在泄露风险。</p>
+<p><strong>二、对工程实践的启示</strong></p>
+<p>这让我反思了自己在项目中的做法：</p>
+<ol>
+<li>
+<p><strong>敏感信息隔离：</strong> 在法律助手项目中，我们处理的是法律条文和合同审查。这些数据虽然不涉及用户隐私，但合同内容本身是客户的商业信息。所以我们在设计时就把<strong>敏感数据脱敏</strong>作为了一环，不会把原始合同全文发给大模型，而是先做结构化提取，只传关键字段。</p>
+</li>
+<li>
+<p><strong>本地部署方案：</strong> 对于高敏感场景，我们预留了本地模型部署的方案。用Qwen3-32B做本地推理，数据不出服务器，从根本上杜绝泄露风险。</p>
+</li>
+<li>
+<p><strong>API层安全控制：</strong> 在FastAPI接口层，我们加了一层请求审计，记录每次请求的完整参数和响应，异常时能追溯到具体是哪个环节出了问题。</p>
+</li>
+</ol>
+<p><strong>三、我的看法</strong></p>
+<p>我觉得工具本身没有对错，关键是怎么用。对于AI编程工具，我会建议：</p>
+<ul>
+<li>涉及敏感代码时，用本地模型或私有化部署</li>
+<li>不要在Prompt中贴完整的敏感代码</li>
+<li>做好代码审查，AI生成的不直接上线</li>
+<li>公司层面建立AI工具使用规范</li>
+</ul>
+<hr>
+<h2 id="307-接口交互有遇到堵塞问题么，怎么解决的">307. 接口交互有遇到堵塞问题么，怎么解决的</h2>
+<p><strong>回答：</strong></p>
+<p>遇到过，而且在两个项目中都遇到过不同类型的堵塞问题。</p>
+<p><strong>一、大模型接口超时堵塞</strong></p>
+<p>在法律助手项目中，最初调用大模型API时用的是同步请求，遇到高并发时，一个慢请求会阻塞整个线程池，导致后续请求排队等待。</p>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>改用<strong>异步非阻塞</strong>架构，FastAPI + asyncio + httpx.AsyncClient，所有IO操作都异步化</li>
+<li>给大模型调用设置合理的超时时间（我们设为30秒），超时后主动断开，避免无限等待</li>
+<li>引入<strong>熔断机制</strong>：连续3次超时后，熔断器打开，直接返回降级响应（“服务繁忙，请稍后重试”），避免雪崩</li>
+</ul>
+<p><strong>二、数据库连接池耗尽</strong></p>
+<p>在企业补贴系统中，多个Agent同时查询Neo4j知识图谱时，连接池被打满，导致新的查询排队等待。</p>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>调大连接池上限（从默认的10调到50）</li>
+<li>增加<strong>连接池监控</strong>，当使用率超过80%时告警</li>
+<li>对耗时较长的查询做<strong>超时控制</strong>，比如图遍历超过5秒就中断</li>
+</ul>
+<p><strong>三、Redis缓存击穿</strong></p>
+<p>高频查询的缓存过期瞬间，大量请求同时打到数据库，导致数据库压力骤增。</p>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>用<strong>互斥锁</strong>（SETNX）控制：只有一个请求去查数据库并重建缓存，其他请求等待</li>
+<li>缓存预热：系统启动时，把热点数据提前加载到缓存</li>
+<li>缓存过期时间加随机偏移，避免批量同时过期</li>
+</ul>
+<p><strong>四、前端请求堆积</strong></p>
+<p>在政策补贴系统中，用户上传企业材料时，如果文件较大（比如几十页的PDF），上传和解析会占用大量时间。</p>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>改成<strong>异步任务队列</strong>：前端上传后立即返回&quot;提交成功&quot;，后端用Celery异步处理PDF解析和数据提取</li>
+<li>前端轮询任务状态，处理完成后展示结果</li>
+<li>加<strong>文件大小限制</strong>和<strong>格式校验</strong>，提前拦截不合规的请求</li>
+</ul>
+<hr>
+<h2 id="308-有个请求到A服务器上，大模型在流式输出，用户想停止掉，请求可能发送到任意服务器，怎么保证请求发送到A服务器">308. 有个请求到A服务器上，大模型在流式输出，用户想停止掉，请求可能发送到任意服务器，怎么保证请求发送到A服务器</h2>
+<p><strong>回答：</strong></p>
+<p>这是一个典型的<strong>分布式系统中的请求路由和会话保持</strong>问题。在我们的法律助手项目中，确实遇到过类似的场景——用户发出了一个查询，大模型正在流式生成回答，用户发现回答不对想停止生成。</p>
+<p><strong>核心思路：建立基于会话ID的路由机制</strong></p>
+<p><strong>一、会话粘滞（Session Stickiness）</strong></p>
+<p>最简单的方案是让同一个会话的请求始终路由到同一台服务器。我们在API网关层（Nginx/负载均衡器）配置了<strong>基于会话ID的哈希路由</strong>：</p>
+<pre class="line-numbers language-none"><code class="language-none">hash $cookie_session_id consistent;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这样同一个会话ID的请求，负载均衡器会始终转发到同一台后端服务器。</p>
+<p><strong>二、但光靠网关不够——也需要应用层配合</strong></p>
+<p>网关的粘滞策略不是100%可靠的（比如服务器重启、扩缩容、哈希冲突）。所以我们还做了<strong>应用层的兜底方案</strong>：</p>
+<ol>
+<li><strong>共享状态存储：</strong> 每个正在进行的流式输出任务，在Redis中注册一条记录：<code>&#123;session_id: server_id, task_id: started_at&#125;</code></li>
+<li><strong>停止请求的处理流程：</strong>
+<ul>
+<li>用户点&quot;停止&quot; → 请求到达任意服务器 → 服务器查Redis，找到该session对应的server_id</li>
+<li>如果就是自己，直接取消本地的流式任务</li>
+<li>如果是另一台服务器，通过内部RPC（gRPC或HTTP）向目标服务器发送取消指令</li>
+</ul>
+</li>
+<li><strong>目标服务器收到取消指令后：</strong> 中断对应的流式生成任务，关闭SSE连接，释放资源</li>
+</ol>
+<p><strong>三、WebSocket方案（更优但改造成本大）</strong></p>
+<p>如果系统设计初期就考虑这个问题，用WebSocket是更优雅的方案——连接建立后就是长连接，不存在&quot;请求发到哪台服务器&quot;的问题。但我们当时系统已经基于HTTP SSE做了流式输出，所以采用了上面的Redis+RPC方案。</p>
+<p><strong>四、超时兜底</strong></p>
+<p>为了防止&quot;停止请求&quot;本身也丢失，我们还设置了一个<strong>最大生成时间</strong>（比如60秒），超过这个时间自动中断流式输出，返回已生成的部分结果。</p>
+<hr>
+<h2 id="309-路由Agent如何设计">309. 路由Agent如何设计</h2>
+<p><strong>回答：</strong></p>
+<p>路由Agent是我们政策补贴系统中的核心组件。我详细说说设计思路。</p>
+<p><strong>一、路由Agent的职责</strong></p>
+<p>路由Agent不负责具体的业务逻辑，它的职责只有三个：</p>
+<ol>
+<li><strong>理解用户意图：</strong> 用户的问题到底是查政策、查企业信息、生成申报材料，还是咨询流程？</li>
+<li><strong>分发到正确的子流程：</strong> 根据意图，把控制权交给对应的子Agent或工作流</li>
+<li><strong>异常处理：</strong> 如果无法识别意图，或者识别结果置信度低，走兜底流程</li>
+</ol>
+<p><strong>二、设计要点</strong></p>
+<p><strong>1. 意图分类</strong></p>
+<p>我们定义了几个核心意图类别：</p>
+<ul>
+<li><code>policy_query</code>：查政策</li>
+<li><code>eligibility_check</code>：检查是否符合条件</li>
+<li><code>material_generation</code>：生成申报材料</li>
+<li><code>application_tracking</code>：查询申报进度</li>
+<li><code>general_chat</code>：闲聊或咨询流程</li>
+</ul>
+<p>路由Agent收到用户问题后，先通过LLM做意图分类，输出一个结构化的意图结果：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"intent"</span><span class="token operator">:</span> <span class="token string">"policy_query"</span><span class="token punctuation">,</span>
+  <span class="token property">"confidence"</span><span class="token operator">:</span> <span class="token number">0.92</span><span class="token punctuation">,</span>
+  <span class="token property">"entities"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token property">"industry"</span><span class="token operator">:</span> <span class="token string">"制造业"</span><span class="token punctuation">,</span> <span class="token property">"region"</span><span class="token operator">:</span> <span class="token string">"广东省"</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 路由逻辑</strong></p>
+<p>在LangGraph中，我们通过条件边（Conditional Edge）实现路由：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">route_decision</span><span class="token punctuation">(</span>state<span class="token punctuation">:</span> PolicyMatchState<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    intent <span class="token operator">=</span> state<span class="token punctuation">[</span><span class="token string">"classified_intent"</span><span class="token punctuation">]</span>
+    confidence <span class="token operator">=</span> intent<span class="token punctuation">[</span><span class="token string">"confidence"</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">if</span> confidence <span class="token operator">&lt;</span> <span class="token number">0.6</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"clarification_node"</span>  <span class="token comment"># 置信度低，让用户澄清</span>
+    <span class="token keyword">elif</span> intent<span class="token punctuation">[</span><span class="token string">"intent"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"policy_query"</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"policy_retrieval_node"</span>
+    <span class="token keyword">elif</span> intent<span class="token punctuation">[</span><span class="token string">"intent"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"eligibility_check"</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"enterprise_profile_node"</span>
+    <span class="token keyword">elif</span> intent<span class="token punctuation">[</span><span class="token string">"intent"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"material_generation"</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"material_generation_node"</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"general_chat_node"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3. 兜底和反馈</strong></p>
+<p>如果路由Agent判断错误，用户反馈&quot;这不是我要找的&quot;，我们会：</p>
+<ul>
+<li>记录这次误判，用于后续改进</li>
+<li>让用户重新描述问题</li>
+<li>定期分析误判案例，优化意图分类的Prompt</li>
+</ul>
+<p><strong>三、和RAG场景的对比</strong></p>
+<p>在法律助手项目中，路由逻辑更简单——问题进来后，先判断是精确法条查询还是语义检索。精确查询走MySQL的精确匹配，语义检索走Milvus向量检索，两者并行，最后合并结果。实际上这也是一种&quot;轻量级路由&quot;。</p>
+<hr>
+<h2 id="310-RAG召回率和准确率的区别">310. RAG召回率和准确率的区别</h2>
+<p><strong>回答：</strong></p>
+<p>这是一个很基础但也很重要的问题。我结合法律助手项目的实际评测经验来说明。</p>
+<p><strong>一、概念区别</strong></p>
+<p><strong>召回率（Recall）</strong> 衡量的是&quot;应该召回的内容中，实际召回了多少&quot;。公式是：<code>召回率 = 相关且被召回的数量 / 所有相关文档的总数</code>。</p>
+<p><strong>准确率（Precision）</strong> 衡量的是&quot;召回来的内容中，有多少是真正相关的&quot;。公式是：<code>准确率 = 相关且被召回的数量 / 所有被召回的数量</code>。</p>
+<p>简单说：</p>
+<ul>
+<li>召回率高 = 该找到的都找到了，但可能混进来一些不相关的</li>
+<li>准确率高 = 找来的都很相关，但可能漏掉了一些</li>
+</ul>
+<p><strong>二、项目中的实际数据</strong></p>
+<p>在法律助手项目中，我们同时关注这两个指标：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>优化前</th>
+<th>优化后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top-5 召回率</td>
+<td>68%</td>
+<td>94%</td>
+</tr>
+<tr>
+<td>Top-5 准确率</td>
+<td>约60%</td>
+<td>约85%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三、为什么需要同时关注</strong></p>
+<p>举个例子：用户问&quot;离婚财产怎么分&quot;，理想情况下应该召回婚姻法、民法典婚姻家庭编、司法解释等相关法条。</p>
+<ul>
+<li>如果只追求<strong>召回率</strong>：把Top-20甚至Top-50都拿来，相关法条基本都覆盖了，但里面会混入很多无关内容（比如合同法的条款），大模型生成的答案质量会下降，因为被噪声干扰了。</li>
+<li>如果只追求<strong>准确率</strong>：只保留相似度最高的1-2条，确实很精准，但如果关键法条因为表述差异没排到前面，就会漏掉，导致回答不完整甚至错误。</li>
+</ul>
+<p><strong>四、怎么平衡</strong></p>
+<p>我们通过<strong>Reranker重排序</strong>来平衡两者：</p>
+<ol>
+<li>粗排阶段（Milvus检索）：优先保证<strong>高召回</strong>，Top-20尽可能覆盖所有相关法条</li>
+<li>精排阶段（Reranker）：交叉编码器重新打分，取Top-5，保证<strong>高准确率</strong></li>
+</ol>
+<p>这样既不会漏掉关键法条，又不会让噪声干扰大模型生成。</p>
+<p><strong>五、一个容易被忽略的点</strong></p>
+<p>评测召回率和准确率时，<strong>标注数据的质量</strong>至关重要。我们在项目中专门花了大量时间做标注工作——找法律专业人士标注了500+组测试数据，每组标注了&quot;这个问题应该召回哪些法条&quot;，确保评测结果可信。没有好的标注数据，这两个指标都是空中楼阁。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/31/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/31_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%80%E7%BB%84_301-310/">https://timaio0911.github.io/2026/07/31/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/31_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%80%E7%BB%84_301-310/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/035_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/036_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">面试模拟 - 第三十二组（311-320题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第三十二组（311-320题）  基于简历项目经历，模拟面试回答   311. 这个法律服务平台的业务定位是什么？面向哪些用户？是自研产品还是外包项目？目前是否已经上线？ 回答： 业务定位： 这个法律服务平台的核心定位是面向企业法务和个人用户的智能法律条款查询与合同审查助手。具体来说，它解决的是&quot;法律条文太多、普通人看不懂、律师查起来也费劲&quot;的问题。用户只需要用自然语言提问，系统就能从海量法律资料中精准找到相关法条，并给出合规建议。 面向的用户： 主要有两类用户：  企业法务部门： 日常需要查询大量法律法规、审查合同条款，用我们的系统可以大幅提高效率。比如一个法务以前查一个法条要翻半天书，现在30秒就出结果。 普通个人用户： 遇到法律问题（离婚、劳动纠纷、合同纠纷）想先了解法律依据，不需要直接请律师，系统先给一个初步的法律参考。  是自研还是外包？ 这个是自研产品，不是外包项目。我们团队从需求分析、架构设计到开发测试，都是自己完成的。 目前是否上线？ 目前系统已经完成了核心功能的开发和测试，处于内部试运行阶段。我们内部团队在用，也在邀请一些合作企...</div></div></div></a><a class="pagination-related" href="/2026/07/30/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/30_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E7%BB%84_291-300/" title="面试模拟 - 第三十组（291-300题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/034_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">面试模拟 - 第三十组（291-300题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第三十组（291-300题）  基于简历项目经历，模拟面试回答   291. 如果需要纯手写Agent，需要哪些核心模块 回答： 如果不用LangGraph、LangChain这些框架，纯手写一个Agent，需要以下几个核心模块： 一、感知模块（Perception） 负责接收和解析用户输入。包括：  输入解析器：把用户自然语言转换成结构化指令 意图识别器：判断用户想做什么（查政策、问法条、还是闲聊） 上下文管理器：维护当前会话的历史对话，避免新问题丢失上下文  二、思维模块（Thinking / Reasoning） 这是Agent的&quot;大脑&quot;，负责决策。核心是：  LLM调用器： 封装对大模型的调用，支持流式输出、异步调用、重试机制 Prompt模板引擎： 管理不同场景的prompt模板，支持动态变量注入 推理循环（ReAct Loop）： 实现&quot;思考→行动→观察&quot;的循环，让Agent能根据工具返回的结果动态调整下一步  三、工具模块（Tool System） Agent需要能力去执行操作：  工具注册中心： 管理所有可用的...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/08/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/8_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%85%AB%E7%BB%84_71-80/" title="面试模拟 - 第八组（71-80题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/044_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-08</div><div class="info-item-2">面试模拟 - 第八组（71-80题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第八组（71-80题）  基于简历项目经历，模拟面试回答   71. Agent里上下文窗口怎么设计，上下文太长怎么处理？ 回答： 上下文窗口设计是Agent系统的核心问题，我在政策补贴系统中遇到过上下文超长的情况，主要通过以下策略处理： 第一，滑动窗口机制： 我设计了一个滑动窗口，只保留最近N轮对话。比如保留最近5轮对话，早期对话会被压缩或丢弃。这样既能保证上下文连贯性，又能控制token数量。 第二，摘要压缩： 对于历史对话，用大模型生成摘要，替代原始对话内容。比如前10轮对话可能有2000token，压缩成摘要后只有200token，但保留了关键信息。 第三，关键信息提取： 用正则或NLP提取关键实体和意图，存储在结构化字段中。比如企业名称、行业类型、申请条件等，这些信息单独存储，不受上下文窗口限制。 第四，分层存储： 短期记忆用上下文窗口，中期记忆用Redis缓存，长期记忆用数据库持久化。根据信息的重要性和时效性选择存储层级。 在项目中的实现： 政策补贴系统的多轮对话中，我会把企业基本信息提取出来存入State，后续Agent直接读取State，不需要每次都...</div></div></div></a><a class="pagination-related" href="/2026/07/19/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/19_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%BB%84_181-190/" title="面试模拟 - 第十九组（181-190题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/022_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-19</div><div class="info-item-2">面试模拟 - 第十九组（181-190题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十九组（181-190题）  基于简历项目经历，模拟面试回答   181. dify和coze两者区别是什么？ 回答： Dify和Coze都是目前比较流行的AI应用开发平台，但它们定位和侧重点差异很大，我在选型时做过对比。 核心区别：    维度 Dify Coze     定位 开源AI应用开发平台 字节跳动的AI Bot构建平台   开放性 开源，可自部署 闭源，云端SaaS服务   数据隐私 可本地部署，数据自主可控 数据在字节云端   模型接入 支持多种模型配置，可自定义 主要使用豆包模型   插件生态 社区插件，可自定义开发 官方插件商店，相对封闭   自定义程度 高，可修改源码 中等，受平台限制   适用场景 企业级应用开发 快速搭建个人Bot    选择Dify的原因： 在我做法律助手项目时，曾考虑过用Coze快速搭建，但最终选择了Dify：  数据隐私问题：法律数据涉及用户隐私和合规要求，必须本地部署。Dify开源可自部署，数据完全在自己的服务器上 自定义需求：法律助手需要深度定制RAG流程、切片策略、重排序逻辑，Dify的开源架构允许我们修改源码...</div></div></div></a><a class="pagination-related" href="/2026/07/10/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/10_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E7%BB%84_91-100/" title="面试模拟 - 第十组（91-100题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/001_%E5%B0%81%E9%9D%A22026_07_28.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-10</div><div class="info-item-2">面试模拟 - 第十组（91-100题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十组（91-100题）  基于简历项目经历，模拟面试回答   91. 该怎么解决多agent之间交流会出现信息丢失的情况，哪些情况会出现，怎么解决？ 回答： 信息丢失的典型场景： 1. 上下文截断丢失 Agent A传给Agent B的上下文太长，超过B的输入窗口，后面的信息被截断。 2. 格式转换丢失 Agent A输出JSON格式，Agent B期望自然语言，转换过程中丢失细节。 3. 状态覆盖丢失 Agent A和Agent B同时写入同一个状态字段，后写的覆盖先写的。 4. 异步时序丢失 异步执行时，Agent A的结果还没返回，Agent B已经开始执行，用了旧状态。 解决方案：    场景 解决方案     上下文截断 设计上下文压缩节点，只传递关键信息，而不是全部原始数据   格式转换 统一Agent间通信格式，用结构化schema而不是自然语言   状态覆盖 用LangGraph的checkpoint机制，每次状态变更都原子化   异步时序 设置依赖关系，确保上游Agent完成后再触发下游    政策补贴系统中的实践： 我们给每个Agent的输出定...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第三十一组（301-310题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#301-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%80%8E%E4%B9%88%E4%BC%A0%E9%80%92%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">301. 上下文怎么传递的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#302-%E6%9C%89%E5%BE%88%E5%A4%9A%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%B2%BE%E5%87%86%E6%89%BE%E5%88%B0"><span class="toc-number">1.2.</span> <span class="toc-text">302. 有很多工具，如何设计精准找到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#303-%E6%80%8E%E4%B9%88%E6%8E%A7%E5%88%B6%E5%8F%AC%E5%9B%9E%E7%9A%84%E5%A4%9A%E5%B0%91"><span class="toc-number">1.3.</span> <span class="toc-text">303. 怎么控制召回的多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#304-%E9%87%8D%E6%8E%92%E5%BA%8F%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">304. 重排序的算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#305-%E4%BB%8E%E4%BD%A0%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E4%BD%A0%E8%90%BD%E5%AE%9E%E7%9A%84Hermes%E8%90%BD%E5%AE%9E%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2"><span class="toc-number">1.5.</span> <span class="toc-text">305. 从你的工程实践你落实的Hermes落实在哪些方面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#306-Claude-Code%E6%B3%84%E9%9C%B2%E4%BB%A3%E7%A0%81%E4%BD%A0%E7%9C%8B%E4%BA%86%E4%B9%88%EF%BC%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%8D%B0%E8%B1%A1%E6%B7%B1%E5%88%BB%E7%9A%84%E7%82%B9"><span class="toc-number">1.6.</span> <span class="toc-text">306. Claude Code泄露代码你看了么，有没有印象深刻的点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#307-%E6%8E%A5%E5%8F%A3%E4%BA%A4%E4%BA%92%E6%9C%89%E9%81%87%E5%88%B0%E5%A0%B5%E5%A1%9E%E9%97%AE%E9%A2%98%E4%B9%88%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E7%9A%84"><span class="toc-number">1.7.</span> <span class="toc-text">307. 接口交互有遇到堵塞问题么，怎么解决的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#308-%E6%9C%89%E4%B8%AA%E8%AF%B7%E6%B1%82%E5%88%B0A%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%EF%BC%8C%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9C%A8%E6%B5%81%E5%BC%8F%E8%BE%93%E5%87%BA%EF%BC%8C%E7%94%A8%E6%88%B7%E6%83%B3%E5%81%9C%E6%AD%A2%E6%8E%89%EF%BC%8C%E8%AF%B7%E6%B1%82%E5%8F%AF%E8%83%BD%E5%8F%91%E9%80%81%E5%88%B0%E4%BB%BB%E6%84%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E8%AF%B7%E6%B1%82%E5%8F%91%E9%80%81%E5%88%B0A%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.8.</span> <span class="toc-text">308. 有个请求到A服务器上，大模型在流式输出，用户想停止掉，请求可能发送到任意服务器，怎么保证请求发送到A服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#309-%E8%B7%AF%E7%94%B1Agent%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.9.</span> <span class="toc-text">309. 路由Agent如何设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#310-RAG%E5%8F%AC%E5%9B%9E%E7%8E%87%E5%92%8C%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.10.</span> <span class="toc-text">310. RAG召回率和准确率的区别</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/038_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十四组（331-340题）"/></a><div class="content"><a class="title" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）">面试模拟 - 第三十四组（331-340题）</a><time datetime="2026-08-03T00:00:00.000Z" title="Created 2026-08-03 08:00:00">2026-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/037_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十三组（321-330题）"/></a><div class="content"><a class="title" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）">面试模拟 - 第三十三组（321-330题）</a><time datetime="2026-08-02T00:00:00.000Z" title="Created 2026-08-02 08:00:00">2026-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/036_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十二组（311-320题）"/></a><div class="content"><a class="title" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）">面试模拟 - 第三十二组（311-320题）</a><time datetime="2026-08-01T00:00:00.000Z" title="Created 2026-08-01 08:00:00">2026-08-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>面试模拟 - 第四组（31-40题） | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第四组（31-40题）  基于简历项目经历，模拟面试回答   31. top-k和top-p是什么，可以分别说一下么？ 回答： top-k和top-p都是大模型生成时的采样策略，用于控制输出的随机性和多样性。 top-k采样： 在每一步生成时，模型会输出所有词的概率分布。top-k策略是只保留概率最高的k个词，其余词的概率设为0，然后在这k个词中随机采样。 比如k&#x3D;10，就是只考虑概">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试模拟 - 第四组（31-40题）">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/04/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/4_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%9B%9B%E7%BB%84_31-40/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第四组（31-40题）  基于简历项目经历，模拟面试回答   31. top-k和top-p是什么，可以分别说一下么？ 回答： top-k和top-p都是大模型生成时的采样策略，用于控制输出的随机性和多样性。 top-k采样： 在每一步生成时，模型会输出所有词的概率分布。top-k策略是只保留概率最高的k个词，其余词的概率设为0，然后在这k个词中随机采样。 比如k&#x3D;10，就是只考虑概">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/040_%E5%B0%81%E9%9D%A2_2026_07_29.jpg">
+<meta property="article:published_time" content="2026-07-04T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-31T01:18:13.554Z">
+<meta property="article:author" content="Sloth">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/040_%E5%B0%81%E9%9D%A2_2026_07_29.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "面试模拟 - 第四组（31-40题）",
+  "url": "https://timaio0911.github.io/2026/07/04/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/4_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%9B%9B%E7%BB%84_31-40/",
+  "image": "https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/040_%E5%B0%81%E9%9D%A2_2026_07_29.jpg",
+  "datePublished": "2026-07-04T00:00:00.000Z",
+  "dateModified": "2026-07-31T01:18:13.554Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/04/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/4_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%9B%9B%E7%BB%84_31-40/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试模拟 - 第四组（31-40题）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/059_%E5%B0%81%E9%9D%A2_2026_07_29_1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/040_%E5%B0%81%E9%9D%A2_2026_07_29.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">面试模拟 - 第四组（31-40题）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">面试模拟 - 第四组（31-40题）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-04T00:00:00.000Z" title="Created 2026-07-04 08:00:00">2026-07-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-31T01:18:13.554Z" title="Updated 2026-07-31 09:18:13">2026-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第四组（31-40题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="31-top-k和top-p是什么，可以分别说一下么？">31. top-k和top-p是什么，可以分别说一下么？</h2>
+<p><strong>回答：</strong></p>
+<p>top-k和top-p都是大模型生成时的采样策略，用于控制输出的随机性和多样性。</p>
+<p><strong>top-k采样：</strong></p>
+<p>在每一步生成时，模型会输出所有词的概率分布。top-k策略是只保留概率最高的k个词，其余词的概率设为0，然后在这k个词中随机采样。</p>
+<p>比如k=10，就是只考虑概率排名前10的词。k越小，输出越确定；k越大，输出越多样。</p>
+<p><strong>top-p采样（核采样）：</strong></p>
+<p>top-p是按概率从高到低累加，当累加概率达到p时停止，只在这个范围内采样。</p>
+<p>比如p=0.9，就是把词按概率从高到低排序，累加到概率和为90%为止，只在这个范围内采样。这样能自适应地选择候选词数量——当模型很确定时，可能只需要2-3个词就达到90%；不确定时可能需要20个词。</p>
+<p><strong>区别：</strong></p>
+<p>top-k是固定候选词数量，top-p是固定概率阈值。top-p更灵活，能根据模型的置信度动态调整候选范围。</p>
+<p><strong>我在项目中的应用：</strong></p>
+<p>法律场景对准确性要求高，我在生成法律问答时通常设top_k=10、top_p=0.85，这样既能保证输出的专业性，又保留了一定的多样性让回答更自然。</p>
+<hr>
+<h2 id="32-大模型迁移你有了解么，是怎么做的？">32. 大模型迁移你有了解么，是怎么做的？</h2>
+<p><strong>回答：</strong></p>
+<p>大模型迁移主要指把一个通用大模型适配到特定领域或任务，我在法律助手中做了这方面的工作。</p>
+<p><strong>迁移方式：</strong></p>
+<p><strong>第一种，Prompt工程迁移。</strong> 最轻量的方式，通过设计领域特定的prompt，引导模型在特定领域输出。不需要训练，但效果有限。</p>
+<p><strong>第二种，LoRA/QLoRA微调。</strong> 我在法律助手中用的方式。基于Qwen3-32B，用法律领域的数据做QLoRA微调，只训练低秩适配器，成本低效果好。合规正确率从72%提升到了91%。</p>
+<p><strong>第三种，全量微调。</strong> 更新模型全部参数，效果最好但成本最高，需要大量计算资源和训练数据。</p>
+<p><strong>迁移流程：</strong></p>
+<p>第一步，<strong>数据准备</strong>。收集领域数据，清洗格式化。我在法律助手中收集了法律条文、司法解释、法律问答对等数据。</p>
+<p>第二步，<strong>选择迁移方式</strong>。根据任务复杂度、数据量、计算资源选择。我选择QLoRA是因为资源有限但需要效果。</p>
+<p>第三步，<strong>训练和评估</strong>。用验证集监控训练过程，防止过拟合。用领域测试集评估迁移效果。</p>
+<p>第四步，<strong>部署和迭代</strong>。部署后持续收集反馈，用Bad Case补充训练数据，迭代优化。</p>
+<p><strong>我的实践：</strong></p>
+<p>在法律助手项目中，我用QLoRA微调Qwen3-32B，4位量化后只需约10G显存，节省了31.7G。微调后的模型法律合规正确率从72%提升到91%，效果显著。</p>
+<hr>
+<h2 id="33-RAG多路召回是什么，大概说一下？">33. RAG多路召回是什么，大概说一下？</h2>
+<p><strong>回答：</strong></p>
+<p>多路召回是RAG系统中的一种检索策略，核心思想是<strong>用多种检索方式分别召回候选文档，再合并去重</strong>。</p>
+<p><strong>为什么要多路召回：</strong></p>
+<p>单一检索方式有局限性：</p>
+<p>第一，<strong>向量检索</strong>：擅长语义理解，能捕获&quot;劳动法&quot;和&quot;雇佣关系&quot;这类语义相近的表述，但对精确关键词匹配不够敏感。</p>
+<p>第二，<strong>关键词检索（BM25）</strong>：擅长精确匹配，能快速找到包含&quot;劳动仲裁&quot;这个确切词的文档，但对同义词、近义词无能为力。</p>
+<p>两者结合能互补短板。</p>
+<p><strong>多路召回的实现：</strong></p>
+<p>第一路，<strong>向量召回</strong>。把用户问题转成向量，在Milvus中做相似度搜索，召回Top-K1个结果。</p>
+<p>第二路，<strong>关键词召回</strong>。用BM25算法对用户问题做关键词匹配，召回Top-K2个结果。</p>
+<p>第三路（可选），<strong>知识图谱召回</strong>。在Neo4j中做图谱游走，召回相关联的实体和文档。</p>
+<p><strong>结果融合：</strong></p>
+<p>把多路召回的结果合并去重，然后用Rerank模型统一打分排序，取Top-K作为最终结果。</p>
+<p>融合策略可以用倒数排名融合（RRF），公式是：RRF_score = Σ(1/(k+rank_i))，k是常数（通常60），rank_i是文档在第i路中的排名。</p>
+<p><strong>我在项目中的应用：</strong></p>
+<p>法律助手项目中采用了向量检索为主、BM25为辅的双路召回。当向量检索结果不理想时，BM25作为补充。召回率从单路的68%提升到了94%。</p>
+<hr>
+<h2 id="34-在RAG系统中prompt的设计方式？">34. 在RAG系统中prompt的设计方式？</h2>
+<p><strong>回答：</strong></p>
+<p>RAG系统中的prompt设计非常关键，直接影响生成质量。我在法律助手中设计了一套分层的prompt策略。</p>
+<p><strong>基本结构：</strong></p>
+<p>一个典型的RAG prompt包含三个部分：</p>
+<p>第一，<strong>系统指令</strong>。定义模型的角色和行为规范，比如&quot;你是一个专业的法律顾问，需要基于提供的法律条文回答用户问题&quot;。</p>
+<p>第二，<strong>上下文</strong>。把检索到的相关法律条文作为上下文注入prompt，通常用特殊标记（如<context>）包裹。</p>
+<p>第三，<strong>用户问题</strong>。用户的原始问题。</p>
+<p><strong>设计要点：</strong></p>
+<p>第一，<strong>明确引用要求</strong>。指令中要求模型引用具体法条编号，比如&quot;根据《劳动法》第三十九条…&quot;，这样回答有据可查。</p>
+<p>第二，<strong>限制输出格式</strong>。指定回答的结构——先给结论，再引用法条，最后给建议。</p>
+<p>第三，<strong>幻觉抑制</strong>。明确要求&quot;如果参考资料中没有相关信息，请如实告知，不要编造&quot;。</p>
+<p>第四，<strong>长度控制</strong>。根据场景控制回答长度，律师场景可以详细，普通员工咨询要简洁易懂。</p>
+<p><strong>我在项目中的实践：</strong></p>
+<p>法律助手中设计了两套prompt——查询模型的prompt侧重精确引用法条，对话模型的prompt侧重通俗易懂的解释。通过prompt迭代，合规正确率从72%提升到了91%。</p>
+<hr>
+<h2 id="35-大模型不遵守输出格式的时候有哪些方法？">35. 大模型不遵守输出格式的时候有哪些方法？</h2>
+<p><strong>回答：</strong></p>
+<p>大模型不遵守输出格式是常见问题，我在项目中遇到过几次，总结了以下几种解决方法：</p>
+<p><strong>第一种，强化prompt指令。</strong></p>
+<p>在prompt中更明确地指定格式要求，用示例（few-shot）展示期望的输出格式。比如要求JSON输出时，给出一个完整的JSON示例。</p>
+<p><strong>第二种，结构化输出约束。</strong></p>
+<p>调用模型API时，传入response_format参数强制输出JSON。OpenAI和阿里云的API都支持这个功能。Qwen也支持通过system prompt指定输出格式。</p>
+<p><strong>第三种，后处理修复。</strong></p>
+<p>对模型输出做后处理——正则提取、JSON解析修复、格式转换。比如模型输出了带markdown标记的JSON，用正则去掉标记再解析。</p>
+<p><strong>第四种，重试机制。</strong></p>
+<p>第一次输出格式不对时，把错误信息反馈给模型，让它重新生成。通常重试1-2次就能得到正确格式。</p>
+<p><strong>第五种，输出解析器。</strong></p>
+<p>用LangChain的OutputParser，它会自动处理格式问题。如果解析失败，会把错误信息反馈给模型重试。</p>
+<p><strong>我在项目中的实践：</strong></p>
+<p>在政策补贴项目中，报告生成Agent需要输出结构化的评估报告。我结合了强化prompt和结构化输出约束两种方式——在prompt中给出JSON示例，同时调用API时传入response_format参数。对于偶尔的格式错误，用后处理脚本兜底修复。</p>
+<hr>
+<h2 id="36-如何优化提示词，有哪些方式？">36. 如何优化提示词，有哪些方式？</h2>
+<p><strong>回答：</strong></p>
+<p>提示词优化是提升RAG和Agent效果的关键环节，我在项目中总结了以下几种方式：</p>
+<p><strong>第一种，明确角色和任务。</strong></p>
+<p>在system prompt中清晰定义模型的角色——“你是一个专业的法律顾问”，以及任务目标——“基于提供的法条回答用户问题”。角色越明确，输出越符合预期。</p>
+<p><strong>第二种，添加约束条件。</strong></p>
+<p>列出具体的行为约束——“不要编造法条”、“引用时必须注明具体条款编号”、“回答长度控制在200字以内”。约束越具体，模型越容易遵守。</p>
+<p><strong>第三种，Few-shot示例。</strong></p>
+<p>给出几个输入输出的示例对，让模型学习期望的输出格式和风格。对于格式要求严格的场景特别有效。</p>
+<p><strong>第四种，思维链引导。</strong></p>
+<p>要求模型先分析问题，再给出答案。比如&quot;请先分析用户问题涉及的法律领域，再检索相关法条，最后给出回答&quot;。</p>
+<p><strong>第五种，负面示例。</strong></p>
+<p>告诉模型不要做什么——“不要给出模棱两可的回答”、“不要引用已废止的法条”。</p>
+<p><strong>第六种，迭代测试。</strong></p>
+<p>准备一组测试用例，每次修改prompt后跑测试，对比效果。我在法律助手中每周都会用标注的200个问题测试prompt效果。</p>
+<p><strong>第七种，A/B测试。</strong></p>
+<p>同时运行多个prompt版本，用在线指标（用户满意度、点击率）对比效果，选择最优版本。</p>
+<hr>
+<h2 id="37-Zero-shot和Few-shot的区别？">37. Zero-shot和Few-shot的区别？</h2>
+<p><strong>回答：</strong></p>
+<p>Zero-shot和Few-shot是提示工程中的两种范式，区别在于是否给模型提供示例。</p>
+<p><strong>Zero-shot：</strong></p>
+<p>直接给模型一个任务指令，不提供任何示例。比如：“请将以下文本分类为正面或负面情感：这家餐厅的菜品很好吃。”</p>
+<p>模型完全依靠预训练学到的知识来完成任务。</p>
+<p><strong>Few-shot：</strong></p>
+<p>在prompt中提供几个输入输出的示例对，让模型&quot;学习&quot;任务模式。比如：</p>
+<p>&quot;示例1：这家餐厅很好吃 → 正面<br>
+示例2：服务态度太差了 → 负面<br>
+请分类：这家餐厅的菜品很好吃 → &quot;</p>
+<p>模型会从示例中归纳任务模式，再应用到新输入上。</p>
+<p><strong>区别总结：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Zero-shot</th>
+<th>Few-shot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是否需要示例</td>
+<td>不需要</td>
+<td>需要2-5个示例</td>
+</tr>
+<tr>
+<td>任务理解方式</td>
+<td>依赖预训练知识</td>
+<td>从示例中学习模式</td>
+</tr>
+<tr>
+<td>效果</td>
+<td>简单任务效果好</td>
+<td>复杂任务效果更好</td>
+</tr>
+<tr>
+<td>Token消耗</td>
+<td>少</td>
+<td>多（示例占用token）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>通用任务、格式简单</td>
+<td>特定领域、格式复杂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>我在项目中的应用：</strong></p>
+<p>法律助手中，简单的分类任务用Zero-shot就够了；但结构化输出（比如从用户问题中提取法律领域、关键实体）用Few-shot效果更好，我在prompt中给出了3个示例，模型的输出格式准确率明显提升。</p>
+<hr>
+<h2 id="38-prompt在RAG的设计和在Agent的设计有哪些区别？">38. prompt在RAG的设计和在Agent的设计有哪些区别？</h2>
+<p><strong>回答：</strong></p>
+<p>RAG和Agent的prompt设计确实有明显区别，我在两个项目中都有实践。</p>
+<p><strong>RAG的prompt设计特点：</strong></p>
+<p>第一，<strong>强调上下文利用</strong>。RAG的prompt核心是告诉模型&quot;基于以下参考资料回答&quot;，重点是让模型忠实于检索到的上下文，不要自由发挥。</p>
+<p>第二，<strong>幻觉抑制</strong>。必须明确要求&quot;如果参考资料中没有相关信息，请如实告知&quot;，防止模型编造。</p>
+<p>第三，<strong>引用要求</strong>。法律场景要求回答必须引用具体法条编号，prompt中要明确这个要求。</p>
+<p><strong>Agent的prompt设计特点：</strong></p>
+<p>第一，<strong>工具使用指令</strong>。Agent需要调用工具（API、数据库等），prompt中要定义可用工具列表、调用格式、参数说明。</p>
+<p>第二，<strong>推理链引导</strong>。Agent需要先分析问题、制定计划、再执行。prompt中常用ReAct模式——先推理（Reasoning），再行动（Action）。</p>
+<p>第三，<strong>状态管理</strong>。多Agent场景下，prompt需要包含当前状态信息，让Agent知道自己在流程中的位置。</p>
+<p><strong>关键区别：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>RAG prompt</th>
+<th>Agent prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心目标</td>
+<td>基于上下文生成回答</td>
+<td>理解任务、调用工具、完成任务</td>
+</tr>
+<tr>
+<td>工具使用</td>
+<td>通常不需要</td>
+<td>必须定义工具和调用格式</td>
+</tr>
+<tr>
+<td>推理要求</td>
+<td>较少，主要是理解和总结</td>
+<td>需要多步推理和决策</td>
+</tr>
+<tr>
+<td>幻觉控制</td>
+<td>严格限制</td>
+<td>相对宽松，允许推理和推测</td>
+</tr>
+</tbody>
+</table>
+<p><strong>我的实践：</strong></p>
+<p>法律助手的RAG prompt强调&quot;基于法条回答、引用具体条款、不要编造&quot;；政策补贴的Agent prompt强调&quot;先收集信息、再匹配政策、最后生成报告&quot;的工作流。</p>
+<hr>
+<h2 id="39-召回率变高、变低的原因？">39. 召回率变高、变低的原因？</h2>
+<p><strong>回答：</strong></p>
+<p>召回率是RAG系统的核心指标，我在法律助手中持续监控和优化召回率，总结了影响召回率的因素。</p>
+<p><strong>召回率变高的原因：</strong></p>
+<p>第一，<strong>切片策略优化</strong>。从固定长度切片改为按文档结构切片，每个切片语义更完整，匹配更精准。我们从68%提升到94%主要就是这个原因。</p>
+<p>第二，<strong>混合检索引入</strong>。单一向量检索有局限，加入BM25关键词检索后，能捕获更多相关文档。</p>
+<p>第三，<strong>Embedding模型升级</strong>。换用效果更好的embedding模型，向量表示更准确。</p>
+<p>第四，<strong>知识库扩充</strong>。补充了更多相关文档，覆盖更多查询场景。</p>
+<p><strong>召回率变低的原因：</strong></p>
+<p>第一，<strong>知识库更新问题</strong>。新入库的文档切片质量差、向量生成失败、索引没有更新，都会导致召回率下降。</p>
+<p>第二，<strong>Embedding模型不一致</strong>。入库和检索用了不同的embedding模型，导致向量空间不匹配。</p>
+<p>第三，<strong>切片边界问题</strong>。切片把一个完整概念切成两半，语义被破坏，匹配效果变差。</p>
+<p>第四，<strong>数据质量问题</strong>。OCR识别错误、格式错乱、乱码等问题会影响向量质量。</p>
+<p><strong>我在项目中的监控：</strong></p>
+<p>每周用200个标注问题跑评测，监控召回率趋势。如果下降超过3%，会触发告警，排查是入库问题、索引问题还是切片问题。</p>
+<p>有一次召回率突然下降，排查发现是数据入库脚本报错但没中断，导致部分文档没有向量。修复后召回率恢复正常。</p>
+<hr>
+<h2 id="40-重排序模块是怎么实现的？">40. 重排序模块是怎么实现的？</h2>
+<p><strong>回答：</strong></p>
+<p>重排序（Rerank）是我在法律助手中引入的检索优化模块，用于提升检索精度。</p>
+<p><strong>实现原理：</strong></p>
+<p>重排序采用Cross-Encoder架构，把query和每个候选文档拼接后一起输入模型，输出一个相关性分数。这和向量检索的Bi-Encoder（分别编码再算相似度）不同，Cross-Encoder能更精细地理解query和文档的关系。</p>
+<p><strong>实现流程：</strong></p>
+<p>第一步，<strong>候选召回</strong>。先用向量检索从Milvus中召回Top-30个候选文档。</p>
+<p>第二步，<strong>重排序打分</strong>。把用户问题和30个候选文档分别拼接，输入Cross-Encoder模型，得到30个相关性分数。</p>
+<p>第三步，<strong>排序截取</strong>。按分数从高到低排序，取Top-5作为最终结果。</p>
+<p><strong>技术选型：</strong></p>
+<p>第一种，<strong>云端API</strong>。用阿里云或Cohere的Rerank API，调用简单，效果好。</p>
+<p>第二种，<strong>本地模型</strong>。部署开源的Rerank模型（如bge-reranker），适合对延迟敏感或数据敏感的场景。</p>
+<p>我在法律助手中用的是云端API，延迟在50ms以内，可以接受。</p>
+<p><strong>为什么需要重排序：</strong></p>
+<p>向量检索速度快但精度有限，可能会召回一些语义相似但不相关的文档。比如用户问&quot;劳动仲裁流程&quot;，向量检索可能召回&quot;商事仲裁&quot;的文档。</p>
+<p>Rerank模型能更精确地判断相关性，把真正相关的文档排到前面。</p>
+<p><strong>效果：</strong> 引入Rerank后，Top-5的准确率明显提升，法律合规正确率从85%提升到了91%。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/04/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/4_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%9B%9B%E7%BB%84_31-40/">https://timaio0911.github.io/2026/07/04/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/4_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%9B%9B%E7%BB%84_31-40/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/040_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/05/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/5_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%94%E7%BB%84_41-50/" title="面试模拟 - 第五组（41-50题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/041_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">面试模拟 - 第五组（41-50题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第五组（41-50题）  基于简历项目经历，模拟面试回答   41. Python迭代器和生成器的区别，使用场景有什么不同？ 回答： 迭代器和生成器都是Python中实现惰性求值的机制，但层次不同： 迭代器 是一个实现了__iter__()和__next__()方法的对象，通过 ext()逐个获取元素，取完抛出StopIteration异常。任何实现了这两个方法的对象都是迭代器，比如列表的iter()返回的对象。 生成器 是一种特殊的迭代器，用yield关键字定义函数，每次调用 ext()时执行到yield暂停并返回值，下次从暂停处继续。生成器函数返回的就是生成器对象。 核心区别：  生成器是迭代器的语法糖，写起来更简洁 迭代器需要手动实现__next__，生成器用yield自动实现 生成器只能遍历一次，迭代器可以重新创建  我在项目中的使用场景： 在法律助手项目中，处理大量PDF文档时会生成成千上万的切片。如果把所有切片一次性加载到内存，内存会爆。我用生成器来处理：定义一个chunk_generator()函数，用yield逐个返回切片，这样在构建知识库时可以边生...</div></div></div></a><a class="pagination-related" href="/2026/07/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/3_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E7%BB%84_21-30/" title="面试模拟 - 第三组（21-30题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/039_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">面试模拟 - 第三组（21-30题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第三组（21-30题）  基于简历项目经历，模拟面试回答   21. 你的切块策略是什么，为什么？ 回答： 在法律助手项目中，我采用了按文档结构切片为主的策略，辅以父子切片机制。 切块策略选择： 第一，按标题层级切片。法律文档有非常清晰的层级结构——编、章、节、条、款、项。我按照这个自然结构来切片，每个切片对应一个具体的法律条款或条款组合。这样做的好处是每个切片都有明确的语义边界，检索时能精准定位到具体条款。 第二，父子切片机制。大块（比如一整章或一节）用于检索定位，小块（比如具体条款）用于精确匹配。当用户问一个宏观问题时，大块能提供完整上下文；问具体问题时，小块能给出精确答案。 第三，固定长度兜底。对于没有明显结构的文档（比如一些说明性文本），用固定长度切片（512 token），带50 token的重叠窗口，避免信息断裂。 为什么这样选择： 法律文档的特点是层级分明、条款独立性强。如果用固定长度切片，可能会把一个完整的法律条款切成两半，破坏语义完整性。按结构切片能保证每个切片都是一个完整的法律概念单元。 效果验证： 采用结构化切片后，召回率从固定长度切片的68%...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/23/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/" title="面试模拟 - 第二十三组（221-230题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/027_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-23</div><div class="info-item-2">面试模拟 - 第二十三组（221-230题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十三组（221-230题）  基于简历项目经历，模拟面试回答   221. 强化学习的偏好对齐 回答： 强化学习的偏好对齐，简单说就是让模型的输出跟人类的偏好保持一致，而不是只追求&quot;看起来合理的答案&quot;。最经典的方法是RLHF。 核心思路分为三步： 第一步——收集偏好数据： 让大模型对同一个问题生成多个回答，然后人工标注哪个更好。比如问&quot;劳动法规定试用期多久&quot;，模型生成了三个回答，我标注出最准确、最清晰的那个。 第二步——训练奖励模型（Reward Model）： 用标注好的偏好数据训练一个奖励模型，它能自动判断一个回答的质量好坏。这个模型本质上就是一个打分器，输入是&quot;问题+回答&quot;，输出是一个分数。 第三步——用强化学习微调大模型： 把奖励模型作为&quot;老师&quot;，用PPO算法去微调大模型，让大模型生成更受奖励模型偏好的回答。 在项目中的思考： 法律助手项目中，我虽然没有做完整的RLHF，但做了一个类似的机制——基于规则的反馈优化。对于法律咨询这种场景，准确性比流畅性重要得多，我设置了规则校验...</div></div></div></a><a class="pagination-related" href="/2026/07/26/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/26_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AD%E7%BB%84_251-260/" title="面试模拟 - 第二十六组（251-260题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/030_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-26</div><div class="info-item-2">面试模拟 - 第二十六组（251-260题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十六组（251-260题）  基于简历项目经历，模拟面试回答   251. 软标签和硬标签有什么不同 回答： 这是模型蒸馏和训练中的核心概念，我在法律助手项目中做QLoRA微调时也用到过。 硬标签就是常规训练用的标注——给每个样本一个确定的类别或答案，比如&quot;这条法条和问题相关=1，不相关=0&quot;。模型学习的目标是让预测结果尽可能匹配这个确定的标签。 软标签则包含更丰富的信息，它不是一个确定的0或1，而是一个概率分布。比如在蒸馏场景中，大模型（教师模型）对某个问题的输出概率分布是：劳动合同法第39条（0.7）、劳动合同法第40条（0.2）、劳动法第26条（0.05）、其他（0.05）。这个分布告诉学生模型的不只是&quot;哪个答案正确&quot;，还包括&quot;哪些答案在语义上也很接近&quot;。 核心区别：    维度 硬标签 软标签     信息量 只有&quot;对不对&quot; 包含&quot;有多对&quot;和&quot;接近程度&quot;   表达能力 无法区分相近错误 能表达语义相似度   生成方式 人工标注或确定答案...</div></div></div></a><a class="pagination-related" href="/2026/07/10/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/10_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E7%BB%84_91-100/" title="面试模拟 - 第十组（91-100题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/001_%E5%B0%81%E9%9D%A22026_07_28.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-10</div><div class="info-item-2">面试模拟 - 第十组（91-100题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十组（91-100题）  基于简历项目经历，模拟面试回答   91. 该怎么解决多agent之间交流会出现信息丢失的情况，哪些情况会出现，怎么解决？ 回答： 信息丢失的典型场景： 1. 上下文截断丢失 Agent A传给Agent B的上下文太长，超过B的输入窗口，后面的信息被截断。 2. 格式转换丢失 Agent A输出JSON格式，Agent B期望自然语言，转换过程中丢失细节。 3. 状态覆盖丢失 Agent A和Agent B同时写入同一个状态字段，后写的覆盖先写的。 4. 异步时序丢失 异步执行时，Agent A的结果还没返回，Agent B已经开始执行，用了旧状态。 解决方案：    场景 解决方案     上下文截断 设计上下文压缩节点，只传递关键信息，而不是全部原始数据   格式转换 统一Agent间通信格式，用结构化schema而不是自然语言   状态覆盖 用LangGraph的checkpoint机制，每次状态变更都原子化   异步时序 设置依赖关系，确保上游Agent完成后再触发下游    政策补贴系统中的实践： 我们给每个Agent的输出定...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第四组（31-40题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-top-k%E5%92%8Ctop-p%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%88%86%E5%88%AB%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">31. top-k和top-p是什么，可以分别说一下么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%BF%81%E7%A7%BB%E4%BD%A0%E6%9C%89%E4%BA%86%E8%A7%A3%E4%B9%88%EF%BC%8C%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">32. 大模型迁移你有了解么，是怎么做的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-RAG%E5%A4%9A%E8%B7%AF%E5%8F%AC%E5%9B%9E%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%A4%A7%E6%A6%82%E8%AF%B4%E4%B8%80%E4%B8%8B%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">33. RAG多路召回是什么，大概说一下？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#34-%E5%9C%A8RAG%E7%B3%BB%E7%BB%9F%E4%B8%ADprompt%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">34. 在RAG系统中prompt的设计方式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#35-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B8%8D%E9%81%B5%E5%AE%88%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%97%B6%E5%80%99%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">35. 大模型不遵守输出格式的时候有哪些方法？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#36-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%8F%90%E7%A4%BA%E8%AF%8D%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">36. 如何优化提示词，有哪些方式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#37-Zero-shot%E5%92%8CFew-shot%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">37. Zero-shot和Few-shot的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#38-prompt%E5%9C%A8RAG%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%9C%A8Agent%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.8.</span> <span class="toc-text">38. prompt在RAG的设计和在Agent的设计有哪些区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#39-%E5%8F%AC%E5%9B%9E%E7%8E%87%E5%8F%98%E9%AB%98%E3%80%81%E5%8F%98%E4%BD%8E%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">39. 召回率变高、变低的原因？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#40-%E9%87%8D%E6%8E%92%E5%BA%8F%E6%A8%A1%E5%9D%97%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">40. 重排序模块是怎么实现的？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/038_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十四组（331-340题）"/></a><div class="content"><a class="title" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）">面试模拟 - 第三十四组（331-340题）</a><time datetime="2026-08-03T00:00:00.000Z" title="Created 2026-08-03 08:00:00">2026-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/037_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十三组（321-330题）"/></a><div class="content"><a class="title" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）">面试模拟 - 第三十三组（321-330题）</a><time datetime="2026-08-02T00:00:00.000Z" title="Created 2026-08-02 08:00:00">2026-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/036_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十二组（311-320题）"/></a><div class="content"><a class="title" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）">面试模拟 - 第三十二组（311-320题）</a><time datetime="2026-08-01T00:00:00.000Z" title="Created 2026-08-01 08:00:00">2026-08-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,1132 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>面试模拟 - 第二十一组（201-210题） | Welcome</title><meta name="author" content="Sloth"><meta name="copyright" content="Sloth"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试模拟 - 第二十一组（201-210题）  基于简历项目经历，模拟面试回答   201. AI是否可以帮助我们从架构体系和业务开发全部完成？ 回答： 我的看法是：AI可以极大地辅助架构设计和业务开发，但现阶段还不能完全替代人完成全部工作。 它更像是一个超级协作者，而不是一个全能的替代者。 AI能做什么： 1. 架构设计层面  AI可以帮助我们做技术选型分析，比如对比不同框架的优劣 可以生成初版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试模拟 - 第二十一组（201-210题）">
+<meta property="og:url" content="https://timaio0911.github.io/2026/07/21/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/21_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BB%84_201-210/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="面试模拟 - 第二十一组（201-210题）  基于简历项目经历，模拟面试回答   201. AI是否可以帮助我们从架构体系和业务开发全部完成？ 回答： 我的看法是：AI可以极大地辅助架构设计和业务开发，但现阶段还不能完全替代人完成全部工作。 它更像是一个超级协作者，而不是一个全能的替代者。 AI能做什么： 1. 架构设计层面  AI可以帮助我们做技术选型分析，比如对比不同框架的优劣 可以生成初版">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/025_%E5%B0%81%E9%9D%A2_2026_07_29.jpg">
+<meta property="article:published_time" content="2026-07-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-31T01:18:10.345Z">
+<meta property="article:author" content="Sloth">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/025_%E5%B0%81%E9%9D%A2_2026_07_29.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "面试模拟 - 第二十一组（201-210题）",
+  "url": "https://timaio0911.github.io/2026/07/21/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/21_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BB%84_201-210/",
+  "image": "https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/025_%E5%B0%81%E9%9D%A2_2026_07_29.jpg",
+  "datePublished": "2026-07-21T00:00:00.000Z",
+  "dateModified": "2026-07-31T01:18:10.345Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sloth",
+      "url": "https://timaio0911.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Image.png"><link rel="canonical" href="https://timaio0911.github.io/2026/07/21/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/21_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BB%84_201-210/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试模拟 - 第二十一组（201-210题）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/059_%E5%B0%81%E9%9D%A2_2026_07_29_1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/025_%E5%B0%81%E9%9D%A2_2026_07_29.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome</span></a><a class="nav-page-title" href="/"><span class="site-name">面试模拟 - 第二十一组（201-210题）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">面试模拟 - 第二十一组（201-210题）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-21T00:00:00.000Z" title="Created 2026-07-21 08:00:00">2026-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-31T01:18:10.345Z" title="Updated 2026-07-31 09:18:10">2026-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/">回答</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>面试模拟 - 第二十一组（201-210题）</h1>
+<blockquote>
+<p>基于简历项目经历，模拟面试回答</p>
+</blockquote>
+<hr>
+<h2 id="201-AI是否可以帮助我们从架构体系和业务开发全部完成？">201. AI是否可以帮助我们从架构体系和业务开发全部完成？</h2>
+<p><strong>回答：</strong></p>
+<p>我的看法是：<strong>AI可以极大地辅助架构设计和业务开发，但现阶段还不能完全替代人完成全部工作。</strong> 它更像是一个超级协作者，而不是一个全能的替代者。</p>
+<p><strong>AI能做什么：</strong></p>
+<p><strong>1. 架构设计层面</strong></p>
+<ul>
+<li>AI可以帮助我们做技术选型分析，比如对比不同框架的优劣</li>
+<li>可以生成初版架构图、模块划分方案</li>
+<li>能根据需求文档快速生成项目骨架代码</li>
+</ul>
+<p><strong>2. 业务开发层面</strong></p>
+<ul>
+<li>代码生成能力很强，像Claude Code、Cursor这些工具，写CRUD、API接口、数据模型已经非常成熟</li>
+<li>能辅助写单元测试、文档注释</li>
+<li>可以帮我们做代码审查、发现潜在bug</li>
+</ul>
+<p><strong>3. 实际项目中的体会</strong></p>
+<p>在做法律助手项目时，我用AI辅助写了大量代码，包括FastAPI的接口定义、Pydantic模型、MinerU的PDF解析逻辑等。但有几个关键点还是需要人来把控：</p>
+<ul>
+<li><strong>业务理解</strong>：法律条款的切片策略、检索逻辑的优化方向，这些需要深入理解业务场景</li>
+<li><strong>架构决策</strong>：为什么用Milvus而不是ES，为什么用Neo4j做政策图谱，这些权衡需要人来判断</li>
+<li><strong>异常处理</strong>：AI生成的代码往往缺少边界情况的处理，需要人工补充</li>
+</ul>
+<p><strong>AI的局限：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>复杂业务逻辑</td>
+<td>多条件交织的业务规则，AI容易遗漏</td>
+</tr>
+<tr>
+<td>系统集成</td>
+<td>老系统对接、数据迁移等需要大量上下文理解</td>
+</tr>
+<tr>
+<td>安全合规</td>
+<td>数据隐私、权限控制等需要专业判断</td>
+</tr>
+<tr>
+<td>性能优化</td>
+<td>深层次的性能瓶颈定位，AI缺少全局视角</td>
+</tr>
+</tbody>
+</table>
+<p><strong>我的观点：</strong> AI目前能做到70%-80%的编码工作，但架构设计、关键技术决策、复杂问题排查还是需要人来主导。善用AI的话，一个人的产出可以抵上一个三人的小团队。</p>
+<hr>
+<h2 id="202-可以提前通过约束doc来对cursor的行为进行约束么？">202. 可以提前通过约束doc来对cursor的行为进行约束么？</h2>
+<p><strong>回答：</strong></p>
+<p>可以的，而且这正是Cursor等AI编程工具的最佳实践方式。通过约束文档（rules文件、指令文件）来提前定义AI的行为边界，能显著提升代码质量和一致性。</p>
+<p><strong>具体的做法：</strong></p>
+<p><strong>1. .cursorrules 文件（最常用）</strong></p>
+<p>在项目根目录下创建 <code>.cursorrules</code> 文件，里面可以定义：</p>
+<pre class="line-numbers language-none"><code class="language-none"># 技术栈约束
+- 使用 FastAPI + Pydantic v2
+- 使用 Vue3 + TypeScript + Element Plus
+- 使用 SQLAlchemy 2.0 异步模式
+
+# 代码风格约束
+- 使用类型注解（Type Hints）
+- 函数长度不超过50行
+- 变量命名使用snake_case
+
+# 项目规范
+- API响应格式统一为 &#123;code, message, data&#125;
+- 所有异常需要自定义错误码
+- 数据库操作必须使用事务<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 项目级文档约束</strong></p>
+<p>在项目中放置 <code>README.md</code>、<code>CONTRIBUTING.md</code>、<code>ARCHITECTURE.md</code> 等文档，Cursor会读取这些文件作为上下文。比如我的法律助手项目就在项目根目录放了一个 <code>docs/技术规范.md</code>，里面定义了：</p>
+<ul>
+<li>目录结构规范</li>
+<li>数据库命名规范</li>
+<li>API设计规范</li>
+<li>日志规范</li>
+</ul>
+<p><strong>3. 高级用法 - 角色定义</strong></p>
+<p>可以给Cursor设定一个&quot;角色&quot;，比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">你是一个有5年经验的Python后端工程师，专注于AI应用开发。
+你擅长：FastAPI、LangChain、向量数据库、异步编程。
+你的代码风格：简洁、类型安全、异常处理完善。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>我在项目中的实际经验：</strong></p>
+<p>做政策补贴系统时，我在项目里放了 <code>rules.md</code> 文件，里面定义了：</p>
+<ul>
+<li>LangGraph节点的命名规范</li>
+<li>Agent的接口协议</li>
+<li>状态管理的约束</li>
+</ul>
+<p>效果很明显，AI生成的代码几乎不需要修改就能直接合并。但要注意：</p>
+<ul>
+<li><strong>约束要具体</strong>：不要写&quot;代码要优雅&quot;这种模糊的话，要写&quot;函数不超过50行&quot;这种可检查的规则</li>
+<li><strong>约束要可执行</strong>：AI不会主动遵守复杂的规则，所以规则最好能通过lint工具自动检查</li>
+<li><strong>定期更新</strong>：项目迭代过程中，规则也要同步更新</li>
+</ul>
+<p><strong>总结：</strong> 通过约束文档来约束AI行为是非常有效的方法，但需要花时间写好规则，而且要持续维护。</p>
+<hr>
+<h2 id="203-详细讲一下怎么用prompt来设定agent的行为？">203. 详细讲一下怎么用prompt来设定agent的行为？</h2>
+<p><strong>回答：</strong></p>
+<p>用Prompt来设定Agent行为，本质上是<strong>通过系统提示词（System Prompt）来定义Agent的角色、职责、行为边界和输出规范</strong>。做政策补贴系统时，我在这方面花了不少功夫。</p>
+<p><strong>核心思路：</strong></p>
+<p><strong>1. 角色定义（Role）</strong></p>
+<p>给Agent一个清晰的&quot;人设&quot;：</p>
+<pre class="line-numbers language-none"><code class="language-none">你是一个企业政策补贴匹配专家，熟悉国家和地方的政策补贴规则。
+你的职责是：根据企业画像，分析该企业可能符合哪些政策补贴条件。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>2. 行为边界（Scope）</strong></p>
+<p>明确Agent能做什么、不能做什么：</p>
+<pre class="line-numbers language-none"><code class="language-none">你可以做的：
+- 查询政策知识库
+- 分析企业信息
+- 生成匹配建议
+
+你不能做的：
+- 给出最终审批结果（需要人工确认）
+- 修改企业信息
+- 生成虚假政策条款<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3. 输出格式规范（Format）</strong></p>
+<p>定义输出的结构，让Agent的输出可解析：</p>
+<pre class="line-numbers language-none"><code class="language-none">输出格式必须为JSON：
+&#123;
+  &quot;matched_policies&quot;: [
+    &#123;
+      &quot;policy_name&quot;: &quot;政策名称&quot;,
+      &quot;match_score&quot;: 0-1,
+      &quot;reason&quot;: &quot;匹配理由&quot;,
+      &quot;required_conditions&quot;: [&quot;条件1&quot;, &quot;条件2&quot;]
+    &#125;
+  ],
+  &quot;summary&quot;: &quot;总体分析摘要&quot;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>4. 推理步骤（Reasoning）</strong></p>
+<p>引导Agent的思考过程，比如ReAct模式的Prompt：</p>
+<pre class="line-numbers language-none"><code class="language-none">请按以下步骤思考：
+1. 先理解用户的问题：用户想了解什么？
+2. 查询知识库：从政策库中检索相关政策
+3. 分析匹配度：逐条对比企业信息和政策条件
+4. 给出结论：输出匹配结果和建议<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>政策补贴系统中实际用的Prompt示例：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">你是一个企业政策补贴匹配Agent。
+
+【角色】
+你是企业政策补贴智能匹配系统的核心Agent，负责分析企业画像和政策条件。
+
+【输入】
+你将收到：
+1. 企业信息（行业、规模、营收、员工数、注册地等）
+2. 候选政策列表（从知识库检索回来）
+
+【处理流程】
+1. 提取企业关键特征
+2. 逐条对比政策条件
+3. 计算匹配度（完全匹配&#x2F;部分匹配&#x2F;不匹配）
+4. 生成匹配报告
+
+【输出格式】
+&#123;
+  &quot;enterprise_analysis&quot;: &#123;企业关键特征&#125;,
+  &quot;matched_policies&quot;: [&#123;政策名、匹配度、理由、缺失条件&#125;],
+  &quot;total_score&quot;: 综合匹配评分,
+  &quot;recommendations&quot;: [&quot;建议1&quot;, &quot;建议2&quot;]
+&#125;
+
+【约束】
+- 只基于知识库中的政策信息，不要编造政策
+- 如果缺少必要信息，明确告知需要补充什么
+- 匹配度评估要客观，不要过度乐观<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>5. 工具调用（Tool Use）</strong></p>
+<p>如果Agent需要调用工具，要在Prompt中定义工具的使用方式：</p>
+<pre class="line-numbers language-none"><code class="language-none">你拥有以下工具：
+1. search_policy(query): 搜索政策知识库
+2. get_enterprise_info(id): 获取企业详细信息
+3. calculate_match(enterprise, policy): 计算匹配度
+
+使用工具时，请先说明为什么使用这个工具，以及期望得到什么信息。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>关键心得：</strong> Prompt设定Agent行为时，<strong>越具体越好</strong>。不要写&quot;请认真分析&quot;，要写&quot;对比企业营收是否超过政策要求的门槛&quot;。而且需要多次迭代调优，我做了大概5-6版才稳定下来。</p>
+<hr>
+<h2 id="204-资源受限，只有一个24G显存的卡，如何对一个70B的模型进行全参微调？">204. 资源受限，只有一个24G显存的卡，如何对一个70B的模型进行全参微调？</h2>
+<p><strong>回答：</strong></p>
+<p>这是一个很现实的问题。坦白说，<strong>单卡24G显存对70B模型做全参微调基本不可能</strong>，因为70B模型仅参数加载就需要约140GB（FP16）或70GB（INT4）。但我们可以通过一些技术手段来近似实现，或者说在有限资源下做有效微调。</p>
+<p><strong>实际可行的方案：</strong></p>
+<p><strong>方案一：QLoRA（最推荐，我在法律助手项目中用的方案）</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">显存占用估算：
+- 70B模型INT4量化加载：~35GB → 还不够
+- QLoRA + 4bit量化 + 梯度检查点：约20-22GB → 勉强够
+- QLoRA + 4bit + 梯度检查点 + 小batch_size(1)：约18-20GB → 可行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>具体配置：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">model</span><span class="token punctuation">:</span> Qwen3<span class="token punctuation">-</span>32B  <span class="token comment"># 实际我们用的是32B，70B可以类似配置</span>
+<span class="token key atrule">quantization</span><span class="token punctuation">:</span> 4bit  <span class="token comment"># bitsandbytes NF4</span>
+<span class="token key atrule">lora_r</span><span class="token punctuation">:</span> <span class="token number">16</span>
+<span class="token key atrule">lora_alpha</span><span class="token punctuation">:</span> <span class="token number">32</span>
+<span class="token key atrule">lora_dropout</span><span class="token punctuation">:</span> <span class="token number">0.1</span>
+<span class="token key atrule">batch_size</span><span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token key atrule">gradient_accumulation_steps</span><span class="token punctuation">:</span> <span class="token number">4</span>
+<span class="token key atrule">gradient_checkpointing</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>方案二：模型并行 + 卸载（CPU Offloading）</strong></p>
+<p>如果必须全参微调，可以：</p>
+<ul>
+<li>使用 DeepSpeed ZeRO-3：将模型参数分布到CPU和GPU</li>
+<li>但训练速度会非常慢，因为CPU-GPU传输是瓶颈</li>
+<li>一个batch可能需要几十秒</li>
+</ul>
+<p><strong>方案三：更务实的选择——换模型</strong></p>
+<p>24G显存更适合的模型选择：</p>
+<pre class="line-numbers language-none"><code class="language-none">7B 模型：全参微调没问题
+13B 模型：可以用LoRA微调
+32B 模型：QLoRA勉强可行
+70B 模型：QLoRA + 4bit + 所有优化手段，极限情况<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>我的实际经验：</strong></p>
+<p>在法律助手项目中，我们用的是 <strong>Qwen3-32B + QLoRA</strong>，单卡24G显存（RTX 3090）完全跑得起来。配置如下：</p>
+<ul>
+<li>4bit量化（NF4）</li>
+<li>LoRA rank=16，target_modules=全部linear层</li>
+<li>batch_size=1，gradient_accumulation_steps=8</li>
+<li>启用梯度检查点</li>
+<li>混合精度训练（bf16）</li>
+</ul>
+<p>训练效率：约3-5秒/step，一个epoch（2000条数据）大概2-3小时。</p>
+<p><strong>如果非要训70B模型，我的建议：</strong></p>
+<ol>
+<li>先用QLoRA + 4bit量化，这是最省显存的方式</li>
+<li>开启gradient_checkpointing + CPU offloading</li>
+<li>batch_size设为1，gradient_accumulation_steps加大</li>
+<li>做好心理准备，训练速度会非常慢</li>
+<li>更实际的做法：租用云GPU（A100 80G），或者用多卡分布式训练</li>
+</ol>
+<p><strong>总结：</strong> 24G卡训70B全参几乎不可行，但用QLoRA做高效微调是完全可行的。我建议根据实际需求选择更合适的模型大小，而不是盲目追求大模型。</p>
+<hr>
+<h2 id="205-这个协作机制是LangGraph自带的还是你自己写的">205. 这个协作机制是LangGraph自带的还是你自己写的</h2>
+<p><strong>回答：</strong></p>
+<p><strong>两者结合——核心机制用LangGraph自带的，但业务逻辑和定制化部分是我自己实现的。</strong></p>
+<p><strong>LangGraph自带的部分：</strong></p>
+<p><strong>1. 状态管理（StateGraph）</strong></p>
+<p>LangGraph提供了StateGraph这个核心数据结构，用来管理Agent之间的状态流转。我直接用了这个框架：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>graph <span class="token keyword">import</span> StateGraph<span class="token punctuation">,</span> State
+
+<span class="token keyword">class</span> <span class="token class-name">AgentState</span><span class="token punctuation">(</span>State<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    enterprise_info<span class="token punctuation">:</span> <span class="token builtin">dict</span>
+    matched_policies<span class="token punctuation">:</span> <span class="token builtin">list</span>
+    analysis_result<span class="token punctuation">:</span> <span class="token builtin">dict</span>
+    final_report<span class="token punctuation">:</span> <span class="token builtin">str</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 节点和边的定义（Node/Edge）</strong></p>
+<p>LangGraph的节点（Node）和边（Edge）机制是现成的，我只需要定义节点函数和连接关系：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">workflow <span class="token operator">=</span> StateGraph<span class="token punctuation">(</span>AgentState<span class="token punctuation">)</span>
+
+<span class="token comment"># 定义节点</span>
+workflow<span class="token punctuation">.</span>add_node<span class="token punctuation">(</span><span class="token string">"info_collector"</span><span class="token punctuation">,</span> collect_enterprise_info<span class="token punctuation">)</span>
+workflow<span class="token punctuation">.</span>add_node<span class="token punctuation">(</span><span class="token string">"policy_matcher"</span><span class="token punctuation">,</span> match_policies<span class="token punctuation">)</span>
+workflow<span class="token punctuation">.</span>add_node<span class="token punctuation">(</span><span class="token string">"report_generator"</span><span class="token punctuation">,</span> generate_report<span class="token punctuation">)</span>
+
+<span class="token comment"># 定义边</span>
+workflow<span class="token punctuation">.</span>add_edge<span class="token punctuation">(</span><span class="token string">"info_collector"</span><span class="token punctuation">,</span> <span class="token string">"policy_matcher"</span><span class="token punctuation">)</span>
+workflow<span class="token punctuation">.</span>add_edge<span class="token punctuation">(</span><span class="token string">"policy_matcher"</span><span class="token punctuation">,</span> <span class="token string">"report_generator"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>3. 条件路由（ConditionalEdge）</strong></p>
+<p>条件判断的路由也是LangGraph自带的：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">workflow<span class="token punctuation">.</span>add_conditional_edges<span class="token punctuation">(</span>
+    <span class="token string">"policy_matcher"</span><span class="token punctuation">,</span>
+    should_ask_for_more_info<span class="token punctuation">,</span>  <span class="token comment"># 自定义判断函数</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token string">"continue"</span><span class="token punctuation">:</span> <span class="token string">"report_generator"</span><span class="token punctuation">,</span>
+        <span class="token string">"ask_more"</span><span class="token punctuation">:</span> <span class="token string">"info_collector"</span>  <span class="token comment"># 信息不足时回退</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>我自己写的部分：</strong></p>
+<p><strong>1. Agent的协作逻辑</strong></p>
+<p>每个Agent节点内部的业务逻辑是我自己实现的：</p>
+<ul>
+<li><strong>信息采集Agent</strong>：调用企业信息API，整合多源数据，通过OpenAI的function calling来解析</li>
+<li><strong>政策匹配Agent</strong>：结合Neo4j图查询和向量检索，实现混合检索策略</li>
+<li><strong>报告生成Agent</strong>：整合匹配结果，生成结构化报告</li>
+</ul>
+<p><strong>2. 裁决机制（仲裁逻辑）</strong></p>
+<p>当多个Agent给出不同结论时，我写了一个仲裁模块：</p>
+<ul>
+<li>投票机制：相同结论数最多者胜出</li>
+<li>置信度加权：结合每个Agent的置信度评分</li>
+<li>人工介入阈值：当置信度低于0.6时，自动转人工</li>
+</ul>
+<p><strong>3. 持久化策略</strong></p>
+<p>LangGraph有基础的持久化层，但我根据自己的需求做了扩展：</p>
+<ul>
+<li>会话状态存到Redis，支持分布式部署</li>
+<li>长期记忆存到Milvus向量库，基于语义相似度做检索</li>
+<li>中间结果存到MySQL，方便回溯和排查</li>
+</ul>
+<p><strong>4. 监控和日志</strong></p>
+<p>LangGraph没有自带完善的监控，我加了一套：</p>
+<ul>
+<li>每个节点的执行耗时打点到Prometheus</li>
+<li>每一步的状态变化记录到日志</li>
+<li>异常情况自动告警</li>
+</ul>
+<p><strong>总结：</strong> LangGraph解决的是&quot;Agent之间的通信和状态流转&quot;这个通用问题，我写的部分解决的是&quot;具体业务怎么做&quot;这个特定问题。两者结合，既利用了框架的稳定性，又保留了业务灵活性。</p>
+<hr>
+<h2 id="206-这两个项目你遇到的最大的困难是什么，如何解决的？">206. 这两个项目你遇到的最大的困难是什么，如何解决的？</h2>
+<p><strong>回答：</strong></p>
+<p>两个项目遇到的最大困难不同，我分别说一下。</p>
+<p><strong>法律助手项目——最大困难：PDF解析质量不稳定</strong></p>
+<p><strong>问题描述：</strong><br>
+法律文档格式极其复杂，有页眉页脚、表格、图片、手写批注、多栏排版等。用MinerU解析时，经常出现：</p>
+<ul>
+<li>表格内容错乱，单元格对应不上</li>
+<li>图片和文字分离，上下文丢失</li>
+<li>页眉页脚混入正文，影响切片质量</li>
+</ul>
+<p><strong>解决过程：</strong></p>
+<p><strong>第一步：定位问题</strong><br>
+我分析了200份解析失败的文档，归纳出几类问题：</p>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>占比</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表格解析错乱</td>
+<td>35%</td>
+<td>复杂表格（合并单元格、跨页）</td>
+</tr>
+<tr>
+<td>图文分离</td>
+<td>25%</td>
+<td>图片嵌入在段落中间</td>
+</tr>
+<tr>
+<td>页眉页脚干扰</td>
+<td>20%</td>
+<td>页眉与正文语义相关</td>
+</tr>
+<tr>
+<td>手写批注</td>
+<td>15%</td>
+<td>批注覆盖原文</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>5%</td>
+<td>编码问题、扫描件质量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二步：分层治理</strong></p>
+<ol>
+<li><strong>预处理层</strong>：在MinerU解析之前，先用OpenCV检测页眉页脚区域，提前裁剪掉</li>
+<li><strong>解析层</strong>：调优MinerU的参数，针对法律文档格式做定制化配置</li>
+<li><strong>后处理层</strong>：写了一套规则引擎，对解析结果做后处理修复
+<ul>
+<li>表格修复：通过行列检测算法，重建表格结构</li>
+<li>图文关联：根据位置信息，将图片和附近文本关联</li>
+<li>连续性检测：段落断裂时自动合并</li>
+</ul>
+</li>
+</ol>
+<p><strong>第三步：持续优化</strong></p>
+<p>法条召回率从68%提升到了94%，合规正确率从72%提升到了91%。这个优化过程持续了大概两周。</p>
+<p><strong>政策补贴系统——最大困难：多Agent协作的一致性问题</strong></p>
+<p><strong>问题描述：</strong><br>
+多个Agent各自分析企业信息，经常得出不一致的结论。比如：</p>
+<ul>
+<li>信息采集Agent说企业员工数500人，政策匹配Agent说需要看最新数据</li>
+<li>不同Agent对同一政策的理解不一致</li>
+<li>其中一个Agent出错，后续结果全错</li>
+</ul>
+<p><strong>解决过程：</strong></p>
+<p><strong>1. 引入共享状态层</strong><br>
+把所有Agent的中间结果集中到一个统一的状态管理器中，每个Agent操作前先读取最新状态，避免&quot;各自为政&quot;。</p>
+<p><strong>2. 增加裁决机制</strong><br>
+当多个Agent结论不一致时：</p>
+<ul>
+<li>按Agent的置信度加权投票</li>
+<li>高置信度Agent的结论优先级更高</li>
+<li>仍不一致时，触发人工介入</li>
+</ul>
+<p><strong>3. 增强容错</strong><br>
+每个Agent都有超时机制和重试逻辑：</p>
+<ul>
+<li>超时后自动回退到上一个稳定状态</li>
+<li>连续失败3次后告警并转人工</li>
+</ul>
+<p><strong>4. 建立评估集</strong><br>
+创建了200+测试用例，覆盖各种企业场景，每次修改后自动回归测试，确保不会出现回归问题。</p>
+<p><strong>最终效果：</strong> 企业匹配准确率达到92%以上，匹配响应时间小于1.5秒。</p>
+<hr>
+<h2 id="207-LangGraph中持久化层的作用？">207. LangGraph中持久化层的作用？</h2>
+<p><strong>回答：</strong></p>
+<p>持久化层（Persistence Layer）在LangGraph中是一个非常重要的组件，它解决了<strong>Agent运行过程中的状态保存和恢复</strong>问题。</p>
+<p><strong>核心作用：</strong></p>
+<p><strong>1. 状态持久化（State Persistence）</strong></p>
+<p>Agent在运行过程中会产生大量中间状态——各Agent的输入输出、决策步骤、工具调用结果等。持久化层把这些状态保存下来，而不是只存在内存中。这样：</p>
+<ul>
+<li>Agent运行到一半崩溃了，重启后可以从断点恢复</li>
+<li>可以回看Agent的决策过程，方便调试和排查</li>
+</ul>
+<p><strong>2. 会话管理（Session Management）</strong></p>
+<p>在多轮交互场景中，持久化层负责管理会话上下文：</p>
+<ul>
+<li>每个会话有独立的ID</li>
+<li>保存历史对话记录</li>
+<li>支持会话的暂停、恢复、回溯</li>
+</ul>
+<p><strong>3. 断点续跑（Resumability）</strong></p>
+<p>这是最实用的功能。比如政策补贴系统中，匹配Agent需要查询多个政策库，可能耗时较长。如果中途网络中断，持久化层可以：</p>
+<ul>
+<li>保存已经完成的工作</li>
+<li>恢复时跳过错过的步骤</li>
+<li>避免重复计算</li>
+</ul>
+<p><strong>4. 并发控制（Concurrency Control）</strong></p>
+<p>多个用户的Agent同时运行时，持久化层保证：</p>
+<ul>
+<li>每个用户的会话隔离</li>
+<li>状态读写不冲突</li>
+<li>数据一致性</li>
+</ul>
+<p><strong>在政策补贴系统中的具体应用：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 配置持久化层</span>
+<span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint <span class="token keyword">import</span> MemorySaver
+<span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint<span class="token punctuation">.</span>sqlite <span class="token keyword">import</span> SqliteSaver
+
+<span class="token comment"># 使用SQLite做持久化（生产环境可以用PostgreSQL）</span>
+checkpointer <span class="token operator">=</span> SqliteSaver<span class="token punctuation">.</span>from_conn_string<span class="token punctuation">(</span><span class="token string">"checkpoints.db"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 将持久化层注入到workflow</span>
+app <span class="token operator">=</span> workflow<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span>checkpointer<span class="token operator">=</span>checkpointer<span class="token punctuation">)</span>
+
+<span class="token comment"># 运行Agent时，指定会话ID</span>
+config <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"configurable"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token string">"thread_id"</span><span class="token punctuation">:</span> <span class="token string">"session_123"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+result <span class="token operator">=</span> app<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span>input_data<span class="token punctuation">,</span> config<span class="token operator">=</span>config<span class="token punctuation">)</span>
+
+<span class="token comment"># 恢复会话</span>
+result <span class="token operator">=</span> app<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span>new_input<span class="token punctuation">,</span> config<span class="token operator">=</span>config<span class="token punctuation">)</span>  <span class="token comment"># 自动从上次状态继续</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>持久化层存储的内容：</strong></p>
+<table>
+<thead>
+<tr>
+<th>存储内容</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>节点状态</td>
+<td>每个Agent节点的输出</td>
+<td>info_collector的输出结果</td>
+</tr>
+<tr>
+<td>图状态</td>
+<td>整个工作流的全局状态</td>
+<td>企业信息+匹配结果+报告</td>
+</tr>
+<tr>
+<td>执行历史</td>
+<td>每一步的执行记录</td>
+<td>执行顺序、耗时、是否成功</td>
+</tr>
+<tr>
+<td>检查点</td>
+<td>可恢复的断点</td>
+<td>异常中断时的状态快照</td>
+</tr>
+</tbody>
+</table>
+<p><strong>选择持久化方案时我的考虑：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>适用场景</th>
+<th>优缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MemorySaver</td>
+<td>开发调试</td>
+<td>速度快，但不持久，重启丢失</td>
+</tr>
+<tr>
+<td>SqliteSaver</td>
+<td>单机部署</td>
+<td>简单可靠，适合小规模</td>
+</tr>
+<tr>
+<td>PostgresSaver</td>
+<td>生产环境</td>
+<td>分布式，支持高并发</td>
+</tr>
+<tr>
+<td>RedisSaver</td>
+<td>高并发场景</td>
+<td>速度快，但有数据丢失风险</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结：</strong> 持久化层让Agent从&quot;一次性的脚本&quot;变成了&quot;可管理、可恢复、可追踪的工作流&quot;，在生产环境中必不可少。</p>
+<hr>
+<h2 id="208-持久化层的分类？">208. 持久化层的分类？</h2>
+<p><strong>回答：</strong></p>
+<p>LangGraph的持久化层可以从两个维度来分类——<strong>按存储介质</strong>和<strong>按作用范围</strong>。</p>
+<p><strong>一、按存储介质分类</strong></p>
+<p><strong>1. 内存型（In-Memory）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint <span class="token keyword">import</span> MemorySaver
+saver <span class="token operator">=</span> MemorySaver<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：速度快，数据存在内存中</li>
+<li>缺点：进程重启后数据丢失</li>
+<li>适用场景：开发调试、测试环境</li>
+</ul>
+<p><strong>2. 文件型（File-based）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint<span class="token punctuation">.</span>sqlite <span class="token keyword">import</span> SqliteSaver
+saver <span class="token operator">=</span> SqliteSaver<span class="token punctuation">.</span>from_conn_string<span class="token punctuation">(</span><span class="token string">"checkpoints.db"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：持久化到本地文件，简单可靠</li>
+<li>缺点：不适合分布式部署</li>
+<li>适用场景：单机部署、小规模应用</li>
+</ul>
+<p><strong>3. 数据库型（Database）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint<span class="token punctuation">.</span>postgres <span class="token keyword">import</span> PostgresSaver
+saver <span class="token operator">=</span> PostgresSaver<span class="token punctuation">.</span>from_conn_string<span class="token punctuation">(</span><span class="token string">"postgresql://user:pass@host/db"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：支持分布式、高并发、数据安全</li>
+<li>缺点：需要额外维护数据库</li>
+<li>适用场景：生产环境、多用户并发</li>
+</ul>
+<p><strong>4. 缓存型（Cache-based）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint<span class="token punctuation">.</span>redis <span class="token keyword">import</span> RedisSaver
+saver <span class="token operator">=</span> RedisSaver<span class="token punctuation">.</span>from_redis_client<span class="token punctuation">(</span>redis_client<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：极快读写速度，支持过期策略</li>
+<li>缺点：数据有丢失风险（除非配置持久化）</li>
+<li>适用场景：高并发、低延迟要求</li>
+</ul>
+<p><strong>二、按作用范围分类</strong></p>
+<p><strong>1. 会话级持久化（Session Level）</strong></p>
+<p>每个会话（thread_id）独立存储状态：</p>
+<ul>
+<li>不同用户的会话互不干扰</li>
+<li>支持多轮对话</li>
+<li>可以按会话ID查询历史</li>
+</ul>
+<p><strong>2. 工作流级持久化（Workflow Level）</strong></p>
+<p>保存整个工作流的执行轨迹：</p>
+<ul>
+<li>记录了从开始到结束的完整路径</li>
+<li>可以回放debug</li>
+<li>支持断点续跑</li>
+</ul>
+<p><strong>3. 节点级持久化（Node Level）</strong></p>
+<p>每个节点（Agent）的输出单独保存：</p>
+<ul>
+<li>可以查看单个Agent的执行结果</li>
+<li>定位问题更精确</li>
+<li>支持部分回滚</li>
+</ul>
+<p><strong>三、按功能特性分类</strong></p>
+<p><strong>1. 基础持久化（Base Checkpoint）</strong></p>
+<p>只保存状态快照：</p>
+<ul>
+<li>简单可靠</li>
+<li>但不支持高级功能</li>
+</ul>
+<p><strong>2. 时间旅行持久化（Time Travel）</strong></p>
+<p>支持回溯到任意历史节点：</p>
+<ul>
+<li>可以查看Agent在任意时刻的状态</li>
+<li>支持&quot;what if&quot;分析</li>
+<li>适合调试复杂工作流</li>
+</ul>
+<p><strong>3. 异步持久化（Async Checkpoint）</strong></p>
+<p>支持异步写入，不阻塞主流程：</p>
+<ul>
+<li>性能更好</li>
+<li>适合高吞吐场景</li>
+<li>但最终一致性需要处理</li>
+</ul>
+<p><strong>在实际项目中如何选择：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">开发环境 → MemorySaver（简单快速）
+单机部署 → SqliteSaver（可靠够用）
+生产环境 → PostgresSaver（分布式+安全）
+高并发 → RedisSaver（性能优先）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>我的选择：</strong> 政策补贴系统用的 PostgresSaver + RedisSaver 的组合。Postgres存持久化数据和历史记录，Redis做热缓存加速状态读取。</p>
+<hr>
+<h2 id="209-LangGraph还有什么持久化策略？">209. LangGraph还有什么持久化策略？</h2>
+<p><strong>回答：</strong></p>
+<p>除了前面提到的基础持久化方案，LangGraph还有一些更高级的持久化策略，适合不同的业务场景。</p>
+<p><strong>1. 自定义持久化（Custom Checkpointer）</strong></p>
+<p>如果内置方案不能满足需求，可以实现Checkpointer接口：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> langgraph<span class="token punctuation">.</span>checkpoint <span class="token keyword">import</span> BaseCheckpointSaver
+
+<span class="token keyword">class</span> <span class="token class-name">CustomSaver</span><span class="token punctuation">(</span>BaseCheckpointSaver<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">put</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">,</span> checkpoint<span class="token punctuation">,</span> metadata<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 自定义写入逻辑</span>
+        my_storage<span class="token punctuation">.</span>save<span class="token punctuation">(</span>checkpoint<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 自定义读取逻辑</span>
+        <span class="token keyword">return</span> my_storage<span class="token punctuation">.</span>load<span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">list</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> config<span class="token punctuation">,</span> <span class="token builtin">filter</span><span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> before<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> limit<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 自定义查询逻辑</span>
+        <span class="token keyword">return</span> my_storage<span class="token punctuation">.</span>query<span class="token punctuation">(</span>config<span class="token punctuation">,</span> <span class="token builtin">filter</span><span class="token punctuation">,</span> limit<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 增量持久化（Incremental Checkpointing）</strong></p>
+<p>每次只保存变化的部分，而不是全量快照：</p>
+<ul>
+<li>节省存储空间</li>
+<li>减少写入时间</li>
+<li>适合状态变化频繁但每次变化量小的场景</li>
+</ul>
+<p><strong>3. 压缩持久化（Compressed Checkpointing）</strong></p>
+<p>对保存的状态做压缩处理：</p>
+<ul>
+<li>使用gzip/zlib压缩大状态</li>
+<li>减少存储成本</li>
+<li>适合状态中包含大量文本或长上下文的场景</li>
+</ul>
+<p><strong>4. 分片持久化（Sharded Checkpointing）</strong></p>
+<p>把状态按key分片存储到不同的存储节点：</p>
+<ul>
+<li>支持水平扩展</li>
+<li>避免单点瓶颈</li>
+<li>适合超大规模并发</li>
+</ul>
+<p><strong>5. 版本化持久化（Versioned Checkpointing）</strong></p>
+<p>每次状态变化都保存版本号：</p>
+<pre class="line-numbers language-none"><code class="language-none">v1 → v2 → v3 → v4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>支持版本回退</li>
+<li>可以对比不同版本的状态差异</li>
+<li>方便审计和追溯</li>
+</ul>
+<p><strong>6. TTL自动过期策略</strong></p>
+<p>结合Redis或MongoDB的TTL功能：</p>
+<ul>
+<li>设置状态过期时间（如7天）</li>
+<li>自动清理过期状态</li>
+<li>减少存储压力</li>
+</ul>
+<p><strong>7. 混合持久化策略（Hybrid Strategy）</strong></p>
+<p>这其实是我在政策补贴系统中实际用的方案：</p>
+<pre class="line-numbers language-none"><code class="language-none">热数据（当前会话）：Redis
+温数据（近7天）：PostgreSQL
+冷数据（7天以上）：对象存储（S3&#x2F;MinIO）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>各层的作用：</strong></p>
+<ul>
+<li><strong>Redis层</strong>：处理高并发的状态读写，毫秒级响应</li>
+<li><strong>PostgreSQL层</strong>：存储完整的会话历史，支持复杂查询</li>
+<li><strong>对象存储层</strong>：归档历史会话，低成本存储</li>
+</ul>
+<p><strong>8. 按需加载策略（Lazy Loading）</strong></p>
+<p>不是所有状态都一次性加载到内存：</p>
+<ul>
+<li>加载当前节点需要的状态</li>
+<li>其他状态按需加载</li>
+<li>减少内存占用</li>
+</ul>
+<p><strong>实际应用场景举例：</strong></p>
+<p><strong>场景一：长对话的断点续传</strong><br>
+法律助手项目中，用户可能在一个对话中问几十个问题。使用增量持久化，每次只保存新问题和回答，而不是整个对话历史。</p>
+<p><strong>场景二：多用户并发</strong><br>
+政策补贴系统可能有多个用户同时使用。使用分片持久化，把不同用户的会话分到不同的存储节点。</p>
+<p><strong>场景三：调试和审计</strong><br>
+使用版本化持久化，可以回溯Agent的每一步决策，方便排查问题。</p>
+<p><strong>总结：</strong> 选择持久化策略时，要根据业务场景来权衡。没有万能的方案，但可以组合使用多种策略来满足不同需求。</p>
+<hr>
+<h2 id="210-稠密检索和稀疏检索的区别？">210. 稠密检索和稀疏检索的区别？</h2>
+<p><strong>回答：</strong></p>
+<p>这是一个非常关键的检索问题。在现代RAG系统中，稠密检索和稀疏检索是两种主流的检索方式，<strong>它们各有优劣，互补使用效果最好</strong>。</p>
+<p><strong>一、核心区别</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>稠密检索（Dense Retrieval）</th>
+<th>稀疏检索（Sparse Retrieval）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>表示方式</strong></td>
+<td>用密集向量表示（如768维浮点数）</td>
+<td>用稀疏向量表示（高维但大部分为0）</td>
+</tr>
+<tr>
+<td><strong>代表方法</strong></td>
+<td>向量嵌入（Embedding）</td>
+<td>BM25、TF-IDF</td>
+</tr>
+<tr>
+<td><strong>匹配方式</strong></td>
+<td>语义匹配</td>
+<td>关键词匹配</td>
+</tr>
+<tr>
+<td><strong>计算方式</strong></td>
+<td>向量相似度（余弦/点积）</td>
+<td>词频统计+逆文档频率</td>
+</tr>
+<tr>
+<td><strong>对同义词的处理</strong></td>
+<td>能识别&quot;轿车&quot;和&quot;汽车&quot;是同类</td>
+<td>无法识别，需要精确匹配</td>
+</tr>
+<tr>
+<td><strong>对专业术语</strong></td>
+<td>需要训练/微调</td>
+<td>自然支持精确匹配</td>
+</tr>
+<tr>
+<td><strong>冷启动</strong></td>
+<td>需要训练Embedding模型</td>
+<td>不需要训练，直接用统计方法</td>
+</tr>
+</tbody>
+</table>
+<p><strong>二、具体实现</strong></p>
+<p><strong>稀疏检索（BM25）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 基于词频统计</span>
+<span class="token string">"法律助手提供法律咨询"</span> → <span class="token punctuation">&#123;</span>
+  <span class="token string">"法律"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"助手"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"提供"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"咨询"</span><span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>优点：简单、快速、可解释、精确匹配</li>
+<li>缺点：无法处理语义相似、同义词问题</li>
+</ul>
+<p><strong>稠密检索（Embedding）</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 基于语义向量</span>
+<span class="token string">"法律助手提供法律咨询"</span> → <span class="token punctuation">[</span><span class="token number">0.12</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.34</span><span class="token punctuation">,</span> <span class="token number">0.56</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0.78</span><span class="token punctuation">]</span>  <span class="token comment"># 768维向量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>优点：语义理解能力强、支持同义词、跨语言</li>
+<li>缺点：需要训练模型、计算量大、&quot;黑盒&quot;不可解释</li>
+</ul>
+<p><strong>三、各自的问题</strong></p>
+<p><strong>稠密检索的痛点：</strong></p>
+<ul>
+<li><strong>领域偏差</strong>：通用Embedding模型在专业领域（法律、医疗）效果差</li>
+<li><strong>低频词问题</strong>：罕见的专业术语，向量表示可能不准确</li>
+<li><strong>无法精确匹配</strong>：检索&quot;民法典第123条&quot;和&quot;民法典第124条&quot;语义相近，但完全是两回事</li>
+</ul>
+<p><strong>稀疏检索的痛点：</strong></p>
+<ul>
+<li><strong>语义鸿沟</strong>：用户问&quot;打官司&quot;但文档写的是&quot;诉讼&quot;，匹配不上</li>
+<li><strong>同义词问题</strong>：无法理解&quot;公司&quot;和&quot;企业&quot;是一个意思</li>
+<li><strong>长文档劣势</strong>：长的文档词频高，但未必更相关</li>
+</ul>
+<p><strong>四、在项目中的实际应用——混合检索</strong></p>
+<p>在法律助手项目中，我用了<strong>混合检索（Hybrid Search）</strong>，结合两者的优势：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 混合检索策略</span>
+<span class="token comment"># 1. 稀疏检索（BM25）→ 精确匹配</span>
+<span class="token comment"># 2. 稠密检索（Embedding）→ 语义匹配</span>
+<span class="token comment"># 3. 融合（RRF/加权融合）</span>
+
+<span class="token keyword">def</span> <span class="token function">hybrid_search</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> top_k<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 稀疏检索</span>
+    sparse_results <span class="token operator">=</span> bm25_search<span class="token punctuation">(</span>query<span class="token punctuation">,</span> top_k<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># 稠密检索</span>
+    dense_results <span class="token operator">=</span> dense_search<span class="token punctuation">(</span>query<span class="token punctuation">,</span> top_k<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># RRF融合</span>
+    combined <span class="token operator">=</span> reciprocal_rank_fusion<span class="token punctuation">(</span>
+        sparse_results<span class="token punctuation">,</span> 
+        dense_results<span class="token punctuation">,</span> 
+        k<span class="token operator">=</span><span class="token number">60</span>  <span class="token comment"># RRF参数</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> combined<span class="token punctuation">[</span><span class="token punctuation">:</span>top_k<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>融合策略：</strong></p>
+<table>
+<thead>
+<tr>
+<th>融合方法</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RRF（倒数排名融合）</td>
+<td>按排名位置加权融合</td>
+<td>通用场景</td>
+</tr>
+<tr>
+<td>分数加权</td>
+<td>按相似度分数线性融合</td>
+<td>分数可比较时</td>
+</tr>
+<tr>
+<td>级联检索</td>
+<td>先BM25粗筛，再Embedding精排</td>
+<td>性能优先</td>
+</tr>
+</tbody>
+</table>
+<p><strong>效果：</strong> 混合检索后，法条召回率从68%提升到94%，提升非常明显。特别是对于法律条款这种需要精确匹配的场景，BM25保证了精确匹配不丢，Embedding保证了语义相关的也召回。</p>
+<p><strong>五、总结</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>精确匹配（法律条款、ID、代码）</td>
+<td>稀疏检索为主</td>
+</tr>
+<tr>
+<td>语义理解（问答、对话）</td>
+<td>稠密检索为主</td>
+</tr>
+<tr>
+<td>专业领域（法律、医疗、金融）</td>
+<td>混合检索</td>
+</tr>
+<tr>
+<td>资源受限</td>
+<td>稀疏检索（无需GPU）</td>
+</tr>
+<tr>
+<td>效果优先</td>
+<td>混合检索+重排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>我的建议：</strong> 不要二选一，<strong>混合检索</strong>才是RAG系统的最佳实践。在法律助手项目中，我深有体会——只靠Embedding，很多精确匹配的条款会漏掉；只靠BM25，语义相关的内容又检索不到。两者结合，效果最好。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io">Sloth</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://timaio0911.github.io/2026/07/21/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/21_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BB%84_201-210/">https://timaio0911.github.io/2026/07/21/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/21_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BB%84_201-210/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/025_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/22/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/22_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%BB%84_211-220/" title="面试模拟 - 第二十二组（211-220题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/026_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">面试模拟 - 第二十二组（211-220题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十二组（211-220题）  基于简历项目经历，模拟面试回答   211. 如果BERT输出5类，想将输出提到10类该怎么做 回答： 这个问题本质上是分类任务的类别数扩展。核心思路是调整模型的输出层，必要时进行微调。 最简单的做法——修改分类头： BERT的架构可以拆成两部分：主干网络（Transformer Encoder） + 分类头（Classification Head）。分类头通常就是一个全连接层，输入是BERT的[CLS]向量，输出是类别数。 # 原始：5分类 classifier = nn.Linear(768, 5)  # 改为10分类 classifier = nn.Linear(768, 10) 但要注意几个问题： 1. 权重初始化 原来5类的权重不能直接复用，因为新增的5类没有对应权重。可以：  随机初始化新类别的权重：最简单，但新类需要从零学起 从同类初始化：如果新类别和旧类别语义相近，可以用旧类别的权重做初始化  2. 是否需要微调    场景 建议     新类别和旧类别相似 只训练分类头，不微调BERT   新类别差异较大 需要全模...</div></div></div></a><a class="pagination-related" href="/2026/07/20/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/20_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%BB%84_191-200/" title="面试模拟 - 第二十组（191-200题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/024_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">面试模拟 - 第二十组（191-200题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十组（191-200题）  基于简历项目经历，模拟面试回答   191. 讲讲python垃圾回收机制 回答： Python的垃圾回收机制主要基于引用计数，辅以标记-清除和分代回收来处理循环引用问题。 一、引用计数（核心机制） Python中每个对象都有一个引用计数，记录有多少个引用指向它。 对象被创建时，引用计数为1 被其他变量引用时，计数+1 引用被删除或超出作用域时，计数-1 计数为0时，内存立即被回收 引用计数增加的情况：  对象被赋值给变量 对象被添加到列表、字典等容器 对象作为参数传递给函数  引用计数减少的情况：  变量被del删除 变量被重新赋值 对象从容器中移除 函数执行完毕，局部变量超出作用域  优点： 实时性高，对象不再被引用时立即回收，不会累积垃圾。 缺点： 维护引用计数有额外开销，且无法处理循环引用。 二、标记-清除（解决循环引用） 对于容器对象（list、dict、class等），如果存在循环引用，引用计数会失效： a = [] b = [] a.append(b)  # b的引用计数+1 b.append(a)  # a的引用计数+...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/07/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/1_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%80%E7%BB%84_1-10/" title="面试模拟 - 第一组（1-10题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/023_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-01</div><div class="info-item-2">面试模拟 - 第一组（1-10题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第一组（1-10题）  基于简历项目经历，模拟面试回答   1. Python中list和元组的区别 回答： list和元组都是Python中常用的序列类型，但有本质区别： 可变性方面： list是可变的，创建后可以增删改元素；元组是不可变的，一旦创建就不能修改内容。这是最核心的区别。 语法层面： list用方括号[]表示，元组用圆括号()表示。 性能方面： 由于元组不可变，Python在内存分配上会做优化，元组的创建和访问速度比list略快，内存占用也更小。 使用场景： 我在实际项目中，对于需要动态变化的数据用list，比如知识库检索结果的聚合列表；对于不需要改变的配置项或函数返回多个值时用元组，比如Milvus的连接参数(host, port)就用元组存储。 其他差异： 元组可以作为字典的key（因为是不可变的），list不行；元组支持解包赋值，在函数返回多个值时很方便。  2. Python list.append()和list.extend()方法的区别 回答： 两个方法都是往list末尾添加元素，但行为完全不同： append() 是将传入的参数作为一个整...</div></div></div></a><a class="pagination-related" href="/2026/07/10/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/10_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E5%8D%81%E7%BB%84_91-100/" title="面试模拟 - 第十组（91-100题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/001_%E5%B0%81%E9%9D%A22026_07_28.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-10</div><div class="info-item-2">面试模拟 - 第十组（91-100题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第十组（91-100题）  基于简历项目经历，模拟面试回答   91. 该怎么解决多agent之间交流会出现信息丢失的情况，哪些情况会出现，怎么解决？ 回答： 信息丢失的典型场景： 1. 上下文截断丢失 Agent A传给Agent B的上下文太长，超过B的输入窗口，后面的信息被截断。 2. 格式转换丢失 Agent A输出JSON格式，Agent B期望自然语言，转换过程中丢失细节。 3. 状态覆盖丢失 Agent A和Agent B同时写入同一个状态字段，后写的覆盖先写的。 4. 异步时序丢失 异步执行时，Agent A的结果还没返回，Agent B已经开始执行，用了旧状态。 解决方案：    场景 解决方案     上下文截断 设计上下文压缩节点，只传递关键信息，而不是全部原始数据   格式转换 统一Agent间通信格式，用结构化schema而不是自然语言   状态覆盖 用LangGraph的checkpoint机制，每次状态变更都原子化   异步时序 设置依赖关系，确保上游Agent完成后再触发下游    政策补贴系统中的实践： 我们给每个Agent的输出定...</div></div></div></a><a class="pagination-related" href="/2026/07/23/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/23_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%89%E7%BB%84_221-230/" title="面试模拟 - 第二十三组（221-230题）"><img class="cover" src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/027_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-23</div><div class="info-item-2">面试模拟 - 第二十三组（221-230题）</div></div><div class="info-2"><div class="info-item-1">面试模拟 - 第二十三组（221-230题）  基于简历项目经历，模拟面试回答   221. 强化学习的偏好对齐 回答： 强化学习的偏好对齐，简单说就是让模型的输出跟人类的偏好保持一致，而不是只追求&quot;看起来合理的答案&quot;。最经典的方法是RLHF。 核心思路分为三步： 第一步——收集偏好数据： 让大模型对同一个问题生成多个回答，然后人工标注哪个更好。比如问&quot;劳动法规定试用期多久&quot;，模型生成了三个回答，我标注出最准确、最清晰的那个。 第二步——训练奖励模型（Reward Model）： 用标注好的偏好数据训练一个奖励模型，它能自动判断一个回答的质量好坏。这个模型本质上就是一个打分器，输入是&quot;问题+回答&quot;，输出是一个分数。 第三步——用强化学习微调大模型： 把奖励模型作为&quot;老师&quot;，用PPO算法去微调大模型，让大模型生成更受奖励模型偏好的回答。 在项目中的思考： 法律助手项目中，我虽然没有做完整的RLHF，但做了一个类似的机制——基于规则的反馈优化。对于法律咨询这种场景，准确性比流畅性重要得多，我设置了规则校验...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sloth</div><div class="author-info-description">一个懒散的人</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">城堡总是一点一点盖起来的，对吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">面试模拟 - 第二十一组（201-210题）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#201-AI%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%B8%AE%E5%8A%A9%E6%88%91%E4%BB%AC%E4%BB%8E%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB%E5%92%8C%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E5%85%A8%E9%83%A8%E5%AE%8C%E6%88%90%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">201. AI是否可以帮助我们从架构体系和业务开发全部完成？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#202-%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%89%8D%E9%80%9A%E8%BF%87%E7%BA%A6%E6%9D%9Fdoc%E6%9D%A5%E5%AF%B9cursor%E7%9A%84%E8%A1%8C%E4%B8%BA%E8%BF%9B%E8%A1%8C%E7%BA%A6%E6%9D%9F%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">202. 可以提前通过约束doc来对cursor的行为进行约束么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#203-%E8%AF%A6%E7%BB%86%E8%AE%B2%E4%B8%80%E4%B8%8B%E6%80%8E%E4%B9%88%E7%94%A8prompt%E6%9D%A5%E8%AE%BE%E5%AE%9Aagent%E7%9A%84%E8%A1%8C%E4%B8%BA%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">203. 详细讲一下怎么用prompt来设定agent的行为？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#204-%E8%B5%84%E6%BA%90%E5%8F%97%E9%99%90%EF%BC%8C%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA24G%E6%98%BE%E5%AD%98%E7%9A%84%E5%8D%A1%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AF%B9%E4%B8%80%E4%B8%AA70B%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%85%A8%E5%8F%82%E5%BE%AE%E8%B0%83%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">204. 资源受限，只有一个24G显存的卡，如何对一个70B的模型进行全参微调？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#205-%E8%BF%99%E4%B8%AA%E5%8D%8F%E4%BD%9C%E6%9C%BA%E5%88%B6%E6%98%AFLangGraph%E8%87%AA%E5%B8%A6%E7%9A%84%E8%BF%98%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84"><span class="toc-number">1.5.</span> <span class="toc-text">205. 这个协作机制是LangGraph自带的还是你自己写的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#206-%E8%BF%99%E4%B8%A4%E4%B8%AA%E9%A1%B9%E7%9B%AE%E4%BD%A0%E9%81%87%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E7%9A%84%E5%9B%B0%E9%9A%BE%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%9A%84%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">206. 这两个项目你遇到的最大的困难是什么，如何解决的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#207-LangGraph%E4%B8%AD%E6%8C%81%E4%B9%85%E5%8C%96%E5%B1%82%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">207. LangGraph中持久化层的作用？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#208-%E6%8C%81%E4%B9%85%E5%8C%96%E5%B1%82%E7%9A%84%E5%88%86%E7%B1%BB%EF%BC%9F"><span class="toc-number">1.8.</span> <span class="toc-text">208. 持久化层的分类？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#209-LangGraph%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">209. LangGraph还有什么持久化策略？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#210-%E7%A8%A0%E5%AF%86%E6%A3%80%E7%B4%A2%E5%92%8C%E7%A8%80%E7%96%8F%E6%A3%80%E7%B4%A2%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.10.</span> <span class="toc-text">210. 稠密检索和稀疏检索的区别？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/038_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十四组（331-340题）"/></a><div class="content"><a class="title" href="/2026/08/03/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/34_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E5%9B%9B%E7%BB%84_331-340/" title="面试模拟 - 第三十四组（331-340题）">面试模拟 - 第三十四组（331-340题）</a><time datetime="2026-08-03T00:00:00.000Z" title="Created 2026-08-03 08:00:00">2026-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/037_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十三组（321-330题）"/></a><div class="content"><a class="title" href="/2026/08/02/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/33_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B8%89%E7%BB%84_321-330/" title="面试模拟 - 第三十三组（321-330题）">面试模拟 - 第三十三组（321-330题）</a><time datetime="2026-08-02T00:00:00.000Z" title="Created 2026-08-02 08:00:00">2026-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）"><img src="https://cdn.jsdelivr.net/gh/timaio0911/img_bed@main/img/%E5%B0%81%E9%9D%A2/036_%E5%B0%81%E9%9D%A2_2026_07_29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试模拟 - 第三十二组（311-320题）"/></a><div class="content"><a class="title" href="/2026/08/01/%E9%9D%A2%E8%AF%95/%E5%9B%9E%E7%AD%94/32_%E9%9D%A2%E8%AF%95%E6%A8%A1%E6%8B%9F_%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E7%BB%84_311-320/" title="面试模拟 - 第三十二组（311-320题）">面试模拟 - 第三十二组（311-320题）</a><time datetime="2026-08-01T00:00:00.000Z" title="Created 2026-08-01 08:00:00">2026-08-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/a23813e4bc0c29b9b55f6795e9de8e51.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sloth</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: '',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
